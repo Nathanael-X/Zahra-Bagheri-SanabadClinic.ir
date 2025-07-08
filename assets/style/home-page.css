@@ -528,7 +528,7 @@ body
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    right: 8%;
+    left: 8%;
     color: white;
     font-size: 20px;
     font-weight: bold;
@@ -605,10 +605,6 @@ body
 }
 @media (max-width:768px)
 {
-    .overlay
-    {
-        transform: translate(-42%, -50%) !important;
-    }
     .scroller-track {
         animation: none;
         transform: none;
