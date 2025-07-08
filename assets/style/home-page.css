@@ -527,14 +527,15 @@ body
 {
     position: absolute;
     top: 50%;
+    left: 50%;   /* به جای right */
     transform: translate(-50%, -50%);
-    left: 8%;
     color: white;
     font-size: 20px;
     font-weight: bold;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+  
 .image-container:hover .overlay 
 {
     opacity: 1; /* نمایش متن روی تصویر */
@@ -605,6 +606,7 @@ body
 }
 @media (max-width:768px)
 {
+   
     .scroller-track {
         animation: none;
         transform: none;
