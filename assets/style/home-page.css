@@ -527,8 +527,7 @@ body
 {
     position: absolute;
     top: 50%;
-    left: 50%;   /* به جای right */
-    transform: translate(-50%, -50%);
+    transform: translate(-60%, -50%);
     color: white;
     font-size: 20px;
     font-weight: bold;
