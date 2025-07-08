@@ -512,8 +512,6 @@ body
 {
     position: relative;
     display: inline-block;
-    align-items: center !important;
-    justify-content: center !important;
 }
 .image 
 {
@@ -534,7 +532,6 @@ body
     color: white;
     font-size: 20px;
     font-weight: bold;
-    text-align: center !important;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -608,7 +605,10 @@ body
 }
 @media (max-width:768px)
 {
-   
+    .overlay
+    {
+        right: 0% !important;
+    }
     .scroller-track {
         animation: none;
         transform: none;
