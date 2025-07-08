@@ -605,6 +605,10 @@ body
 }
 @media (max-width:768px)
 {
+    .overlay
+    {
+        right: 0% !important;
+    }
     .scroller-track {
         animation: none;
         transform: none;
