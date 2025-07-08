@@ -512,6 +512,8 @@ body
 {
     position: relative;
     display: inline-block;
+    align-items: center !important;
+    justify-content: center !important;
 }
 .image 
 {
@@ -527,7 +529,7 @@ body
 {
     position: absolute;
     top: 50%;
-    left: 8%;
+    right: 8%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 20px;
