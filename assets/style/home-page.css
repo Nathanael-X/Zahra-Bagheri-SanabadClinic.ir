@@ -607,7 +607,7 @@ body
 {
     .overlay
     {
-        right: 0% !important;
+        right: -8% !important;
     }
     .scroller-track {
         animation: none;
