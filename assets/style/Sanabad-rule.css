@@ -1,0 +1,141 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+html , select
+{
+    scroll-behavior: smooth;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+html::-webkit-scrollbar , select::-webkit-scrollbar
+{
+    height: 8px;
+}
+select::-webkit-scrollbar
+{
+    width: 5px;
+}
+html::-webkit-scrollbar-thumb , select::-webkit-scrollbar-thumb
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-track , select::-webkit-scrollbar-track
+{
+    background-color: #1f232c;
+}
+body
+{
+    font-family: 'IranSansX', IRANSansX  !important;
+    margin: 0;
+    background-color: #f9fbfd;
+    color: #1f232c;
+}
+/*دکمه انحصاری کلینیک سناباد*/
+.btn-sanabad
+{
+    font-family:IRANSansX !important;
+    background: #28B6F6 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    padding-top: 12px !important;
+}
+.btn-sanabad:hover
+{
+    color: white;
+}
+.btn-sanabad::after
+{
+    content: "";
+    background:#1F232C;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/* استایل btn-outline-primary برای سناباد*/
+.btn-outline-white
+{
+    border-color: #ffffff !important;
+    transition: 0.3s ease-in all;
+    font-weight: bold !important;
+    color: #ffffff !important;
+}
+.btn-outline-white:hover
+{
+    border-color: #28B6F6 !important;
+    background-color: #1f232c !important;
+    color: white !important;
+}
+
+/*استایل قوانین سناباد */
+
+  h2.section-title {
+    color: #28b6f6;
+    border-right: 4px solid #28b6f6;
+    padding-right: 10px;
+  }
+  .icon {
+    color: #28b6f6;
+    margin-left: 0.5rem;
+  }
+
+  .page-header
+{
+	min-height: auto !important;
+	background-color: #1f232c;
+}
+.advantage-item {
+    padding: 2rem;
+    background-image: url(../Images/Acibadem/bg1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.247);
+    text-align: justify;
+    margin-bottom: 2rem;
+  }
+  
+  .advantage-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(40, 182, 246, 0.6);
+    border-color: #28b6f6;
+  }
+  
+  .advantage-icon {
+    font-size: 3rem;
+    color: #28b6f6;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .advantage-item:hover .advantage-icon {
+    color: #1f232c;
+    transform: scale(1.2);
+  }
+  
+  .advantage-item h5 {
+    color: #1f232c;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  

@@ -1,0 +1,235 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+html , select
+{
+    scroll-behavior: smooth;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+html::-webkit-scrollbar , select::-webkit-scrollbar
+{
+    height: 8px;
+}
+select::-webkit-scrollbar
+{
+    width: 5px;
+}
+html::-webkit-scrollbar-thumb , select::-webkit-scrollbar-thumb
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-track , select::-webkit-scrollbar-track
+{
+    background-color: #1f232c;
+}
+body
+{
+    font-family: 'IranSansX', IRANSansX  !important;
+    margin: 0;
+}
+/*دکمه انحصاری کلینیک سناباد*/
+.btn-sanabad
+{
+    font-family:IRANSansX !important;
+    background: #28B6F6 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+}
+.btn-sanabad:hover
+{
+    color: white;
+}
+.btn-sanabad::after
+{
+    content: "";
+    background:#1F232C;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/* استایل btn-outline-primary برای سناباد*/
+.btn-outline-white
+{
+    border-color: #ffffff !important;
+    transition: 0.3s ease-in all;
+    font-weight: bold !important;
+    color: #ffffff !important;
+}
+.btn-outline-white:hover
+{
+    border-color: #28B6F6 !important;
+    background-color: #1f232c !important;
+    color: white !important;
+}
+.parallax-header 
+{
+    min-height: auto; /* تمام صفحه پر بشه */
+    background-image: url('../Images/Acibadem/acibadem-background.jpg'); /* عکس پس زمینه */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.parallax-header::after 
+{
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0, 0, 0, 0.726); /* فیلتر مشکی ملایم */
+    z-index: 1;
+}
+.parallax-header .container 
+{
+    position: relative;
+    z-index: 2;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+/* استایل دهی سکشن دوم */
+.cooperation-section
+{
+    background-image: url('../Images/Acibadem/bg1.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.tilt-card 
+{
+  border-radius: 20px !important;
+  background:white;
+  transition: all .18s ease-in-out;
+}
+.tilt-card:hover 
+{
+  box-shadow: 0 10px 20px rgba(31, 35, 44, 0.363) !important;
+  background:rgba(255, 255, 255, 0.438);
+
+}
+.section-title 
+{
+  color: #1f232c;
+}
+.carousel-item {
+  height: 70vh;
+  position: relative; /* برای اینکه caption بتونه داخلش position بشه */
+  overflow: hidden;
+}
+.carousel-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.carousel-caption-glass {
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+  z-index: 2;
+  text-align: start;
+  color: #fff;
+  padding: 2rem;
+  width: 100%;
+  overflow: hidden;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+.carousel-caption-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(18, 20, 43, 0.877) 30%,
+    rgba(18, 20, 43, 0.829) 50%,
+    rgba(18, 20, 43, 0.678) 70%,
+    rgba(18, 20, 43, 0) 100%
+  );
+}
+.carousel-caption-glass h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #28b6f6;
+  text-shadow: 0 0 10px rgba(40, 182, 246, 0.7);
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.carousel-caption-glass p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #f0f0f0;
+  text-shadow: 0 0 5px rgba(40, 182, 246, 0.3);
+  margin: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.advantage-item {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(6px);
+}
+
+.advantage-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(40, 182, 246, 0.6);
+  border-color: #28b6f6;
+}
+
+.advantage-icon {
+  font-size: 3rem;
+  color: #28b6f6;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.advantage-item:hover .advantage-icon {
+  color: #1f232c;
+  transform: scale(1.2);
+}
+
+.advantage-item h5 {
+  color: #1f232c;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+
+
+
+

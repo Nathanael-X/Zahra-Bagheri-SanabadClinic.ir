@@ -1,0 +1,482 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+a
+{
+    text-decoration: none !important;
+}
+html , select
+{
+    scroll-behavior: smooth;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+html::-webkit-scrollbar , select::-webkit-scrollbar
+{
+    height: 8px;
+}
+select::-webkit-scrollbar
+{
+    width: 5px;
+}
+html::-webkit-scrollbar-thumb , select::-webkit-scrollbar-thumb
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-track , select::-webkit-scrollbar-track
+{
+    background-color: #1f232c;
+}
+body
+{
+    font-family: 'IranSansX', IRANSansX  !important;
+    margin: 0;
+}
+/* for preloader */
+#preloader 
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: all 0.5s ease;
+}
+.logo-container 
+{
+    margin-bottom: 20px;
+} 
+.logo_preloader 
+{
+    width: 120px;
+    height: auto;
+}
+.page-header
+{
+	min-height: auto !important;
+	background-color: #1f232c;
+}
+.bg-success
+{
+    background-color: #00a308 !important;
+}
+.avatar
+{
+    top: -50px;
+}
+.avatar-img
+{
+    width: 150px;
+    height: 150px;
+}
+.btn-outline-primary
+{
+    color: #28b6f6 !important;
+    border-color: #28b6f6 !important;
+    font-weight: bold !important;
+    white-space: nowrap;
+}
+.btn-outline-primary:hover
+{
+    background-color: #28b6f6 !important;
+    color: white !important;
+}
+.bg-dark
+{
+    background-color: #1f232c !important;
+}
+.rounded
+{
+    border-radius: 15px !important;
+}
+.active-link
+{
+    background-color: white !important;
+    border-radius: 15px !important;
+}
+.counter-card
+{
+    background-color: #28b5f62d;
+    color: #28b6f6;
+    height: 120px;
+    transition: all 0.3s ease-in-out;
+}
+.counter-card:hover
+{
+    transform: translateY(-5px);
+    background-color: #28b5f66e;
+}
+.counter-card:hover i
+{
+    color: #1f232c !important;
+}
+/* صفحه‌بندی */
+.custom-pagination {
+    gap: 0.5rem;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+.custom-pagination .page-item {
+    margin: 0 6px;
+}
+.custom-pagination .page-link {
+    border: 1px solid #1f232c;
+    color: #1f232c;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+.custom-pagination .page-link:hover {
+    background-color: #28b6f6;
+    border-color: #28b6f6;
+    color: white;
+    text-decoration: none;
+}
+.custom-pagination .page-item.active .page-link {
+    background-color: #1f232c;
+    color: white;
+    border-color: #1f232c;
+    font-weight: bold;
+}
+.custom-pagination .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: black;
+    border-color: #dee2e6;
+}
+/* جدول */
+.table-responsive
+{
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-color: #28b6f6 #1f232c00;
+    scrollbar-width: thin;
+}
+.table-responsive::-webkit-scrollbar 
+{
+    height: 8px;
+}
+.table-responsive::-webkit-scrollbar-thumb 
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+.table-responsive::-webkit-scrollbar-track 
+{
+    background-color: #1f232c00;
+}
+.table th {
+    background-color: #c2ecff !important;
+    color: #1f232c;
+    white-space: nowrap;
+}
+.color-row td
+{
+    background-color: #c2ecff !important;
+}
+.table td 
+{
+    vertical-align: middle;
+    white-space: nowrap;
+}
+/* تب‌ها */
+.nav-tabs .nav-link {
+    background-color: #1f232c;
+    color: white;
+    border: 1px solid #1f232c;
+    margin-left: 5px;
+}
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #28b6f6;
+    color: black;
+    background-color: #c2ecff;
+    font-weight: bold;
+}
+/*دکمه انحصاری کلینیک سناباد*/
+.btn-sanabad-cancle
+{
+    font-family:IRANSansX !important;
+    background: #cfcfcf !important;
+    border: none !important;
+    color: black !important;
+    border-radius: 80px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+}
+.btn-sanabad-cancle:hover
+{
+    color: white !important;
+}
+.btn-sanabad-cancle::after
+{
+    content: "";
+    background:#707070;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad-cancle:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.btn-sanabad
+{
+    font-family:IRANSansX !important;
+    background: #28B6F6 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+}
+.btn-sanabad:hover
+{
+    color: white;
+}
+.btn-sanabad::after
+{
+    content: "";
+    background:#1F232C;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.notif-tag
+{
+    color: #1F232C !important;
+    transition: 0.3s all ease-in-out;
+}
+.notif-tag:hover
+{
+    color: #007ab3 !important;
+}
+.div-undone-notif
+{
+    height: 26vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: #28b6f6 #ffffff00;
+    scrollbar-width: thin;
+}
+.div-notif
+{
+    height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: #28b6f6 #ffffff00;
+    scrollbar-width: thin;
+}
+.div-notif::-webkit-scrollbar , .div-undone-notif::-webkit-scrollbar
+{
+    height: 8px;
+}
+.div-notif::-webkit-scrollbar-thumb , .div-undone-notif::-webkit-scrollbar-thumb
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+.div-notif::-webkit-scrollbar-track و .div-undone-notif::-webkit-scrollbar-track 
+{
+    background-color: #1f232c00;
+}
+.upload-box 
+{
+    margin-top: 30px;
+    border: 2px dashed #aaa;
+    border-radius: 12px;
+    padding: 26px;
+    text-align: center;
+    background: rgb(241, 241, 241);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+.upload-box:hover 
+{
+    border-color: #28b6f6;
+}
+.upload-box.dragover 
+{
+    border-color: #2196f3;
+    background-color: #e3f2fd;
+}
+.upload-box input[type="file"] 
+{
+    display: none;
+}
+.upload-text 
+{
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.upload-icon 
+{
+    font-size: 48px;
+    color: #aaa;
+}
+.unread_ticket
+{
+    color: #ffa600;
+    font-weight: bold;
+}
+.read_ticket
+{
+    color: #059400;
+}
+.unansweard_ticket
+{
+    color: #747474;
+}
+.blocked_ticket
+{
+    color: #ff0000;
+    font-weight: bold;
+}
+.pay-card
+{
+    background-color: #ffffff;
+    color: #1f232c;
+    transition: all 0.3s ease-in-out;
+}
+.pay-card:hover
+{
+    transform: translateY(-5px);
+    background-color: #f5f8ff;
+}
+.btn-dark-sanabad , .active-money
+{
+    background-color: #1f232c;
+    color: white !important;
+    transition: all ease-in-out 0.3s;
+}
+.btn-dark-sanabad:hover
+{
+    background-color: #21b6f6;
+    color: white !important;
+}
+.btn-light-sanabad
+{
+    background-color: #21b6f6;
+    transition: all ease-in-out 0.3s;
+    color: white;
+}
+.btn-light-sanabad:hover
+{
+    background-color: #1f232c;
+    color: white;
+}
+.uploadremove 
+{
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    width: 34px;
+    height: 34px;
+    background-color:rgb(220, 53, 70);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 1;
+}
+.uploadremove:hover 
+{
+    background-color: rgba(167, 0, 17, 0.9); /* قرمز هنگام هاور */
+}
+.uploadremove i 
+{
+    font-size: 16px;
+    line-height: 1;
+}
+.animated-details {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.summary-btn {
+  width: 100%;
+  text-align: right;
+  background: #f8f9fa;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #212529;
+}
+
+.details-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 1rem;
+  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+}
+
+.details-content.open {
+  max-height: 300px; /* بسته به محتوای شما قابل تنظیمه */
+  opacity: 1;
+  padding: 1rem;
+}
+@media (max-width:450px)
+{
+    .div-undone-notif
+    {
+        height: 32vh;
+    }
+}
+@media (max-width:340px)
+{
+    .div-undone-notif
+    {
+        height: 37vh;
+    }
+}
+@media (max-width:430px)
+{
+    .avatar
+    {
+        top: -30px;
+    }
+}

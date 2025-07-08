@@ -1,0 +1,698 @@
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <title>داشبورد ادمین | درمانگاه سناباد</title>
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/style/admin-dashboard.css" rel="stylesheet">
+    
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <style>
+        a
+        {
+            text-decoration: none !important;
+        }
+        @media (max-width:400px)
+        {
+            .clear-mb
+            {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+        }
+    </style>
+    <!--librearies-->
+    <link rel="stylesheet" href="assets/vendor/css/taghvim/persian-datepicker.min.css">
+</head>
+<body>
+
+    <!--مودال خروج از حساب کاربری-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="logoutModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                خروج از حساب</h5>
+            </div>
+            <div class="modal-body text-center">
+              آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="index.html" class="btn btn-danger w-25">خروج</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--مودال ویرایش نوبت کاربر-->
+    <div class="modal fade" id="Edit_schegualModal" tabindex="-1" aria-labelledby="EditSchegualLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+            <h5 class="modal-title" id="EditSchegualLabel">ویرایش نوبت</h5>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn-close btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            </div>
+            <div class="modal-body">
+            <form id="editScheduleForm">
+                <input type="hidden" id="trackingCode" name="trackingCode">
+                
+                <div class="mb-3">
+                <label for="patientName" class="form-label">نام بیمار</label>
+                <input type="text" class="form-control border-info" id="patientName" name="patientName" readonly>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="appointmentDate" class="form-label">تاریخ نوبت</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control border-info" id="appointmentDate" name="appointmentDate" required>
+                      <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+                    </div>
+                </div>
+    
+                <div class="mb-3">
+                <label for="appointmentTime" class="form-label">ساعت نوبت</label>
+                <div class="input-group">
+                    <select id="appointmentTime_minutes" class="form-select w-auto mx-2 border-info" required>
+                        <option value="">دقیقه</option>
+                        <option value="00">00</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="32">32</option>
+                        <option value="33">33</option>
+                        <option value="34">34</option>
+                        <option value="35">35</option>
+                        <option value="36">36</option>
+                        <option value="37">37</option>
+                        <option value="38">38</option>
+                        <option value="39">39</option>
+                        <option value="40">40</option>
+                        <option value="41">41</option>
+                        <option value="42">42</option>
+                        <option value="43">43</option>
+                        <option value="44">44</option>
+                        <option value="45">45</option>
+                        <option value="46">46</option>
+                        <option value="47">47</option>
+                        <option value="48">48</option>
+                        <option value="49">49</option>
+                        <option value="50">50</option>
+                        <option value="51">51</option>
+                        <option value="52">52</option>
+                        <option value="53">53</option>
+                        <option value="54">54</option>
+                        <option value="55">55</option>
+                        <option value="56">56</option>
+                        <option value="57">57</option>
+                        <option value="58">58</option>
+                        <option value="59">59</option>
+                    </select>
+                    <span class="pt-2">:</span>
+                    <select id="appointmentTime_hour" class="form-select w-auto mx-2 border-info" required>
+                        <option value="">ساعت</option>
+                        <option value="00">00</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                    </select>
+                    
+                </div>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+            <button type="button" form="editScheduleForm" class="btn btn-success">ثبت تغییرات</button>
+            </div>
+        </div>
+        </div>
+    </div>    
+    <!-- سایدبار -->
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+        <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
+            <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
+            <strong class="brand-name">کلینیک سناباد طوس</strong>
+        </div>
+        <ul class="nav flex-column px-3 fs-5 h-75">
+            <li class="nav-item mt-3 mb-2">
+                <a href="admin-dashboard.html" class="nav-link active-link">
+                    <i class="bi bi-house ms-3"></i>داشبورد
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Nobat.html" class="nav-link ">
+                    <i class="bi bi-calendar-check ms-3"></i>لیست نوبت ها
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="admin-send-messege.html" class="nav-link ">
+                    <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="admin-tickets.html" class="nav-link ">
+                    <i class="bi bi-chat-dots ms-3"></i>تیکت و پشتیبانی 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="admin-factor.html" class="nav-link ">
+                    <i class="fas fa-history ms-3"></i>تاریخچه فاکتورها 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="admin-articles.html" class="nav-link ">
+                    <i class="bi bi-book ms-3"></i>مقالات 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="admin-note.html" class="nav-link ">
+                    <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
+                </a>
+            </li>
+        </ul>
+        <div class="px-3 mt-5">
+            <div class="d-flex align-items-center justify-content-between btm-bar">
+                    <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                        <i class="bi bi-gear-fill"></i>
+                    </a>
+                    <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                        <i class="bi bi-globe"></i>
+                    </a>
+                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                        <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                    </a>
+            </div>
+        </div>
+    </aside>
+    <!--پایان سایدبار-->
+    <!-- بک‌گراند تار در حالت موبایل -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- هدر بالا -->
+    <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2 text-white" aria-label="باز کردن منو">
+                <span class="bar top-bar"></span>
+                <span class="bar middle-bar"></span>
+                <span class="bar bottom-bar"></span>
+            </button>
+        </div>               
+        <!--اعلان های ادمین-->
+        <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
+            <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell fs-4 text-light"></i>
+            <span class="badge bg-danger rounded-pill notification-badge">3</span>
+            </button>
+        
+            <!-- لیست اعلان‌ها -->
+            <ul class="dropdown-menu for_notif_admin dropdown-menu-end shadow fade rounded-4" aria-labelledby="notifDropdown">
+            <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> اعلان های ادمین</li>
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof1.png" alt="user1">
+                <div class="content">
+                    <strong>علیرضا محمدی</strong><br>
+                    درخواست جابه جایی نوبت<br>
+                    <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>
+            
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof2.png" alt="user2">
+                <div class="content">
+                <strong>مینا رضایی</strong><br>
+                درخواست لغو نوبت<br>
+                <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>    
+            <li class="text-center py-2">
+                <a href="admin-tickets.html" class="text-decoration-none text-primary">مشاهده همه</a>
+            </li>
+            </ul> 
+        </div>
+        <!--پروفایل ادمین-->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-decoration-none" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="assets/Images/sample-profile/prof3.png" alt="admin_profile" width="40" height="40" class="rounded-circle shadow-sm">
+            </a>
+        
+            <!-- منوی کشویی -->
+            <ul class="dropdown-menu for_admin_prof bg-light dropdown-menu-end text-end p-3" aria-labelledby="profileDropdown" style="min-width: 250px;">
+            <!-- اطلاعات کاربر -->
+            <li class="d-flex align-items-center mb-3">
+                <img src="assets/Images/sample-profile/prof3.png" alt="admin profile" width="50" height="50" class="rounded-circle me-2">
+                <div class="me-2">
+                <h6 class="mb-1 fw-bold">فهیمه رشیدی</h6>
+                <small class="text-muted">Rashidi_fahime@gmail.com</small>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+        
+            <!-- لینک‌های تنظیمات -->
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="admin-profile.html">
+                <i class="bi bi-gear ms-2"></i> تنظیمات
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="index.html">
+                <i class="bi bi-globe ms-2"></i> صفحه اصلی
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center text-danger fw-bold" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="bi bi-box-arrow-right ms-2"></i> خروج
+                </a>
+            </li>
+            </ul>
+        </div>
+    
+        
+    </header>
+    <!--محتوای اصلی-->
+    <main class="main-content pt-5 px-3 bg-light" style="min-height: 100vh;">
+        <div class="container-fluid ps-5 pe-5 clear-mb">
+            <div style="height: 5vh;"></div>
+            <!-- کارت‌های آماری -->
+            <div class="container">
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(199, 255, 215);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter" data-target="15">0</span>
+                                </h5>
+                                <span class="amar">تعداد نوبت های رزرو شده امروز</span>
+                            </div>
+                            <div class="stat-icon rounded-circle p-3">
+                                <i class="bi bi-person-plus fs-4 text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(255, 213, 215);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter" data-target="5">0</span>
+                                </h5>
+                                <span class="amar">تعداد نوبت های لغو شده امروز</span>
+                            </div>
+                            <div class="stat-icon  rounded-circle p-3">
+                                <i class="bi bi-trash fs-4 text-danger"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(255, 251, 199);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter" data-target="25">0</span>
+                                </h5>
+                                <span class="amar">تعداد تیکت های امروز</span>
+                            </div>
+                            <div class="stat-icon  rounded-circle p-3">
+                                <i class="bi bi-envelope fs-4 text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(199, 205, 255);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter" data-target="5">0</span>
+                                </h5>
+                                <span class="amar">تعداد نوبت های خالی امروز</span>
+                            </div>
+                            <div class="stat-icon  rounded-circle p-3">
+                                <i class="bi bi-box fs-4 blue-light"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--جدول-->
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-12">
+                      <div class="card bg-light pt-3 d-flex justify-content-center align-items-center h-auto">
+                        <div class="d-flex justify-content-between align-items-center w-100 my-2 flex-wrap">
+                          <h5 class="fw-bold mb-2 mb-sm-0 pe-3">
+                            <i class="bi bi-clipboard-data ms-1"></i>
+                            خلاصه نوبت های امروز
+                          </h5>
+                          <h5><a href="Nobat.html" class="fw-bold text-decoration-none ps-3">مشاهده همه</a></h5>
+                        </div>
+                        <div class="table-wrapper-sanabad mt-3 rounded-3" style="overflow-x: auto; width: 100%;">
+                            <table class="table table-sanabad table-sanabad-inner table-bordered table-hover text-center align-middle m-0" style="min-width: 1000px;">
+                            <thead>
+                              <tr>
+                                <th>کد رهگیری</th>
+                                <th>نام بیمار</th>
+                                <th>کد ملی</th>
+                                <th>زمان نوبت</th>
+                                <th>نوع بیمه</th>
+                                <th>نوع پرداخت</th>
+                                <th>مبلغ پرداختی</th>
+                                <th>تلفن</th>
+                                <th>وضعیت</th>
+                                <th>عملیات</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>85627637</td>
+                                <td>زهرا مهویدی</td>
+                                <td>2592511083</td>
+                                <td>1404/02/12 - 10:30</td>
+                                <td>آزاد</td>
+                                <td>آزاد</td>
+                                <td>300,000</td>
+                                <td>09153024571</td>
+                                <td>در انتظار پرداخت</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش">
+                                      <i class="bi bi-pen" data-bs-toggle="modal" data-bs-target="#Edit_schegualModal"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو">
+                                      <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" title="بازگشت وجه">
+                                        <i class="fas fa-undo-alt text-white"></i>
+                                    </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>85627641</td>
+                                <td>سارا کریمی</td>
+                                <td>0051324579</td>
+                                <td>1404/02/12 - 08:45</td>
+                                <td>تأمین اجتماعی</td>
+                                <td>کسر بیمه</td>
+                                <td>240,000</td>
+                                <td>09121234567</td>
+                                <td>پرداخت شده</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش">
+                                        <i class="bi bi-pen" data-bs-toggle="modal" data-bs-target="#Edit_schegualModal"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو">
+                                      <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" title="بازگشت وجه">
+                                        <i class="fas fa-undo-alt text-white"></i>
+                                    </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>85627642</td>
+                                <td>رضا صفاری</td>
+                                <td>1180347891</td>
+                                <td>1404/02/12 - 11:15</td>
+                                <td>بانک ملی</td>
+                                <td>آزاد</td>
+                                <td>320,000</td>
+                                <td>09351238746</td>
+                                <td>در انتظار پرداخت</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش">
+                                        <i class="bi bi-pen" data-bs-toggle="modal" data-bs-target="#Edit_schegualModal"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو">
+                                      <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" title="بازگشت وجه">
+                                        <i class="fas fa-undo-alt text-white"></i>
+                                    </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>85627643</td>
+                                <td>الهام محمودی</td>
+                                <td>0910234562</td>
+                                <td>1404/02/12 - 14:00</td>
+                                <td>آزاد</td>
+                                <td>کارتخوان</td>
+                                <td>400,000</td>
+                                <td>09159874561</td>
+                                <td>پرداخت شده</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش">
+                                        <i class="bi bi-pen" data-bs-toggle="modal" data-bs-target="#Edit_schegualModal"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو">
+                                      <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" title="بازگشت وجه">
+                                        <i class="fas fa-undo-alt text-white"></i>
+                                    </a>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>85627644</td>
+                                <td>کامران عزیزی</td>
+                                <td>0023569741</td>
+                                <td>1404/02/12 - 19:45</td>
+                                <td>نیروهای مسلح</td>
+                                <td>کسر بیمه</td>
+                                <td>180,000</td>
+                                <td>09215673842</td>
+                                <td>لغو شده</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش">
+                                        <i class="bi bi-pen" data-bs-toggle="modal" data-bs-target="#Edit_schegualModal"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو">
+                                      <i class="bi bi-trash"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-sm btn-info" title="بازگشت وجه">
+                                        <i class="fas fa-undo-alt text-white"></i>
+                                    </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <!--خلاصه تیکت ها و امار ترافیک سایت-->
+            <div class="container">
+                <div class="row mb-4 g-4">
+                    <!--خلاصه تیکت ها-->
+                    <div class="col-lg-6">
+                        <div class="card bg-light p-3 d-flex flex-column justify-content-center align-content-center h-100">
+                            <div class="d-flex justify-content-between align-items-center w-100 my-4 flex-wrap">
+                                <h5 class="fw-bold">
+                                    <i class="bi bi-chat-left-text ms-1"></i>
+                                    برخی از تیکت های امروز</h5>
+                                <h5><a href="admin-tickets.html" class="fw-bold">مشاهده همه</a></h5>
+                            </div>
+                            <a href="#" class="text-dark">
+                                <div class="ticket-card py-3 bg-light px-2 d-flex align-items-center border-secondary border-bottom"  style="border-top-left-radius: 20px;border-top-right-radius: 20px;">
+                                    <img src="assets/Images/sample-profile/prof3.png" alt="user prof" width="60" height="60" class="rounded-circle shadow-sm">
+                                    <div class="d-flex flex-column justify-content-center align-content-center me-3">
+                                        <strong class="fs-5">آیدا رئیسی</strong>
+                                        <p class="mb-0 lh-lg">درخواست جابه جایی نوبت</p>
+                                        <small>22 دقیقه پیش</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-dark">
+                                <div class="ticket-card py-3 bg-light px-2 d-flex align-items-center border-secondary border-bottom">
+                                    <img src="assets/Images/sample-profile/prof1.png" alt="user prof" width="60" height="60" class="rounded-circle shadow-sm">
+                                    <div class="d-flex flex-column justify-content-center align-content-center me-3">
+                                        <strong class="fs-5">علیرضا محمدی</strong>
+                                        <p class="mb-0 lh-lg">درخواست جابه جایی نوبت</p>
+                                        <small>45 دقیقه پیش</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-dark">
+                                <div class="ticket-card py-3 bg-light px-2 d-flex align-items-center border-secondary border-bottom">
+                                    <img src="assets/Images/sample-profile/prof1.png" alt="user prof" width="60" height="60" class="rounded-circle shadow-sm">
+                                    <div class="d-flex flex-column justify-content-center align-content-center me-3">
+                                        <strong class="fs-5">جواد عزتی</strong>
+                                        <p class="mb-0 lh-lg">پیشنهاد و انتقاد</p>
+                                        <small>50 دقیقه پیش</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-dark">
+                                <div class="ticket-card py-3 bg-light px-2 d-flex align-items-center border-secondary border-bottom">
+                                    <img src="assets/Images/sample-profile/prof2.png" alt="user prof" width="60" height="60" class="rounded-circle shadow-sm">
+                                    <div class="d-flex flex-column justify-content-center align-content-center me-3">
+                                        <strong class="fs-5">ناتانائیل</strong>
+                                        <p class="mb-0 lh-lg">پیشنهاد و انتقاد</p>
+                                        <small>3 ساعت پیش</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-dark">
+                                <div class="ticket-card py-3 bg-light px-2 d-flex align-items-center border-secondary border-bottom">
+                                    <img src="assets/Images/sample-profile/prof1.png" alt="user prof" width="60" height="60" class="rounded-circle shadow-sm">
+                                    <div class="d-flex flex-column justify-content-center align-content-center me-3">
+                                        <strong class="fs-5">فرید توکلی</strong>
+                                        <p class="mb-0 lh-lg">درخواست جابه جایی نوبت</p>
+                                        <small>8 ساعت پیش</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-dark">
+                                <div class="ticket-card py-3 bg-light px-2 d-flex align-items-center" style="border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+                                    <img src="assets/Images/sample-profile/prof3.png" alt="user prof" width="60" height="60" class="rounded-circle shadow-sm">
+                                    <div class="d-flex flex-column justify-content-center align-content-center me-3">
+                                        <strong class="fs-5">مینا رضایی</strong>
+                                        <p class="mb-0 lh-lg">درخواست لغو نوبت</p>
+                                        <small>1 روز پیش</small>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--آمار ترافیک سایت-->
+                    <div class="col-lg-6">
+                        <div class="card bg-light p-3 h-100">
+                            <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+                                <h5 class="fw-bold">
+                                    <i class="bi bi-graph-up ms-1"></i>
+                                    آمار ترافیک سایت
+                                </h5>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-center bg-light p-2" style="border-radius: 20px;">
+                                <canvas id="ChartTrafficViews" style="max-width:400px;"></canvas>
+                                <ul class="list-unstyled mb-3 text-end" style="align-self: flex-start;">
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-primary"></i>صفحه اصلی</li>
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-success"></i>صفحه دریافت نوبت</li>
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-warning"></i>صفحه دکتر مجد محسنی بیرجندی</li>
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-danger"></i>وبلاگ سایت</li>
+                                </ul>  
+                            </div>
+                        </div>               
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--پایان محتوای اصلی-->
+    <!--bootstrap javascript cdn-->
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/scripts/admin-dashboard.js"></script>
+    <script src="assets/vendor/js/moment.min.js"></script>
+    <script src="assets/vendor/js/moment-jalaali.js"></script>
+    <script src="assets/vendor/js/taghvim/persian-date.min.js"></script>
+    <script src="assets/vendor/js/taghvim/persian-datepicker.min.js"></script>
+    <!--chart js-->
+    <script src="assets/vendor/js/chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#appointmentDate').persianDatepicker({
+              format: 'YYYY/MM/DD',
+              initialValue: true,
+              autoClose: true
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+              new bootstrap.Tooltip(tooltipTriggerEl, {
+                container: tooltipTriggerEl.closest('.table') || '.btm-bar'
+              });
+            });
+          });
+          let selectedRow = null;
+        // ذخیره کردن ردیف فعلی هنگام کلیک روی آیکون ویرایش
+        document.querySelectorAll('[data-bs-target="#Edit_schegualModal"]').forEach(btn => {
+            btn.addEventListener('click', function () {
+            selectedRow = this.closest('tr'); // ذخیره ردیف انتخاب‌شده
+
+            const trackingCode = selectedRow.children[0].textContent.trim();
+            const patientName = selectedRow.children[1].textContent.trim();
+            const dateTime = selectedRow.children[3].textContent.trim().split(' - ');
+
+            document.getElementById('trackingCode').value = trackingCode;
+            document.getElementById('patientName').value = patientName;
+            });
+        });
+
+        // وقتی روی "ثبت تغییرات" کلیک می‌کنیم
+        document.querySelector('.modal-footer .btn-success').addEventListener('click', function () {
+            if (!selectedRow) return;
+
+            const newDate = document.getElementById('appointmentDate').value;
+            const newTime_h = document.getElementById('appointmentTime_hour').value;
+            const newTime_m = document.getElementById('appointmentTime_minutes').value;
+
+            // آپدیت ستون "زمان نوبت"
+            selectedRow.children[3].textContent = `${newDate} - ${newTime_h+':'+newTime_m}`;
+
+            // بستن مودال
+            const modal = bootstrap.Modal.getInstance(document.getElementById('Edit_schegualModal'));
+            modal.hide();
+        });
+
+        function convertPersianToGregorian(shamsiDate) {
+            const formatted = shamsiDate.replaceAll('/', '-');
+            return moment.from(formatted, 'fa', 'jYYYY-jMM-jDD').format('YYYY-MM-DD');
+        }         
+    </script>
+</body>
+</html>

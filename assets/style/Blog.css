@@ -1,0 +1,435 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+html , select
+{
+    scroll-behavior: smooth;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+html::-webkit-scrollbar , select::-webkit-scrollbar
+{
+    height: 8px;
+}
+select::-webkit-scrollbar
+{
+    width: 5px;
+}
+html::-webkit-scrollbar-thumb , select::-webkit-scrollbar-thumb
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-track , select::-webkit-scrollbar-track
+{
+    background-color: #1f232c;
+}
+body
+{
+    font-family: 'IranSansX', IRANSansX  !important;
+    margin: 0;
+}
+/*دکمه انحصاری کلینیک سناباد*/
+.btn-sanabad
+{
+    font-family:IRANSansX !important;
+    background: #28B6F6 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    padding-top: 12px !important;
+}
+.btn-sanabad:hover
+{
+    color: white;
+}
+.btn-sanabad::after
+{
+    content: "";
+    background:#1F232C;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/* استایل btn-outline-primary برای سناباد*/
+.btn-outline-white
+{
+    border-color: #ffffff !important;
+    transition: 0.3s ease-in all;
+    font-weight: bold !important;
+    color: #ffffff !important;
+}
+.btn-outline-white:hover
+{
+    border-color: #28B6F6 !important;
+    background-color: #1f232c !important;
+    color: white !important;
+}
+
+/*شروع استایل دهی به صفحه بلاگ*/
+.side-category ul li
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.side-category ul li a
+{
+    color: #1F232C;
+    font-weight: bold;
+    transition: 0.3s all ease;
+}
+.side-category ul li a:hover
+{
+    color: #28B6F6;
+}
+.arrow-cat
+{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.arrow-cat:hover
+{
+    background-color: #28B6F6;
+    transition: 0.4s;
+}
+.overlyblog
+{
+    transition: all 0.3s ease;
+}
+.overlyblog:hover {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+.bg-title-sidebar
+{
+    background-color: #28B6F6;
+    border-radius: 20px;
+}
+.thumb-post img {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    box-shadow: 0 0 10px -3px rgba(0, 0, 0, .1);
+    padding: 2px;
+}
+/* صفحه‌بندی */
+.custom-pagination {
+    gap: 0.5rem;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+.custom-pagination .page-item {
+    margin: 0 6px;
+}
+.custom-pagination .page-link {
+    border: 1px solid #28b6f6;
+    color: #1f232c;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+.custom-pagination .page-link:hover {
+    background-color: #28b6f6;
+    color: white;
+    text-decoration: none;
+}
+.custom-pagination .page-item.active .page-link {
+    background-color: #28b6f6;
+    color: white;
+    border-color: #28b6f6;
+    font-weight: bold;
+}
+.custom-pagination .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #d6d6d6;
+    color: #6c757d;
+    border-color: #dee2e6;
+}
+/*استایل کارت های مقالات علمی*/
+.carding-blog
+{
+    border-radius: 20px !important;
+    border: none !important;
+}
+.carding-blog img{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.carding-blog h4{
+    margin-top: 2.7rem !important;
+}
+.carding-blog a:hover{
+    color: #26282b;
+}
+a.card-pro:hover{
+    color: #26272b;
+}
+.carding-blog p{
+    font-size: 14px;
+}
+.cateblog{
+    position: absolute;
+    bottom: -17px; /* فاصله از پایین */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:#fff;
+    border-radius: 10px;
+    padding: 5px 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+.show-more
+{
+    color: #1F232C;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.show-more:hover
+{
+    color: #28B6F6 !important;
+}
+/*Blog details style */
+.op {
+  height: 450px;
+  color: #fff;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.op-description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 2rem;
+  padding-top: 6rem;
+  background: linear-gradient(181.24deg, rgba(0, 0, 0, 0) 12.38%, rgba(0, 0, 0, 0.712) 65.55%, rgba(0, 0, 0, 0.75) 111.94%);
+  box-sizing: border-box;
+}
+/*نظرات کاربران*/
+.comment-section 
+{
+    font-family: 'Vazirmatn', sans-serif;
+    background: #eef9fd;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px #1f232c54;
+    direction: rtl;
+}
+.comment-section h5 
+{
+    color: #28B6F6;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #d6edf7;
+    padding-bottom: 10px;
+}
+.comment-box 
+{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+.comment-box img 
+{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-left: 15px;
+    object-fit: cover;
+    box-shadow: 0 0 0 3px #d6edf7;
+}
+.comment-content 
+{
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: 0 4px 10px #1f232c38;
+    position: relative;
+}
+.comment-content h6 
+{
+    font-weight: bold;
+    color: #28B6F6;
+    margin-bottom: 5px;
+}
+.comment-content small 
+{
+    color: #28B6F6;
+}
+.comment-content p 
+{
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+.reply-box 
+{
+    background: #eef9fd;
+    border-right: 4px solid #1c6adf;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 10px;
+}
+.reply-box h6 
+{
+    color: #1c6adf;
+    font-weight: 600;
+}
+.reply-box p 
+{
+    margin: 0;
+    color: #555;
+}
+.comment-reply 
+{
+    margin-right: 50px;
+    margin-top: 20px;
+}
+.reply-btn 
+{
+    margin-top: 10px;
+    color: #1c6adf;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+.reply-btn:hover 
+{
+    color: #28B6F6;
+    text-decoration: underline;
+}
+.reply-form textarea,
+  .reply-form input 
+{
+    border-radius: 8px;
+}
+.reply-form button 
+{
+    background-color: #28B6F6;
+    color: white;
+    font-size: 14px;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: none;
+    transition: 0.3s ease;
+}
+.reply-form button:hover 
+{
+    background-color: #28b5f660;
+}
+.stars i.filled 
+{
+    color: #28B6F6; /* رنگ ستاره پر */
+}
+.custom-file-upload {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #28b6f6;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: #007bff;
+}
+
+.upload-label i {
+    margin-right: 8px;
+}
+
+.form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+@media (max-width:992px)
+{
+    .op-description , .author
+    {
+        flex-direction: column-reverse;
+        gap: 5px;
+    }
+}
+@media (max-width: 576px) 
+{
+    .comment-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .comment-box img {
+      margin-right: 5px;
+      margin-bottom: 10px;
+    }
+    .comment-reply {
+      margin-right: 20px;
+    }
+}
+@media (max-width: 768px) {
+  .op {
+    height: auto;
+    aspect-ratio: 1 / 1; /* یا مقدار تقریبی مثل 4/3 */
+  }
+
+  .op img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .op-description {
+    padding: 1rem;
+    padding-top: 5rem;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 10%, rgb(0, 0, 0) 90%);
+    bottom: 0;
+  }
+
+  .op-description h3 {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .op-description p {
+    font-size: 0.85rem;
+  }
+}

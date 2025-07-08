@@ -1,0 +1,457 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+.code-input 
+{
+    width: 52px;
+    height: 56px;
+    border: 2px solid #dee2e6;
+    transition: border-color 0.2s ease;
+}
+.code-input:focus 
+{
+    border-color: #28B6F6 !important;
+    outline: none;
+}
+
+.active-link-sanabad
+{
+    color: #28B6F6 !important;
+}
+.blue-light
+{
+    color: #28b6f6;
+}
+.blue-dark
+{
+    color: #1f232c;
+}
+.bg-header 
+{
+    background-image: url(../Images/home/header.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    direction: rtl;
+    position: relative;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2), 0 0 20px 0 rgba(0, 0, 0, 0.29);
+}
+.header-logo
+{
+    max-height: 75px;
+}
+.header-logo-mb
+{
+    width: 220px;
+}
+.top-bar
+{
+    background-color: #1f232c;
+}
+/*social media icon*/
+.social-icons
+{
+    background-image: url(../Images/home/back-social-header.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.social-icon 
+{
+    background-color: #fff;
+    color: #28b6f6;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding-top: 4px;
+    font-size: 18px;
+    text-decoration: none;
+}
+.social-icon:hover 
+{
+    background-color: #1f232c;
+    color: #fff;
+}
+/* search bar css codes*/
+.search-box 
+{
+    max-width: 200px;
+}
+.custom-search 
+{
+    border-radius: 2rem !important;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19) !important;
+    padding: 6px 12px !important;
+    padding-left: 2.5rem !important;
+    transition: all 0.3s ease;
+    outline: none !important;
+}
+.custom-search:focus 
+{
+    border: none;
+    border-bottom: 2px solid #1f232c !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.3s ease;
+    box-shadow: none !important;
+}
+.search-icon 
+{
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #1f232c;
+    pointer-events: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+.custom-search:focus + .search-icon,
+.custom-search:focus ~ .search-icon 
+{
+    animation: pulse-icon 0.6s ease forwards;
+    color: #1f232c;
+}
+/* افکت پالس برای آیکون */
+@keyframes pulse-icon 
+{
+    0% {
+      transform: translateY(-50%) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(-50%) scale(1.2) rotate(-10deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50%) scale(1);
+      opacity: 0.9;
+    }
+}
+/*منوی اصلی*/
+.dropdown-toggle::after 
+{
+    display: none !important;
+}
+.link-header
+{
+    color: #1f232c;
+}
+.link-header:hover
+{
+    color: #28b6f6;
+}
+/* استایل منو کشویی */
+.dropdown-menu {
+    border-radius: 10px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden;
+}
+/* استایل آیتم‌های منو */
+.dropdown-item {
+    padding: 10px 10px !important;
+    color: rgb(71, 71, 71) !important;
+    transition: background-color 0.3s ease !important;
+}
+.dropdown-item:hover {
+    background-color: #1f232c !important;
+    color: white !important;
+}
+/*استایل همبرگر*/
+.hamburger-btn 
+{
+    background-color: #1f232c !important;
+    border-radius: 50% !important;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    padding-top: 10px !important;
+}
+/* Sidebar Style */
+.accordion-button::after 
+{
+    display: none;
+}
+.accordion-button:focus
+{
+    border: none !important;
+    box-shadow: none !important;
+}
+.mobile-sidebar 
+{
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-image: url(../Images/home/side-bar-back.png);
+    z-index: 1050;
+    transition: right 0.3s ease-in-out;
+    overflow-y: auto;
+}
+.mobile-sidebar.active 
+{
+    right: 0;
+}
+.sidebar-backdrop 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+    display: none;
+}
+.sidebar-backdrop.active 
+{
+    display: block;
+}
+/* for preloader */
+#preloader 
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: all 0.5s ease;
+}
+.logo-container 
+{
+    margin-bottom: 20px;
+} 
+.logo_preloader 
+{
+    width: 120px;
+    height: auto;
+}
+/*لوگوی پالس دار برای منوی موبایل*/
+@keyframes pulse 
+{
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.07);
+      opacity: 0.85;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+}
+.pulse-logo 
+{
+    animation: pulse 2s ease-in-out infinite;
+    transition: transform 0.3s ease;
+}
+/* آغاز استایل دهی فوتر*/
+footer 
+{
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+}
+#particles-js 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.footer-logo
+{
+    width: 100px;
+    height: 50px;
+}
+/*log in sighn up buttton*/
+.login_Sighnup_btn
+{
+    right: 10px;
+    bottom: 10px;
+    position: fixed;
+    z-index: 20;
+}
+.login-button 
+{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background-color: #28B6F6;
+    background-image: linear-gradient(185deg, #28B6F6 0%, #1f232c 84%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.151);
+    position: relative;
+}
+.login-button svg 
+{
+    height: 1.5em;
+    fill: white;
+}
+.login-button:hover svg 
+{
+    animation: jello-vertical 0.7s both;
+}
+@keyframes jello-vertical 
+{
+    0% 
+    {
+      transform: scale3d(1, 1, 1);
+    }
+    30% 
+    {
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    40% 
+    {
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    50% 
+    {
+      transform: scale3d(0.85, 1.15, 1);
+    }
+    65% 
+    {
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    75% 
+    {
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    100% 
+    {
+      transform: scale3d(1, 1, 1);
+    }
+}
+.tippy-box[data-theme~='sanabad-login-theme']
+{
+    background-color: #1f232c;   /* صورتی-هلویی مهربانو */
+    color: #28B6F6;              /* رنگ متن */
+    border: 2px solid #28B6F6;
+    border-radius: 12px;
+    font-family:IRANSansX !important;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 6px 10px;
+}
+/* فلش تول‌تیپ */
+.tippy-box[data-theme~='sanabad-login-theme'][data-placement^='left'] > .tippy-arrow::before 
+{
+    border-left-color: #1f232c;
+}
+.col-signup-back
+{
+    background-image: url(../Images/home/sign-up-img.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/* برای راست‌چینی اولیه */
+.form-floating > label 
+{
+    right: 0.75rem !important;
+    left: auto !important;
+    text-align: right;
+    width: 100%;
+}
+/* برای متن داخل input */
+.form-floating > .form-control 
+{
+    direction: rtl;
+    text-align: right;
+}
+/* رفع باگ فاصله لیبل در حالت فوکوس یا پرشدن input */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > textarea:focus ~ label,
+.form-floating > textarea:not(:placeholder-shown) ~ label 
+{
+    right: 0.75rem !important;
+    left: auto !important;
+    transform-origin: right;
+    text-align: right;
+}
+/* media queries */
+@media only screen and (max-width: 1335px)
+{
+    .bg-header 
+    {
+        background-image: url(../Images/home/header\ for\ mobile\ and\ tablet.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+@media (max-width: 1225px)
+{
+    .search-box 
+    {
+        max-width: 500px;
+    }
+}
+@media only screen and (max-width: 1024px)
+{
+    .bg-header 
+    {
+        background-color: #28b6f6;
+    }
+}
+@media (max-width: 1100px) 
+{
+    .top-bar 
+    {
+      display: none !important;
+    }
+}
+@media (max-width:600px) 
+{
+    .search-box
+    {
+        display: none !important;
+    }
+}
+@media (max-width: 576px) 
+{
+    .code-input 
+    {
+      width: 44px;
+      height: 48px;
+    }
+}
+@media (max-width:450px)
+{
+    .header-logo
+    {
+        max-height: 45px !important;
+    }
+    #submit-contact-us , #reset-contact-us
+    {
+        border-radius: 10px !important;
+    }
+    #submit-contact-us i , #reset-contact-us i
+    {
+        display: none !important;
+    }
+}
+
+  

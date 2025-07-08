@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <title>داشبورد ادمین | درمانگاه سناباد</title>
+    <!--bootstrap css cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/style/admin-dashboard.css" rel="stylesheet">
+    <!--librearies-->
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- سایدبار -->
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+        <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
+            <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
+            <strong class="brand-name">کلینیک سناباد طوس</strong>
+        </div>
+        <ul class="nav flex-column px-3 fs-5">
+            <li class="nav-item mt-3 mb-2">
+                <a href="#" class="nav-link active-link">
+                    <i class="bi bi-house ms-3"></i>داشبورد
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi bi-calendar-check ms-3"></i>لیست نوبت ها
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi bi-chat-dots ms-3"></i>تیکت و پشتیبانی 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi-people ms-3"></i>مدیریت کاربران 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi-folder-symlink ms-3"></i>آرشیو مدارک 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi bi-bar-chart ms-3"></i>درآمد 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
+                </a>
+            </li>
+        </ul>
+        <div class="px-3 mt-5 pt-3">
+            <div class="d-flex align-items-center justify-content-between">
+                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                        <i class="bi bi-gear-fill"></i>
+                    </a>
+                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                        <i class="bi bi-globe"></i>
+                    </a>
+                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                        <i class="bi bi-power"></i>
+                    </a>
+            </div>
+        </div>
+    </aside>
+    <!--پایان سایدبار-->
+    <!-- بک‌گراند تار در حالت موبایل -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- هدر بالا -->
+    <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+                <span class="bar top-bar"></span>
+                <span class="bar middle-bar"></span>
+                <span class="bar bottom-bar"></span>
+            </button>
+        </div>               
+        <!--اعلان های ادمین-->
+        <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
+            <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell fs-4"></i>
+            <span class="badge bg-danger rounded-pill notification-badge">3</span>
+            </button>
+        
+            <!-- لیست اعلان‌ها -->
+            <ul class="dropdown-menu for_notif_admin dropdown-menu-end shadow fade rounded-4" aria-labelledby="notifDropdown">
+            <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> اعلان های ادمین</li>
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof1.png" alt="user1">
+                <div class="content">
+                    <strong>علیرضا محمدی</strong><br>
+                    درخواست جابه جایی نوبت<br>
+                    <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>
+            
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof2.png" alt="user2">
+                <div class="content">
+                <strong>مینا رضایی</strong><br>
+                درخواست لغو نوبت<br>
+                <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>    
+            <li class="text-center py-2">
+                <a href="users.html" class="text-decoration-none text-primary">مشاهده همه</a>
+            </li>
+            </ul> 
+        </div>
+        <!--پروفایل ادمین-->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-decoration-none" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="assets/Images/sample-profile/prof3.png" alt="admin_profile" width="40" height="40" class="rounded-circle shadow-sm">
+            </a>
+        
+            <!-- منوی کشویی -->
+            <ul class="dropdown-menu for_admin_prof dropdown-menu-end text-end p-3" aria-labelledby="profileDropdown" style="min-width: 250px;">
+            <!-- اطلاعات کاربر -->
+            <li class="d-flex align-items-center mb-3">
+                <img src="assets/Images/sample-profile/prof3.png" alt="admin profile" width="50" height="50" class="rounded-circle me-2">
+                <div class="me-2">
+                <h6 class="mb-1 fw-bold">فهیمه رشیدی</h6>
+                <small class="text-muted">Rashidi_fahime@gmail.com</small>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+        
+            <!-- لینک‌های تنظیمات -->
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="#">
+                <i class="bi bi-gear ms-2"></i> تنظیمات
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="#">
+                <i class="bi bi-globe ms-2"></i> صفحه اصلی
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center text-danger fw-bold" href="#">
+                <i class="bi bi-box-arrow-right ms-2"></i> خروج
+                </a>
+            </li>
+            </ul>
+        </div>
+    
+        
+    </header>
+    <!--محتوای اصلی-->
+    <main class="main-content pt-5 px-3" style="min-height: 100vh;">
+        <div class="container-fluid ps-5 pe-5">
+            <div class="pt-5 mt-5">
+                محتوای اصلی در اینجا قرار می گیرد
+            </div>
+        </div>
+    </main>
+    <!--پایان محتوای اصلی-->
+    <!--bootstrap javascript cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="assets/scripts/admin-dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+              new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+          });
+    </script>
+</body>
+</html>

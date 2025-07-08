@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <title>کلینیک سناباد طوس</title>
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta name="description" content="برای دریافت نوبت از پزشکان مجموعه و اطلاع درباره ی کلینیک کلیک کنید" /><!--description for home page to increase seo-->
+    <meta http-equiv="content-language" content="fa" />
+    <meta name="keywords" content="جراح مغز و اعصاب,روانکاوی,روانشناسی,کلینیک سناباد,پزشکی,سلامت,رزرو نوبت" /><!--key words for increasing seo-->
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+	  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--styles-->
+    <link rel="stylesheet" type="text/css" href="assets/style/header_footer.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/style/home-page.css"/>
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!--librearies-->
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <!--Swiper-->
+    <link rel="stylesheet" href="assets/vendor/css/swiper-bundle.min.css" />
+    <script src="assets/vendor/js/swiper-bundle.min.js"></script>
+    <!-- Tippy.js -->
+    <link rel="stylesheet" href="assets/vendor/css/light-border.css" />
+    <script src="assets/vendor/js/popper.min.js"></script>
+    <script src="assets/vendor/js/tippy-bundle.umd.min.js"></script>
+    <style>
+        a
+        {
+          text-decoration: none !important;
+        }
+        @media (max-width:1357px) and (min-width:992px)
+        {
+          .dr-profile
+          {
+            display: none !important;
+          }
+        }
+        @media (max-width:400px)
+        {
+            .section-zoom-bg .content-pc
+            {
+                width: 80% !important;
+                left: 30% !important;
+            }
+            .contact-card
+            {
+                padding: 0px !important;
+            }
+            .contact-card-info ul
+            {
+              padding-right: 0px !important;
+            }
+        }
+        @media (max-width:991px)
+        {
+            .card-best-dr-info
+            {
+              right: 0px !important;
+            }
+            .contact-card-info
+            {
+              width: 100% !important;
+            }
+            .dr-profile
+            {
+              display: block !important;
+            }
+            #majd_picture
+            {
+              justify-content: center !important;
+              margin-top: 0px !important;
+            }
+            .zoom-container 
+            {
+                width: 579px;
+                height: 403px;
+                right: -20px;
+            }
+            .work-history-box , .small-zoom-container
+            {
+                display: none !important;
+            }
+            .summary
+            {
+                text-align: center !important;
+                line-height: 2;
+            }
+        }
+        @media (max-width:545px)
+        {
+            #profile-majd,#reza-list , #Majd-list
+            {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+        }
+        /* نمایش همبرگر فقط زیر 1250px */
+        @media (max-width: 1225px) 
+        {
+            .login_Sighnup_btn,
+            .nav-full,
+            .nav-partial {
+            display: none !important;
+            }
+            #hamburgerBtn {
+            display: block !important;
+            }
+        }
+        /* نمایش partial بین 1250 تا 1399px */
+        @media (min-width: 1226px) and (max-width: 1399px) 
+        {
+            .nav-full {
+            display: none !important;
+            }
+            .nav-partial {
+            display: flex !important;
+            }
+        }
+        /* نمایش full navbar از 1400px به بالا */
+        @media (min-width: 1400px)
+        {
+            .nav-full {
+            display: flex !important;
+            }
+            .nav-partial,
+            #hamburgerBtn,
+            #mobileSidebar,
+            #sidebarBackdrop {
+            display: none !important;
+            }
+        }    
+    </style>
+</head>
+<body>
+    
+    <!--پاپ اپ ایجاد حساب کاربری-->
+    <div class="modal fade" id="Loginsignup_popup" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- بزرگ‌تر برای دو ستون -->
+        <div class="modal-content rounded-4 border-0">
+          
+          <div class="modal-body p-0">
+            <div class="row g-0"> 
+              <!-- ستون فرم/متن -->
+              <div class="col-lg-7 p-4 d-flex flex-column justify-content-center">
+                <div class="d-flex justify-content-start align-items-center gap-3 mb-4">
+                  <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h5 class="fw-bold text-info m-0">ورود یا ایجاد حساب</h5>
+                </div>
+                <p class="text-muted mb-4 pe-3">برای رزرو نوبت پزشک ابتدا شماره تلفن خود را وارد نمایید.</p>
+                <div class="form-floating mb-4" style="width: 98%;">
+                  <input type="tel" class="form-control  rounded-pill border border-1 bg-light" id="phone-contactUs" style="border-color: #b9e9ff !important;" placeholder="مثال: 09** *** ** **" required>
+                  <label for="phone">شماره تماس <span class="blue-light">(اجباری)</span></label>
+                </div>
+                <small class="text-muted mb-4 pe-3">استفاده از خدمات سایت سناباد به معنی پذیرش <a href="#" class="blue-light"> قوانین و مقررات </a>این سایت است. </small>
+                <button class="btn btn-sanabad fw-bold  rounded-pill" style="width: 98%;" data-bs-toggle="modal" data-bs-target="#verifyCodeModal" data-bs-dismiss="modal">ارسال کد تایید</button>
+              </div>
+              <!-- ستون عکس -->
+              <div class="col-lg-5 d-none d-lg-block m-0 p-0">
+                <div id="lottie-bg" class="position-relative top-0 start-0 h-100 z-n1"></div>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    <!--پاپ اپ ورود کد تایید-->
+    <div class="modal fade" id="verifyCodeModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-4 shadow border-0">
+          <div class="modal-body p-4">
+            <div class="row g-0"> 
+              <!-- ستون فرم/متن -->
+              <div class="col-lg-7 d-flex flex-column justify-content-center">
+                      <!-- Header -->
+                      <div class="text-right mb-4">
+                        <div class="d-flex justify-content-start align-items-center gap-3 mb-4">
+                          <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                          <h5 class="fw-bold text-info m-0">تایید شماره موبایل</h5>
+                        </div>
+                        <p class="text-muted mb-1">
+                          کد تأیید به شماره <span class="fw-bold text-info" id="user-phone-login">09123456789</span> ارسال شد.
+                        </p>
+                        <a href="#" class="small blue-light">
+                          <i class="fas fa-edit ps-2"></i>
+                          ویرایش شماره</a>
+                      </div>
+              
+                      <!-- Code Inputs -->
+                      <div class="d-flex justify-content-center gap-2 mb-4">
+                        <input type="text" maxlength="1" class="form-control text-center fw-bold fs-4 code-input" style="border-radius: 20px !important;"/>
+                        <input type="text" maxlength="1" class="form-control text-center fw-bold fs-4 code-input" style="border-radius: 20px !important;"/>
+                        <input type="text" maxlength="1" class="form-control text-center fw-bold fs-4 code-input" style="border-radius: 20px !important;"/>
+                        <input type="text" maxlength="1" class="form-control text-center fw-bold fs-4 code-input" style="border-radius: 20px !important;"/>
+                        <input type="text" maxlength="1" class="form-control text-center fw-bold fs-4 code-input" style="border-radius: 20px !important;"/>
+                      </div>
+              
+                      <!-- Timer -->
+                      <div class="text-center text-muted mb-3">
+                        <small>زمان باقی‌مانده: <span id="countdown">02:00</span></small>
+                      </div>
+              
+                      <!-- Continue Button -->
+                      <div class="d-grid">
+                        <button class="btn btn-sanabad fw-bold rounded-pill" data-bs-toggle="modal" data-bs-target="#userinformationForm_popup" data-bs-dismiss="modal">ادامه</button>
+                      </div>
+              </div>
+              <!-- ستون عکس -->
+              <div class="col-lg-5 d-none d-lg-block m-0 p-0">
+                <div id="lottie-bg2" class="position-relative top-0 start-0 h-100 z-n1"></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--پاپ اپ اطلاعات حساب کاربری-->
+    <div class="modal fade" id="userinformationForm_popup" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- بزرگ‌تر برای دو ستون -->
+        <div class="modal-content rounded-4 border-0">
+          <div class="modal-body p-0">
+            <div class="row g-0"> 
+                <!-- ستون فرم/متن -->
+                <div class="col-lg-10 p-4 d-flex flex-column justify-content-center">
+                  <div class="d-flex justify-content-start align-items-center gap-3 mb-4">
+                    <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="fw-bold text-info m-0">تکمیل اطلاعات حساب</h5>
+                  </div>
+                  <p class="text-muted mb-4 pe-3">لطفا اطلاعات خود را تکمیل نمایید</p>
+                  <div class="row g-3">
+                    <!-- نام -->
+                    <div class="col-md-6 form-floating">
+                      <input type="text" class="form-control rounded-pill border border-1 bg-light" id="firstName" placeholder="نام" required style="border-color: #b9e9ff !important;">
+                      <label for="firstName" style="font-size: 13px !important;">نام <span class="blue-light">(اجباری)</span></label>
+                    </div>
+                
+                    <!-- نام خانوادگی -->
+                    <div class="col-md-6 form-floating">
+                      <input type="text" class="form-control rounded-pill border border-1" id="lastName" placeholder="نام خانوادگی" required style="border-color: #b9e9ff !important;">
+                      <label for="lastName" style="font-size: 13px !important;">نام خانوادگی <span class="blue-light">(اجباری)</span></label>
+                    </div>
+                
+                    <!-- کد ملی -->
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control rounded-pill border border-1" id="nationalCode" placeholder="کد ملی" required style="border-color: #b9e9ff !important;">
+                        <label for="nationalCode" style="font-size: 13px !important;" class="nationalCode_lbl">کد ملی <span class="blue-light nationalCode_lbl">(اجباری)</span></label>
+                      </div>
+                      <div class="mt-3 me-2">
+                        <input class="form-check-input" type="checkbox" value="" id="noIDnumberCheck" onchange=" toggleIDNumberField(this)">
+                        <label for="noIDnumberCheck"  style="font-size: 13px !important;">
+                              اتباع خارجی
+                        </label>
+                      </div>
+                    </div>
+                
+                    <!-- سال تولد -->
+                    <div class="col-md-6 form-floating">
+                      <input type="text" class="form-control rounded-pill border border-1" id="birthYear" placeholder="سال تولد" required style="border-color: #b9e9ff !important;">
+                      <label for="birthYear" style="font-size: 13px !important;">سال تولد <span class="blue-light">(اجباری)</span></label>
+                    </div>
+                
+                    <!-- ایمیل -->
+                    <div class="col-md-6 form-floating">
+                      <input type="email" class="form-control rounded-pill border border-1" id="email" placeholder="ایمیل" style="border-color: #b9e9ff !important;">
+                      <label for="email" style="font-size: 13px !important;">ایمیل</label>
+                    </div>
+                
+                    <!-- موبایل -->
+                    <div class="col-md-6 form-floating">
+                      <input type="tel" class="form-control rounded-pill border border-1" id="phone" placeholder="09925450351" required style="border-color: #b9e9ff !important;">
+                      <label for="phone" style="font-size: 13px !important;">شماره تماس <span class="blue-light">(اجباری)</span></label>
+                    </div>
+                
+                    <!-- جنسیت -->
+                    <div class="d-flex gap-4 align-items-center pe-4">
+                      جنسیت: 
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="خانم" required>
+                        <label class="form-check-label" for="female">
+                          خانم
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="آقا">
+                        <label class="form-check-label" for="male">
+                          آقا
+                        </label>
+                      </div>
+                    </div>
+                
+                    <!-- دکمه ثبت -->
+                    <div class="col-12 d-grid mt-4">
+                      <a href="booking.html" class="text-white">
+                        <button type="submit" class="btn btn-sanabad rounded-pill py-2 w-100">ثبت اطلاعات</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <!-- ستون عکس -->
+                <div class="col-lg-2 d-none d-lg-block m-0 p-0 col-signup-back">
+                  
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- دکمه ورود -->
+    <div class="login_Sighnup_btn" id="user-btn">
+      <button class="login-button"  data-tippy-content="ورود به حساب کاربری" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup">
+          <svg
+            viewBox="0 0 24 24"
+            fill="white"
+            height="20"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"
+            ></path>
+          </svg>
+        </button>
+    </div>
+    <!--پایان دکمه ورود-->
+    <!--پاپ اپ نظر سنجی از کاربر-->
+    <div class="modal fade" id="paymentSuccessModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- بزرگ‌تر برای دو ستون -->
+        <div class="modal-content rounded-4 border-0">
+          
+          <div class="modal-body p-0">
+            <div class="row g-0"> 
+              <!-- ستون فرم/متن -->
+              <div class="col-12 p-4 d-flex flex-column justify-content-center">
+                <div class="d-flex justify-content-start align-items-center gap-3 mb-4">
+                  <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h5 class="fw-bold text-info m-0">چگونگی آشنایی با کلینیک شبانه روزی سناباد طوس</h5>
+                </div>
+                <p class="text-muted mb-4 pe-3">درصورت تمایل نحوه ی آشنایی خود با ما را بیان نمایید.</p>
+                <div class="form-floating mb-4" style="width: 98%;">
+                  <select class="form-select pt-3 border border-1 bg-light rounded"
+                          id="how_meet_select"
+                          style="border-color: #b9e9ff !important;"
+                          required>
+                    <option value="" selected disabled>لطفا نحوه آشنایی خود با ما را انتخاب نمایید</option>
+                    <option value="معرفی توسط پزشک">معرفی توسط پزشک</option>
+                    <option value="تبلیغات اینترنتی">تبلیغات اینترنتی</option>
+                    <option value="جستجو در گوگل">جستجو در گوگل</option>
+                    <option value="معرفی توسط دوستان/آشنایان">معرفی توسط دوستان/آشنایان</option>
+                    <option value="شبکه‌های اجتماعی">شبکه‌های اجتماعی</option>
+                    <option value="سایر">سایر</option>
+                  </select>
+                </div>                
+                <div class="form-floating mb-4" style="width: 98%;">
+                  <textarea class="form-control border border-1 bg-light rounded"
+                  style="min-height: 120px; border-color: #b9e9ff !important;"
+                  id="how_meet"
+                  placeholder="مثال: معرفی توسط آقا/خانم دکتر ...."
+                  required></textarea>
+                  <label for="how_meet">توضیحات بیشتر</label>
+                </div>
+                <button id="sendBtn" class="btn btn-sanabad fw-bold rounded-pill" style="width: 98%;" data-bs-dismiss="modal">
+                  ارسال اطلاعات
+                </button>            
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    <div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+      <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header d-flex justify-content-between" style="color: white !important; background-color:#28b6f6 !important;">
+          <strong class="me-2 fs-5">کلینیک سناباد طوس</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body fs-5">
+          اطلاعات شما با موفقیت ارسال شد.
+        </div>
+      </div>
+    </div>
+     
+    <!-- Top Bar Header -->
+    <div class="top-bar">
+        <div class="container-fluid d-flex align-items-center" >
+            <!--language selector-->
+            <div class="dropdown me-2">
+                <a class="dropdown-toggle text-white text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-globe fs-5 ms-1 blue-light"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end text-end">
+                    <li><a class="dropdown-item" href="index.html">فارسی</a></li>
+                    <li><a class="dropdown-item" href="index-en.html">English</a></li>
+                    <li><a class="dropdown-item" href="index-arabic.html">العربية</a></li>
+                </ul>
+            </div>
+            <!-- Social & Login -->
+            <div class="topbar-actions d-flex align-items-center gap-3">
+                <div class="social-icons d-flex gap-3 py-2 pe-5 ps-2">
+                    <a href="#" class="social-icon"><i class="bi bi-instagram fs-4 pt-1"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-telegram fs-4 pt-1"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-whatsapp fs-4 pt-1"></i></a>
+                    <a href="#" class="social-icon"><i class="bi bi-youtube fs-4 pt-1"></i></a>
+                </div>
+            </div>
+            <!-- Contact Info -->
+            <div class="contact-info d-flex align-items-center gap-3">
+                <span class="text-white"><i class="bi bi-geo-alt blue-light fs-5 me-3 ms-1"></i>خراسان رضوی، مشهد، سناباد، بین سناباد 43 و 45، کلینیک شبانه روزی سناباد </span>
+                <span class="text-white"><i class="bi bi-telephone blue-light fs-5 ms-1"></i> تلفن : 8430606 (0513)</span>
+            </div>
+
+        </div>
+    </div>
+    <!-- header section -->
+    <header class="bg-header text-black">
+        <div class="container-fluid py-2 px-3 d-flex align-items-center justify-content-between">  
+            <div class="d-flex">
+                    <!-- Hamburger Button (Mobile Only) -->
+                    <button class="btn d-lg-none border-0 hamburger-btn ms-4" id="hamburgerBtn">
+                        <i class="fas fa-bars text-white"></i> <!-- Bootstrap Icons -->
+                    </button>
+                    <!--search box-->
+                    <form class="search-box position-relative ms-4">
+                        <input type="text" class="form-control custom-search py-2 fs-5" placeholder="جستجوی پزشک...">
+                        <i class="bi bi-search search-icon animate-on-focus"></i>
+                    </form>
+                    <!-- Navbar (Desktop Only) -->
+                    <!-- Full Navbar (1400px به بالا) -->
+                    <nav class="d-none d-xxl-flex gap-4 align-items-center nav-full me-3 fs-5">
+                        <a href="index.html" class="link-header text-decoration-none fw-bold active-link-sanabad">صفحه اصلی</a>
+                        <div class="dropdown">
+                        <a class="dropdown-toggle link-header text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                            واحدهای درمانگاه <i class="bi bi-caret-down-fill small"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-end">
+                          <li><a class="dropdown-item" href="General-practitioner.html">دکتر عمومی</a></li>
+                          <li><a class="dropdown-item" href="Nursing-unit.html">مطب پرستاری</a></li>
+                          <li><a class="dropdown-item" href="Dentistry.html">دندان پزشکی</a></li>
+                          <li><a class="dropdown-item" href="fizioTrapy.html">فیزیوتراپی</a></li>
+                          <li><a class="dropdown-item" href="abDarmani.html">آب درمانی</a></li>
+                          <li><a class="dropdown-item" href="brain-clinic.html">جراح مغز و اعصاب</a></li>
+                          <li><a class="dropdown-item" href="Counseling.html">روانشناسی</a></li>
+                          <li><a class="dropdown-item" href="Psychoanalysis-clinic.html">اعصاب و روان</a></li>
+                          <li><a class="dropdown-item" href="Labratory.html">آزمایشگاه</a></li>
+                          <li><a class="dropdown-item" href="Nutritionist.html">متخصص تغذیه</a></li>
+                          <li><a class="dropdown-item" href="Gynecology.html">واحد زنان و زایمان</a></li>
+                          <li><a class="dropdown-item" href="hair-skin-clinic.html">متخصص پوست و مو</a></li>
+                        </ul>
+                        </div>
+                    
+                        <a href="#" class="link-header text-decoration-none fw-bold" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup">دریافت نوبت</a>
+                        <a href="about-us.html" class="link-header text-decoration-none fw-bold">درباره ما</a>
+                        <a href="#section_7" class="link-header text-decoration-none fw-bold">تماس با ما</a>
+                    
+                        <div class="dropdown">
+                        <a class="dropdown-toggle link-header text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                            مطالب بیشتر <i class="bi bi-caret-down-fill small"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-end">
+                            <li><a class="dropdown-item" href="Blog.html">مقالات آموزشی</a></li>
+                            <li><a class="dropdown-item" href="Acibadem.html">Acibadem</a></li>
+                        </ul>
+                        </div>
+                    </nav>
+                    <!-- Partial Navbar (1250px تا 1399px) -->
+                    <nav class="d-none d-xl-flex d-xxl-none gap-4 align-items-center nav-partial me-3 fs-5">
+                        <a href="index.html" class="link-header text-decoration-none fw-bold active-link-sanabad">صفحه اصلی</a>
+                        <div class="dropdown">
+                        <a class="dropdown-toggle link-header text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                            واحدهای درمانگاه <i class="bi bi-caret-down-fill small"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-end">
+                          <li><a class="dropdown-item" href="General-practitioner.html">دکتر عمومی</a></li>
+                          <li><a class="dropdown-item" href="Nursing-unit.html">مطب پرستاری</a></li>
+                          <li><a class="dropdown-item" href="Dentistry.html">دندان پزشکی</a></li>
+                          <li><a class="dropdown-item" href="fizioTrapy.html">فیزیوتراپی</a></li>
+                          <li><a class="dropdown-item" href="abDarmani.html">آب درمانی</a></li>
+                          <li><a class="dropdown-item" href="brain-clinic.html">جراح مغز و اعصاب</a></li>
+                          <li><a class="dropdown-item" href="Counseling.html">روانشناسی</a></li>
+                          <li><a class="dropdown-item" href="Psychoanalysis-clinic.html">اعصاب و روان</a></li>
+                          <li><a class="dropdown-item" href="Labratory.html">آزمایشگاه</a></li>
+                          <li><a class="dropdown-item" href="Nutritionist.html">متخصص تغذیه</a></li>
+                          <li><a class="dropdown-item" href="Gynecology.html">واحد زنان و زایمان</a></li>
+                          <li><a class="dropdown-item" href="hair-skin-clinic.html">متخصص پوست و مو</a></li>
+                        </ul>
+                        </div>
+                        <a href="#" class="link-header text-decoration-none fw-bold" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup">دریافت نوبت</a>
+
+                        <!-- Dropdown بیشتر -->
+                        <div class="dropdown">
+                        <a class="dropdown-toggle text-decoration-none fw-bold" style="color: #1f232c !important;" href="#" data-bs-toggle="dropdown">
+                            گزینه های بیشتر
+                            <i class="bi bi-caret-down-fill small"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-end">
+                            <li><a class="dropdown-item" href="#">درباره ما</a></li>
+                            <li><a class="dropdown-item" href="#section_7">تماس با ما</a></li>
+                            <li><a class="dropdown-item" href="Blog.html">مقالات آموزشی</a></li>
+                            <li><a class="dropdown-item" href="Acibadem.html">Acibadem</a></li>
+                        </ul>
+                        </div>
+                    </nav>
+            </div>
+            <!-- Logo -->
+            <div class="d-flex align-items-center gap-2">
+                <img src="assets/Images/home/Sanabad_logo_title.png" alt="sanabad clinic logo" class="header-logo"/>
+            </div>
+        </div>
+    
+        <!-- Sidebar for Mobile -->
+        <div id="mobileSidebar" class="mobile-sidebar">
+        <div class="d-flex justify-content-center flex-column align-items-center p-3 border-bottom">
+            <img src="assets/Images/home/Sanabad_logo.png" alt="sanabad clinic logo" class="header-logo-mb pulse-logo"/>
+            <h4 class="my-2 fw-bold">درمانگاه شبانه روزی سناباد</h4>
+        </div>
+        <div class="p-3 d-flex flex-column gap-3 fs-5">
+            <a href="#" class="blue-dark text-decoration-none active-link-sanabad"><i class="fas fa-home ms-2 small"></i>صفحه اصلی</a>
+            <a href="#" id="system_nobat" class="blue-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup"><i class="fas fa-calendar-check ms-2 small"></i>سیستم نوبت‌دهی</a>
+            <!-- آکاردئون واحدهای درمانگاه -->
+            <div class="accordion bg-transparent" id="clinicUnitsAccordion">
+                <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header d-flex align-items-center">
+                    <i class="fas fa-heart-pulse fs-5 ms-2 small"></i>
+                    <button class="accordion-button collapsed bg-transparent blue-dark px-0 d-flex justify-content-between fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#unitsCollapse">
+                        واحدهای درمانگاه
+                    <i class="fas fa-chevron-down"></i>
+                    </button>
+                </h2>
+                <div id="unitsCollapse" class="accordion-collapse collapse" data-bs-parent="#clinicUnitsAccordion">
+                    <div class="accordion-body px-0">
+                        <ul class="list-unstyled blue-dark">
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="General-practitioner.html">دکتر عمومی</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="Nursing-unit.html">مطب پرستاری</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="Dentistry.html">دندان پزشکی</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="fizioTrapy.html">فیزیوتراپی</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="abDarmani.html">آب درمانی</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="brain-clinic.html">جراح مغز و اعصاب</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="Counseling.html">روانشناسی</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="Psychoanalysis-clinic.html">اعصاب و روان</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="Labratory.html">آزمایشگاه</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="Nutritionist.html">متخصص تغذیه</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="Gynecology.html">واحد زنان و زایمان</a></li>
+                          <li class="py-1"><a class="blue-dark text-decoration-none" href="hair-skin-clinic.html">متخصص پوست و مو</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <a href="#" class="blue-dark text-decoration-none"><i class="fas fa-circle-info ms-2 small"></i>درباره ما</a>
+            <a id="tamas-ba-ma" href="#section_7" class="blue-dark text-decoration-none"><i class="fas fa-phone-volume ms-2 small"></i>تماس با ما</a>
+            <a id="login-header-link" href="#" class="blue-dark text-decoration-none" data-tippy-content="ورود به حساب کاربری" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup"><i class="fa-solid fa-user ms-2 small"></i>ورود به حساب کاربری</a>
+            <a href="#" class="blue-dark text-decoration-none" style="display: none;"><i class="fa-solid fa-user ms-2 small"></i>داشبورد من</a>
+            <!--آکاردئون مطالب بیشتر-->
+            <div class="accordion bg-transparent" id="scientificAccordion">
+                <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header d-flex align-items-center">
+                    <i class="fas fa-newspaper fs-5 ms-2 small"></i>
+                    <button class="fs-5 accordion-button collapsed bg-transparent blue-dark px-0 d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#scienceCollapse">
+                        مطالب بیشتر
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </h2>
+                <div id="scienceCollapse" class="accordion-collapse collapse" data-bs-parent="#scientificAccordion">
+                    <div class="accordion-body px-0">
+                    <ul class="list-unstyled blue-dark">
+                        <li class="py-1"><a href="Blog.html" class="blue-dark text-decoration-none">مقالات آموزشی</a></li>
+                        <li class="py-1"><a href="Acibadem.html" class="blue-dark text-decoration-none">Acibadem</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- آکاردئون انتخاب زبان -->
+            <div class="accordion bg-transparent" id="choosing-lang">
+                <div class="accordion-item bg-transparent border-0">
+                <h2 class="accordion-header d-flex align-items-center">
+                    <i class="fas fa-globe fs-5 ms-2 small"></i>
+                    <button class="fs-5 accordion-button collapsed bg-transparent blue-dark px-0 d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#langCollapse">
+                        انتخاب زبان
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </h2>
+                <div id="langCollapse" class="accordion-collapse collapse" data-bs-parent="#choosing-lang">
+                    <div class="accordion-body px-0">
+                    <ul class="list-unstyled blue-dark">
+                        <li class="py-1"><a href="index.html" class="blue-dark text-decoration-none">فارسی</a></li>
+                        <li class="py-1"><a href="index-en.html" class="blue-dark text-decoration-none">English</a></li>
+                        <li class="py-1"><a href="index-arabic.html" class="blue-dark text-decoration-none">العربية</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <hr class="bg-white" />
+    
+            <div class="blue-dark fs-5">
+            <i class="fas fa-location-dot ms-2 small"></i> آدرس: مشهد، سناباد، بین سناباد ۴۳ و ۴۵
+            </div>
+            <div class="blue-dark fs-5">
+            <i class="fas fa-phone-alt ms-2 small"></i> تلفن: ۰۵۱۳۸۴۳۰۶۰۶
+            </div>
+    
+            <div class="d-flex gap-5 mt-5 justify-content-start">
+                <a href="#" class="blue-dark"><i class="fab fa-telegram-plane fs-3"></i> </a>
+                <a href="#" class="blue-dark"><i class="fab fa-instagram fs-3"></i></a>
+                <a href="#" class="blue-dark"><i class="fab fa-whatsapp fs-3"></i></a>
+                <a href="#" class="blue-dark"><i class="fab fa-youtube fs-3"></i></a>
+            </div>
+        </div>
+        </div>
+        <!-- Backdrop -->
+        <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+    </header>
+    <!--end of header-->
+    <!--آغاز محتوای اصلی-->
+    <main class="container-fluid px-0">
+        <!--آغاز سکشن اول، اسلایدر عکس، شعار، سابقه، خلاصه درباره ما دکمه های فراخوان به عمل سناباد-->
+        <section class="section_1 row g-0 align-items-center min-vh-100">
+            <!-- ستون راست: اسلایدر با CTA -->
+            <div class="col-lg-6 position-relative zoom-soft-top">
+                <!-- اسلایدر Swiper -->
+                <div class="swiper mySwiper my-5">
+                  <div class="swiper-wrapper h-100">
+                    <!-- تصویرهای دیگر -->
+                    <div class="swiper-slide h-100">
+                      <img src="assets/Images/home/slider_section1/clinic pic2.png" class="d-block w-100 h-100 object-fit-cover rounded-start" alt="کلینیک سناباد">
+                    </div>
+                    <div class="swiper-slide h-100">
+                      <img src="assets/Images/home/slider_section1/clinic pic3.png" class="d-block w-100 h-100 object-fit-cover rounded-start" alt="کلینیک سناباد">
+                    </div>
+                    <div class="swiper-slide h-100">
+                      <img src="assets/Images/home/slider_section1/clinic pic4.png" class="d-block w-100 h-100 object-fit-cover rounded-start" alt="کلینیک سناباد">
+                    </div>
+                    <div class="swiper-slide h-100">
+                      <img src="assets/Images/home/slider_section1/clinic pic5.png" class="d-block w-100 h-100 object-fit-cover rounded-start" alt="کلینیک سناباد">
+                    </div>
+                  </div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+                <!-- CTA پایین سمت چپ -->
+                <div class="reservationArea position-absolute bottom-0 start-0 translate-middle-y bg-white p-1 ps-3 pe-3 m-5 d-flex align-items-center gap-3">
+                  <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                    <img src="assets/Images/home/doctor.png" alt="doctor logo">
+                  </div>
+                  <div class="text-end mt-2">
+                    <p class="mb-1 fw-bold">برای رزرو کلیک کنید</p>
+                    <p>تماس: <small class="blue-light">05138436060</small></p>
+                  </div>
+                </div>
+            </div>
+            <!-- ستون چپ: متن -->
+            <div class="col-lg-6 p-5 text-center text-lg-end wave-bottom">
+              <span class="badge bg-bluelight text-dark fw-bold mb-3 py-2 fs-6">با بیش از بیست سال سابقه</span>
+              <h1 class="fw-bold display-5 mb-4">سلامتی شما در زندگی<br>اولویت نخست ما است.</h1>
+              <p class="summary text-black fs-5 mb-4 text-end">
+                درمانگاه‌سناباد با همت والا توسط مدیران متخصص و متعهد در حرفه‌ی پزشکی با هدف تامین نیازهای بهداشتی و درمانی جامعه، از سال ۱۳۷۸ آغاز بکار نمود...
+              </p>
+              <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                <a href="#" class="btn btn-sanabad">
+                  خواندن موارد بیشتر
+                </a>
+                <a href="#" class="btn btn-video d-flex align-items-center justify-content-center">
+                    <i class="bi bi-play-circle-fill video-icon"></i>
+                    <span>تماشای ویدیو</span>
+                </a>
+              </div>
+            </div>
+        </section>
+        <!--پایان سکشن اول-->
+        <!--سکشن دوم : امار تعداد رضایتمندان، پزشکان، واحدهای پزشکی و بازدید سایت-->
+        <section class="section_2 py-5 text-center">
+            <div class="container">
+              <div id="counterSection" class="row justify-content-center g-4">
+                <div class="col-12 col-sm-6 col-lg-6 col-xl-3 zoom-in">
+                  <div class="circle-wrapper">
+                    <div class="circle-border"></div>
+                    <div class="circle-content">
+                      <div class="counter-number" data-target="3200">0</div>
+                      <p class="mt-2 fw-bold">رضایت‌مندان</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-6 col-xl-3 zoom-in">
+                  <div class="circle-wrapper">
+                    <div class="circle-border"></div>
+                    <div class="circle-content">
+                      <div class="counter-number" data-target="150">0</div>
+                      <p class="mt-2 fw-bold">پزشکان</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-6 col-xl-3 zoom-in">
+                  <div class="circle-wrapper">
+                    <div class="circle-border"></div>
+                    <div class="circle-content">
+                      <div class="counter-number" data-target="18">0</div>
+                      <p class="mt-2 fw-bold">واحد پزشکی</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-6 col-xl-3 zoom-in">
+                  <div class="circle-wrapper">
+                    <div class="circle-border"></div>
+                    <div class="circle-content">
+                      <div class="counter-number" data-target="58000">0</div>
+                      <p class="mt-2 fw-bold">بازدید سایت</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <!--پایان سکشن دوم-->
+        <!-- اغاز سکشن سوم ، معرفی اقای دکتر مجد محسنی بیرجندی-->
+        <section class="pt-5 bg-white">
+            <div class="container">
+              <div class="row align-items-center gy-4 mb-5">
+                  <!-- تصویر -->
+                  <div class="col-lg-6 d-flex flex-column justify-content-start pe-5 zoom-soft-top">
+                    <div class="d-flex flex-row mt-5" id="majd_picture">
+                      <div class="zoom-container">
+                        <img src="assets/Images/home/section_3/Majd_Mohseni_working_2.jpg" alt="Majd Mohseni Birjandi">
+                      </div>
+                      <!--تصویر کوچکتر-->
+                      <div class="small-zoom-container">
+                          <img src="assets/Images/home/section_3/Majd_Mohseni_working.jpg" alt="Majd Mohseni Birjandi">
+                      </div>
+                    </div>
+                    <!-- کادر سفید برای سوابق کاری -->
+                    <div class="work-history-box d-flex align-items-center pt-3 ps-2 pe-2">
+                      <p class="fs-4 w-50">+15 
+                        <br>
+                        سال سابقه</p>
+                      <p class="w-50 lh-lg">درامر درمان بیماری های مرتبط با مغز و اعصاب</p>
+                    </div>
+                  </div>
+                  <!-- متن -->
+                  <div class="col-lg-6 text-right text-lg-end wave-bottom">
+                    <a href="brain-clinic.html" class="blue-light fw-bold mb-5 py-2 fs-6">خواندن موارد بیشتر</a>
+                    <h1 class="fw-bold display-6 mb-4 lh-base">
+                      <span class="blue-light">درمان</span>
+                      بیماری های مرتبط با مغز، اعصاب و ستون فقرات
+                    </h1>
+                    <p class="summary text-black fs-6 mb-4 text-end lh-lg">
+                      هموطنان گرامی درصورت مواجه با هریک از بیماری ها و مشکلات نام برده زیر می توانند به درمانگاه سناباد طوس مراجعه کنند؛ لطفا برای اطلاع از نزدیک ترین نوبت آزاد، به سیستم نوبت دهی مراجعه نمایید.                  
+                    </p>
+                    <!-- لیست کارها-->
+                    <div class="d-flex flex-row align-items-center gap-3" id="Majd-list">
+                        <ul class="list-unstyled" style="padding: 0px !important;text-align:right;">
+                          <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> جراحی ستون فقرات</li>
+                          <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> جراحی تومورهای مغزی</li>
+                          <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> تزریق بلوک های عصبی</li>
+                        </ul>
+                        <ul class="list-unstyled" style="padding: 0px !important;text-align:right;">
+                          <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> جراحی اعصاب اطفال</li>
+                          <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> انجام جراحی‌های مغز</li>
+                          <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> جراحی لیزری دیسک</li>
+                        </ul>
+                    </div>
+                    <!--پروفایل دکتر-->
+                    <div class="d-flex flex-row align-items-center gap-3 mt-3" id="profile-majd">
+                        <div class="d-flex align-items-center">
+                            <img src="assets/Images/home/section_3/majd_profile.jpg" class="rounded-circle ms-2 dr-profile" alt="مجد محسنی بیرجندی">
+                            <div>
+                              <strong class="lh-lg">دکتر مجد محسنی بیرجندی</strong><br>
+                              <a href="Dr_Majd_Mohseni.html" class="blue-light fw-bold">نمایش پروفایل</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <img src="assets/Images/home/section_3/call_contact_logo.png" class="rounded-circle ms-2 dr-profile" alt="contact logo">
+                            <div>
+                              تماس از طریق داخلی یک<br>
+                              <strong class="lh-lg">8430606 (0513)</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <!--پایان سکشن سوم-->
+        <!--آغاز سکشن چهارم کادر سرچ-->
+        <section class="section-zoom-bg" id="section_4_pc">
+          <div class="content-pc zoom-in d-flex flex-column justify-content-center align-items-center">
+            <h3 class="text-center text-white fw-bold w-75 lh-lg mt-4" id="title-search">می توانید در کادر جستجو بر اساس نام بیماری، پزشک یا خدمت مورد نظر خود را بیابید</h3>
+            <form class="dr-search mx-auto mt-3 mb-4">
+              <input type="text" placeholder="نام بیماری را وارد نمایید..." />
+              <button class="btn btn-sanabad" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+          </div>
+        </section>   
+        <!--پایان سکشن چهارم-->
+        <!-- اغاز سکشن پنجم ، معرفی اقای دکتر رضا محسنی بیرجندی-->
+        <section class="pt-5 bg-white">
+          <div class="container">
+            <div class="row align-items-center gy-4 mb-5">
+                <!-- تصویر -->
+                <div class="col-lg-6 d-flex flex-column justify-content-start pe-5 zoom-soft-top">
+                  <div class="d-flex flex-row mt-5" id="majd_picture">
+                    <div class="zoom-container">
+                      <img src="assets/Images/home/section_5/Reza_Mohseni_Birjandi.webp" alt="Reza Mohseni Birjandi">
+                    </div>
+                    <!--تصویر کوچکتر-->
+                    <div class="small-zoom-container">
+                        <img src="assets/Images/home/section_5/Reza_Mohseni_Birjandi2.webp" alt="Reza Mohseni Birjandi">
+                    </div>
+                  </div>
+                  <!-- کادر سفید برای سوابق کاری -->
+                  <div class="work-history-box d-flex align-items-center pt-3 ps-2 pe-2">
+                    <p class="fs-4 w-50">+25 
+                      <br>
+                      سال سابقه</p>
+                    <p class="w-50 lh-lg">درامر درمان بیماری های اعصاب و روان</p>
+                  </div>
+                </div>
+                <!-- متن -->
+                <div class="col-lg-6 text-right text-lg-end wave-bottom">
+                  <a href="Psychoanalysis-clinic.html" class="blue-light fw-bold mb-5 py-2 fs-6">خواندن موارد بیشتر</a>
+                  <h1 class="fw-bold display-6 mb-4 lh-base">
+                    <span class="blue-light">روان درمانی</span>
+                    براساس ساختارهای وجودی و اگزیستانسیال
+                  </h1>
+                  <p class="summary text-black fs-6 mb-4 text-end lh-lg">
+                    با مراجعه به این بخش و ویزیت توسط متخصص اعصاب و روان و رواندرمانگر، بنا به اقتضای مشکل مطرح شده؛ درمان داروئی و در صورت لزوم درمان های غیر داروئی مربوطه انجام می گیرد.                  </p>
+                  <!-- لیست کارها-->
+                  <div class="d-flex flex-row align-items-center gap-3" id="reza-list">
+                      <ul class="list-unstyled" style="padding: 0px !important;text-align:right;">
+                        <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> درمان افسردگی</li>
+                        <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> درمان اختلال دو قطبی</li>
+                        <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> درمان اضطراب</li>
+                      </ul>
+                      <ul class="list-unstyled" style="padding: 0px !important;text-align:right;">
+                        <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> درمان دارویی بیماری های روان</li>
+                        <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> درمان وابستگی به مواد و ترک اعتیاد</li>
+                        <li class="py-2"> <i class="bi bi-check-circle ms-1 blue-light"></i> درمان اختلالات خواب</li>
+                      </ul>
+                  </div>
+                  <!--پروفایل دکتر-->
+                  <div class="d-flex flex-row align-items-center gap-3 mt-3" id="profile-majd">
+                      <div class="d-flex align-items-center">
+                          <img src="assets/Images/home/section_5/Reza_Mohseni_Birjandi_Profile.webp" class="rounded-circle ms-2 dr-profile" alt="رضا محسنی بیرجندی">
+                          <div>
+                            <strong class="lh-lg">دکتر رضا محسنی بیرجندی</strong><br>
+                            <a href="Dr_Reza_Mohseni.html" class="blue-light fw-bold">نمایش پروفایل</a>
+                          </div>
+                      </div>
+                      <div class="d-flex align-items-center">
+                          <img src="assets/Images/home/section_3/call_contact_logo.png" class="rounded-circle ms-2 dr-profile" alt="contact logo">
+                          <div>
+                            تماس از طریق داخلی یک<br>
+                            <strong class="lh-lg">8430606 (0513)</strong>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--پایان سکشن پنجم-->
+        <!--اغاز سکشن ششم خدمات کلینیک سناباد-->
+        <section class="section_6">
+          <div class="pt-4 slide-left-shadow">
+            <h5 class="blue-light fw-bold text-center">خدمات ما</h5>
+            <h3 class="fw-bold lh-lg text-center">کلینیک ها و پاراکلینیک ها</h3>
+          </div>
+          <div class="scroller-container py-3">
+            <div class="scroller-track">
+              <!-- کارت 1 --><!--کارت جراحی مغز و اعصاب-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="brain-clinic.html" class="btn btn-sanabad rounded-pill pt-1 w-50 ">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/9.png" alt="جراحی مغز">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">جراحی مغز و ستون فقرات</h5>
+                  <p class="card-text"> جراحی دیسک کمر و گردن، درمان آرتروز، رفع و درمان صرع، درمان ضربه مغزی و ...</p>
+                </div>
+              </div>
+              <!-- کارت 2 --><!--روانکاوی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="Psychoanalysis-clinic.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">روان درمانی و روان‌کاوی</h5>
+                  <p class="card-text">درمان اضطراب، افسردگی، اختلالات خواب و شخصیت و...</p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/5.png" alt="روان درمانی">
+                </div>
+              </div>
+              <!-- کارت 3 --><!--پزشک عمومی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="General-practitioner.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/1.png" class="card-img-top" alt="پزشک عمومی">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">پزشک عمومی</h5>
+                  <p class="card-text">ارائه خدمات پزشکی به صورت شبانه روزی
+                    از جمله احیای قلب، اکسیژن سانترال و ...</p>
+                </div>
+              </div>
+              <!-- کارت 4 --><!--دندان پزشکی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="Dentistry.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">دندانپزشکی</h5>
+                  <p class="card-text">
+                    ایمپلنت، لمینت، عصب کشی، جراحی دندان عقل، ارتودونسی و ...
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/4.png" alt="دندانپزشکی">
+                </div>
+              </div>
+              <!-- کارت 5 --><!--متخصص تغذیه و رژیم درمانی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="Nutritionist.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/10.jpg" class="card-img-top" alt="متخصص تغذیه و رژیم درمانی">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">متخصص تغذیه و رژیم درمانی</h5>
+                  <p class="card-text">
+                    تدوین برنامه غذایی شخصی سازی شده، رفع مشکلات و اختلالات تغذیه و ...
+                  </p>
+                </div>
+              </div>
+              <!-- کارت 6 --><!--آب درمانی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="abDarmani.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">آب درمانی</h5>
+                  <p class="card-text">
+                    تقویت عضلات، بهبود دامنه حرکتی، تهویه قلبی عروقی، کاهش استرس و ....
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/7.png" alt="آب درمانی">
+                </div>
+              </div>
+              <!-- کارت 7 --><!--کلینیک تخصصی پوست و مو-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="hair-skin-clinic.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/3.png" class="card-img-top" alt="کلینیک تخصصی پوست و مو">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">کلینیک تخصصی پوست و مو</h5>
+                  <p class="card-text">
+                    ترمیم اثرات ضخم و جوش، ترمیم سالک ، پاک کردن انواع خال ها و ... 
+                  </p>
+                </div>
+              </div>
+              <!-- کارت 8 --><!--جراح و متخصص زنان و زایمان-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="Gynecology.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">جراح و متخصص زنان و زایمان</h5>
+                  <p class="card-text">
+                    اسکن شفافیت نوکال، سونوگرافی بارداری، اسکن داپلر، سزارین و ...
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/6.png" alt="جراح و متخصص زنان و زایمان">
+                </div>
+              </div>
+              <!-- کارت 9 --><!--آزمایشگاه-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="Labratory.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/2.png" class="card-img-top" alt="آزمایشگاه">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">آزمایشگاه</h5>
+                  <p class="card-text">
+                    شامل بخش های هماتولوژی، ایمنولوژی، بیوشیمی، میکروب شناسی، ازمایش خون و...
+                  </p>
+                </div>
+              </div>
+              <!-- کارت 10 --><!--فیزیوتراپی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="fizioTrapy.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">
+                    فیزیوتراپی
+                  </h5>
+                  <p class="card-text">
+                    درمان استئوپانیک، ماساژ و ورزش درمانی، لیزر، شاک ویوتراپی و ...
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/8.png" alt="فیزیوتراپی">
+                </div>
+              </div>
+              <!-- کارت 11 --><!--مشاوره و روانشناسی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="Counseling.html" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/11.png" class="card-img-top" alt="مشاوره و روانشناسی">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">مشاوره و روانشناسی</h5>
+                  <p class="card-text">ارائه خدمات تخصصی روان‌شناسی و مشاوره جهت ارتقاء سلامت روان، بهبود کیفیت زندگی و توانمندسازی فردی و...</p>
+                </div>
+              </div>
+              <!-- کارت 12 --><!--پرستاری-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">پرستاری</h5>
+                  <p class="card-text">ارائه خدمات تزریقات (عضلانی، وریدی، زیرجلدی) با رعایت کامل اصول بهداشتی و ایمنی توسط پرسنل مجرب و...</p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/12.png" alt="پرستاری">
+                </div>
+              </div>
+              <!--repeat the cards-->
+              <!-- کارت 1 --><!--کارت جراحی مغز و اعصاب-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/9.png" alt="جراحی مغز">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">جراحی مغز و ستون فقرات</h5>
+                  <p class="card-text"> جراحی دیسک کمر و گردن، درمان آرتروز، رفع و درمان صرع، درمان ضربه مغزی و ...</p>
+                </div>
+              </div>
+              <!-- کارت 2 --><!--روانکاوی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">روان درمانی و روان‌کاوی</h5>
+                  <p class="card-text">درمان اضطراب، افسردگی، اختلالات خواب و شخصیت و...</p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/5.png" alt="روان درمانی">
+                </div>
+              </div>
+              <!-- کارت 3 --><!--پزشک عمومی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/1.png" class="card-img-top" alt="پزشک عمومی">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">پزشک عمومی</h5>
+                  <p class="card-text">ارائه خدمات پزشکی به صورت شبانه روزی
+                    از جمله احیای قلب، اکسیژن سانترال و ...</p>
+                </div>
+              </div>
+              <!-- کارت 4 --><!--دندان پزشکی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">دندانپزشکی</h5>
+                  <p class="card-text">
+                    ایمپلنت، لمینت، عصب کشی، جراحی دندان عقل، ارتودونسی و ...
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/4.png" alt="دندانپزشکی">
+                </div>
+              </div>
+              <!-- کارت 5 --><!--متخصص تغذیه و رژیم درمانی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/10.jpg" class="card-img-top" alt="متخصص تغذیه و رژیم درمانی">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">متخصص تغذیه و رژیم درمانی</h5>
+                  <p class="card-text">
+                    تدوین برنامه غذایی شخصی سازی شده، رفع مشکلات و اختلالات تغذیه و ...
+                  </p>
+                </div>
+              </div>
+              <!-- کارت 6 --><!--آب درمانی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">آب درمانی</h5>
+                  <p class="card-text">
+                    تقویت عضلات، بهبود دامنه حرکتی، تهویه قلبی عروقی، کاهش استرس و ....
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/7.png" alt="آب درمانی">
+                </div>
+              </div>
+              <!-- کارت 7 --><!--کلینیک تخصصی پوست و مو-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/3.png" class="card-img-top" alt="کلینیک تخصصی پوست و مو">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">کلینیک تخصصی پوست و مو</h5>
+                  <p class="card-text">
+                    ترمیم اثرات ضخم و جوش، ترمیم سالک ، پاک کردن انواع خال ها و ... 
+                  </p>
+                </div>
+              </div>
+              <!-- کارت 8 --><!--جراح و متخصص زنان و زایمان-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">جراح و متخصص زنان و زایمان</h5>
+                  <p class="card-text">
+                    اسکن شفافیت نوکال، سونوگرافی بارداری، اسکن داپلر، سزارین و ...
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/6.png" alt="جراح و متخصص زنان و زایمان">
+                </div>
+              </div>
+              <!-- کارت 9 --><!--آزمایشگاه-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/2.png" class="card-img-top" alt="آزمایشگاه">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">آزمایشگاه</h5>
+                  <p class="card-text">
+                    شامل بخش های هماتولوژی، ایمنولوژی، بیوشیمی، میکروب شناسی، ازمایش خون و...
+                  </p>
+                </div>
+              </div>
+              <!-- کارت 10 --><!--فیزیوتراپی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">
+                    فیزیوتراپی
+                  </h5>
+                  <p class="card-text">
+                    درمان استئوپانیک، ماساژ و ورزش درمانی، لیزر، شاک ویوتراپی و ...
+                  </p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/8.png" alt="فیزیوتراپی">
+                </div>
+              </div>
+              <!-- کارت 11 --><!--مشاوره و روانشناسی-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                  <img src="assets/Images/home/section_6/11.png" class="card-img-top" alt="مشاوره و روانشناسی">
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">مشاوره و روانشناسی</h5>
+                  <p class="card-text">ارائه خدمات تخصصی روان‌شناسی و مشاوره جهت ارتقاء سلامت روان، بهبود کیفیت زندگی و توانمندسازی فردی و...</p>
+                </div>
+              </div>
+              <!-- کارت 12 --><!--پرستاری-->
+              <div class="glass-card card-custom">
+                <div class="d-flex flex-column gap-3 align-items-end p-3">
+                  <a href="#" class="btn btn-sanabad rounded-pill pt-1 w-50">نمایش بیشتر</a>
+                </div>
+                <div class="card-body text-end">
+                  <h5 class="card-title">پرستاری</h5>
+                  <p class="card-text">ارائه خدمات تزریقات (عضلانی، وریدی، زیرجلدی) با رعایت کامل اصول بهداشتی و ایمنی توسط پرسنل مجرب و...</p>
+                </div>
+                <div class="p-3">
+                  <img src="assets/Images/home/section_6/12.png" alt="پرستاری">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>           
+        <!--پایان سکشن ششم-->
+        <!--آغاز سکشن هفتم، فرم تماس با ما-->
+        <section class="py-5 bg-light zoom-in" id="section_7">
+          <div class="container">
+            <div class=" contact-card p-5">
+                <div class="row g-4 align-items-stretch">
+                  <div class="col-lg-6">
+                    <div class="card contact-card-form p-4 h-100">
+                        <form>
+                          <div class="form-floating mb-3" >
+                            <input type="text" class="form-control rounded-pill border border-1 bg-light" id="name-contactUs" style="border-color: #b9e9ff !important;" placeholder="نام" required>
+                            <label for="name">نام <span class="blue-light">(اجباری)</span></label>
+                          </div>
+                    
+                          <div class="form-floating mb-3">
+                            <input type="email" class="form-control rounded-pill border border-1 bg-light" style="border-color: #b9e9ff !important;" id="email-contactUs" placeholder="ایمیل" required>
+                            <label for="email">آدرس ایمیل <span class="blue-light">(اجباری)</span></label>
+                          </div>
+                    
+                          <div class="form-floating mb-3">
+                            <input type="tel" class="form-control  rounded-pill border border-1 bg-light" id="phone-contactUs" style="border-color: #b9e9ff !important;" placeholder="شماره تماس" required>
+                            <label for="phone">شماره تماس <span class="blue-light">(اجباری)</span></label>
+                          </div>
+                    
+                          <div class="form-floating mb-3">
+                            <textarea class="form-control border border-1 bg-light" placeholder="متن پیام" id="message-contactUs" style="height: 120px; border-color: #b9e9ff !important;border-radius:1rem;" required></textarea>
+                            <label for="message">متن پیام <span class="blue-light">(اجباری)</span></label>
+                          </div>
+                          <div class="d-flex text-end gap-3">
+                            <button type="submit" class="btn btn-sanabad rounded-pill py-2" id="submit-contact-us">
+                              <i class="fas fa-paper-plane ms-2"></i>
+                              ارسال پیام
+                            </button>
+                            <button type="reset" class="btn btn-sanabad rounded-pill pt-1" id="reset-contact-us">
+                              <i class="fas fa-times-circle ms-2"></i>
+                              لغو ارسال
+                            </button>
+                          </div>
+                        </form>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="mb-4">
+                      <h5 class="fw-bold lh-lg">برای دستیابی به اطلاعات بیشتر با امور پشتیبانی در ارتباط باشید.</h5>
+                      <p class="text-muted">از طریق فرم روبه‌رو یا اطلاعات تماس زیر با ما تماس بگیرید.</p>
+                    </div>
+                    <div class="card contact-card-info w-75 p-3">
+                      <ul class="list-unstyled mb-3">
+                        <li class="mb-2 lh-lg"><i class="fas fa-map-marker-alt ms-2 blue-light"></i>آدرس کلینیک روزی سناباد:
+                            <br>
+                            <strong>
+                            خراسان رضوی، مشهد، سناباد، بین سناباد ۴۳ و ۴۵، کلینیک شبانه‌روزی سناباد
+                            </strong>
+                        </li>
+                        <li class="mb-2 lh-lg"><i class="fas fa-clock ms-2 blue-light"></i>ساعت کاری کلینیک: 
+                            <br>
+                            <strong>
+                              هفت روز هفته به‌صورت شبانه‌روزی، حتی در ایام تعطیل
+                            </strong>
+                        </li>
+                        <li class="mb-2 lh-lg"><i class="fas fa-phone ms-2 blue-light"></i>شماره تماس: 
+                            <br>
+                            <strong>
+                              ۰۵۱۳۸۴۳۰۶۰۶
+                            </strong>
+                        </li>
+                        <li class="lh-lg"><i class="fas fa-envelope ms-2 blue-light"></i>آدرس پست الکترونیک:
+                          <br>
+                          <strong>
+                            Sanabad.tus@gmail.com
+                          </strong>
+                        </li>
+                        <li>
+                          <div class="my-2" id="contact-social-link">
+                            <a href="https://www.instagram.com/sanabad_tus_clinic/profilecard/?igsh=MWE0cWVleHZ3MHRlYQ==" class="social-icon pt-1"><i class="fs-4 fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61564892396821&mibextid=LQQJ4d" class="social-icon pt-1"><i class="fs-4 fab fa-telegram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=61564960794237&mibextid=LQQJ4d" class="social-icon pt-1"><i class="fs-4 fab fa-facebook"></i></a>
+                            <a href="https://youtube.com/@drmajdmohsenibirjandi?si=JjfZ3J42ynsiuGEB" class="social-icon pt-1"><i class="fs-4 fab fa-youtube"></i></a>
+                            <a href="https://www.instagram.com/dr.majd.mohseni.birjandi?igsh=MXZteW9oNmI4eXZkag%3D%3D&utm_source=qr" class="social-icon pt-1"><i class="fs-4 fas fa-video"></i></a>
+                          </div>
+                        </li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </section>
+        <!--پایان سکشن هفتم-->
+        <!--سکشن هشتم پزشکان برتر سایت-->
+        <section class="bg-white">
+          <div class="pt-5 slide-left-shadow">
+            <h5 class="blue-light fw-bold text-center">پزشکان برتر هفته</h5>
+            <h3 class="fw-bold lh-lg text-center pb-1">درمانگران برتر به انتخاب کاربران سایت</h3>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4 zoom-soft-top">
+                <div class="d-flex flex-column card-best-dr justify-content-center align-items-center">
+                  <a href="Dr_Mehrak_Dabaghi.html" class="image-container text-center">
+                    <img src="assets/Images/home/section_8/Dr_Mehrak.png" alt="دکتر مهرک دباغی" class="image">
+                    <div class="overlay">نمایش اطلاعات بیشتر</div>
+                  </a>
+                  <div class="card card-best-dr-info pt-3">
+                    <h5 class="fw-bold lh-lg text-center">
+                      دکتر مهرک دباغی
+                    </h5>
+                    <h6 class="fw-bold text-center">
+                      <a class="blue-light" href="hair-skin-clinic.html">
+                        متخصص پوست و مو
+                      </a>
+                    </h6>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center pb-3 gap-3">
+                      <a href="#" class="social-icon pt-1"><i class="fab fa-facebook fs-4"></i></a>
+                      <a href="#" class="social-icon pt-1"><i class="fab fa-instagram fs-4"></i></a>
+                      <a href="#" class="social-icon pt-1"><i class="fas fa-video fs-4"></i></a>
+                    </div>
+                  </div>
+                </div>                
+              </div>
+              <div class="col-lg-4 zoom-soft-top">
+                <div class="d-flex flex-column card-best-dr justify-content-center align-items-center">
+                  <a href="Dr_Reza_Mohseni.html" class="image-container text-center">
+                    <img src="assets/Images/home/section_8/Dr_Reza_Mohseni.jpg" alt="دکتر رضا محسنی بیرجندی" class="image">
+                    <div class="overlay">نمایش اطلاعات بیشتر</div>
+                  </a>
+                  <div class="card card-best-dr-info pt-3">
+                    <h5 class="fw-bold lh-lg text-center">
+                        دکتر رضا محسنی
+                    </h5>
+                    <h6 class="fw-bold text-center">
+                      <a class="blue-light" href="Psychoanalysis-clinic.html">
+                        پزشک روانکاو
+                      </a>
+                    </h6>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center pb-3 gap-3">
+                      <a href="#" class="social-icon pt-1"><i class="fab fa-facebook fs-4"></i></a>
+                      <a href="#" class="social-icon pt-1"><i class="fab fa-instagram fs-4"></i></a>
+                      <a href="#" class="social-icon pt-1"><i class="fas fa-video fs-4"></i></a>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+              <div class="col-lg-4 zoom-soft-top">
+                <div class="d-flex flex-column card-best-dr justify-content-center align-items-center">
+                  <a href="Dr_Majd_Mohseni.html" class="image-container text-center">
+                    <img src="assets/Images/home/section_3/Majd_Mohseni_working_2.jpg" alt="دکتر مجد محسنی بیرجندی" class="image">
+                    <div class="overlay">نمایش اطلاعات بیشتر</div>
+                  </a>
+                  <div class="card card-best-dr-info pt-3">
+                    <h5 class="fw-bold lh-lg text-center">
+                        دکتر مجد محسنی
+                    </h5>
+                    <h6 class="fw-bold text-center">
+                      <a class="blue-light" href="brain-clinic.html">
+                      جراح مغز و اعصاب
+                      </a>
+                    </h6>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center pb-3 gap-3">
+                      <a href="#" class="social-icon pt-1"><i class="fab fa-facebook fs-4"></i></a>
+                      <a href="#" class="social-icon pt-1"><i class="fab fa-instagram fs-4"></i></a>
+                      <a href="#" class="social-icon pt-1"><i class="fas fa-video fs-4"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--پایان سکشن هشتم-->
+        <!--آغاز سکشن نهم، وبلاگ سایت-->
+        <section class="bg-light">
+          <div class="pt-5 slide-left-shadow">
+            <h5 class="blue-light fw-bold text-center">مقالات هفته</h5>
+            <h3 class="fw-bold lh-lg text-center pb-1">آخرین اخبار، مقالات و دانستنی های پزشکی</h3>
+          </div>
+          <div class="container">
+              <div class="row">
+                <div class="col-lg-4 zoom-soft-top">
+                  <div class="d-flex flex-column card-best-dr justify-content-center align-items-center">
+                    <a href="#" class="image-container text-center">
+                      <img src="assets/Images/home/section_9/3.png" alt="مقاله پزشکی 1" class="image">
+                      <div class="overlay">نمایش اطلاعات بیشتر</div>
+                    </a>
+                    <div class="card card-best-dr-info" style="width:70%; right:0px;">
+                      <p class="fw-bold pt-4 px-4 pb-2 blue-light m-0" style="font-size:0.9rem;">
+                        <i class="fas fa-calendar-alt"></i>
+                        فروردین 1404
+                      </p>
+                      <p class="fw-bold px-4 lh-lg m-0" style="text-align: justify; font-size:1.1rem;">
+                        نقش تغذیه در پیشگیری از بیماری‌های مزمن
+                      </p>
+                      <span class="text-muted fs-6 px-4 lh-lg">
+                        رژیم غذایی متعادل می تواند نقش مهمی در کاهش ریسک بیماری ...
+                      </span>
+                      <div class="d-flex align-items-center mb-3 mt-1 justify-content-start px-4">
+                        <a href="#" class="fw-bold lh-lg ps-2 blue-light">
+                          خواندن موارد بیشتر
+                        </a>
+                        <i class="fas fa-arrow-left "></i>
+                      </div>
+                    </div>
+                  </div>                
+                </div>
+                <div class="col-lg-4 zoom-soft-top">
+                  <div class="d-flex flex-column card-best-dr justify-content-center align-items-center">
+                    <a href="#" class="image-container text-center">
+                      <img src="assets/Images/home/section_9/2.png" alt="مقاله پزشکی 2" class="image">
+                      <div class="overlay">نمایش اطلاعات بیشتر</div>
+                    </a>
+                    <div class="card card-best-dr-info" style="width:70%; right:0px;">
+                      <p class="fw-bold pt-4 px-4 pb-2 blue-light m-0" style="font-size:0.9rem;">
+                        <i class="fas fa-calendar-alt"></i>
+                        فروردین 1404
+                      </p>
+                      <p class="fw-bold px-4 lh-lg m-0" style="text-align: justify; font-size:1.1rem;">
+                        کنترل قند خون؛ کلید پیشگیری از دیابت نوع ۲
+                      </p>
+                      <span class="text-muted fs-6 px-4 lh-lg">
+                        پایش منظم قند خون و سبک زندگی سالم نقش مهمی در جلوگیری ...
+                      </span>
+                      <div class="d-flex align-items-center mb-3 mt-1 justify-content-start px-4">
+                        <a href="#" class="fw-bold lh-lg ps-2 blue-light">
+                          خواندن موارد بیشتر
+                        </a>
+                        <i class="fas fa-arrow-left "></i>
+                      </div>
+                    </div>
+                  </div>                
+                </div>
+                <div class="col-lg-4 zoom-soft-top">
+                  <div class="d-flex flex-column card-best-dr justify-content-center align-items-center">
+                    <a href="#" class="image-container text-center">
+                      <img src="assets/Images/home/section_9/1.png" alt="مقاله پزشکی 3" class="image">
+                      <div class="overlay">نمایش اطلاعات بیشتر</div>
+                    </a>
+                    <div class="card card-best-dr-info" style="width:70%; right:0px;">
+                      <p class="fw-bold pt-4 px-4 pb-2 blue-light m-0" style="font-size:0.9rem;">
+                        <i class="fas fa-calendar-alt"></i>
+                        فروردین 1404
+                      </p>
+                      <p class="fw-bold px-4 lh-lg m-0" style="text-align: justify; font-size:1.1rem;">
+                        نقش فیزیوتراپی در بهبود دردهای عضلانی و مفصلی
+                      </p>
+                      <span class="text-muted fs-6 px-4 lh-lg">
+                        تمرینات فیزیوتراپی می‌توانند به کاهش درد و افزایش تحرک بیماران ...
+                      </span>
+                      <div class="d-flex align-items-center mb-3 mt-1 justify-content-start px-4">
+                        <a href="blog-details.html" class="fw-bold lh-lg ps-2 blue-light">
+                          خواندن موارد بیشتر
+                        </a>
+                        <i class="fas fa-arrow-left "></i>
+                      </div>
+                    </div>
+                  </div>                
+                </div>
+              </div>
+          </div>
+        </section>
+        <!--پایان سکشن نهم-->
+        <!--آغاز فوتر-->
+        <footer class="position-relative text-white pt-5" style="background-color: #1f232c;">
+          <!-- ناحیه ذرات -->
+          <div id="particles-js" class="position-absolute top-0 start-0 w-100 h-100 z-n1"></div>
+        
+          <!-- محتوای فوتر -->
+          <div class="container position-relative z-1">
+            <div class="row">
+              <div class="col-lg-5">
+                <div class="d-flex justify-content-start align-items-center">
+                  <img src="assets/Images/home/Sanabad_logo.png" alt="sanabad logo" class="footer-logo">
+                  <h5 class="fw-bold pt-2 me-3">کلینیک شبانه روزی سناباد طوس </h5>
+                </div>
+                <p class="lh-lg py-2" style="text-align: justify;">
+                  درمانگاه سناباد با همت والا و همان اندیشه های ارزشی و انسانی توسط مدیران متخصص و متعهد در حرفه ی پزشکی با هدف تامین نیازهای بهداشتی و درمانی جامعه آغاز به کار نموده است.
+                </p>
+                <div class="d-flex justify-content-start align-items-center">
+                  <i class="fas fa-headset ms-3 blue-light" style="font-size: 3.2rem;"></i>
+                  <div class="d-flex flex-column pt-2">
+                    <a href="#" class="blue-light fw-bold lh-lg">
+                      به پشتیبانی نیاز دارید؟
+                    </a>
+                    <p>پیغام خود را برای ما بنویسید.</p>
+                  </div>
+                </div>
+                <div class="my-3 d-flex align-items-center gap-3" >
+                  <a href="https://www.instagram.com/sanabad_tus_clinic/profilecard/?igsh=MWE0cWVleHZ3MHRlYQ==" class="social-icon pt-1"><i class="fs-4 fab fa-instagram"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=61564892396821&mibextid=LQQJ4d" class="social-icon pt-1"><i class="fs-4 fab fa-telegram"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=61564960794237&mibextid=LQQJ4d" class="social-icon pt-1"><i class="fs-4 fab fa-facebook"></i></a>
+                  <a href="https://youtube.com/@drmajdmohsenibirjandi?si=JjfZ3J42ynsiuGEB" class="social-icon pt-1"><i class="fs-4 fab fa-youtube"></i></a>
+                  <a href="https://www.instagram.com/dr.majd.mohseni.birjandi?igsh=MXZteW9oNmI4eXZkag%3D%3D&utm_source=qr" class="social-icon pt-1"><i class="fs-4 fas fa-video"></i></a>
+                </div>
+              </div>
+              <div class="col-lg-4 pe-5">
+                  <h5 class="fw-bold pt-2 pb-3 border-bottom border-3 border-light">با ما تماس بگیرید</h5>
+                  <p class="lh-lg">
+                    <i class="fas fa-map-marker-alt ms-2 blue-light"></i>
+                    آدرس کلینیک:
+                    <br>
+                    خراسان رضوی، مشهد، سناباد، بین سناباد 43 و 45 کلینیک شبانه روزی سناباد
+                  </p>
+                  <p class="lh-lg">
+                    <i class="fas fa-phone ms-2 blue-light"></i>
+                    شماره تلفن: 
+                    <br>
+                    8430606 (0513)
+                  </p>
+                  <p class="lh-lg">
+                    <i class="fas fa-envelope ms-2 blue-light"></i>
+                    ایمیل: 
+                    <br>
+                    Sanabad.tus@gmail.com
+                  </p>
+              </div>
+              <div class="col-lg-3 pe-5">
+                <h5 class="fw-bold pt-2 pb-3 border-bottom border-3 border-light">لینک های پرکاربرد</h5>
+                <p class="lh-lg">
+                  <a href="index.html" class="text-light fw-bold">خانه</a>
+                  <br>
+                  <a href="#" class="text-light fw-bold" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup">دریافت نوبت</a>
+                  <br>
+                  <a href="Acibadem.html" class="text-light fw-bold">Acibadem</a>
+                  <br>
+                  <a href="#" class="text-light fw-bold">درباره ما</a>
+                  <br>
+                  <a href="#section_7" class="text-light fw-bold">تماس با ما</a>
+                  <br>
+                  <a href="Blog.html" class="text-light fw-bold">مقالات آموزشی</a>
+                  <br>
+                  <a href="Sanabad-rules.html" class="text-light fw-bold">حریم خصوصی امنیت</a>
+                </p>
+              </div>
+            </div>
+                
+          </div>
+          <div class="bg-secondary mt-5">
+            <h6 class="fw-bold text-white py-2 text-center mb-0 lh-lg">
+                کلیه حقوق محفوظ و متعلق به سایت کلینیک شبانه‌روزی سناباد است؛ بازنشر مطلب فقط با ذکر لینک مستقیم مجاز است.
+            </h6>
+          </div>
+        </footer>  
+        <!--پایان فوتر-->
+    </main>
+    <!--پایان محتوای اصلی-->
+    <!--scripts-->
+    <!--bootstrap javascript cdn-->
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/header-footer.js"></script>
+    <script src="assets/scripts/home.js"></script>
+    <script src="assets/vendor/js/particles.min.js"></script>
+    <!--ScrollReveal-->
+    <script src="assets/vendor/js/scrollreveal.js"></script>
+    <script src="assets/vendor/js/lottie.min.js"></script>
+    <script>
+      const sendBtn = document.getElementById('sendBtn');
+      const toastElement = document.getElementById('liveToast');
+
+      const toast = new bootstrap.Toast(toastElement, {
+        delay: 5000,     // مدت زمان نمایش: ۵ ثانیه
+        autohide: true   // مخفی شدن خودکار
+      });
+
+      sendBtn.addEventListener('click', function () {
+        setTimeout(() => {
+          toast.show();
+        }, 300); // صبر می‌کنیم تا مودال بسته بشه
+      });
+      //انیمیشن فوتر
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 100,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": "#28b6f6"
+          },
+          "shape": {
+            "type": "circle"
+          },
+          "opacity": {
+            "value": 0.5
+          },
+          "size": {
+            "value": 3
+          },
+          "move": {
+            "enable": true,
+            "speed": 2
+          }
+        },
+        "interactivity": {
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse"
+            }
+          }
+        },
+        "retina_detect": true
+      });
+      lottie.loadAnimation({
+        container: document.getElementById('lottie-bg'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'assets/Images/home/final-login-animation.json'
+      });
+      lottie.loadAnimation({
+        container: document.getElementById('lottie-bg2'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'assets/Images/home/messege2-clean.json'
+      });
+      //دکمه ورود یا ایجاد حساب کاربری
+      const userBtn = document.getElementById('user-btn');
+      const footer = document.querySelector('footer');
+      tippy(userBtn, {
+        content: 'ورود یا ایجاد حساب کاربری',
+        placement: 'left',
+        animation: 'scale-subtle',
+        theme: 'sanabad-login-theme',
+        duration: [300, 200],
+        arrow: true,
+      });
+      window.addEventListener('scroll', () => {
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (footerTop < windowHeight) {
+          userBtn.style.opacity = '0';
+          userBtn.style.pointerEvents = 'none';
+        } else {
+          userBtn.style.opacity = '1';
+          userBtn.style.pointerEvents = 'auto';
+        }
+      });
+      //scroll animation
+      if (window.innerWidth > 768)
+      {
+        ScrollReveal().reveal('.zoom-in', {
+          scale: 0.8,
+          duration: 1800,
+          reset: true,
+        });
+        ScrollReveal().reveal('.wave-bottom', {
+          origin: 'bottom',
+          distance: '60px',
+          duration: 1300,
+          easing: 'ease-in-out',
+          interval: 200,
+          reset: true,
+          opacity: 0,
+        });
+        ScrollReveal().reveal('.zoom-soft', {
+          scale: 0.85,
+          opacity: 0,
+          duration: 1300,
+          easing: 'ease-in-out',
+          reset: false,
+        });
+        ScrollReveal().reveal('.zoom-soft-top', {
+          scale: 0.85,
+          opacity: 0,
+          duration: 1300,
+          easing: 'ease-in-out',
+          reset: true,
+        });
+        ScrollReveal().reveal('.slide-left-shadow', {
+          origin: 'right',
+          distance: '80px',
+          duration: 1300,
+          opacity: 0,
+          easing: 'ease-in-out',
+          reset: true,
+        });
+      }
+      //بیمار اتباع خارجی است
+      function toggleIDNumberField(checkbox) 
+      {
+          const input = document.getElementById('nationalCode');
+          const input_text_1 = document.getElementsByClassName('nationalCode_lbl').item(0);
+          const input_text_2 = document.getElementsByClassName('nationalCode_lbl').item(1);
+
+          if (checkbox.checked) {
+              input.disabled = true;
+              input_text_1.classList.add('text-muted');
+              input_text_2.classList.add('text-muted');
+          } else {
+              input.disabled = false;
+              input_text_1.classList.remove('text-muted');
+              input_text_2.classList.remove('text-muted');
+
+          }
+      }
+    </script>    
+</body>
+</html>

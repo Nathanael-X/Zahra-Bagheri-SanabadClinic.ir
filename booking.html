@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <title>رزرو نوبت | کلینیک سناباد طوس</title>
+        <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+        <meta name="title" content="sanabad toos hospital" />
+        <meta name="description" content="برای دریافت نوبت از پزشکان مجموعه کلینیک شبانه روزی سناباد کلیک کنید" /><!--description for home page to increase seo-->
+        <meta http-equiv="content-language" content="fa" />
+        <meta name="keywords" content=" بهترین جراح مغز و اعصاب مشهد,کلینیک شبانه روزی سناباد,سناباد,درمانگاه شبانه روزی,آب درمانی,فیزیوتراپی,پزشکی,سلامت,رزرو نوبت" /><!--key words for increasing seo-->
+        <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--styles-->
+        <link rel="stylesheet" type="text/css" href="assets/style/header_footer.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/style/booking.css"/>
+        <!--bootstrap css cdn-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+        <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+        <!--librearies-->
+		<!-- jQuery (مورد نیاز برای هر دو) -->
+		<script src="assets/vendor/js/jquery-3.6.0.min.js"></script>
+        <!--font awesome-->
+        <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+        <!--Swiper for date-->
+        <link rel="stylesheet" href="assets/vendor/css/swiper-bundle.min.css" />
+        <!--animation-->
+        <link rel="stylesheet" href="assets/vendor/css/animate.min.css"/>
+        <!-- Tippy.js -->
+        <link rel="stylesheet" href="assets/vendor/css/light-border.css" />
+        <script src="assets/vendor/js/popper.min.js"></script>
+        <script src="assets/vendor/js/tippy-bundle.umd.min.js"></script>
+        <style>
+            a
+            {
+            text-decoration: none !important;
+            }
+            @media (max-width: 560px)
+            {
+                .form-check-label
+                {
+                    flex-direction: column;
+                }
+
+                .div-checkbox
+                {
+                    flex-direction: row-reverse !important;
+                    justify-content: space-between !important;
+                    width: 80%;
+                }
+            }
+            /* نمایش همبرگر فقط زیر 1250px */
+            @media (max-width: 1225px) 
+            {
+                .login_Sighnup_btn,
+                .nav-full,
+                .nav-partial {
+                display: none !important;
+                }
+                #hamburgerBtn {
+                display: block !important;
+                }
+            }
+            /* نمایش partial بین 1250 تا 1399px */
+            @media (min-width: 1226px) and (max-width: 1399px) 
+            {
+                .nav-full {
+                display: none !important;
+                }
+                .nav-partial {
+                display: flex !important;
+                }
+            }
+            /* نمایش full navbar از 1400px به بالا */
+            @media (min-width: 1400px)
+            {
+                .nav-full {
+                display: flex !important;
+                }
+                .nav-partial,
+                #hamburgerBtn,
+                #mobileSidebar,
+                #sidebarBackdrop {
+                display: none !important;
+                }
+            }    
+        </style>
+    </head>
+    <body>
+        
+        <!-- دکمه ورود -->
+        <div class="login_Sighnup_btn" id="user-btn">
+            <button class="login-button"  data-tippy-content="داشبورد زهرا باقری حسن کیاده">
+                <svg
+                viewBox="0 0 24 24"
+                fill="white"
+                height="20"
+                width="20"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                <path
+                    d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"
+                ></path>
+                </svg>
+            </button>
+        </div>
+        <!--all modals-->
+        <div class="modal fade" id="bimemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="bimemodalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h5 class="modal-title" id="bimemodalLabel">انتخاب نوع بیمه</h5>
+                </div>
+                <div class="modal-body" style="text-align: justify;">
+                  در صورتی که بیمه ی شما، یکی از بیمه های تحت پوشش کلینیک شبانه روزی سناباد می باشد، مبلغ پرداختی با درنظر گرفتن بیمه محاسبه خواهد شد.
+                  <br>
+                  <div class="d-flex justify-content-center">
+                    <select class="border border-1 bg-light p-3 form-select-sm w-75 " style="border-color: #b9e9ff !important;  border-radius:10px;">
+                        <option>بیمه خود را انتخاب کنید</option>
+                        <option>تامین اجتماعی</option>
+                        <option>سلامت</option>
+                        <option>نیروهای مسلح</option>
+                        <option>بیمه دانا</option>
+                        <option>بیمه بانک ملی</option>
+                        <option>بیمه بانک سپه</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between align-items-center ">
+                  <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">لغو</button>
+                  <button type="button" class="btn btn-info text-light fw-bold w-25">ذخیره</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="takhfifModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="takhfifModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h5 class="modal-title" id="takhfifModalLabel">افزودن کد تخفیف</h5>
+                </div>
+                <div class="modal-body" style="text-align: justify;">
+                    تغییرات در مبلغ پرداختی پس از ثبت کد تخفیف شما در کادر زیر اعمال خواهد شد.
+                  <br>
+                  <div class="d-flex justify-content-center">
+                    <div class="form-floating my-3 w-75" >
+                        <input type="text" class="form-control border border-1 bg-light" id="code_takhfif" required style="border-color: #b9e9ff !important;border-radius:20px;" placeholder="کد تخفیف یا نام معرف">
+                        <label for="code_takhfif" class="form-label" style="right: 0; left: auto; text-align: right; direction: rtl;">کد تخفیف یا نام معرف</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between align-items-center ">
+                  <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">لغو</button>
+                  <button type="button" class="btn btn-info text-light fw-bold w-25">اعمال تخفیف</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="laghvModal" tabindex="-1" aria-labelledby="laghvModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                      <h5 class="modal-title" id="laghvModalLabel">
+                        <img src="assets/Images/home/Sanabad_logo.png" alt="sanabd logo" style="width: 80px;">
+                        شرایط لغو نوبت کلینیک شبانه روزی سناباد</h5>
+                    </div>
+                    <div class="modal-body p-4" style="text-align: justify;">
+                        <ul class="list-unstyled pe-0">
+                            <li class="lh-base my-3">
+                                <i class="fas fa-balance-scale ps-1"></i>
+                                امکان لغو نوبت اخذ شده فقط تا 24 ساعت قبل از موعد نوبت وجود دارد و در صورت ثبت نوبت و عدم حضور بیش از دو مرتبه، حساب کاربری شما مسدود خواهد شد.
+                            </li>
+                            <li class="lh-base my-3">
+                                <i class="fas fa-balance-scale ps-1"></i>
+                                ضروری است قبل از مراجعه به کلینیک سناباد، نوبت خود را مجددا بررسی نمایید و در تاریخ و ساعتی خارج از نوبت خود به پزشک مراجعه نفرمایید.
+                            </li>
+                            <li class="lh-base my-3">
+                                <i class="fas fa-balance-scale ps-1"></i>
+                                در صورت لغو نوبت از سوی کلینیک و یا پزشک مربوطه، با شماره همراه ثبت شده در هنگام اخذ نوبت، تماس گرفته خواهد شد.
+                            </li>
+                            <li class="lh-base my-3">
+                                <i class="fas fa-balance-scale ps-1"></i>
+                                هنگام مراجعه به کلینیک سناباد، مستقیما به بخش پذیرش پزشک مورد نظر مراجعه نموده و رسید نوبت خود را به تأیید واحد پذیرش برسانید.
+                            </li>
+                            <li class="lh-base my-3">
+                                <i class="fas fa-balance-scale ps-1"></i>
+                                ضروری است که بیمار محترم رأس ساعت تعیین شده در مطب حضور داشته باشد.
+                            </li>
+                            <li class="lh-base my-3">
+                                <i class="fas fa-balance-scale ps-1"></i>
+                                سئولیت ارائه خدمات سلامت باکیفیت و مطلوب که از طریق سایت کلینیک شبانه روزی سناباد معرفی شده اند بر عهده ی سرویس دهنده ی سلامت مورد نظر (پزشک و کادر درمان مربوط به همان بخش) می باشد.
+                            </li>
+                            <li class="lh-base my-3 text-danger">
+                                <i class="fas fa-balance-scale ps-1"></i>
+                                در صورت احتمال سوء استفاده از سامانه، حق رهگیری و پیگیری قانونی مطابق با قوانین جاری جمهوری اسلامی ایران برای سایت کلینیک شبانه روزی سناباد می باشد.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between align-items-center ">
+                      <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">بستن</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal2 هشدار -->
+        <div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="warningModalLabel">خطا</h5>
+                </div>
+                <div class="modal-body text-center pb-0">
+                <p class="fw-bold lh-lg fs-5">ابتدا خدمت مورد نظر خود را انتخاب نمایید</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-info text-white fw-bold fs-5" data-bs-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal2 هشدار -->
+        <div class="modal fade" id="warningModal2" tabindex="-1" aria-labelledby="warningModal2Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="warningModal2Label">خطا</h5>
+                </div>
+                <div class="modal-body text-center pb-0">
+                <p class="fw-bold lh-lg fs-5">لطفا پزشک موردنظر خود را انتخاب کنید</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-info text-white fw-bold fs-5" data-bs-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal3 هشدار -->
+        <div class="modal fade" id="warningModal3" tabindex="-1" aria-labelledby="warningModal3Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="warningModal3Label">خطا</h5>
+                </div>
+                <div class="modal-body text-center pb-0">
+                <p class="fw-bold lh-lg fs-5">لطفا شخص مراجعه کننده را مشخص فرمایید.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-info text-white fw-bold fs-5" data-bs-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal4 هشدار -->
+        <div class="modal fade" id="warningModal4" tabindex="-1" aria-labelledby="warningModal4Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="warningModal4Label">خطا</h5>
+                </div>
+                <div class="modal-body text-center pb-0">
+                <p class="fw-bold lh-lg fs-5">لطفا تاریخ و ساعت مراجعه را انتخاب فرمایید.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-info text-white fw-bold fs-5" data-bs-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal4.5 هشدار -->
+        <div class="modal fade" id="warningModal42" tabindex="-1" aria-labelledby="warningModal42Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="warningModal42Label">خطا</h5>
+                </div>
+                <div class="modal-body text-center pb-0">
+                <p class="fw-bold lh-lg fs-5">لطفا روز و ماه شروع اب درمانی را انتخاب نمایید.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-info text-white fw-bold fs-5" data-bs-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal5 هشدار -->
+        <div class="modal fade" id="warningModal5" tabindex="-1" aria-labelledby="warningModal5Label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="warningModal4Label">خطا</h5>
+                </div>
+                <div class="modal-body text-center pb-0">
+                <p class="fw-bold lh-lg fs-5">حداکثر ده تاریخ برای رزرو قابل انتخاب است.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-info text-white fw-bold fs-5" data-bs-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Top Bar Header -->
+        <div class="top-bar">
+            <div class="container-fluid d-flex align-items-center" >
+                <!--language selector-->
+                <div class="dropdown me-2">
+                    <a class="dropdown-toggle text-white text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-globe fs-5 ms-1 blue-light"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end text-end">
+                        <li><a class="dropdown-item" href="#">فارسی</a></li>
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                        <li><a class="dropdown-item" href="#">العربية</a></li>
+                    </ul>
+                </div>
+                <!-- Social & Login -->
+                <div class="topbar-actions d-flex align-items-center gap-3">
+                    <div class="social-icons d-flex gap-3 py-2 pe-5 ps-2">
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-telegram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <!-- Contact Info -->
+                <div class="contact-info d-flex align-items-center gap-3">
+                    <span class="text-white"><i class="bi bi-geo-alt blue-light fs-5 me-3 ms-1"></i></i>خراسان رضوی، مشهد، سناباد، بین سناباد 43 و 45، کلینیک شبانه روزی سناباد </span>
+                    <span class="text-white"><i class="bi bi-telephone blue-light fs-5 ms-1"></i> تلفن : 8430606 (0513)</span>
+                </div>
+
+            </div>
+        </div>
+        <!-- header section -->
+        <header class="bg-header text-black">
+            <div class="container-fluid py-2 px-3 d-flex align-items-center justify-content-between">  
+                <div class="d-flex">
+                        <!-- Hamburger Button (Mobile Only) -->
+                        <button class="btn d-lg-none border-0 hamburger-btn ms-4" id="hamburgerBtn">
+                            <i class="fas fa-bars text-white"></i> <!-- Bootstrap Icons -->
+                        </button>
+                        <!--search box-->
+                        <form class="search-box position-relative ms-4">
+                            <input type="text" class="form-control custom-search py-2 fs-5" placeholder="جستجوی پزشک...">
+                            <i class="bi bi-search search-icon animate-on-focus"></i>
+                        </form>
+                        <!-- Navbar (Desktop Only) -->
+                        <!-- Full Navbar (1400px به بالا) -->
+                        <nav class="d-none d-xxl-flex gap-4 align-items-center nav-full me-3 fs-5">
+                            <a href="index.html" class="link-header text-decoration-none fw-bold">صفحه اصلی</a>
+                            <div class="dropdown">
+                                <a class="dropdown-toggle link-header text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                                    واحدهای درمانگاه <i class="bi bi-caret-down-fill small"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end text-end">
+                                    <li><a class="dropdown-item" href="General-practitioner.html">دکتر عمومی</a></li>
+                                <li><a class="dropdown-item" href="Nursing-unit.html">مطب پرستاری</a></li>
+                                <li><a class="dropdown-item" href="Dentistry.html">دندان پزشکی</a></li>
+                                <li><a class="dropdown-item" href="fizioTrapy.html">فیزیوتراپی</a></li>
+                                <li><a class="dropdown-item" href="abDarmani.html">آب درمانی</a></li>
+                                <li><a class="dropdown-item" href="brain-clinic.html">جراح مغز و اعصاب</a></li>
+                                <li><a class="dropdown-item" href="Counseling.html">روانشناسی</a></li>
+                                <li><a class="dropdown-item" href="Psychoanalysis-clinic.html">اعصاب و روان</a></li>
+                                <li><a class="dropdown-item" href="Labratory.html">آزمایشگاه</a></li>
+                                <li><a class="dropdown-item" href="Nutritionist.html">متخصص تغذیه</a></li>
+                                <li><a class="dropdown-item" href="Gynecology.html">واحد زنان و زایمان</a></li>
+                                <li><a class="dropdown-item" href="hair-skin-clinic.html">متخصص پوست و مو</a></li>
+                                </ul>
+                            </div>
+                        
+                            <a href="booking.html" class="link-header text-decoration-none fw-bold active-link-sanabad">دریافت نوبت</a>
+                            <a href="#" class="link-header text-decoration-none fw-bold">درباره ما</a>
+                            <a href="index.html" class="link-header text-decoration-none fw-bold">تماس با ما</a>
+                        
+                            <div class="dropdown">
+                            <a class="dropdown-toggle link-header text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                                مطالب بیشتر <i class="bi bi-caret-down-fill small"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end text-end">
+                                <li><a class="dropdown-item" href="Blog.html">مقالات آموزشی</a></li>
+                                <li><a class="dropdown-item" href="Acibadem.html">Acibadem</a></li>
+                            </ul>
+                            </div>
+                        </nav>
+                        <!-- Partial Navbar (1250px تا 1399px) -->
+                        <nav class="d-none d-xl-flex d-xxl-none gap-4 align-items-center nav-partial me-3 fs-5">
+                            <a href="index.html" class="link-header text-decoration-none fw-bold">صفحه اصلی</a>
+                            <div class="dropdown">
+                            <a class="dropdown-toggle link-header text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
+                                واحدهای درمانگاه <i class="bi bi-caret-down-fill small"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end text-end">
+                                <li><a class="dropdown-item" href="General-practitioner.html">دکتر عمومی</a></li>
+                                <li><a class="dropdown-item" href="Nursing-unit.html">مطب پرستاری</a></li>
+                                <li><a class="dropdown-item" href="Dentistry.html">دندان پزشکی</a></li>
+                                <li><a class="dropdown-item" href="fizioTrapy.html">فیزیوتراپی</a></li>
+                                <li><a class="dropdown-item" href="abDarmani.html">آب درمانی</a></li>
+                                <li><a class="dropdown-item" href="brain-clinic.html">جراح مغز و اعصاب</a></li>
+                                <li><a class="dropdown-item" href="Counseling.html">روانشناسی</a></li>
+                                <li><a class="dropdown-item" href="Psychoanalysis-clinic.html">اعصاب و روان</a></li>
+                                <li><a class="dropdown-item" href="Labratory.html">آزمایشگاه</a></li>
+                                <li><a class="dropdown-item" href="Nutritionist.html">متخصص تغذیه</a></li>
+                                <li><a class="dropdown-item" href="Gynecology.html">واحد زنان و زایمان</a></li>
+                                <li><a class="dropdown-item" href="hair-skin-clinic.html">متخصص پوست و مو</a></li>
+                            </ul>
+                            </div>
+                            <a href="booking.html" class="link-header text-decoration-none fw-bold active-link-sanabad">دریافت نوبت</a>
+
+                            <!-- Dropdown بیشتر -->
+                            <div class="dropdown">
+                            <a class="dropdown-toggle text-decoration-none fw-bold" style="color: #1f232c !important;" href="#" data-bs-toggle="dropdown">
+                                گزینه های بیشتر
+                                <i class="bi bi-caret-down-fill small"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end text-end">
+                                <li><a class="dropdown-item" href="#">درباره ما</a></li>
+                                <li><a class="dropdown-item" href="index.html">تماس با ما</a></li>
+                                <li><a class="dropdown-item" href="Blog.html">مقالات آموزشی</a></li>
+                                <li><a class="dropdown-item" href="Acibadem.html">Acibadem</a></li>
+                            </ul>
+                            </div>
+                        </nav>
+                </div>
+                <!-- Logo -->
+                <div class="d-flex align-items-center gap-2">
+                    <img src="assets/Images/home/Sanabad_logo_title.png" alt="sanabad clinic logo" class="header-logo"/>
+                </div>
+            </div>
+        
+            <!-- Sidebar for Mobile -->
+            <div id="mobileSidebar" class="mobile-sidebar">
+            <div class="d-flex justify-content-center flex-column align-items-center p-3 border-bottom">
+                <img src="assets/Images/home/Sanabad_logo.png" alt="sanabad clinic logo" class="header-logo-mb pulse-logo"/>
+                <h4 class="my-2 fw-bold">درمانگاه شبانه روزی سناباد</h4>
+            </div>
+            <div class="p-3 d-flex flex-column gap-3 fs-5">
+                <a href="index.html" class="blue-dark text-decoration-none"><i class="fas fa-home ms-2 small"></i>صفحه اصلی</a>
+                <a href="booking.html" class="blue-dark text-decoration-none active-link-sanabad"><i class="fas fa-calendar-check ms-2 small"></i>سیستم نوبت‌دهی</a>
+                <!-- آکاردئون واحدهای درمانگاه -->
+                <div class="accordion bg-transparent" id="clinicUnitsAccordion">
+                    <div class="accordion-item bg-transparent border-0">
+                    <h2 class="accordion-header d-flex align-items-center">
+                        <i class="fas fa-heart-pulse fs-5 ms-2 small"></i>
+                        <button class="accordion-button collapsed bg-transparent blue-dark px-0 d-flex justify-content-between fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#unitsCollapse">
+                            واحدهای درمانگاه
+                        <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </h2>
+                    <div id="unitsCollapse" class="accordion-collapse collapse" data-bs-parent="#clinicUnitsAccordion">
+                        <div class="accordion-body px-0">
+                            <ul class="list-unstyled blue-dark">
+                                <li><a class="dropdown-item" href="General-practitioner.html">دکتر عمومی</a></li>
+                                <li><a class="dropdown-item" href="Nursing-unit.html">مطب پرستاری</a></li>
+                                <li><a class="dropdown-item" href="Dentistry.html">دندان پزشکی</a></li>
+                                <li><a class="dropdown-item" href="fizioTrapy.html">فیزیوتراپی</a></li>
+                                <li><a class="dropdown-item" href="abDarmani.html">آب درمانی</a></li>
+                                <li><a class="dropdown-item" href="brain-clinic.html">جراح مغز و اعصاب</a></li>
+                                <li><a class="dropdown-item" href="Counseling.html">روانشناسی</a></li>
+                                <li><a class="dropdown-item" href="Psychoanalysis-clinic.html">اعصاب و روان</a></li>
+                                <li><a class="dropdown-item" href="Labratory.html">آزمایشگاه</a></li>
+                                <li><a class="dropdown-item" href="Nutritionist.html">متخصص تغذیه</a></li>
+                                <li><a class="dropdown-item" href="Gynecology.html">واحد زنان و زایمان</a></li>
+                                <li><a class="dropdown-item" href="hair-skin-clinic.html">متخصص پوست و مو</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <a href="#" class="blue-dark text-decoration-none"><i class="fas fa-circle-info ms-2 small"></i>درباره ما</a>
+                <a id="tamas-ba-ma" href="index.html" class="blue-dark text-decoration-none"><i class="fas fa-phone-volume ms-2 small"></i>تماس با ما</a>
+                <a href="#" class="blue-dark text-decoration-none"><i class="fa-solid fa-user ms-2 small"></i>داشبورد من</a>
+                <!--آکاردئون مطالب بیشتر-->
+                <div class="accordion bg-transparent" id="scientificAccordion">
+                    <div class="accordion-item bg-transparent border-0">
+                    <h2 class="accordion-header d-flex align-items-center">
+                        <i class="fas fa-newspaper fs-5 ms-2 small"></i>
+                        <button class="fs-5 accordion-button collapsed bg-transparent blue-dark px-0 d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#scienceCollapse">
+                            مطالب بیشتر
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </h2>
+                    <div id="scienceCollapse" class="accordion-collapse collapse" data-bs-parent="#scientificAccordion">
+                        <div class="accordion-body px-0">
+                        <ul class="list-unstyled blue-dark">
+                            <li class="py-1"><a href="Blog.html" class="blue-dark text-decoration-none">مقالات آموزشی</a></li>
+                            <li class="py-1"><a href="Acibadem.html" class="blue-dark text-decoration-none">Acibadem</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- آکاردئون انتخاب زبان -->
+                <div class="accordion bg-transparent" id="choosing-lang">
+                    <div class="accordion-item bg-transparent border-0">
+                    <h2 class="accordion-header d-flex align-items-center">
+                        <i class="fas fa-globe fs-5 ms-2 small"></i>
+                        <button class="fs-5 accordion-button collapsed bg-transparent blue-dark px-0 d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#langCollapse">
+                            انتخاب زبان
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </h2>
+                    <div id="langCollapse" class="accordion-collapse collapse" data-bs-parent="#choosing-lang">
+                        <div class="accordion-body px-0">
+                        <ul class="list-unstyled blue-dark">
+                            <li class="py-1"><a href="#" class="blue-dark text-decoration-none">فارسی</a></li>
+                            <li class="py-1"><a href="#" class="blue-dark text-decoration-none">English</a></li>
+                            <li class="py-1"><a href="#" class="blue-dark text-decoration-none">العربية</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <hr class="bg-white" />
+        
+                <div class="blue-dark fs-5">
+                <i class="fas fa-location-dot ms-2 small"></i> آدرس: مشهد، سناباد، بین سناباد ۴۳ و ۴۵
+                </div>
+                <div class="blue-dark fs-5">
+                <i class="fas fa-phone-alt ms-2 small"></i> تلفن: ۰۵۱۳۸۴۳۰۶۰۶
+                </div>
+        
+                <div class="d-flex gap-5 mt-5 justify-content-start">
+                    <a href="#" class="blue-dark"><i class="fab fa-telegram-plane fs-3"></i> </a>
+                    <a href="#" class="blue-dark"><i class="fab fa-instagram fs-3"></i></a>
+                    <a href="#" class="blue-dark"><i class="fab fa-whatsapp fs-3"></i></a>
+                    <a href="#" class="blue-dark"><i class="fab fa-youtube fs-3"></i></a>
+                </div>
+            </div>
+            </div>
+            <!-- Backdrop -->
+            <div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+        </header>
+        <!--end of header-->
+        <!--آغاز محتوای اصلی-->
+        <main class="container-fluid px-0">
+            <!--بنر صفحه ی رزرو نوبت-->
+            <div class="page-header d-flex flex-column flex-md-row rounded-0 position-relative">
+                <!-- ناحیه ذرات -->
+                <div id="particles-js-banner" class="position-absolute top-0 start-0 w-100 h-100 z-n1"></div>
+                <!--محتوای بنر-->
+                <div class="col-12 p-5 text-center position-relative z-1">
+                    <h1 class="fw-bold text-white mb-1 lh-lg">
+                        سامانه رزرو نوبت کلینیک شبانه روزی سناباد
+                    </h1>
+                    <h5 class="d-block text-white mt-4" id="shoar">
+                        سلامتی شما در زندگی، اولویت نخست ما است.
+                    </h5>
+                </div>
+            </div>
+            <div class="card">
+                        <!--step header start-->
+                        <div class="card-header bg-light border-bottom px-lg-5">
+                            <div class="bs-stepper-header" role="tablist">
+                                <!--انتخاب خدمت-->
+                                <div class="step" data-target="#step-1">
+                                    <div class="d-grid text-center align-items-center">
+                                        <button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger1" aria-controls="step-1">
+                                            <span class="bs-stepper-circle">1</span>
+                                        </button>
+                                        <h6 class="bs-stepper-label d-none d-md-block">انتخاب خدمت</h6>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <!-- انتخاب پزشک -->
+                                <div class="step" data-target="#step-2">
+                                    <div class="d-grid text-center align-items-center">
+                                        <button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger2" aria-controls="step-2">
+                                            <span class="bs-stepper-circle" id="steppertrigger2_number">2</span>
+                                        </button>
+                                        <h6 class="bs-stepper-label d-none d-md-block" id="steppertrigger2_title">انتخاب پزشک</h6>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <!-- اطلاعات مراجع -->
+                                <div class="step" data-target="#step-3">
+                                    <div class="d-grid text-center align-items-center">
+                                        <button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger3" aria-controls="step-3">
+                                            <span class="bs-stepper-circle">3</span>
+                                        </button>
+                                        <h6 class="bs-stepper-label d-none d-md-block">اطلاعات مراجع</h6>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <!-- انتخاب تاریخ و زمان -->
+                                <div class="step" data-target="#step-4">
+                                    <div class="d-grid text-center align-items-center">
+                                        <button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger4" aria-controls="step-4">
+                                            <span class="bs-stepper-circle">4</span>
+                                        </button>
+                                        <h6 class="bs-stepper-label d-none d-md-block">انتخاب تاریخ و زمان</h6>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <!--ثبت و پرداخت-->
+                                <div class="step" data-target="#step-5">
+                                    <div class="d-grid text-center align-items-center">
+                                        <button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger5" aria-controls="step-5">
+                                            <span class="bs-stepper-circle">5</span>
+                                        </button>
+                                        <h6 class="bs-stepper-label d-none d-md-block">ثبت و پرداخت</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Step Buttons END -->
+                        </div>
+                        <!-- محتوای مراحل -->
+                        <div class="card-body">
+                            <div class="bs-stepper-content">
+                                <!-- محتوای مرحله 1 -->
+                                <div id="step-1" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger1">
+                                    <h6 class="my-4 text-center lh-lg mx-5 level1-title">
+                                        در کلینیک شبانه‌روزی سناباد، هر لحظه از وقت شما ارزشمند است؛ با انتخاب خدمات تخصصی ما، به سلامت و رفاه خود سرمایه‌گذاری کنید.
+                                        <br>
+                                        امروز تصمیم بگیرید و فردای سالم‌تر و پرانرژی‌تری داشته باشید؛ <span class="blue-light fw-bold">با خدمات متنوع و تخصصی کلینیک شبانه‌روزی سناباد</span>، سلامت خود را به بهترین دست‌ها بسپارید.
+                                    </h6>
+                                    <form  onsubmit="return false">
+                                        <div class="container py-3">
+                                            <div class="d-flex flex-column gap-5">
+                                                <div class="row card-holder text-center">
+                                                    <!-- کارت آب درمانی -->
+                                                    <div class="col-lg-3">
+                                                      <label for="medical_services1" class="h-100 medical-card">
+                                                        <div class="card h-100 border-0 shadow position-relative medical-selector">
+                                                          <div class="position-relative">
+                                                            <img src="assets/Images/Booking/abdarmani.png" alt="آب درمانی کلینیک شبانه روزی سناباد" class="card-img-top rounded-3">
+                                                            <div class="position-absolute bottom-0 start-0 bg-dark-op px-3 py-1 m-2 rounded text-white">
+                                                              <small><i class="bi bi-people-fill ms-2"></i>8 نوبت خالی برای امروز</small>
+                                                            </div>
+                                                          </div>
+                                                          <div class="card-body">
+                                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                              <h5 class="card-title mb-0">آب درمانی</h5>
+                                                              <div class="form-check">
+                                                                <div class="medical-radio"></div>
+                                                              </div>
+                                                            </div>
+                                                            <p class="card-text text-muted" style="text-align: justify;">
+                                                                روشی طبیعی برای تسکین درد و بهبود سلامت.
+                                                          </p>
+                                                            
+                                                            <div class="d-flex mb-1 flex-wrap">
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                    <i class="bi bi-droplet me-1"></i> ریلکسیشن
+                                                                </span>
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                    <i class="bi bi-droplet me-1"></i> رفع گرفتگی عضلات
+                                                                </span>
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                    <i class="bi bi-droplet me-1"></i> افزایش انعطاف
+                                                                </span>
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                    <i class="bi bi-droplet me-1"></i> بهبود جریان خون
+                                                                </span>
+                                                            </div>
+                                                          </div>
+                                                          <div class="card-footer bg-dark-op border-0 pb-3">
+                                                            <div class="d-flex justify-content-between align-items-center card-footer-vewlarge">
+                                                              <div>
+                                                                <a href="#" class="blue-light fw-bold">
+                                                                    نمایش جزئیات بیشتر
+                                                                </a>
+                                                              </div>
+                                                              <input type="radio" class="btn-check" name="medical-services" id="medical_services1">
+                                                                <a class="btn btn-outline-primary rounded-pill px-4 pt-2 choosen-btn" href="#nst1">انتخاب</a>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                      </label>
+                                                    </div>
+                                                    <!--کارت فیزیوتراپی-->
+                                                    <div class="col-lg-3">
+                                                      <label for="medical_services2" class="h-100 medical-card">
+                                                          <div class="card h-100 border-0 shadow position-relative medical-selector">
+                                                            <div class="position-relative">
+                                                              <img src="assets/Images/Booking/Physiotherapy.png" alt="فیزیوتراپی کلینیک سناباد" class="card-img-top rounded-3">
+                                                              <div class="position-absolute bottom-0 start-0 bg-dark-op px-3 py-1 m-2 rounded text-white">
+                                                                <small><i class="bi bi-people-fill ms-2"></i>5 نوبت خالی برای امروز</small>
+                                                              </div>
+                                                            </div>
+                                                            <div class="card-body">
+                                                              <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                <h5 class="card-title mb-0">فیزیوتراپی</h5>
+                                                                <div class="form-check">
+                                                                  <div class="medical-radio"></div>
+                                                                </div>
+                                                              </div>
+                                                              <p class="card-text text-muted" style="text-align: justify;">
+                                                                بهبود دردهای عضلانی و حرکتی با خدمات فیزیوتراپی تخصصی کلینیک سناباد                                                            
+                                                              </p>
+                                                              <div class="d-flex mb-1 flex-wrap">
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                  <i class="bi-activity me-1"></i> توانبخشی حرکتی
+                                                                </span>
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                  <i class="bi-activity me-1"></i> درمان اسیب
+                                                                </span>
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                  <i class="bi-activity me-1"></i> اصلاح مفاصل
+                                                                </span>
+                                                                <span class="badge bg-light-op text-dark me-1 mb-2 py-2 px-2 rounded-pill">
+                                                                    <i class="bi-activity me-1"></i> بازتوانی پس از جراحی
+                                                                  </span>
+                                                              </div>
+                                                            </div>
+                                                            <div class="card-footer bg-dark-op border-0 pb-3">
+                                                                <div class="d-flex justify-content-between align-items-center card-footer-vewlarge">
+                                                                  <div>
+                                                                    <a href="#" class="blue-light fw-bold">
+                                                                        نمایش جزئیات بیشتر
+                                                                    </a>
+                                                                  </div>
+                                                                  <input type="radio" class="btn-check" name="medical-services" id="medical_services2">
+                                                                  <a class="btn btn-outline-primary rounded-pill px-4 pt-2 choosen-btn" href="#nst1">انتخاب</a>
+                                                                </div>
+                                                              </div>
+                                                          </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-start pt-5" id="nst1">
+                                                <button id="next-step1" class="btn btn-sanabad px-4 py-2 rounded-pill fw-bold">
+                                                    <span>مرحله بعد</span>
+                                                    <i class="fa-solid fa-circle-arrow-left me-2 mt-1"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                    
+                                <!-- محتوای مرحله 3 -->
+                                <div id="step-3" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger3">
+                                    <!-- بیمه مسلح هشدار -->
+                                    <div class="modal fade" id="mosalah_bime" tabindex="-1" aria-labelledby="mosalah_bimeLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-dark text-white">
+                                            <h5 class="modal-title" id="mosalah_bimeLabel">قابل توجه افراد تحت پوشش نیروهای مسلح</h5>
+                                            </div>
+                                            <div class="modal-body text-right pb-0" style="text-align:justify !important;">
+                                            <p class="lh-lg">درصورتی که تحت پوشش بیمه ی نیروهای مسلح جانبازی هستید، برای دریافت نوبت و برخورداری از تخفیفات ویژه به بخش پذیرش درمانگاه مراجعه نمایید.</p>
+                                            </div>
+                                            <div class="modal-footer justify-content-center">
+                                            <button type="button" class="btn btn-info text-white fw-bold fs-5" data-bs-dismiss="modal">متوجه شدم</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <h6 class="my-3 text-center lh-lg mx-5">
+                                        <strong>
+                                            یک سیستم هوشمند برای مدیریت سلامت خود و همراهان‌تان.
+                                        </strong>
+                                        <br>
+                                        <span class="title-lvl3">
+                                            شما می‌توانید نوبت را برای خودتان یا یکی از اعضای خانواده/همراهان‌تان رزرو کنید.
+                                         در صورت انتخاب <span class="blue-light fw-bold">"شخص دیگر"</span>، لطفا در پرکردن اطلاعات فرم دقت فرمایید.
+                                        </span>
+                                    </h6>
+                                    <form onsubmit="return false" >
+                                        <div class="flex-column gap-5 align-items-center justify-content-center">
+                                            <div class="row text-center">
+                                                <div class="col-12 my-2">
+                                                    <div class="container d-flex flex-column align-items-center justify-content-center gap-3 w-75">
+                                                            <div class="whos-order d-flex flex-column align-items-start p-3 w-100">
+                                                                <strong class="fs-5">مراجعه کننده</strong>
+                                                                <p class="mb-2" style="text-align: right !important;">مراجعه‌کننده‌ی این نوبت چه کسی است؟</p>
+                                                                
+                                                                <div id="person-list" class="w-100">
+                                                                  <div class="form-check person-option mb-2 px-0">
+                                                                    <label class="form-check-label d-flex justify-content-between align-items-center" for="femail_zahra">
+                                                                      <p>
+                                                                        <span id="self-userName"> زهرا باقری حسن کیاده</span> (خودم)<br>
+                                                                        <small class="text-muted lh-lg" id="self-phoneNumber">09925450351</small>
+                                                                      </p>
+                                                                      <p class="d-flex flex-column gap-3 align-items-center justify-content-center div-checkbox">
+                                                                        <input class="form-check-input" type="radio" name="person_pationt" id="femail_zahra">
+                                                                        <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#editPersonModal">✎ ویرایش</a>
+                                                                      </p>
+                                                                    </label>
+                                                                  </div>
+                                                                </div>
+                                                              
+                                                                <button class="btn btn-outline-primary mt-auto" data-bs-toggle="modal" data-bs-target="#addPersonModal" style="width: 95%; place-self:center;">
+                                                                    + دریافت نوبت برای شخص دیگر
+                                                                </button>
+                                                            </div>
+                                                            <div class="whos-order d-flex flex-column align-items-start p-3 w-100">
+                                                                <strong class="fs-5">لطفا علت مراجعه خود را مشخص کنید</strong>
+                                                                <p class="mb-2" style="text-align: right !important;">انتخاب علت مراجعه، باعث بهبود برنامه‌ریزی و کاهش زمان انتظار شما خواهد شد.</p>
+                                                                <!--علت مراجعه به فیزیوتراپی-->
+                                                                <div class="mb-3" id="reason-for-Fiziotrapy" style="display: none;">
+                                                                    <select class="border border-1 bg-light p-2 form-select-sm w-100" id="visitReason6" required
+                                                                            style="border-color: #b9e9ff !important;  border-radius:10px;">
+                                                                      <option value="" selected disabled>لطفاً علت مراجعه را انتخاب نمایید</option>
+                                                                      <option>درد گردن یا شانه</option>
+                                                                        <option>کمردرد مزمن یا حاد</option>
+                                                                        <option>درمان آرتروز زانو یا لگن</option>
+                                                                        <option>بازتوانی بعد از عمل جراحی</option>
+                                                                        <option>توان‌بخشی بعد از سکته مغزی</option>
+                                                                        <option>درمان دیسک کمر یا گردن</option>
+                                                                        <option>مشکلات حرکتی ناشی از آسیب ورزشی</option>
+                                                                        <option>درمان سندرم تونل کارپال</option>
+                                                                        <option>درمان آسیب‌های تاندونی و عضلانی</option>
+                                                                        <option>اختلالات تعادل و سرگیجه</option>
+                                                                        <option>بازتوانی پس از شکستگی یا گچ‌گیری</option>
+                                                                        <option>درمان پای پرانتزی یا صافی کف پا</option>
+                                                                        <option>سفتی عضلات یا محدودیت حرکتی</option>
+                                                                        <option>درمان دردهای سیاتیکی</option>
+                                                                        <option>فیزیوتراپی در دوران بارداری یا پس از زایمان</option>
+                                                                        <option>درمان اسکولیوز یا انحراف ستون فقرات</option>
+                                                                        <option>الکتروتراپی و تحریک عضلات</option>
+                                                                        <option>توان‌بخشی بیماران MS یا پارکینسون</option>
+                                                                        <option>ورزش‌درمانی تخصصی برای سالمندان</option>
+                                                                        <option>درمان خشکی مفاصل پس از بی‌حرکتی</option>
+                                                                    </select>
+                                                                </div>
+                                                                <!--علت مراجعه به آب درمانی-->
+                                                                <div class="mb-3" id="reason-for-Abdarmani" style="display: none;">
+                                                                    <select class="border border-1 bg-light p-2 form-select-sm w-100" id="visitReason7" required
+                                                                            style="border-color: #b9e9ff !important;  border-radius:10px;">
+                                                                      <option value="" selected disabled>لطفاً علت مراجعه را انتخاب نمایید</option>
+                                                                      <option>بازتوانی پس از سکته مغزی</option>
+                                                                        <option>توان‌بخشی بعد از جراحی زانو یا لگن</option>
+                                                                        <option>آرتروز و درد مفاصل</option>
+                                                                        <option>درمان کمردرد مزمن</option>
+                                                                        <option>درمان دیسک کمر یا گردن</option>
+                                                                        <option>کاهش درد و التهاب عضلات</option>
+                                                                        <option>افزایش انعطاف‌پذیری مفاصل</option>
+                                                                        <option>افزایش تعادل و کنترل حرکتی</option>
+                                                                        <option>توان‌بخشی بیماران مبتلا به MS</option>
+                                                                        <option>درمان آسیب‌های ورزشی</option>
+                                                                        <option>توان‌بخشی پس از شکستگی اندام‌ها</option>
+                                                                        <option>درمان سفتی و خشکی عضلات</option>
+                                                                        <option>درمان صافی کف پا یا پای پرانتزی در کودکان</option>
+                                                                        <option>آب‌درمانی در بارداری و بعد از زایمان</option>
+                                                                        <option>کاهش وزن و تناسب اندام</option>
+                                                                        <option>درمان مشکلات اسکلتی عضلانی</option>
+                                                                        <option>بهبود دامنه حرکتی مفاصل</option>
+                                                                        <option>درمان آسیب‌های رباطی و تاندونی</option>
+                                                                        <option>آب‌درمانی جهت سالمندان</option>
+                                                                        <option>بازتوانی بیماران دچار فلج اندام</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="container d-flex justify-content-between py-3">
+                                        <button id="prev-step3" class="btn btn-sanabad px-4 py-2 rounded-pill fw-bold">
+                                            <i class="fa-solid fa-circle-arrow-right ms-2 mt-1"></i>
+                                            <span>مرحله قبل</span>
+                                           
+                                          </button>
+                                        <button id="next-step3" class="btn btn-sanabad px-4 py-2 rounded-pill fw-bold">
+                                            <span>مرحله بعد</span>
+                                            <i class="fa-solid fa-circle-arrow-left me-2 mt-1"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                    
+                                <!-- مرحله ۴: انتخاب تاریخ و ساعت -->
+                                <div id="step-4" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger4">
+                                    <h6 class="text-center lh-lg mx-5 my-3">
+                                    <strong>سناباد همراه شماست؛ هر روز، هر ساعت.</strong><br>
+                                    <span class="level4-title">شما می توانید از پکیج های تخفیف آب درمانی کلینیک شبانه روزی سناباد بهره مند شوید و یا از میان روزهای پیشِ‌رو، تاریخی مناسب انتخاب کرده و سپس زمان موردنظر خود را مشخص کنید.</span>
+                                    </h6>
+                                    <form onsubmit="return false">
+                                    <div class="container mt-2">
+                                        <div class="row mb-2 g-3" id="package-selector">
+                                            <div class="col-lg-4 text-center">
+                                                <label class="radio-image">
+                                                    <input type="radio" name="package" value="package-1.png" id="package_1">
+                                                    <img src="assets/Images/Booking/package-1.png" alt="package 1" class="package-card w-100">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-4 text-center">
+                                                <label class="radio-image">
+                                                    <input type="radio" name="package" value="package-2.png" id="package_2">
+                                                    <img src="assets/Images/Booking/package-2.png" alt="package 2" class="package-card w-100">
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-4 text-center">
+                                                <label class="radio-image">
+                                                    <input type="radio" name="package" value="package-3.png" id="package_3">
+                                                    <img src="assets/Images/Booking/package-3.png" alt="package 3" class="package-card w-100">
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!-- فرم انتخاب تاریخ (در ابتدا مخفی) -->
+                                            <div id="start-date-form" class="mt-4" style="display: none;">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <div>
+                                                            <div class="row g-2">
+                                                                <div class="col-12 col-lg-4 text-center">
+                                                                    <label for="date" class="form-label mb-2">تاریخ شروع را انتخاب نمایید:</label>
+                                                                </div>
+                                                                <div class="col-6 col-lg-4 text-center">
+                                                                <select id="day" class="form-select" style="border-color: #28b6f6 !important;">
+                                                                    <option value="">روز</option>
+                                                                    <option value="1">01</option>
+                                                                    <option value="2">02</option>
+                                                                    <option value="3">03</option>
+                                                                    <option value="4">04</option>
+                                                                    <option value="5">05</option>
+                                                                    <option value="6">06</option>
+                                                                    <option value="7">07</option>
+                                                                    <option value="8">08</option>
+                                                                    <option value="9">09</option>
+                                                                    <option value="10">10</option>
+                                                                    <option value="11">11</option>
+                                                                    <option value="12">12</option>
+                                                                    <option value="13">13</option>
+                                                                    <option value="14">14</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="16">16</option>
+                                                                    <option value="17">17</option>
+                                                                    <option value="18">18</option>
+                                                                    <option value="19">19</option>
+                                                                    <option value="20">20</option>
+                                                                    <option value="21">21</option>
+                                                                    <option value="22">22</option>
+                                                                    <option value="23">23</option>
+                                                                    <option value="24">24</option>
+                                                                    <option value="25">25</option>
+                                                                    <option value="26">26</option>
+                                                                    <option value="27">27</option>
+                                                                    <option value="28">28</option>
+                                                                    <option value="29">29</option>
+                                                                    <option value="30">30</option>
+                                                                    <option value="31">31</option>
+                                                                </select>
+                                                                </div>
+                                                            
+                                                                <div class="col-6 col-lg-4 text-center">
+                                                                <select id="month" class="form-select" style="border-color: #28b6f6;">
+                                                                    <option value="">ماه</option>
+                                                                    <option value="01">فروردین</option>
+                                                                    <option value="02">اردیبهشت</option>
+                                                                    <option value="03">خرداد</option>
+                                                                    <option value="04">تیر</option>
+                                                                    <option value="05">مرداد</option>
+                                                                    <option value="06">شهریور</option>
+                                                                    <option value="07">مهر</option>
+                                                                    <option value="08">آبان</option>
+                                                                    <option value="09">آذر</option>
+                                                                    <option value="10">دی</option>
+                                                                    <option value="11">بهمن</option>
+                                                                    <option value="12">اسفند</option>
+                                                                </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="non-of-packeges">
+                                        <div class="col-12">
+                                            <div class="swiper-container-wrapper">
+                                            <div class="swiper mySwiper">
+                                                <div class="swiper-wrapper" id="date-slides"></div>
+                                            </div>
+                                            <!-- دکمه‌های ناوبری -->
+                                            <div class="btn-arrow-left"><i class="fa fa-chevron-left" id="perv-ico"></i></div>
+                                            <div class="btn-arrow-right"><i class="fa fa-chevron-right" id="next-ico"></i></div>
+                                            </div>
+                                        </div>
+                                
+                                        <div class="col-12 my-2">
+                                            <div id="time-slots" class="d-flex gap-5 flex-wrap align-items-center time-for-mobile" style="justify-content: center;"></div>
+                                            <div id="available-slots-info" class="text-info text-center mt-2 fw-bold"></div>
+                                        </div>
+                                        </div>
+                                
+                                        <div class="d-flex justify-content-between py-3">
+                                        <button id="prev-step4" class="btn btn-sanabad px-4 py-2 rounded-pill fw-bold">
+                                            <i class="fa-solid fa-circle-arrow-right ms-2 mt-1"></i> مرحله قبل
+                                        </button>
+                                        <button id="next-step4" class="btn btn-sanabad px-4 py-2 rounded-pill fw-bold">
+                                            مرحله بعد <i class="fa-solid fa-circle-arrow-left me-2 mt-1"></i>
+                                        </button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                                <!-- محتوای مرحله 5 -->
+                                <div id="step-5" role="tabpanel" class="bs-stepper-pane fade" aria-labelledby="steppertrigger5">
+                                    <form onsubmit="return false">
+                                        <div class="container">
+                                            <!--پرداخت برای آب درمانی-->
+                                            <div class="row my-3" id="checkout_Ab_darmani" style="display: none;">
+                                                <!--مشخصات دکتر و زمان رزرو و بیمه و قوانین-->
+                                                <div class="col-lg-7">
+                                                    <!--متن هشدار برای ادامه جهت پرداخت-->
+                                                    <p class="text-black border border-warning p-2" style="background-color: rgb(255, 242, 184); border-radius:15px;">
+                                                        <i class="bi bi-exclamation-circle"></i>
+                                                        فرآیند نوبت گیری به پایان نرسیده است؛ لطفا برای ثبت نوبت بر روی دکمه <span class="blue-light fw-bold">پرداخت و ثبت نوبت </span>کلیک فرمایید.
+                                                    </p>
+                                                    <!--خدمت و جزئیات رزرو-->
+                                                    <div class="border p-2" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <div class="d-flex flex-column gap-2 px-3 nobat-details">
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">نوع خدمت: </p>
+                                                                <p id="abdarmani_service">آب درمانی</p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">تعداد روزهای انتخاب شده: </p>
+                                                                <p id="how_many_dayes"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">تاریخ شروع:</p>
+                                                                <p id="start_day_abdarmani"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">نام مراجعه کننده: </p>
+                                                                <p id="who_is_this"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">جنسیت مراجعه کننده: </p>
+                                                                <p id="what_gender"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--افزودن کد تخفیف-->
+                                                    <div class="border p-2 mt-3 nobat-details" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <div class="d-flex align-items-center justify-content-between px-3 py-2">
+                                                            <strong>
+                                                                <i class="bi bi-gift fs-5 ps-1"></i>
+                                                                کد تخفیف یا معرف دارید؟
+                                                            </strong>
+                                                            <a href="#" class="blue-light fw-bold" data-bs-toggle="modal" data-bs-target="#takhfifModal">
+                                                                + افزودن کد تخفیف یا معرف
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <!--با اطمینان نوبت بگیرید-->
+                                                    <div class="border p-2 mt-3 " style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <p class="fw-bold text-success pe-3">
+                                                            <i class="bi bi-patch-check fs-5 ps-1"></i>
+                                                            با اطمینان کامل نوبت خود را رزرو کنید.
+                                                        </p>
+                                                        <ul class="list-unstyled nobat-mazaya">
+                                                            <li class="py-1">
+                                                                <i class="bi bi-headset ps-1"></i>
+                                                                پشتیبانی آنلاین و تلفنی 24 ساعته
+                                                            </li>
+                                                            <li class="py-1">
+                                                                <i class="bi bi-arrow-counterclockwise ps-1"></i>
+                                                                بازگشت وجه در صورت عدم ویزیت
+                                                            </li>
+                                                            <li class="py-1">
+                                                                <i class="bi bi-x-circle ps-1"></i>
+                                                                امکان لغو نوبت <a href="#" class="blue-light" data-bs-toggle="modal" data-bs-target="#laghvModal"> (مشاهده شرایط) </a>
+                                                            </li class="py-1">
+                                                            <li>
+                                                                <i class="bi bi-clipboard2-pulse ps-1"></i>
+                                                                اطلاعات کامل و شفاف پزشکان مجموعه و خدمات درمانی
+                                                            </li class="py-1">
+                                                            <li class="py-1">
+                                                                <i class="far fa-envelope ps-1"></i>
+                                                                دریافت پیامک و یادآوری زمان نوبت
+                                                            </li>
+                                                            <li class="py-1">
+                                                                <i class="fas fa-shield-alt ps-1 "></i>
+                                                                حریم خصوصی و امنیت اطلاعات تضمین شده
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--ملاحظات-->
+                                                    <div class="border p-2 mt-3 d-flex flex-column align-items-start justify-content-center" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <strong class="px-3 py-2">
+                                                            <i class="bi bi-exclamation-circle"></i>
+                                                            ملاحظات
+                                                        </strong>
+                                                        <p class="text-secondary px-3 lh-lg">
+                                                            هزینه ی پرداختی شامل مبلغ ویزیت کامل است و هزینه ای برای ویزیت در مطب دریافت نمی گردد.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <!--جزئیات پرداخت-->
+                                                <div class="col-lg-5">
+                                                    <p class="text-black border border-warning p-2 mt-3 mt-md-0" style="background-color: rgb(255, 242, 184); border-radius:15px;">
+                                                         <i class="far fa-clock"></i>
+                                                         زمان باقی مانده برای ثبت نوبت:
+                                                        <span id="timer-text">20:00</span>
+                                                    </p>
+                                                    <div class="border p-2" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <p>
+                                                            <strong class="px-3 lh-lg fs-5">
+                                                                <i class="bi bi-credit-card ps-1"></i> 
+                                                                جزئیات پرداخت
+                                                            </strong>
+                                                        </p>
+                                                        <div class="d-flex flex-column gap-1 px-3 nobat-details">
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">مبلغ ویزیت: </p>
+                                                                <p id="pure_price"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">هزینه زیرساخت: </p>
+                                                                <p>19,950 تومان</p>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">مبلغ قابل پرداخت: </p>
+                                                                <p class="fw-bold text-success fs-5" id="finall_price"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="border p-2 mt-3" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <p>
+                                                            <strong class="px-3 lh-lg fs-5">
+                                                               روش های پرداخت
+                                                            </strong>
+                                                        </p>
+                                                        <div class="gateway-box d-flex justify-content-between align-items-center">
+                                                            <div class="d-flex align-items-center gap-2">
+                                                              <img src="assets/Images/Booking/wallet--v1.png" class="gateway-icon" alt="کیف پول">
+                                                              <span>کیف پول سناباد</span>
+                                                            </div>
+                                                            <input type="radio" name="gateway" class="form-check-input">
+                                                        </div>
+                                                        <div class="gateway-box d-flex justify-content-between align-items-center">
+                                                            <div class="d-flex align-items-center gap-2">
+                                                              <img src="assets/Images/Booking/bank-card-back-side.png" class="gateway-icon" alt="بانک">
+                                                              <span>درگاه بانکی</span>
+                                                            </div>
+                                                            <input type="radio" name="gateway" class="form-check-input" checked>
+                                                        </div>
+                                                    </div>
+                                                    <p class="lh-lg px-3 pt-3">
+                                                        پرداخت به منزله پذیرش <a href="Sanabad-rules.html" class="fw-bold blue-light"> شرایط و قوانین </a>است.
+                                                    </p>
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <a href="bank.html" class="btn btn-outline-primary animate__animated animate__pulse animate__infinite fs-5" style="width: 95%;">ثبت و پرداخت</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--پرداخت برای فیزیوتراپی-->
+                                            <div class="row my-3" id="checkout_fizioTrapy" style="display: none;">
+                                                <!--مشخصات دکتر و زمان رزرو و بیمه و قوانین-->
+                                                <div class="col-lg-7">
+                                                    <!--متن هشدار برای ادامه جهت پرداخت-->
+                                                    <p class="text-black border border-warning p-2" style="background-color: rgb(255, 242, 184); border-radius:15px;">
+                                                        <i class="bi bi-exclamation-circle"></i>
+                                                        فرآیند نوبت گیری به پایان نرسیده است؛ لطفا برای ثبت نوبت بر روی دکمه <span class="blue-light fw-bold">پرداخت و ثبت نوبت </span>کلیک فرمایید.
+                                                    </p>
+                                                    <!--خدمت و جزئیات رزرو-->
+                                                    <div class="border p-2" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <div class="d-flex flex-column gap-2 px-3 nobat-details">
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">نوع خدمت: </p>
+                                                                <p>فیزیوتراپی</p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">تعداد جلسات رزرو شده: </p>
+                                                                <p id="how_many_dayes_forFizio"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">تاریخ شروع</p>
+                                                                <p id="start_day_fizio"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">نام مراجعه کننده: </p>
+                                                                <p id="who_is_this_fizio"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">جنسیت مراجعه کننده: </p>
+                                                                <p id="what_gender_fizio"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--افزودن بیمه-->
+                                                    <div class="border p-2 mt-3 nobat-details" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <div class="d-flex align-items-center justify-content-between px-3 py-2">
+                                                            <strong>
+                                                                <i class="bi bi-shield-check fs-5 ps-1"></i>
+                                                                دارای بیمه هستید؟
+                                                            </strong>
+                                                            <a href="#" class="blue-light fw-bold" data-bs-toggle="modal" data-bs-target="#bimemodal">
+                                                                + افزودن بیمه
+                                                            </a>
+                                                        </div>
+                                                        <p class="text-muted pe-4 lh-lg">
+                                                            افرادی که شامل بیمه نیروهای مسلح می شوند می توانند برای اطلاع از تخفیفات ویژه ، به بخش پذیرش کلینیک شبانه روزی سناباد مراجعه نمایند.
+                                                        </p>
+                                                    </div>
+                                                    <!--افزودن کد تخفیف-->
+                                                    <div class="border p-2 mt-3 nobat-details" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <div class="d-flex align-items-center justify-content-between px-3 py-2">
+                                                            <strong>
+                                                                <i class="bi bi-gift fs-5 ps-1"></i>
+                                                                کد تخفیف یا معرف دارید؟
+                                                            </strong>
+                                                            <a href="#" class="blue-light fw-bold" data-bs-toggle="modal" data-bs-target="#takhfifModal">
+                                                                + افزودن کد تخفیف یا معرف
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <!--با اطمینان نوبت بگیرید-->
+                                                    <div class="border p-2 mt-3 " style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <p class="fw-bold text-success pe-3">
+                                                            <i class="bi bi-patch-check fs-5 ps-1"></i>
+                                                            با اطمینان کامل نوبت خود را رزرو کنید.
+                                                        </p>
+                                                        <ul class="list-unstyled nobat-mazaya">
+                                                            <li class="py-1">
+                                                                <i class="bi bi-headset ps-1"></i>
+                                                                پشتیبانی آنلاین و تلفنی 24 ساعته
+                                                            </li>
+                                                            <li class="py-1">
+                                                                <i class="bi bi-arrow-counterclockwise ps-1"></i>
+                                                                بازگشت وجه در صورت عدم ویزیت
+                                                            </li>
+                                                            <li class="py-1">
+                                                                <i class="bi bi-x-circle ps-1"></i>
+                                                                امکان لغو نوبت <a href="#" class="blue-light" data-bs-toggle="modal" data-bs-target="#laghvModal"> (مشاهده شرایط) </a>
+                                                            </li class="py-1">
+                                                            <li>
+                                                                <i class="bi bi-clipboard2-pulse ps-1"></i>
+                                                                اطلاعات کامل و شفاف پزشکان مجموعه و خدمات درمانی
+                                                            </li class="py-1">
+                                                            <li class="py-1">
+                                                                <i class="far fa-envelope ps-1"></i>
+                                                                دریافت پیامک و یادآوری زمان نوبت
+                                                            </li>
+                                                            <li class="py-1">
+                                                                <i class="fas fa-shield-alt ps-1 "></i>
+                                                                حریم خصوصی و امنیت اطلاعات تضمین شده
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--ملاحظات-->
+                                                    <div class="border p-2 mt-3 d-flex flex-column align-items-start justify-content-center" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <strong class="px-3 py-2">
+                                                            <i class="bi bi-exclamation-circle"></i>
+                                                            ملاحظات
+                                                        </strong>
+                                                        <p class="text-secondary px-3 lh-lg">
+                                                            مبلغ پرداختی شما شامل هزینه‌های زیرساخت، کارمزد و «پیش پرداخت ویزیت» پزشک است و لازم است «باقیمانده مبلغ ویزیت» در مطب پرداخت شود.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <!--جزئیات پرداخت-->
+                                                <div class="col-lg-5">
+                                                    <p class="text-black border border-warning p-2" style="background-color: rgb(255, 242, 184); border-radius:15px;">
+                                                         <i class="far fa-clock"></i>
+                                                         زمان باقی مانده برای ثبت نوبت:
+                                                        <span id="timer-text2">20:00</span>
+                                                    </p>
+                                                    <div class="border p-2" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <p>
+                                                            <strong class="px-3 lh-lg fs-5">
+                                                                <i class="bi bi-credit-card ps-1"></i> 
+                                                                جزئیات پرداخت
+                                                            </strong>
+                                                        </p>
+                                                        <div class="d-flex flex-column gap-1 px-3 nobat-details">
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">مبلغ ویزیت: </p>
+                                                                <p id="pure_price_fizio"></p>
+                                                            </div>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">هزینه زیرساخت: </p>
+                                                                <p>19,950 تومان</p>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="d-flex align-items-center justify-content-between">
+                                                                <p class="fw-bold">مبلغ قابل پرداخت: </p>
+                                                                <p class="fw-bold text-success fs-5" id="finall_price_fizio"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="border p-2 mt-3" style="border-color: darkgrey; border-radius:15px; background-color: rgb(242, 245, 252);">
+                                                        <p>
+                                                            <strong class="px-3 lh-lg fs-5">
+                                                               روش های پرداخت
+                                                            </strong>
+                                                        </p>
+                                                        <div class="gateway-box d-flex justify-content-between align-items-center">
+                                                            <div class="d-flex align-items-center gap-2">
+                                                              <img src="assets/Images/Booking/wallet--v1.png" class="gateway-icon" alt="کیف پول">
+                                                              <span>کیف پول سناباد</span>
+                                                            </div>
+                                                            <input type="radio" name="gateway" class="form-check-input">
+                                                        </div>
+                                                        <div class="gateway-box d-flex justify-content-between align-items-center">
+                                                            <div class="d-flex align-items-center gap-2">
+                                                              <img src="assets/Images/Booking/bank-card-back-side.png" class="gateway-icon" alt="بانک">
+                                                              <span>درگاه بانکی</span>
+                                                            </div>
+                                                            <input type="radio" name="gateway" class="form-check-input" checked>
+                                                        </div>
+                                                    </div>
+                                                    <p class="lh-lg px-3 pt-3">
+                                                        پرداخت به منزله پذیرش <a href="Sanabad-rules.html" class="fw-bold blue-light"> شرایط و قوانین </a>است.
+                                                    </p>
+                                                    <div class="d-flex align-items-center justify-content-center">
+                                                        <a href="bank.html" class="btn btn-outline-primary animate__animated animate__pulse animate__infinite fs-5" style="width: 95%;">ثبت و پرداخت</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between py-3">
+                                                <button id="prev-step5" class="btn btn-sanabad px-4 py-2 rounded-pill fw-bold">
+                                                    <i class="fa-solid fa-circle-arrow-right ms-2 mt-1"></i> مرحله قبل
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <!--آغاز فوتر-->
+            <footer class="position-relative text-white pt-5" style="background-color: #1f232c;">
+                <!-- ناحیه ذرات -->
+                <div id="particles-js" class="position-absolute top-0 start-0 w-100 h-100 z-n1"></div>
+            
+                <!-- محتوای فوتر -->
+                <div class="container position-relative z-1">
+                <div class="row">
+                    <div class="col-lg-5">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <img src="assets/Images/home/Sanabad_logo.png" alt="sanabad logo" class="footer-logo">
+                        <h5 class="fw-bold pt-2 me-3">کلینیک شبانه روزی سناباد طوس </h5>
+                    </div>
+                    <p class="lh-lg py-2" style="text-align: justify;">
+                        درمانگاه سناباد با همت والا و همان اندیشه های ارزشی و انسانی توسط مدیران متخصص و متعهد در حرفه ی پزشکی با هدف تامین نیازهای بهداشتی و درمانی جامعه آغاز به کار نموده است.
+                    </p>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fas fa-headset ms-3 blue-light" style="font-size: 3.2rem;"></i>
+                        <div class="d-flex flex-column pt-2">
+                        <a href="#" class="blue-light fw-bold lh-lg">
+                            به پشتیبانی نیاز دارید؟
+                        </a>
+                        <p>پیغام خود را برای ما بنویسید.</p>
+                        </div>
+                    </div>
+                    <div class="my-3 d-flex align-items-center gap-3" >
+                        <a href="https://www.instagram.com/sanabad_tus_clinic/profilecard/?igsh=MWE0cWVleHZ3MHRlYQ==" class="social-icon pt-1"><i class="fs-5 fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61564892396821&mibextid=LQQJ4d" class="social-icon pt-1"><i class="fs-5 fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61564960794237&mibextid=LQQJ4d" class="social-icon pt-1"><i class="fs-5 fab fa-facebook"></i></a>
+                        <a href="https://youtube.com/@drmajdmohsenibirjandi?si=JjfZ3J42ynsiuGEB" class="social-icon pt-1"><i class="fs-5 fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/dr.majd.mohseni.birjandi?igsh=MXZteW9oNmI4eXZkag%3D%3D&utm_source=qr" class="social-icon pt-1"><i class="fs-5 fas fa-video"></i></a>
+                    </div>
+                    </div>
+                    <div class="col-lg-4 pe-5">
+                        <h5 class="fw-bold pt-2 pb-3 border-bottom border-3 border-light">با ما تماس بگیرید</h5>
+                        <p class="lh-lg">
+                        <i class="fas fa-map-marker-alt ms-2 blue-light"></i>
+                        آدرس کلینیک:
+                        <br>
+                        خراسان رضوی، مشهد، سناباد، بین سناباد 43 و 45 کلینیک شبانه روزی سناباد
+                        </p>
+                        <p class="lh-lg">
+                        <i class="fas fa-phone ms-2 blue-light"></i>
+                        شماره تلفن: 
+                        <br>
+                        8430606 (0513)
+                        </p>
+                        <p class="lh-lg">
+                        <i class="fas fa-envelope ms-2 blue-light"></i>
+                        ایمیل: 
+                        <br>
+                        Sanabad.tus@gmail.com
+                        </p>
+                    </div>
+                    <div class="col-lg-3 pe-5">
+                    <h5 class="fw-bold pt-2 pb-3 border-bottom border-3 border-light">لینک های پرکاربرد</h5>
+                    <p class="lh-lg">
+                        <a href="index.html" class="text-light fw-bold">خانه</a>
+                        <br>
+                        <a href="booking.html" class="text-light fw-bold">دریافت نوبت</a>
+                        <br>
+                        <a href="Acibadem.html" class="text-light fw-bold">Acibadem</a>
+                        <br>
+                        <a href="about-us.html" class="text-light fw-bold">درباره ما</a>
+                        <br>
+                        <a href="index.html" class="text-light fw-bold">تماس با ما</a>
+                        <br>
+                        <a href="Blog.html" class="text-light fw-bold">مقالات آموزشی</a>
+                        <br>
+                        <a href="Sanabad-rules.html" class="text-light fw-bold">حریم خصوصی امنیت</a>
+                    </p>
+                    </div>
+                </div>
+                    
+                </div>
+                <div class="bg-secondary mt-5">
+                <h6 class="fw-bold text-white py-2 text-center mb-0 lh-lg">
+                    کلیه حقوق محفوظ و متعلق به سایت کلینیک شبانه‌روزی سناباد است؛ بازنشر مطلب فقط با ذکر لینک مستقیم مجاز است.
+                </h6>
+                </div>
+            </footer>  
+            <!--پایان فوتر-->
+        </main>
+        <!--پایان محتوای اصلی-->
+        <!--scripts-->
+        <!--bootstrap javascript cdn-->
+        <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/scripts/header-footer.js"></script>
+        <script src="assets/scripts/booking.js"></script>
+        <script src="assets/vendor/js/particles.min.js"></script>
+        <!--تاریخ شمسی-->
+        <script src="assets/vendor/js/jalaali.min.js"></script>
+        <!--swiper-->
+        <script src="assets/vendor/js/swiper-bundle.min.js"></script>
+        <!-- پاپ آپ دریافت نوبت برای شخصی دیگر -->   
+        <div class="modal fade" id="addPersonModal" tabindex="-1" aria-labelledby="addPersonModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPersonModalLabel">افزودن مراجعه‌کننده جدید</h5>
+                    
+                </div>
+                <div class="modal-body">
+                <form id="addPersonForm">
+                    <div class="mb-3">
+                        <div class="form-floating mb-3" >
+                            <input type="text" class="form-control rounded-pill border border-1 bg-light pt-5 pb-3 pe-4" id="personName" required style="border-color: #b9e9ff !important;" placeholder="نام">
+                            <label for="personName" class="form-label" style="right: 0; left: auto; text-align: right; direction: rtl;">نام و نام خانوادگی <span class="blue-light">(اجباری)</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating mb-3" >
+                            <input type="text" id="personPhone" class="form-control rounded-pill border border-1 bg-light pt-5 pb-3 pe-4" required style="border-color: #b9e9ff !important;" placeholder="شماره تلفن">
+                            <label for="personPhone" class="form-label" style="right: 0; left: auto; text-align: right; direction: rtl;">شماره تلفن <span class="blue-light" id="numb-clr">(اجباری)</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-3 me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="noMobileCheck" onchange="togglePhoneField(this)">
+                        <label for="noMobileCheck">
+                            بیمار موبایل ندارد
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating mb-3" >
+                            <input type="text" id="personIDnumber" class="form-control rounded-pill border border-1 bg-light pt-5 pb-3 pe-4" required style="border-color: #b9e9ff !important;" placeholder="کد ملی">
+                            <label for="personIDnumber" class="form-label" style="right: 0; left: auto; text-align: right; direction: rtl;">کد ملی <span class="blue-light" id="id-clr">(اجباری)</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-3 me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="noIDnumberCheck" onchange=" toggleIDNumberField(this)">
+                        <label for="noIDnumberCheck">
+                            اتباع خارجی
+                        </label>
+                    </div>
+                    <!-- جنسیت -->
+                    <div class="d-flex gap-4 align-items-center pe-4 mb-3">
+                        جنسیت: 
+                        <div class="form-check d-flex justify-align-center align-items-center">
+                          <input class="form-check-input" type="radio" name="gender_forOther" id="female_forOther" value="خانم" required>
+                          <label class="form-check-label me-4" for="female_forOther" style="border:none !important; box-shadow:none !important;">
+                            خانم
+                          </label>
+                        </div>
+                        <div class="form-check d-flex justify-align-center align-items-center">
+                          <input class="form-check-input" type="radio" name="gender_forOther" id="male_forOther" value="آقا">
+                          <label class="form-check-label me-4" for="male_forOther" style="border:none !important; box-shadow:none !important;">
+                            آقا
+                          </label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-outline-primary w-25" data-bs-dismiss="modal">لغو</button>
+                        <button type="submit" class="btn btn-outline-primary" data-bs-dismiss="modal">افزودن به لیست</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!--ویرایش اطلاعات کاربر-->   
+        <div class="modal fade" id="editPersonModal" tabindex="-1" aria-labelledby="editPersonModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editPersonModalLabel">ویرایش اطلاعات مراجعه کننده</h5>
+                    
+                </div>
+                <div class="modal-body">
+                <form id="editPersonForm" onsubmit="return false">
+                    <div class="mb-3">
+                        <div class="form-floating mb-3" >
+                            <input type="text" class="form-control rounded-pill border border-1 bg-light pt-5 pb-3 pe-4" id="personNewName" required style="border-color: #b9e9ff !important;" placeholder="نام و نام خانوادگی">
+                            <label for="personNewName" class="form-label" style="right: 0; left: auto; text-align: right; direction: rtl;">نام و نام خانوادگی جدید<span class="blue-light">(اجباری)</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating mb-3" >
+                            <input type="text" id="personNewPhone" class="form-control rounded-pill border border-1 bg-light pt-5 pb-3 pe-4" required style="border-color: #b9e9ff !important;" placeholder="شماره تلفن">
+                            <label for="personNewPhone" class="form-label" style="right: 0; left: auto; text-align: right; direction: rtl;">شماره تلفن جدید<span class="blue-light" id="numb-newclr">(اجباری)</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-3 me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="noNewMobileCheck" onchange="toggleNewPhoneField(this)">
+                        <label for="noNewMobileCheck">
+                            فاقد شماره تلفن
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-floating mb-3" >
+                            <input type="text" id="personNewIDnumber" class="form-control rounded-pill border border-1 bg-light pt-5 pb-3 pe-4" required style="border-color: #b9e9ff !important;" placeholder="کد ملی">
+                            <label for="personNewIDnumber" class="form-label" style="right: 0; left: auto; text-align: right; direction: rtl;">کد ملی جدید<span class="blue-light" id="id-newclr">(اجباری)</span></label>
+                        </div>
+                    </div>
+                    <div class="mb-3 me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="noNewIDnumberCheck" onchange=" toggleNewIDNumberField(this)">
+                        <label for="noNewIDnumberCheck">
+                            اتباع خارجی
+                        </label>
+                    </div>
+                    <!-- جنسیت -->
+                    <div class="d-flex gap-4 align-items-center pe-4 mb-3">
+                        جنسیت: 
+                        <div class="form-check d-flex justify-align-center align-items-center">
+                          <input class="form-check-input" type="radio" name="gender_myself" id="female" value="خانم" required checked>
+                          <label class="form-check-label me-4" for="female" style="border:none !important; box-shadow:none !important;">
+                            خانم
+                          </label>
+                        </div>
+                        <div class="form-check d-flex justify-align-center align-items-center">
+                          <input class="form-check-input" type="radio" name="gender_myself" id="male" value="آقا">
+                          <label class="form-check-label me-4" for="male" style="border:none !important; box-shadow:none !important;">
+                            آقا
+                          </label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-outline-primary w-25" data-bs-dismiss="modal">لغو</button>
+                        <button type="submit" class="btn btn-outline-primary" data-bs-dismiss="modal" id="saveNewInfoBtn">ذخیره اطلاعات</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- مودال قوانین -->
+        <div class="modal fade" id="rulesModal" tabindex="-1" aria-labelledby="rulesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                <h5 class="modal-title" id="rulesModalLabel">ملاحضات پکیج های تخفیف کلینیک سناباد</h5>
+                <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+                </div>
+                <div class="modal-body">
+                <ul style="text-align: justify;">
+                    <li>مدت زمان مراجعه جهت کل جلسات پکیج شماره یک، یک ماه می باشد.</li>
+                    <li>مدت زمان مراجعه جهت کل جلسات پکیج شماره دو، یک ماه و نیم می باشد.</li>
+                    <li>مدت زمان مراجعه جهت کل جلسات پکیج شماره سه، دو ماه می باشد.</li>
+                    <li>کنسل شدن جلسه، در صورت اطلاع از یک هفته قبل امکان پذیر است و در صورت عدم اطلاع جلسه ی مورد نظر <span class="text-danger">حذف می گردد.</span></li>
+                    <li>در صورت کنسلی کل جلسات باقی مانده، مبلغ 10 درصد مالیات از هزینه ی پرداختی بیمار کسر گردیده و تخفیف پکیج نیز از بین می رود.</li>
+                </ul>
+                </div>
+                <div class="modal-footer">
+                <button type="button" id="understandBtn" class="btn btn-primary" data-bs-dismiss="modal">فهمیدم</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <script>
+            //انیمیشن فوتر
+            particlesJS("particles-js", {
+              "particles": {
+                "number": {
+                  "value": 100,
+                  "density": {
+                    "enable": true,
+                    "value_area": 800
+                  }
+                },
+                "color": {
+                  "value": "#28b6f6"
+                },
+                "shape": {
+                  "type": "circle"
+                },
+                "opacity": {
+                  "value": 0.5
+                },
+                "size": {
+                  "value": 3
+                },
+                "move": {
+                  "enable": true,
+                  "speed": 2
+                }
+              },
+              "interactivity": {
+                "events": {
+                  "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                  }
+                }
+              },
+              "retina_detect": true
+            });
+            //دکمه ورود یا ایجاد حساب کاربری
+            const userBtn = document.getElementById('user-btn');
+            const footer = document.querySelector('footer');
+            tippy(userBtn, {
+                content: 'داشبورد زهرا باقری حسن کیاده',
+                placement: 'left',
+                animation: 'scale-subtle',
+                theme: 'sanabad-login-theme',
+                duration: [300, 200],
+                arrow: true,
+            });
+            window.addEventListener('scroll', () => {
+                const footerTop = footer.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (footerTop < windowHeight) {
+                userBtn.style.opacity = '0';
+                userBtn.style.pointerEvents = 'none';
+                } else {
+                userBtn.style.opacity = '1';
+                userBtn.style.pointerEvents = 'auto';
+                }
+            });
+            //انیمیشن بنر
+            particlesJS("particles-js-banner", {
+                "particles": {
+                  "number": {
+                    "value": 100,
+                    "density": {
+                      "enable": true,
+                      "value_area": 800
+                    }
+                  },
+                  "color": {
+                    "value": "#28b6f6"
+                  },
+                  "shape": {
+                    "type": "circle"
+                  },
+                  "opacity": {
+                    "value": 0.8
+                  },
+                  "size": {
+                    "value": 3
+                  },
+                  "move": {
+                    "enable": true,
+                    "speed": 2
+                  }
+                },
+                "interactivity": {
+                  "events": {
+                    "onhover": {
+                      "enable": true,
+                      "mode": "repulse"
+                    }
+                  }
+                },
+                "retina_detect": true
+              });
+            
+            //بیمار تلفن ندارد
+            function togglePhoneField(checkbox) 
+                {
+                    const input = document.getElementById('personPhone');
+                    const input_text = document.getElementById('numb-clr');
+                    if (checkbox.checked) {
+                        input.disabled = true;
+                        input_text.classList.add('text-muted');
+                    } else {
+                        input.disabled = false;
+                        input_text.classList.remove('text-muted');
+                    }
+                }
+            //بیمار اتباع خارجی است
+            function toggleIDNumberField(checkbox) 
+                {
+                    const input = document.getElementById('personIDnumber');
+                    const input_text = document.getElementById('id-clr');
+                    if (checkbox.checked) {
+                        input.disabled = true;
+                        input_text.classList.add('text-muted');
+                    } else {
+                        input.disabled = false;
+                        input_text.classList.remove('text-muted');
+                    }
+                }
+            //ویرایش اطلاعات
+            //بیمار تلفن ندارد
+            function toggleNewPhoneField(checkbox) 
+                {
+                    const input = document.getElementById('personNewPhone');
+                    const input_text = document.getElementById('numb-newclr');
+                    if (checkbox.checked) {
+                        input.disabled = true;
+                        input_text.classList.add('text-muted');
+                    } else {
+                        input.disabled = false;
+                        input_text.classList.remove('text-muted');
+                    }
+                }
+            //بیمار اتباع خارجی است
+            function toggleNewIDNumberField(checkbox) 
+                {
+                    const input = document.getElementById('personNewIDnumber');
+                    const input_text = document.getElementById('id-newclr');
+                    if (checkbox.checked) {
+                        input.disabled = true;
+                        input_text.classList.add('text-muted');
+                    } else {
+                        input.disabled = false;
+                        input_text.classList.remove('text-muted');
+                    }
+                }
+        </script>
+        <!--پاپ اپ پیغام اتمام ثبت نوبت برای کاربر-->
+        <div class="modal fade" id="timeoutModal" tabindex="-1" aria-labelledby="timeoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content text-center">
+                <div class="modal-header bg-dark text-white">
+                  <h5 class="modal-title" id="timeoutModalLabel">اتمام زمان مجاز برای ثبت نوبت</h5>
+                </div>
+                <div class="modal-body">
+                  <p class="mb-0">زمان شما برای ثبت نوبت به پایان رسیده است. لطفاً دوباره تلاش کنید.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-sanabad px-4 bg-light-op" id="resetBtn" data-bs-dismiss="modal">تلاش دوباره</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>

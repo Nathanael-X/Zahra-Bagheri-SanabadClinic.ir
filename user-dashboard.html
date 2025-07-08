@@ -1,0 +1,565 @@
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <title>حساب کاربری | درمانگاه سناباد</title>
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/style/user-dashboard.css" rel="stylesheet">
+    <!--librearies-->
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <style>
+        @media(max-width:1400px) and (min-width:992px)
+        {
+            .list-desktop
+            {
+                font-size: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <!--مودال خروج از حساب کاربری-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="logoutModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                خروج از حساب</h5>
+            </div>
+            <div class="modal-body text-center">
+              آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="index.html" class="btn btn-danger w-25">خروج</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- مودال قوانین لغو نوبت -->
+    <div class="modal fade" id="cancelRulesModal" tabindex="-1" aria-labelledby="cancelRulesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content text-end">
+            <div class="modal-header bg-danger fw-bold text-white">
+            <h5 class="modal-title" id="cancelRulesModalLabel">قوانین لغو نوبت</h5>
+            <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body">
+                <ul style="text-align: justify;" class="lh-lg">
+                    <li>بیشتر از ۲۴ ساعت تا نوبت ملاقات باقی مانده است: در این صورت کل مبلغ پرداخت شده به‌صورت اعتبار برای خدمات پزشکی آتی به حساب کیف پول شما در داشبورد کاربری بازگشت داده خواهد شد و در صورت نیاز به نیاز به واریز وجه بایستی از طریق تیکت با واحد پشتیبانی تماس حاصل فرمایید.  (لازم به ذکر است که بازگشت وجه از کیف پول به حساب شخصی با کسر مالیات همراه می باشد.)</li>
+                    <li>کمتر از ۲۴ ساعت تا نوبت ملاقات باقی مانده است: در این حالت مبلغ 21,945 تومان به عنوان مبلغ رزرو نوبت، به حساب شهروند مرجوع نخواهد شد. ضمن اینکه در صورتی که بخشی از هزینه ویزیت در قالب «پیش‌پرداخت ویزیت» یا تمام مبلغ ویزیت در قالب «پرداخت کامل ویزیت»، توسط شهروندان پرداخت شده باشد، ۳۰ درصد از مبلغ پرداختی کسر شده و به حساب کلینیک شبانه روزی سناباد واریز می‌شود و باقی آن به اعتبار شهروند برمی‌گردد.</li>
+                    <li>در صورتی که شهروند به دلایلی ناشی از سمت کلینیک شبانه روزی سناباد، خدمات مورد نظر را دریافت ننماید، تا ۴ ساعت پس از زمان نوبت، با پشتیبانی تماس بگیرد تا نوبت او توسط پشتیبانی لغو یا به زمان دیگری موکول شود.</li>
+                </ul>
+            <p class="mb-0 text-danger fw-bold text-center">آیا مایل به لغو نوبت هستید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            <button type="button" class="btn btn-danger" id="confirmCancelBtn">بله، لغو شود</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <main>
+        <!--بنر-->
+        <div class="page-header d-flex flex-column flex-md-row rounded-0 position-relative">
+            <!-- ناحیه ذرات -->
+            <div id="particles-js-banner" class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 1000;"></div>
+            <!--محتوای بنر-->
+            <div class="col-12 p-5 text-center position-relative z-1">
+                <h1 class="fw-bold text-white mb-1 lh-lg" style="height: 100px;">
+                </h1>
+            </div>
+        </div>
+        <!--پروفایل کاربر-->
+        <section class="pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pb-0 px-0 mt-2 mt-md-0">
+                            <div class="row d-md-flex justify-md-content-between mt-2 mt-md-0">
+                                <div class="col-auto">
+                                    <div class="avatar position-relative">
+                                        <img class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/Images/sample-profile/prof2.png" alt="user profile">
+                                        <span class="badge text-white bg-success rounded-pill position-absolute translate-middle mt-4 mt-md-4 ms-n3 px-md-3 py-md-2" style="top: 55%; left:5%;">مراجع فعال</span>
+                                    </div>
+                                </div>
+                                <!-- Profile info -->
+                                <div class="col d-md-flex justify-content-between align-md-items-center">
+                                    <div class="my-3 me-4">
+                                        <h1 class="my-2 fs-4 fw-bold me-2" style="white-space: nowrap !important;">زهرا باقری حسن کیاده</h1>
+                                        <ul class="list-inline mb-0 px-0 fs-5">
+                                            <li class="list-inline-item mb-1 mb-md-0">
+                                                <span class="fw-light text-secondary">نام کاربری:</span>
+                                                <span class="fw-bold">zb_Nathanael</span>
+                                            </li>
+                                            <li class="list-inline-item me-3 mb-1 mb-md-0">
+                                                <span class="fw-light text-secondary">شماره تلفن: </span>
+                                                <span class="fw-bold">09152208436</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="my-3 me-5">
+                                            <!-- دکمه همبرگر که فقط در موبایل نمایش داده میشه -->
+                                            <button class="btn btn-outline-primary d-lg-none mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar">
+                                                <i class="bi bi-list fs-4"></i>
+                                            </button>
+                                            <a href="index.html" class="btn btn-outline-primary mb-0 mt-2"><i class="bi bi-house fs-4"></i></a>
+                                        <a href="booking.html" class="btn btn-outline-primary mb-0 mt-2">رزرو نوبت جدید</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--پایان پروفایل کاربر-->
+        <!--محتوای اصلی-->
+        <section class="container pb-5">
+            <!-- سایدبار به صورت offcanvas -->
+            <div class="offcanvas offcanvas-end d-lg-none bg-dark text-white" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
+                <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="userSidebarLabel">منوی کاربری</h5>
+                <div class="bg-light pe-3 px-2 py-3 rounded">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="بستن"></button>
+                </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="list-unstyled px-0" style="font-size: 20px;">
+                        <li class="py-1"><a href="user-dashboard.html" class="d-block px-2 py-2 active-link" style=" color: #1f232c;">
+                            <i class="bi bi-collection-fill ps-2"></i>
+                            لیست نوبت های من</a></li>
+                        <li class="px-2">
+                                <a href="user-ticket.html" class="text-white d-flex align-items-center justify-content-between py-3">
+                                    <span>
+                                        <i class="bi bi-question-diamond ps-2"></i>
+                                        اعلان‌ها
+                                    </span>
+                                    <span class="badge text-white bg-success rounded-pill">3</span>
+                                </a>
+                        </li> 
+                        <li class="px-2"><a href="user-card.html" class="text-white d-block py-3">
+                            <i class="bi bi-credit-card-2-front ps-2"></i>
+                            اطلاعات کارت</a></li>
+                        <li class="px-2"><a href="user-factor.html" class="text-white d-block py-3">
+                            <i class="bi bi-graph-up ps-2"></i>
+                            صورت‌حساب مالی</a></li>
+                        <li class="px-2"><a href="user-profile.html" class="text-white d-block py-3">
+                            <i class="bi bi-pencil-square ps-2"></i>
+                            ویرایش پروفایل</a></li>
+                        <li class="px-2"><a href="user-delete-account.html" class="text-white d-block py-3">
+                            <i class="bi bi-trash ps-2"></i>
+                            حذف پروفایل</a></li>
+                        <li class="px-2"><a href="#" class="text-danger d-block py-3" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt ps-2"></i>
+                            خروج از حساب</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="row">
+                <!-- سایدبار ثابت فقط در دسکتاپ -->
+                <div class="d-none d-lg-block col-lg-3">
+                    <div class="d-none d-lg-block bg-dark text-white p-4 rounded">
+                        <ul class="list-unstyled px-0 list-desktop" style="font-size: 20px;">
+                        <li class="py-1"><a href="user-dashboard.html" class="d-block px-2 py-2 active-link" style=" color: #1f232c;">
+                            <i class="bi bi-collection-fill ps-2"></i>
+                            لیست نوبت های من</a></li>
+                        <li class="px-2">
+                                <a href="user-ticket.html" class="text-white d-flex align-items-center justify-content-between py-3">
+                                    <span>
+                                        <i class="bi bi-question-diamond ps-2"></i>
+                                        اعلان‌ها
+                                    </span>
+                                    <span class="badge text-white bg-success rounded-pill">3</span>
+                                </a>
+                        </li>                            
+                        <li class="px-2"><a href="user-card.html" class="text-white d-block py-3">
+                            <i class="bi bi-credit-card-2-front ps-2"></i>
+                            اطلاعات کارت</a></li>
+                        <li class="px-2"><a href="user-factor.html" class="text-white d-block py-3">
+                            <i class="bi bi-graph-up ps-2"></i>
+                            صورت‌حساب مالی</a></li>
+                        <li class="px-2"><a href="user-profile.html" class="text-white d-block py-3">
+                            <i class="bi bi-pencil-square ps-2"></i>
+                            ویرایش پروفایل</a></li>
+                        <li class="px-2"><a href="user-delete-account.html" class="text-white d-block py-3">
+                            <i class="bi bi-trash ps-2"></i>
+                            حذف پروفایل</a></li>
+                        <li class="px-2"><a href="#" class="text-danger d-block py-3" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt ps-2"></i>
+                            خروج از حساب</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--پایان ساید بار دسکتاپ-->
+                <!--آغاز محتوای اصلی صفحه-->
+                <div class="col-12 col-lg-9">
+                    <div class="row mb-3 g-3">
+                        <div class="col-lg-3">
+                            <div class="counter-card rounded d-flex justify-content-center align-items-center gap-4 p-2">
+                                <div class="fs-3">
+                                    <i class="bi bi-collection-fill"></i>
+                                </div>
+                                <div class="pt-3 text-dark">
+                                    <h5 class="fw-bold mb-0">
+                                        <span class="counter" data-target="2">0</span>
+                                    </h5>
+                                    <p class="amar">تعداد رزروهای جاری</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="counter-card rounded d-flex justify-content-center align-items-center gap-4 p-2">
+                                <div class="fs-3">
+                                    <i class="bi bi-bell-fill"></i>
+                                </div>
+                                <div class="pt-3 text-dark">
+                                    <h5 class="fw-bold mb-0">
+                                        <span class="counter" data-target="3">0</span>
+                                    </h5>
+                                    <p class="amar">تعداد اعلان های جدید</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="counter-card rounded d-flex justify-content-center align-items-center gap-4 p-2">
+                                <div class="fs-3">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                                <div class="pt-3 text-dark">
+                                    <h5 class="fw-bold mb-0">
+                                        <span class="counter" data-target="15">0</span>
+                                    </h5>
+                                    <p class="amar">امتیاز فعلی شما</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="counter-card rounded d-flex justify-content-center align-items-center gap-4 p-2">
+                                <div class="fs-3">
+                                    <i class="fa-solid fa-wallet"></i>
+                                </div>
+                                <div class="pt-3 text-dark">
+                                    <h5 class="mb-0">
+                                        <span class="counter fw-bold" data-target="256700">0</span>
+                                    </h5>
+                                    <p class="amar">موجودی کیف پول</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="bg-light border rounded">
+                                <div class="card-header border-bottom">
+                                    <h5 class="mb-0 py-2 lh-lg">نوبت های من</h5>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <div class="table-responsive border-0">
+                                        <table class="table table-light align-middle p-4 mb-0 table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="py-3" style="border-top-right-radius: 15px;">کد رهگیری</th>
+                                                    <th scope="col" class="py-3">نام بیمار</th>
+                                                    <th scope="col" class="py-3">نام پزشک</th>
+                                                    <th scope="col" class="py-3">نام بخش</th>
+                                                    <th scope="col" class="py-3">زمان نوبت</th>
+                                                    <th scope="col" class="py-3">نوع بیمه</th>
+                                                    <th scope="col" class="py-3">مبلغ پرداختی</th>
+                                                    <th scope="col" class="py-3">وضعیت</th>
+                                                    <th scope="col" class="py-3" style="border-top-left-radius: 15px;">عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>85627639</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>دکتر مجد محسنی بیرجندی</td>
+                                                    <td>جراح مغز و اعصاب</td>
+                                                    <td>1404/02/12 - 17:30</td>
+                                                    <td>
+                                                        آزاد
+                                                    </td>
+                                                    <td>300,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        در انتظار پرداخت
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-outline-danger btn-round px-2 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو نوبت">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="bank.html" class="btn btn-outline-primary btn-round px-2 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="ادامه جهت پرداخت">
+                                                            <i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row">
+                                                    <td>85627638</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>----</td>
+                                                    <td>فیزیوتراپی</td>
+                                                    <td>1404/04/19 - 20:30</td>
+                                                    <td>
+                                                        آزاد
+                                                    </td>
+                                                    <td>300,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        پرداخت شده
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-outline-danger btn-round px-2 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو نوبت">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>85627637</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">نجمه مومنی پورکرباسدهی</h6>
+                                                    </td>
+                                                    <td>----</td>
+                                                    <td>آب درمانی</td>
+                                                    <td>1403/12/12 - 21:30</td>
+                                                    <td>
+                                                        نیروهای مسلح
+                                                    </td>
+                                                    <td>150,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        پرداخت شده
+                                                    </td>
+                                                    <td>
+                                                        ----
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row">
+                                                    <td>85627636</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">نجمه مومنی پورکرباسدهی</h6>
+                                                    </td>
+                                                    <td>آسیه پنجه شاهین</td>
+                                                    <td>متخصص تغذیه</td>
+                                                    <td>1403/09/17 - 17:30</td>
+                                                    <td>
+                                                        نیروهای مسلح
+                                                    </td>
+                                                    <td>150,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        پرداخت شده
+                                                    </td>
+                                                    <td>
+                                                        ----
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>85627635</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>مهرک دباغی</td>
+                                                    <td>متخصص پوست و مو</td>
+                                                    <td>1404/07/22 - 19:00</td>
+                                                    <td>
+                                                        آزاد
+                                                    </td>
+                                                    <td>300,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        لغو شده
+                                                    </td>
+                                                    <td>
+                                                        ----
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row">
+                                                    <td>85627644</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>دکتر مجد محسنی بیرجندی</td>
+                                                    <td>جراح مغز و اعصاب</td>
+                                                    <td>1403/03/03 - 19:30</td>
+                                                    <td>
+                                                        آزاد
+                                                    </td>
+                                                    <td>300,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        پرداخت شده
+                                                    </td>
+                                                    <td>
+                                                        ----
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>85627641</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>پزشک عمومی</td>
+                                                    <td>فرحناز بخشی</td>
+                                                    <td>1402/08/12 - 15:45</td>
+                                                    <td>
+                                                        آزاد
+                                                    </td>
+                                                    <td>300,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        پرداخت شده
+                                                    </td>
+                                                    <td>
+                                                        ----
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row">
+                                                    <td>85627642</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">نجمه مومنی پورکرباسدهی</h6>
+                                                    </td>
+                                                    <td>----</td>
+                                                    <td>فیزیوتراپی</td>
+                                                    <td>1402/06/28 - 20:00</td>
+                                                    <td>
+                                                        نیروهای مسلح
+                                                    </td>
+                                                    <td>150,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        لغو شده
+                                                    </td>
+                                                    <td>
+                                                        ----
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>85627643</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>----</td>
+                                                    <td>آب درمانی</td>
+                                                    <td>1400/05/10 - 16:00</td>
+                                                    <td>
+                                                        آزاد
+                                                    </td>
+                                                    <td>300,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        پرداخت شده
+                                                    </td>
+                                                    <td>
+                                                        ----
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row">
+                                                    <td>85627640</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">عبدالمناف باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>دکتر رضا محسنی بیرجندی</td>
+                                                    <td>متخصص اعصاب و روان</td>
+                                                    <td>1396/09/05 - 18:00</td>
+                                                    <td>
+                                                        نیروهای مسلح
+                                                    </td>
+                                                    <td>150,000 تومان
+                                                    </td>
+                                                    <td>
+                                                        در انتظار پرداخت
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-outline-danger btn-round px-2 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="لغو نوبت">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="bank.html" class="btn btn-outline-primary btn-round px-2 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="ادامه جهت پرداخت">
+                                                            <i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>                       
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <nav aria-label="صفحه بندی نوبت های رزرو شده ی کاربر" class="d-flex justify-content-center mt-4">
+                                <ul class="pagination custom-pagination px-0">
+                                  <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
+                                  </li>
+                                  <li class="page-item active"><a class="page-link" href="#">۱</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">۲</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">۳</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
+                                  </li>
+                                </ul>
+                            </nav> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <!--پایان محتوای اصلی-->
+    </main>
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/js/particles.min.js"></script>
+    <script src="assets/scripts/user-dashboard.js"></script>
+    <script>
+        //انیمیشن بنر
+        particlesJS("particles-js-banner", {
+            "particles": {
+              "number": {
+                "value": 100,
+                "density": {
+                  "enable": true,
+                  "value_area": 800
+                }
+              },
+              "color": {
+                "value": "#28b6f6"
+              },
+              "shape": {
+                "type": "circle"
+              },
+              "opacity": {
+                "value": 0.8
+              },
+              "size": {
+                "value": 3
+              },
+              "move": {
+                "enable": true,
+                "speed": 2
+              }
+            },
+            "interactivity": {
+              "events": {
+                "onhover": {
+                  "enable": true,
+                  "mode": "repulse"
+                }
+              }
+            },
+            "retina_detect": true
+          });
+    </script>
+</body>
+</html>

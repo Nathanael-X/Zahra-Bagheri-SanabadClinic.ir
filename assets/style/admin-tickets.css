@@ -1,0 +1,153 @@
+/* تب‌ها */
+.nav-tabs .nav-link {
+    background-color: white;
+    color: #1f232c;
+    border: 1px solid #e0e0e0;
+    margin-left: 5px;
+}
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #28b6f6;
+    color: black;
+    background-color: #c2ecff;
+    font-weight: bold;
+}
+/* صفحه‌بندی */
+.custom-pagination {
+    gap: 0.5rem;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+.custom-pagination .page-item {
+    margin: 0 6px;
+}
+.custom-pagination .page-link {
+    border: 1px solid #28b6f6;
+    color: #1f232c;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+.custom-pagination .page-link:hover {
+    background-color: #28b6f6;
+    color: white;
+    text-decoration: none;
+}
+.custom-pagination .page-item.active .page-link {
+    background-color: #28b6f6;
+    color: white;
+    border-color: #28b6f6;
+    font-weight: bold;
+}
+.custom-pagination .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
+}
+/* جدول */
+.table-responsive
+{
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+.table-responsive::-webkit-scrollbar 
+{
+    height: 8px;
+}
+.table-responsive::-webkit-scrollbar-thumb 
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+.table-responsive::-webkit-scrollbar-track 
+{
+    background-color: #1f232c;
+}
+.table th {
+    background-color: #c2ecff !important;
+    color: #1f232c;
+}
+.color-row td
+{
+    background-color: #c2ecff !important;
+}
+.table td 
+{
+    vertical-align: middle;
+}
+.unread_ticket
+{
+    color: #ffa600;
+    font-weight: bold;
+}
+.read_ticket
+{
+    color: #059400;
+}
+.unansweard_ticket
+{
+    color: #747474;
+}
+.blocked_ticket
+{
+    color: #ff0000;
+    font-weight: bold;
+}
+.upload-box 
+{
+    margin-top: 30px;
+    border: 2px dashed #aaa;
+    border-radius: 12px;
+    padding: 26px;
+    text-align: center;
+    background: rgb(241, 241, 241);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+.upload-box:hover 
+{
+    border-color: #28b6f6;
+}
+.upload-box.dragover 
+{
+    border-color: #2196f3;
+    background-color: #e3f2fd;
+}
+.upload-box input[type="file"] 
+{
+    display: none;
+}
+.upload-text 
+{
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.upload-icon 
+{
+    font-size: 48px;
+    color: #aaa;
+}
+.file-download-box {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: rgba(128, 128, 128, 0.1); /* خاکستری کم‌رنگ شفاف */
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease;
+}
+.file-download-box:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+}
+.file-name {
+    font-size: 15px;
+}
+.file-size {
+    font-size: 13px;
+}

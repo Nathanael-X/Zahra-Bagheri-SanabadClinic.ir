@@ -1,0 +1,398 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+html , select
+{
+    scroll-behavior: smooth;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+html::-webkit-scrollbar , select::-webkit-scrollbar
+{
+    height: 8px;
+}
+select::-webkit-scrollbar
+{
+    width: 5px;
+}
+html::-webkit-scrollbar-thumb , select::-webkit-scrollbar-thumb
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-track , select::-webkit-scrollbar-track
+{
+    background-color: #1f232c;
+}
+body
+{
+    font-family: 'IranSansX', IRANSansX  !important;
+    margin: 0;
+}
+/*دکمه انحصاری کلینیک سناباد*/
+.btn-sanabad
+{
+    font-family:IRANSansX !important;
+    background: #28B6F6 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    padding-top: 12px !important;
+}
+.btn-sanabad:hover
+{
+    color: white;
+}
+.btn-sanabad::after
+{
+    content: "";
+    background:#1F232C;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.btn-outline-primary
+{
+    border-color: #28B6F6 !important;
+    transition: 0.3s ease-in all;
+    font-weight: bold !important;
+    color: #28B6F6 !important;
+}
+.btn-outline-primary:hover
+{
+    border-color: #28B6F6 !important;
+    background-color: #28b6f6 !important;
+    color: white !important;
+}
+/*سکشن دوم کارت های بیمه روان*/
+.section_2
+{
+    background-image: url('../Images/home/section4_background.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.scroller-container 
+{
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    direction: ltr;
+    -webkit-overflow-scrolling: touch;
+}
+.scroller-track 
+{
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+}
+.scroller-track:hover 
+{
+    animation-play-state: paused;
+}
+/* انیمیشن اسکرول */
+@keyframes scroll 
+{
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.glass-card 
+{
+    backdrop-filter: blur(2px);
+    background: rgba(255, 255, 255, 0.062);
+    border-radius: 1rem;
+    box-shadow:  rgba(0, 0, 0, 0.432) 0px 0px 15px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #000;
+    margin: 0 1rem;
+    white-space: normal;
+    flex: 0 0 auto;
+    width: 300px;
+    transition: all 0.4s ease;
+    color: #000;
+    text-align: center;
+}
+.glass-card:hover
+{
+    background: rgba(182, 232, 255, 0.5);
+}
+.scroller-container 
+{
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+    direction: ltr;
+    -webkit-overflow-scrolling: touch;
+    /* مخفی کردن نوار اسکرول */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+.scroller-container::-webkit-scrollbar 
+{
+    display: none; /* Chrome, Safari */
+}
+/*آکاردیون سوالات پرتکرار*/
+.accordion-button 
+{
+    background-color: transparent;
+    box-shadow: none;
+}
+/* تغییر رفتار باز و بسته شدن */
+.accordion-collapse 
+{
+    transition: all 0.5s ease;
+}
+/* حالت باز شده */
+.accordion-collapse.show 
+{
+    opacity: 1;
+    transform: translateY(0);
+}
+/* حالت بسته */
+.accordion-collapse 
+{
+    opacity: 0;
+    transform: translateY(-10px);
+}
+/* تغییر آیکون + به - وقتی باز شد */
+.accordion-button:not(.collapsed) i::before 
+{
+    content: "\f068"; /* unicode مربوط به minus */
+    font-family: bootstrap-icons !important;
+}
+/*استایل سکشن چهارم، کارت های فلیپ*/
+.flip-card 
+{
+    background-color: transparent;
+    perspective: 1000px;
+    width: 100%;
+    height: 450px;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+.flip-card-inner 
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner,
+.flip-card.flipped .flip-card-inner 
+{
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back 
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.flip-card-front img 
+{
+    width: 75% !important;
+}
+.flip-card-front 
+{
+    background-color: #ffffff;
+    color: #333;
+    padding: 1rem;
+}
+.flip-card-back 
+{
+    background-color: #1F232C;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1rem;
+}
+/* استایل btn-outline-primary برای سناباد*/
+.btn-outline-primary
+{
+    border-color: #28B6F6 !important;
+    transition: 0.3s ease-in all;
+    font-weight: bold !important;
+    color: #28B6F6 !important;
+}
+.btn-outline-primary:hover
+{
+    border-color: #28B6F6 !important;
+    background-color: #28b6f6 !important;
+    color: white !important;
+}
+/*استایل تاریخچه*/
+.slider-section 
+{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.carousel-inner, .carousel-item, .carousel-item img 
+{
+    height: 70vh;
+    width: 100%;
+    object-fit: cover;
+}
+.overlay 
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.623) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+.carousel-caption 
+{
+    position: absolute;
+    bottom: 20%;
+    z-index: 2;
+    text-align: center;
+}
+.carousel-caption h1, 
+.carousel-caption p 
+{
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.856);
+}
+.carousel-caption p 
+{
+    font-size: 25px;
+}
+/*نقشه جغرافیایی کلینیک*/
+#taq 
+{
+    width: 100%;
+    height: 450px;
+    border-radius: 20px;
+}
+.card-glass-map
+{
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+}
+@media (min-width:992px) and (max-width:1400px)
+{
+    .cta-section1
+    {
+        flex-direction: column;
+        gap:30px;
+    }
+    .cta-btn
+    {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    .wapp
+    {
+        margin-top: 30vh;
+    }
+    .flip-card-inner div:nth-child(2) ul
+    {
+        padding: 0px !important;
+    }
+}
+@media (max-width: 768px)
+{
+    .scroller-track 
+    {
+        animation: none;
+        transform: none;
+    }
+    .cta-section1
+    {
+        flex-direction: column;
+        gap:30px;
+    }
+    .cta-btn
+    {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    .glass-card
+    {
+        width: 200px !important;
+    }
+    .glass-card img
+    {
+        width: 50% !important;
+    }
+    .flip-card.flipped .flip-card-inner 
+    {
+        transform: rotateY(180deg);
+    }
+    .carousel-caption h1 
+    {
+        font-size: 24px;
+    }
+    .carousel-caption p 
+    {
+        font-size: 16px;
+    }
+}
+@media (max-width: 990px) 
+{
+    .flip-card
+    {
+      height: 380px;
+    }
+    .flip-card-front img 
+    {
+      width: 40% !important;
+    }
+    
+}
+/* حالت هاور فقط روی دسکتاپ */
+@media (min-width: 768px) 
+{
+    .flip-card:hover .flip-card-inner 
+    {
+      transform: rotateY(180deg);
+    }
+}
+@media (max-width: 450px)
+{
+    .logo-cta
+    {
+        display: none;
+    }
+}
+@media (max-width:400px)
+{
+    .flip-card-inner div:nth-child(2) ul
+    {
+        padding: 0px !important;
+    }
+}

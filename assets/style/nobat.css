@@ -1,0 +1,273 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+body
+{
+    font-family: 'IranSansX', IRANSansX  !important;
+    margin: 0;
+}
+h4.blue-light 
+{
+    color: #28b6f6;
+}
+/* تب‌ها */
+.nav-tabs .nav-link {
+    background-color: white;
+    color: #1f232c;
+    border: 1px solid #e0e0e0;
+    margin-left: 5px;
+}
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #28b6f6;
+    color: black;
+    background-color: #c2ecff;
+    font-weight: bold;
+}
+
+/* جدول */
+.table-responsive
+{
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+.table-responsive::-webkit-scrollbar 
+{
+    height: 8px;
+}
+.table-responsive::-webkit-scrollbar-thumb 
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+.table-responsive::-webkit-scrollbar-track 
+{
+    background-color: #1f232c;
+}
+.table th {
+    background-color: #c2ecff !important;
+    color: #1f232c;
+}
+.color-row td
+{
+    background-color: #c2ecff !important;
+}
+.table td 
+{
+    vertical-align: middle;
+}
+/* برای راست‌چینی اولیه */
+.form-floating > label 
+{
+    right: 0.75rem !important;
+    left: auto !important;
+    text-align: right;
+    width: 100%;
+}
+/* برای متن داخل input */
+.form-floating > .form-control 
+{
+    direction: rtl;
+    text-align: right;
+}
+/* رفع باگ فاصله لیبل در حالت فوکوس یا پرشدن input */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > textarea:focus ~ label,
+.form-floating > textarea:not(:placeholder-shown) ~ label 
+{
+    right: 0.75rem !important;
+    left: auto !important;
+    transform-origin: right;
+    text-align: right;
+}
+/* دکمه‌ها */
+.btn-outline-primary {
+    border-color: #28b6f6;
+    color: #28b6f6;
+}
+.btn-outline-primary:hover 
+{
+    background-color: #28b6f6;
+    color: white;
+}
+.btn-outline-danger:hover 
+{
+    background-color: #dc3545;
+    color: white;
+}
+/* صفحه‌بندی */
+.custom-pagination {
+    gap: 0.5rem;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+.custom-pagination .page-item {
+    margin: 0 6px;
+}
+.custom-pagination .page-link {
+    border: 1px solid #28b6f6;
+    color: #1f232c;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+.custom-pagination .page-link:hover {
+    background-color: #28b6f6;
+    color: white;
+    text-decoration: none;
+}
+.custom-pagination .page-item.active .page-link {
+    background-color: #28b6f6;
+    color: white;
+    border-color: #28b6f6;
+    font-weight: bold;
+}
+.custom-pagination .page-item.disabled .page-link {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
+}
+.table tr
+{
+    color: black !important;
+}
+/* رنگ فرم */
+.card 
+{
+    background-color: #c2ecff;
+    border-color: #28b6f6;
+}
+/* حاشیه فیلدهای فعال */
+.form-control
+{
+    border: 2px solid #1f232c;
+}
+.form-control:focus {
+    border-color: #28b6f6;
+    box-shadow: 0 0 0 0.2rem rgba(40, 182, 246, 0.25);
+}
+/*تقویم*/
+.calendar-day 
+{
+    height: 80px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dee2e6;
+    background: rgba(245, 245, 245, 0.575);
+    font-size: 0.9rem;
+}
+.today 
+{
+    background-color: #28b6f6 !important;
+    color: white;
+}
+.calendar-header 
+{
+    background-color: #1f232c;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.calendar-week 
+{
+    display: flex;
+}
+.calendar-day 
+{
+    width: 14.28%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dee2e6;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+/*دکمه انحصاری کلینیک سناباد*/
+.btn-sanabad
+{
+    font-family:IRANSansX !important;
+    background: #28B6F6 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    padding-top: 12px !important;
+}
+.btn-sanabad:hover
+{
+    color: white;
+}
+.btn-sanabad::after
+{
+    content: "";
+    background:#1F232C;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.holiday {
+    background-color: #ffcdd2; /* قرمز روشن */
+    color: #b71c1c;             /* قرمز تیره */
+    font-weight: bold;
+}
+.selected_day
+{
+    background-color: #1f232c;
+    color: #fff;         
+    font-weight: bold;
+}
+#for_ordibehesht8 , #for_ordibehesht13 , #for_ordibehesht20
+{
+    display: none;
+}
+/*استایل ساعت*/
+/* اصلاح فونت و جهت */
+.mdtimepicker 
+{
+    font-family: Roboto, sans-serif !important;
+    direction: ltr !important;
+}
+/* تنظیم اندازه اعداد */
+.mdtp__digit 
+{
+    font-size: 16px !important;
+}
+/* جلوگیری از کوچک شدن ساعت */
+.mdtp__wrapper 
+{
+    transform: scale(1) !important;
+}
+@media (max-width: 576px) 
+{
+    .calendar-day 
+    {
+      height: 60px;
+      font-size: 0.75rem;
+    }
+}
+  

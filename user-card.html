@@ -1,0 +1,674 @@
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <title>حساب کاربری | درمانگاه سناباد</title>
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/style/user-dashboard.css" rel="stylesheet">
+    <!--librearies-->
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <style>
+        @media(max-width:1400px) and (min-width:992px)
+        {
+            .list-desktop
+            {
+                font-size: 15px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!--مودال افزودن کارت بانکی جدید-->
+    <div class="modal fade" id="addNewcard" tabindex="-1" aria-labelledby="addNewcardLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="addNewcardLabel">افزودن کارت</h5>
+                    <button type="button" class="btn btn-sm btn-light mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row text-end g-3">
+                        
+                        <!-- Card number -->
+                        <div class="col-12">
+                            <label class="form-label">شماره کارت <span class="text-danger">*</span></label>
+                            <div class="position-relative">
+                                <input  id="card-number" type="text" class="form-control"  maxlength="16" placeholder="xxxx xxxx xxxx xxxx" style="border-color: #28b6f6 !important;border-radius:10px;">
+                            </div>	
+                        </div>
+                        <!-- Expiration Date -->
+                        <div class="col-md-6">
+                            <label class="form-label">تاریخ انقضا <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text"  id="exp-month" class="form-control" maxlength="2" placeholder="ماه" style="border-color: #28b6f6 !important;border-radius:10px;">
+                                <input type="text" id="exp-year" class="form-control me-2" maxlength="4" placeholder="سال" style="border-color: #28b6f6 !important;border-radius:10px;">
+                            </div>
+                        </div>	
+                        <!--Cvv code  -->
+                        <div class="col-md-6">
+                            <label class="form-label">CVV / CVC <span class="text-danger">*</span></label>
+                            <input id="cvv" type="text" class="form-control" maxlength="3" placeholder="xxx" style="border-color: #28b6f6 !important;border-radius:10px;">
+                        </div>
+                        <!-- Card name -->
+                        <div class="col-12">
+                            <label class="form-label">صاحب کارت <span class="text-danger">*</span></label>
+                            <input  id="card-holder" type="text" class="form-control" aria-label="name of card holder" placeholder="دارنده کارت" style="border-color: #28b6f6 !important; border-radius:10px;">
+                        </div>
+                        <!-- Check box -->
+                        <div class="col-md-12">
+                            <div class="form-check mb-0">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="border-color: #28b6f6 !important;">
+                                <label class="form-check-label" for="exampleCheck1">ذخیره اطلاعات کارت</label>
+                            </div>	
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-sanabad-cancle my-0" data-bs-dismiss="modal" style="border-radius: 5px !important;">بستن</button>
+                    <button type="button" class="btn btn-sanabad my-0" id="saveCardBtn">ذخیره</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--مودال حذف کارت بانکی-->
+    <div class="modal fade" id="deleteBankAcoount" tabindex="-1" aria-labelledby="deleteBankAcoountLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">تأیید یا رد درخواست</h5>
+            </div>
+            <div class="modal-body">
+                <p>آیا قصد دارید حساب بانکی خود را حذف کنید؟</p>
+                <span class="text-danger">این عملیات غیرقابل بازگشت است.</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">حذف حساب</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- مودال راهنما -->
+    <div class="modal fade" id="walletHelpModal" tabindex="-1" aria-labelledby="walletHelpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content rounded-3 shadow">
+    
+            <div class="modal-header text-white rounded-top" style="background-color: #28b6f6;">
+            <h5 class="modal-title" id="walletHelpModalLabel">
+                <i class="bi bi-wallet2 ms-2"></i> راهنمای استفاده از کیف پول
+            </h5>
+            </div>
+    
+            <div class="modal-body text-end px-4 pt-4">
+            <div class="mb-4">
+                <h6 class="fw-bold" style="color: #28b6f6;"><i class="bi bi-plus-circle ms-2"></i> شارژ کیف پول</h6>
+                <p class="text-muted mb-2" style="text-align: justify;">برای افزایش موجودی کیف پول، روی دکمه <span class="badge bg-info text-white py-2">+ شارژ کیف پول</span> کلیک کرده و مبلغ موردنظر را وارد کنید. سپس پرداخت خود را از طریق درگاه بانکی انجام دهید.</p>
+            </div>
+    
+            <div class="mb-4">
+                <h6 class="fw-bold"  style="color: #28b6f6;"><i class="bi bi-credit-card ms-2"></i> افزودن کارت بانکی</h6>
+                <p class="text-muted mb-2" style="text-align: justify;">برای انجام پرداخت یا برداشت، ابتدا باید یک کارت بانکی معتبر ثبت کنید. کارت‌ها در بخش «کارت‌های بانکی من» قابل مدیریت هستند.</p>
+            </div>
+    
+            <div class="mb-4">
+                <h6 class="fw-bold"  style="color: #28b6f6;"><i class="bi bi-clock-history ms-2"></i> مشاهده تاریخچه تراکنش‌ها</h6>
+                <p class="text-muted mb-2" style="text-align: justify;">تمام تراکنش‌های کیف پول (برداشت، افزایش، هزینه‌ها) در بخش «صورت حساب مالی» قابل مشاهده هستند.</p>
+            </div>
+    
+            <div class="mb-3">
+                <h6 class="fw-bold"  style="color: #28b6f6;"><i class="bi bi-shield-check ms-2"></i> نکات امنیتی</h6>
+                <ul class="text-muted ps-3" style="text-align: justify;">
+                <li>از اشتراک‌گذاری اطلاعات کارت خودداری کنید.</li>
+                <li>پرداخت‌ها از طریق درگاه‌های امن بانکی انجام می‌شود.</li>
+                <li>در صورت بروز خطا از طریق ثبت تیکت با پشتیبانی در تماس باشید.</li>
+                </ul>
+            </div>
+    
+            </div>
+    
+            <div class="modal-footer justify-content-between">
+            <small class="text-dark">در صورت نیاز به راهنمایی بیشتر، با <a href="user-ticket.html" class="fw-bold text-info">پشتیبانی </a>تماس برقرار کنید.</small>
+            <button type="button" class="btn btn-sanabad-cancle" style="border-radius: 5px !important;" data-bs-dismiss="modal">بستن</button>
+            </div>
+    
+        </div>
+        </div>
+    </div>
+    <!-- مودال شارژ کیف پول -->
+    <div class="modal fade" id="walletChargeModal" tabindex="-1" aria-labelledby="walletChargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow-lg" style="border: none;">
+    
+            <!-- هدر مودال -->
+            <div class="modal-header" style="background-color: #28b6f6; color:white;">
+                <h5 class="modal-title fw-bold" id="walletChargeModalLabel">افزودن موجودی</h5>
+                <div class="d-flex align-items-center justify-content-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+                </div>
+            </div>
+    
+            <!-- بدنه مودال -->
+            <div class="modal-body text-center">
+            <p>مبلغ مورد نظر جهت افزایش موجودی را وارد کنید</p>
+    
+            <!-- فیلد مبلغ -->
+            <div class="input-group input-group-lg justify-content-center mb-3" dir="rtl">
+                <input type="text" class="form-control text-center fw-bold fs-4" id="chargeAmountInput" value="۵۰۰,۰۰۰" style="max-width: 300px; border: 2px solid #cbd5e0; border-radius: 15px;">
+                <span class="input-group-text bg-white border-0 ps-0 fw-bold">ریال</span>
+            </div>
+    
+            <!-- پیام راهنما -->
+            <p class="text-secondary small mb-3">مبلغ وارد شده باید بین <span class="fw-bold">5۰۰,۰۰۰</span> تا <span class="fw-bold">۲۰۰,۰۰۰,۰۰۰</span> ریال باشد</p>
+    
+            <!-- گزینه‌های سریع مبلغ -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <button type="button" class="btn btn-outline-primary rounded-pill px-4 fw-bold amount-btn">1,00۰,۰۰۰ ریال</button>
+                <button type="button" class="btn btn-outline-primary rounded-pill px-4 fw-bold amount-btn">۲,۰۰۰,۰۰۰ ریال</button>
+                <button type="button" class="btn btn-outline-primary rounded-pill px-4 fw-bold amount-btn active-money">۵,۰۰۰,۰۰۰ ریال</button>
+            </div>
+    
+            <!-- دکمه‌ها -->
+            <div class="d-flex justify-content-between gap-2">
+                <button type="button" class="btn btn-sanabad-cancle fw-bold flex-fill" data-bs-dismiss="modal">انصراف</button>
+                <button type="button" class="btn btn-sanabad fw-bold flex-fill" style="border-radius: 80px !important;">افزایش موجودی کیف پول</button>
+            </div>
+            </div>
+    
+        </div>
+        </div>
+    </div>
+    <!-- مودال بازگشت وجه -->
+    <div class="modal fade" id="refundModal" tabindex="-1" aria-labelledby="refundModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+            <h5 class="modal-title" id="refundModalLabel">درخواست عودت وجه</h5>
+            <div class="d-flex justify-content-start">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            </div>
+            <div class="modal-body" style="text-align: justify;">
+            <p class="lh-lg mb-3">برای بازگشت وجه به حساب بانکی ثبت شده در داشبورد، لطفاً از طریق <strong>ارسال تیکت</strong> با پشتیبانی تماس بگیرید.</p>
+            <p class="text-danger small">در حال حاضر امکان بازگشت وجه به‌صورت خودکار وجود ندارد.</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-sanabad-cancle flex-fill fw-bold" data-bs-dismiss="modal">
+                بستن
+            </button>
+            <a href="user-ticket.html" class="btn btn-sanabad flex-fill fw-bold" style="border-radius: 80px !important;">
+                <i class="fa-solid fa-headset me-1"></i> تماس با پشتیبانی
+            </a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--مودال خروج از حساب کاربری-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="logoutModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                خروج از حساب</h5>
+            </div>
+            <div class="modal-body text-center">
+              آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="index.html" class="btn btn-danger w-25">خروج</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <main>
+        <!--بنر-->
+        <div class="page-header d-flex flex-column flex-md-row rounded-0 position-relative">
+            <!-- ناحیه ذرات -->
+            <div id="particles-js-banner" class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 1000;"></div>
+            <!--محتوای بنر-->
+            <div class="col-12 p-5 text-center position-relative z-1">
+                <h1 class="fw-bold text-white mb-1 lh-lg" style="height: 100px;">
+                </h1>
+            </div>
+        </div>
+        <!--پروفایل کاربر-->
+        <section class="pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pb-0 px-0 mt-2 mt-md-0">
+                            <div class="row d-md-flex justify-md-content-between mt-2 mt-md-0">
+                                <div class="col-auto">
+                                    <div class="avatar position-relative">
+                                        <img class="avatar-img rounded-circle border border-white border-3 shadow" src="assets/Images/sample-profile/prof2.png" alt="user profile">
+                                        <span class="badge text-white bg-success rounded-pill position-absolute translate-middle mt-4 mt-md-4 ms-n3 px-md-3 py-md-2" style="top: 55%; left:5%;">مراجع فعال</span>
+                                    </div>
+                                </div>
+                                <!-- Profile info -->
+                                <div class="col d-md-flex justify-content-between align-md-items-center">
+                                    <div class="my-3 me-4">
+                                        <h1 class="my-2 fs-4 fw-bold me-2" style="white-space: nowrap !important;">زهرا باقری حسن کیاده</h1>
+                                        <ul class="list-inline mb-0 px-0 fs-5">
+                                            <li class="list-inline-item mb-1 mb-md-0">
+                                                <span class="fw-light text-secondary">نام کاربری:</span>
+                                                <span class="fw-bold">zb_Nathanael</span>
+                                            </li>
+                                            <li class="list-inline-item me-3 mb-1 mb-md-0">
+                                                <span class="fw-light text-secondary">شماره تلفن: </span>
+                                                <span class="fw-bold">09152208436</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="my-3 me-5">
+                                            <!-- دکمه همبرگر که فقط در موبایل نمایش داده میشه -->
+                                            <button class="btn btn-outline-primary d-lg-none mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar">
+                                                <i class="bi bi-list fs-4"></i>
+                                            </button>
+                                            <a href="index.html" class="btn btn-outline-primary mb-0 mt-2"><i class="bi bi-house fs-4"></i></a>
+                                        <a href="booking.html" class="btn btn-outline-primary mb-0 mt-2">رزرو نوبت جدید</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--پایان پروفایل کاربر-->
+        <!--محتوای اصلی-->
+        <section class="container pb-5">
+            <!-- سایدبار به صورت offcanvas -->
+            <div class="offcanvas offcanvas-end d-lg-none bg-dark text-white" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
+                <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="userSidebarLabel">منوی کاربری</h5>
+                <div class="bg-light pe-3 px-2 py-3 rounded">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="بستن"></button>
+                </div>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="list-unstyled px-0" style="font-size: 20px;">
+                        <li class="px-2"><a href="user-dashboard.html" class="d-block py-3 text-white">
+                            <i class="bi bi-collection-fill ps-2"></i>
+                            لیست نوبت های من</a></li>
+                        <li class="px-2">
+                                <a href="user-ticket.html" class="text-white d-flex align-items-center justify-content-between py-3">
+                                    <span>
+                                        <i class="bi bi-question-diamond ps-2"></i>
+                                        اعلان‌ها
+                                    </span>
+                                    <span class="badge text-white bg-success rounded-pill">3</span>
+                                </a>
+                        </li> 
+                        <li class="py-1"><a href="user-card.html" class="d-block px-2 py-2 active-link" style=" color: #1f232c;">
+                            <i class="bi bi-credit-card-2-front ps-2"></i>
+                            اطلاعات کارت</a></li>
+                        <li class="px-2"><a href="user-factor.html" class="text-white d-block py-3">
+                            <i class="bi bi-graph-up ps-2"></i>
+                            صورت‌حساب مالی</a></li>
+                        <li class="px-2"><a href="user-profile.html" class="text-white d-block py-3">
+                            <i class="bi bi-pencil-square ps-2"></i>
+                            ویرایش پروفایل</a></li>
+                        <li class="px-2"><a href="user-delete-account.html" class="text-white d-block py-3">
+                            <i class="bi bi-trash ps-2"></i>
+                            حذف پروفایل</a></li>
+                        <li class="px-2"><a href="#" class="text-danger d-block py-3" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt ps-2"></i>
+                            خروج از حساب</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="row">
+                <!-- سایدبار ثابت فقط در دسکتاپ -->
+                <div class="d-none d-lg-block col-lg-3">
+                    <div class="d-none d-lg-block bg-dark text-white p-4 rounded">
+                        <ul class="list-unstyled px-0 list-desktop" style="font-size: 20px;">
+                        <li class="px-2"><a href="user-dashboard.html" class="d-block py-3 text-white">
+                                <i class="bi bi-collection-fill ps-2"></i>
+                                لیست نوبت های من</a></li>
+                        <li class="px-2">
+                                <a href="user-ticket.html" class="text-white d-flex align-items-center justify-content-between py-3">
+                                    <span>
+                                        <i class="bi bi-question-diamond ps-2"></i>
+                                        اعلان‌ها
+                                    </span>
+                                    <span class="badge text-white bg-success rounded-pill">3</span>
+                                </a>
+                        </li>                            
+                        <li class="py-1"><a href="user-dashboard.html" class="d-block px-2 py-2 active-link" style=" color: #1f232c;">
+                            <i class="bi bi-credit-card-2-front ps-2"></i>
+                            اطلاعات کارت</a></li>
+                        <li class="px-2"><a href="user-factor.html" class="text-white d-block py-3">
+                            <i class="bi bi-graph-up ps-2"></i>
+                            صورت‌حساب مالی</a></li>
+                        <li class="px-2"><a href="user-profile.html" class="text-white d-block py-3">
+                            <i class="bi bi-pencil-square ps-2"></i>
+                            ویرایش پروفایل</a></li>
+                        <li class="px-2"><a href="user-delete-account.html" class="text-white d-block py-3">
+                            <i class="bi bi-trash ps-2"></i>
+                            حذف پروفایل</a></li>
+                        <li class="px-2"><a href="#" class="text-danger d-block py-3" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt ps-2"></i>
+                            خروج از حساب</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--پایان ساید بار دسکتاپ-->
+                <!--آغاز محتوای اصلی صفحه-->
+                <div class="col-12 col-lg-9">
+                    <div class="row mb-3 g-3">
+                        <div class="col-12">
+                            <div class="div-undone-notif" >
+                                <div class="card pay-card shadow-sm border-0 position-relative">
+                                    <!-- Close Button -->
+                                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" aria-label="بستن" onclick="closeNotifCard(this)"></button>
+                                    
+                                    <!-- Card Content -->
+                                    <div class="card-body p-3">
+                                      <h5 class="fw-bold mb-3 me-5">
+                                        شما یک نوبت تکمیل نشده دارید</h5>
+                                      <p class="mb-4" style="line-height: 2;">
+                                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                        نوبت شما از دکتر <strong>مجد محسنی بیرجندی</strong> هنوز نهایی نشده است.
+                                        لطفاً برای ثبت نهایی، روی دکمه پرداخت کلیک نمایید.
+                                      </p>
+                                      
+                                      <div class="w-100 text-start">
+                                            <!-- Continue to Pay Button -->
+                                        <a href="bank.html">
+                                            <button class="btn btn-sanabad px-4 py-2 fw-bold ms-1" style="border-radius: 80px !important;">
+                                                <i class="fa-solid fa-arrow-left ms-2"></i>
+                                                ادامه جهت پرداخت
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-sanabad-cancle px-4 py-2 rounded-pill fw-bold" onclick="closeNotifCard(this)">
+                                            <i class="fa-solid fa-xmark  ms-2"></i>
+                                            لفو نوبت 
+                                        </button>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="card pay-card shadow-sm border-0 position-relative">
+                                    <!-- Close Button -->
+                                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" aria-label="بستن" onclick="closeNotifCard(this)"></button>
+                                    
+                                    <!-- Card Content -->
+                                    <div class="card-body p-3">
+                                      <h5 class="fw-bold mb-3 me-5">
+                                        شما یک نوبت تکمیل نشده دارید</h5>
+                                      <p class="mb-4" style="line-height: 2;">
+                                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                        نوبت شما از دکتر <strong>رضا محسنی بیرجندی</strong> هنوز نهایی نشده است.
+                                        لطفاً برای ثبت نهایی، روی دکمه پرداخت کلیک نمایید.
+                                      </p>
+                                      
+                                      <div class="w-100 text-start">
+                                            <!-- Continue to Pay Button -->
+                                        <a href="bank.html">
+                                            <button class="btn btn-sanabad px-4 py-2 fw-bold ms-1" style="border-radius: 80px !important;">
+                                                <i class="fa-solid fa-arrow-left ms-2"></i>
+                                                ادامه جهت پرداخت
+                                            </button>
+                                        </a>
+                                        <button class="btn btn-sanabad-cancle px-4 py-2 rounded-pill fw-bold" onclick="closeNotifCard(this)">
+                                            <i class="fa-solid fa-xmark  ms-2"></i>
+                                            لفو نوبت 
+                                        </button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>                           
+                        </div>
+                        <div class="col-12">
+                            <div class="card pay-card shadow-sm border rounded">
+                                <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                                  
+                                  <!-- Wallet Info -->
+                                  <div class="text-center text-md-start d-flex gap-2 flex-wrap justify-content-center align-items-center">
+                                    <h5 class="fw-bold mb-1">موجودی کیف پول شما</h5>
+                                    <h3 class="fw-bold counter"  data-target="256700" style="color: #28b6f6;">0</h3><h3 class="fw-bold" style="color: #28b6f6;">تومان</h3>
+                                  </div>
+                                  
+                                  <!-- Action Buttons -->
+                                  <div class="d-flex gap-2 flex-wrap justify-content-center">
+                                    
+                                    <!-- Help Button -->
+                                    <button class="btn btn-light-sanabad rounded-circle" style="width: 42px; height: 42px;" data-bs-toggle="modal" data-bs-target="#walletHelpModal">
+                                      <i class="fa-solid fa-question" data-bs-toggle="tooltip" data-bs-placement="top" title="راهنمای استفاده از کیف پول"></i>
+                                    </button>
+                              
+                                    <!-- Refund Button -->
+                                    <button class="btn btn-dark-sanabad px-3 rounded-pill fw-bold"  data-bs-toggle="modal" data-bs-target="#refundModal">
+                                      <i class="fa-solid fa-rotate-left me-1"></i> عودت وجه
+                                    </button>
+                              
+                                    <!-- Charge Wallet Button -->
+                                    <button class="btn btn-light-sanabad px-3 rounded-pill fw-bold" data-bs-toggle="modal" data-bs-target="#walletChargeModal">
+                                      <i class="fa-solid fa-plus me-1"></i> شارژ کیف پول
+                                    </button>
+                              
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card pay-card border rounded mb-4">
+                                <div class="card-header bg-light d-sm-flex justify-content-sm-between align-items-center border-bottom py-3">
+                                    <h5 class="mb-2 mb-sm-0 fs-5 fw-bold">کارت های بانکی من</h5>
+                                    <a href="#" class="btn btn-sanabad mb-0 px-3 py-2" data-bs-toggle="modal" data-bs-target="#addNewcard" style="border-radius: 80px !important;">
+                                        <i class="fa-solid fa-plus me-1"></i>
+                                        افزودن کارت جدید</a>
+                                </div>
+            
+                                <div class="card-body bank-card">
+                                    <div class="bg-light border border-1 p-3 rounded-3 d-sm-flex justify-content-sm-between align-items-center mb-4">
+            
+                                        <div class="form-check d-flex align-items-center justify-content-start">
+                                            <input class="form-check-input mb-0" type="radio" name="bank-number" id="bank-number1" checked>
+                                            <div class="me-5 mt-2">
+                                                <img src="assets/Images/home/sepah.png" style="width: 50px; height:50px;">
+                                                <label class="form-check-label mb-0 h5 me-2" for="address1">بانک سپه</label>
+                                                <p class="mb-0 ms-4 mt-2">5058 - 0112 - **** - 3492</p>
+                                            </div>
+                                        </div>
+            
+                                        <!-- Button -->
+                                        <div>
+                                            <a href="#" class="btn btn btn-success mb-0 rounded">ویرایش</a>
+                                            <button class="btn btn btn-danger mb-0 rounded me-1 delete-cardbank">حذف</button>
+                                        </div>
+            
+                                    </div>
+            
+                                    <div class="bg-light border border-1 p-3 rounded-3 d-sm-flex justify-content-sm-between align-items-center mb-4">
+            
+                                        <div class="form-check d-flex align-items-center justify-content-start">
+                                            <input class="form-check-input mb-0" type="radio" name="bank-number" id="bank-number2" checked>
+                                            <div class="me-5 mt-2">
+                                                <img src="assets/Images/home/refah.png" style="width: 50px; height:50px;">
+                                                <label class="form-check-label mb-0 h5 me-2" for="address1">بانک رفاه</label>
+                                                <p class="mb-0 ms-4 mt-2">5894 - 8312 - **** - 3977</p>
+                                            </div>
+                                        </div>
+            
+                                        <div>
+                                            <a href="#" class="btn btn-success mb-0 rounded">ویرایش</a>
+                                            <button class="btn btn-danger mb-0 rounded me-1 delete-cardbank">حذف</button>
+                                        </div>
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <!--پایان محتوای اصلی-->
+    </main>
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/js/particles.min.js"></script>
+    <script src="assets/scripts/user-dashboard.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //درج مبلغ بر اساس دکمه انتخاب شده
+            const amountButtons = document.querySelectorAll(".amount-btn");
+            const amountInput = document.getElementById("chargeAmountInput");
+        
+            amountButtons.forEach((btn) => {
+              btn.addEventListener("click", function () {
+                // حذف کلاس active از همه
+                amountButtons.forEach((b) => b.classList.remove("active-money"));
+        
+                // اضافه کردن کلاس active به دکمه فعلی
+                this.classList.add("active-money");
+        
+                // دریافت مقدار عددی از متن دکمه (حذف "ریال" و فاصله)
+                const amountText = this.innerText.replace("ریال", "").trim();
+                amountInput.value = amountText;
+              });
+                });
+
+            //حذف کارت بانکی
+            let cardToDelete = null; // نگهداری کارت انتخاب‌شده برای حذف
+            // وقتی روی دکمه حذف کارت کلیک شد
+            document.addEventListener('click', function (e) {
+                if (e.target.matches('.delete-cardbank') && e.target.textContent.includes('حذف')) {
+                e.preventDefault();
+
+                // پیدا کردن کارت والد و ذخیره آن
+                cardToDelete = e.target.closest('.bg-light.border');
+                
+                // نمایش مودال تأیید حذف
+                const deleteModal = new bootstrap.Modal(document.getElementById('deleteBankAcoount'));
+                deleteModal.show();
+                }
+            });
+
+            // وقتی کاربر در مودال روی "حذف حساب" کلیک می‌کنه
+            document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+                if (cardToDelete) {
+                cardToDelete.remove(); // حذف کارت از DOM
+                cardToDelete = null;
+                }
+
+                // بستن مودال
+                const modalElement = document.getElementById('deleteBankAcoount');
+                const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                modalInstance.hide();
+            });
+            //اضافه کردن کارت بانکی
+            document.getElementById("saveCardBtn").addEventListener("click", function () {
+              const cardNumber = document.getElementById("card-number").value;
+              const cardHolder = document.getElementById("card-holder").value;
+        
+              if (!cardNumber || !cardHolder) {
+                alert("لطفاً شماره کارت و نام دارنده را وارد کنید");
+                return;
+              }
+        
+              const first4 = cardNumber.slice(0, 4);
+              const middle4 = cardNumber.slice(8, 12);
+              const last4 = cardNumber.slice(12, 16);
+
+              const newCardHTML = `
+                <div class="bg-light border border-1 p-3 rounded-3 d-sm-flex justify-content-sm-between align-items-center mb-4">
+                  <div class="form-check d-flex align-items-center justify-content-start">
+                    <input class="form-check-input mb-0" type="radio" name="address">
+                    <div class="me-5 mt-2">
+                      <img src="assets/Images/home/tejarat.png" style="width: 50px; height:50px;">
+                      <label class="form-check-label mb-0 h5 me-2">بانک تجارت</label>
+                      <p class="mb-0 ms-4 mt-2">${last4} - ${middle4} - **** - ${first4}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <a href="#" class="btn btn-success mb-0 rounded">ویرایش</a>
+                    <button class="btn btn-danger mb-0 rounded me-1 delete-cardbank">حذف</button>
+                  </div>
+                </div>
+              `;
+        
+              const cardBody = document.querySelector(".bank-card");
+              cardBody.insertAdjacentHTML("beforeend", newCardHTML);
+        
+              // پاک کردن فرم
+              document.getElementById("card-number").value = "";
+              document.getElementById("card-holder").value = "";
+              document.getElementById("exp-month").value = "";
+              document.getElementById("exp-year").value = "";
+              document.getElementById("cvv").value = "";
+        
+              // بستن مودال
+              const modalEl = document.getElementById('addNewcard');
+              const modal = bootstrap.Modal.getInstance(modalEl);
+              modal.hide();
+            });
+          });
+
+        function closeNotifCard(btn) {
+            // کارت را مخفی کن
+            const card = btn.closest('.card');
+            if (card) {
+              card.style.display = 'none';
+            }
+        
+            // بررسی اینکه آیا کارت‌های قابل نمایش دیگری وجود دارند
+            const notifContainer = document.querySelector('.div-undone-notif');
+            const visibleCards = notifContainer.querySelectorAll('.card');
+        
+            const anyVisible = Array.from(visibleCards).some(c => c.style.display !== 'none');
+        
+            if (!anyVisible) {
+              notifContainer.style.display = 'none';
+            }
+          }
+        //انیمیشن بنر
+        particlesJS("particles-js-banner", {
+            "particles": {
+              "number": {
+                "value": 100,
+                "density": {
+                  "enable": true,
+                  "value_area": 800
+                }
+              },
+              "color": {
+                "value": "#28b6f6"
+              },
+              "shape": {
+                "type": "circle"
+              },
+              "opacity": {
+                "value": 0.8
+              },
+              "size": {
+                "value": 3
+              },
+              "move": {
+                "enable": true,
+                "speed": 2
+              }
+            },
+            "interactivity": {
+              "events": {
+                "onhover": {
+                  "enable": true,
+                  "mode": "repulse"
+                }
+              }
+            },
+            "retina_detect": true
+          });
+    </script>
+</body>
+</html>

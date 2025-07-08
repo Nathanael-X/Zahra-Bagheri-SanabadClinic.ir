@@ -1,0 +1,653 @@
+/* import the font style file */
+@import url(../Font/clinicSanabadFont.css);
+html , select
+{
+    scroll-behavior: smooth;
+    scrollbar-color: #28b6f6 #1f232c;
+    scrollbar-width: thin;
+}
+html::-webkit-scrollbar , select::-webkit-scrollbar
+{
+    height: 8px;
+}
+select::-webkit-scrollbar
+{
+    width: 5px;
+}
+html::-webkit-scrollbar-thumb , select::-webkit-scrollbar-thumb
+{
+    background-color: #28b6f6;
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-track , select::-webkit-scrollbar-track
+{
+    background-color: #1f232c;
+}
+body
+{
+    font-family: 'IranSansX', IRANSansX  !important;
+    margin: 0;
+}
+/*دکمه انحصاری کلینیک سناباد*/
+.btn-sanabad
+{
+    font-family:IRANSansX !important;
+    background: #28B6F6 !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    direction: rtl;
+    cursor:pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    padding-top: 12px !important;
+}
+.btn-sanabad:hover
+{
+    color: white;
+}
+.btn-sanabad::after
+{
+    content: "";
+    background:#1F232C;
+    position: absolute;
+    z-index:-1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+}
+.btn-sanabad:hover::after
+{
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/* استایل btn-outline-primary برای سناباد*/
+.btn-outline-primary
+{
+    border-color: #28B6F6 !important;
+    transition: 0.3s ease-in all;
+    font-weight: bold !important;
+    color: #28B6F6 !important;
+}
+.btn-outline-primary:hover
+{
+    border-color: #28B6F6 !important;
+    background-color: #28b6f6 !important;
+    color: white !important;
+}
+.parallax-header 
+{
+    min-height: 100vh; /* تمام صفحه پر بشه */
+    background-image: url('../Images/General-practitioner/General-practitioner.jpg'); /* عکس پس زمینه */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.parallax-header::after 
+{
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: rgba(0, 0, 0, 0.612); /* فیلتر مشکی ملایم */
+    z-index: 1;
+}
+.parallax-header .container 
+{
+    position: relative;
+    z-index: 2;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+    margin-bottom: 10rem;
+}
+/*why us style*/
+.why-us-section 
+{
+    background: #9fe1ff;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+.why-us-content 
+{
+    position: relative;
+    z-index: 1;
+}
+.why-us-card 
+{
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: -4rem;
+    box-shadow: 0.5px 0.5px 12px #ebebeb, -0.5px -0.5px 12px rgba(63, 63, 63, 0.521);
+
+}
+.why-us-card:hover 
+{
+    transform: translateY(-5px);
+    background: #1F232C;
+    color: white;
+}
+.why-us-icon 
+{
+    font-size: 2rem;
+    color: #495057;
+    margin-bottom: 1rem;
+}
+/*اسلایدر*/
+.content-right 
+{
+  display: flex;
+  gap:20px;
+}
+.swiper-container 
+{
+  width: 140px;
+  height: 460px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.swiper-slide 
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px; /* ارتفاع هر اسلاید */
+}
+.swiper-slide img 
+{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+/*خدمات و سرویس ها*/
+.service-item
+{
+  position: relative;
+  border-radius: 20px;
+  height: 350px;
+  padding: 0 30px;
+  transition: .3s all ease-in-out;
+  background-image: url(../Images/brain-clinic/pattern.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow:-1px -1px 12px rgba(0, 0, 0, 0.418);
+
+}
+.service-item:hover
+{
+  box-shadow:1px 1px 12px rgba(0, 0, 0, 0.418);
+  transform: translateY(-6px);
+}
+.service-item .service-icon 
+{
+  width: 150px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #28B6F6;
+  border-radius: 50%;
+  transform: rotate(-14deg);
+  transition: .3s all ease-in-out;
+
+}
+.service-item:hover .service-icon 
+{
+  transform: rotate(0deg);
+  background: #1F232C;
+}
+.service-item .service-icon i {
+  transform: rotate(15deg);
+  transition: .3s all ease-in-out;
+}
+.service-item:hover .service-icon i
+{
+  transform: rotate(0deg);
+}
+.service-item a.btn {
+  position: absolute;
+  width: fit-content;
+  bottom: -48px;
+  left: 5%;
+  margin-left: -30px;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.service-item:hover a.btn {
+  bottom: -24px;
+  opacity: 1;
+}
+.dr-profile
+{
+    width: 55px;
+    height:55px;
+}
+/*نمایش نظرات کاربران*/
+.bg-comments
+{
+  background-image: url('../Images/General-practitioner/General-practitioner-dark.jpg'); /* عکس پس زمینه */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  padding-bottom: 3rem;
+  color: white !important;
+}
+.icon-comments
+{
+  background-color: #28B6F6;
+  color: white;
+  font-weight: bold;
+  width: 120px;
+  height: 120px;
+  font-size: 7rem;
+  text-align: center;
+  position: relative;
+  top: -2rem;
+  right: -2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.comment-slider
+{
+  border-radius: 20px;
+  border: #28B6F6 1px solid;
+}
+.img-profile-cm
+{
+  width: 100%;
+}
+/*استایل سکشن اخر*/
+/* سکشن تیم پزشکان */
+#doctors {
+  position: relative;
+  z-index: 2;
+}
+/* کارت دکتر */
+.doctor-card {
+  background: linear-gradient(135deg, rgba(14, 19, 29, 0.8) 0%, rgba(10, 177, 255, 0.15) 100%);
+  border: 1px solid rgba(40,182,246,0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(40, 182, 246, 0.2);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.doctor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 48px rgba(40, 182, 246, 0.5);
+  border-radius: 0px;
+}
+
+/* عکس دکتر */
+.doctor-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #28b6f6;
+  transition: transform 0.4s ease;
+}
+
+.doctor-card:hover .doctor-img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* دکمه پروفایل */
+.btn-outline-info {
+  border-color: #28b6f6;
+  color: #28b6f6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-info:hover {
+  background-color: #28b6f6;
+  color: #fff;
+}
+.bg-blue-dark
+{
+  background-color: #1F232C;
+}
+.card-best-dr-info
+{
+    width: 65%;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.089);
+    border:none !important;
+    border-radius: 1rem !important;
+    position: relative;
+    bottom: 75px;
+    right: 80px;
+    transition: all 0.3s ease-in;
+}
+.card-best-dr img
+{
+    border-radius: 1rem;
+    transition: transform 0.4s ease;
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+}
+.card-best-dr-info:hover
+{
+    background-color: #1F232C;
+    color: white !important;
+}
+.card-best-dr-info:hover span
+{
+    color: white !important;
+}
+.image-container 
+{
+    position: relative;
+    display: inline-block;
+}
+.image 
+{
+    width: 100%;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.image-container:hover .image 
+{
+    transform: scale(1.1); /* زوم کردن تصویر */
+    filter: brightness(0.6); /* تیره شدن عکس */
+}
+.overlay 
+{
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.image-container:hover .overlay 
+{
+    opacity: 1; /* نمایش متن روی تصویر */
+}
+.comment-section 
+{
+    font-family: 'Vazirmatn', sans-serif;
+    background: #eef9fd;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px #1f232c54;
+    direction: rtl;
+}
+.comment-section h5 
+{
+    color: #28B6F6;
+    font-weight: bold;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #d6edf7;
+    padding-bottom: 10px;
+}
+.comment-box 
+{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+.comment-box img 
+{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-left: 15px;
+    object-fit: cover;
+    box-shadow: 0 0 0 3px #d6edf7;
+}
+.comment-content 
+{
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: 0 4px 10px #1f232c38;
+    position: relative;
+}
+.comment-content h6 
+{
+    font-weight: bold;
+    color: #28B6F6;
+    margin-bottom: 5px;
+}
+.comment-content small 
+{
+    color: #28B6F6;
+}
+.comment-content p 
+{
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+.reply-box 
+{
+    background: #eef9fd;
+    border-right: 4px solid #1c6adf;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-top: 10px;
+}
+.reply-box h6 
+{
+    color: #1c6adf;
+    font-weight: 600;
+}
+.reply-box p 
+{
+    margin: 0;
+    color: #555;
+}
+.comment-reply 
+{
+    margin-right: 50px;
+    margin-top: 20px;
+}
+.reply-btn 
+{
+    margin-top: 10px;
+    color: #1c6adf;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+.reply-btn:hover 
+{
+    color: #28B6F6;
+    text-decoration: underline;
+}
+.reply-form textarea,
+  .reply-form input 
+{
+    border-radius: 8px;
+}
+.reply-form button 
+{
+    background-color: #28B6F6;
+    color: white;
+    font-size: 14px;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: none;
+    transition: 0.3s ease;
+}
+.reply-form button:hover 
+{
+    background-color: #28b5f660;
+}
+
+.custom-file-upload {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
+}
+
+.upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28b6f6;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: #007bff;
+}
+
+.upload-label i {
+    margin-right: 8px;
+}
+
+.form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+@media (min-width:991px) and (max-width:1200px)
+{
+  .service-item:hover a.btn 
+  {
+    bottom: -10px;
+  }
+}
+@media (max-width:1200px)
+{
+  .dr-prof-flex1 , .dr-prof-flex2 , .dr-prof-flex3
+  {
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  .view-prof-link
+  {
+    margin-top: 20px;
+  }
+}
+/* واکنشگرایی برای گوشی‌های کوچیک */
+@media (max-width: 768px) 
+{
+    .comment-slider
+    {
+      padding-top: 40px !important;
+      padding-bottom: 40px !important;
+    }
+    .why-us-card 
+    {
+        bottom: 0px !important;
+    }
+    .parallax-header h1 
+    {
+      font-size: 2rem;
+    }
+    .parallax-header p 
+    {
+      font-size: 1.2rem;
+    }
+    .parallax-header 
+    {
+      min-height: 50vh; /* ارتفاع کمتر در گوشی */
+    }
+    .swiper-container 
+    {
+      width: 90px;
+      height: 390px;
+    }
+    .swiper-slide 
+    {
+      height: 100px; /* ارتفاع هر اسلاید */
+    }
+}
+@media (max-width:767px)
+{
+  .img-profile-cm
+  {
+    width: 50%;
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 650px) 
+{
+  .icon-comments
+  {
+    display: none !important;
+  }
+  .cm-title-f
+  {
+    padding-top: 50px !important;
+    text-align: center !important;
+  }
+}
+/* واکنشگرایی برای گوشی‌های خیلی کوچیک */
+@media (max-width: 576px) 
+{
+    .parallax-header h1 
+    {
+      font-size: 2rem;
+    }
+    .parallax-header p 
+    {
+      font-size: 1rem;
+    }
+    .parallax-header 
+    {
+      min-height: 30vh;
+    }
+    #profile-majd
+    {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    .comment-box {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .comment-box img {
+      margin-right: 5px;
+      margin-bottom: 10px;
+    }
+    .comment-reply {
+      margin-right: 20px;
+    }
+}
+@media (max-width:450px)
+{
+  .img-profile-cm
+  {
+    width: 70%;
+  }
+  .rate-date-cm
+  {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
