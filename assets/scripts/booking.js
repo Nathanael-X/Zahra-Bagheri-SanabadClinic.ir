@@ -63,8 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // دکمه‌های پیمایش بین مراحل
     if (nextStep1) {
         nextStep1.addEventListener('click', function() {
-          var mosalh_bime = new bootstrap.Modal(document.getElementById('mosalah_bime'));
-              mosalh_bime.show();
+          
              // بررسی انتخاب سرویس
             const selectedService = document.querySelector('input[name="medical-services"]:checked');
 
@@ -80,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // نمایش فرم مناسب
             if(selectedService.id === "medical_services2")
             {
+            
                 hideAllSteps();
                 showStep(step3);
                 setActiveStep(trigger3);
@@ -91,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('steppertrigger2_number').style.backgroundColor="dimgray";
                 document.getElementById('steppertrigger2').disabled="true";
                 document.getElementById('steppertrigger2_title').style.color="dimgray";
+                var mosalh_bime = new bootstrap.Modal(document.getElementById('mosalah_bime'));
+                mosalh_bime.show();
             }
             else if(selectedService.id === "medical_services1")
             {
@@ -108,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
     
     if (prevStep3) {
         prevStep3.addEventListener('click', function() {
@@ -799,6 +802,7 @@ document.addEventListener('DOMContentLoaded', function() {
             form.style.display = "block";
             document.getElementById('non-of-packeges').style.display="none";
         });
+        
 });
 //کد های مرحله یک
 document.addEventListener('DOMContentLoaded', () => {
