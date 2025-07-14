@@ -66,7 +66,7 @@ let currentUsermodal = "";
               if (!row) return;
 
               // تغییر وضعیت ستون ششم به "پاسخ داده شده"
-              const statusCell = row.querySelector('td:nth-child(6)');
+              const statusCell = row.querySelector('td:nth-child(5)');
               if (statusCell) {
                 statusCell.className = 'read_ticket text-center';
                 statusCell.textContent = 'پاسخ داده شده';
@@ -136,7 +136,7 @@ let currentUsermodal = "";
               if (!row) return;
           
               // تغییر وضعیت ستون ششم
-              const statusCell = row.querySelector('td:nth-child(6)');
+              const statusCell = row.querySelector('td:nth-child(5)');
               if (statusCell) {
                 statusCell.className = 'blocked_ticket text-center';
                 statusCell.textContent = 'رد شده';
@@ -165,7 +165,7 @@ let currentUsermodal = "";
               if (!row) return;
           
               // تغییر وضعیت ستون ششم به "خوانده شده"
-              const statusCell = row.querySelector('td:nth-child(6)');
+              const statusCell = row.querySelector('td:nth-child(5)');
               if (statusCell) {
                 statusCell.className = 'unansweard_ticket text-center';
                 statusCell.textContent = 'خوانده شده';
@@ -241,24 +241,24 @@ let currentUsermodal = "";
           }
           let rowToDelete = null;
             // وقتی روی دکمه حذف کلیک میشه
-            document.querySelectorAll('.btn-delete-ticket').forEach(btn => {
+            document.querySelectorAll('.btn-delete-notification').forEach(btn => {
                 btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 rowToDelete = this.closest('tr'); // ذخیره سطر هدف
-                const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+                const deleteModal = new bootstrap.Modal(document.getElementById('deleteNotificationConfirmModal'));
                 deleteModal.show();
                 });
             });
 
             // وقتی کاربر در مودال تأیید حذف رو میزنه
-            document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+            document.getElementById('confirmDeleteNotificationBtn').addEventListener('click', function () {
                 if (rowToDelete) {
                 rowToDelete.remove();
                 updateRowNumbers();
                 rowToDelete = null;
 
                 // بستن مودال
-                bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal')).hide();
+                bootstrap.Modal.getInstance(document.getElementById('deleteNotificationConfirmModal')).hide();
                 }
             });
 

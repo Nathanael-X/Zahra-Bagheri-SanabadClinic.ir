@@ -10,14 +10,48 @@
     <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
     <title>داشبورد ادمین | درمانگاه سناباد</title>
     <!--bootstrap css cdn-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="assets/style/admin-dashboard.css" rel="stylesheet">
     <!--librearies-->
     <!--font awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <style>
+        .table-sanabad-inner thead 
+        {
+            background-color: #c2ecff;
+        }
+        .table-sanabad-inner tbody tr:hover 
+        {
+            color: white !important;
+            font-weight: bold !important;
+        }
+        .table
+        {
+            border-bottom: none !important;
+        }
+    </style>
 </head>
 <body>
+    <!--مودال خروج از حساب کاربری-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="logoutModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                خروج از حساب</h5>
+            </div>
+            <div class="modal-body text-center">
+              آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="index.html" class="btn btn-danger w-25">خروج</a>
+            </div>
+          </div>
+        </div>
+    </div>
     <!-- سایدبار -->
     <aside id="sidebar" class="sidebar border-end p-3 pt-5">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
@@ -26,13 +60,13 @@
         </div>
         <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
-                <a href="#" class="nav-link active-link">
+                <a href="Master-dashboard.html" class="nav-link active-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
-                    <i class="bi bi-calendar-check ms-3"></i>لیست نوبت ها
+                <a href="Master_ticket.html" class="nav-link ">
+                    <i class="bi bi-chat-dots ms-3"></i>تیکت و پشتیبانی
                 </a>
             </li>
             <li class="nav-item mb-2">
@@ -42,22 +76,22 @@
             </li>
             <li class="nav-item mb-2">
                 <a href="#" class="nav-link ">
-                    <i class="bi bi-chat-dots ms-3"></i>تیکت و پشتیبانی 
+                    <i class="bi bi-person ms-3"></i>کنترل حساب
                 </a>
             </li>
             <li class="nav-item mb-2">
                 <a href="#" class="nav-link ">
-                    <i class="bi-people ms-3"></i>مدیریت کاربران 
+                    <i class="bi bi-chat ms-3"></i>نظرات کاربران 
                 </a>
             </li>
             <li class="nav-item mb-2">
                 <a href="#" class="nav-link ">
-                    <i class="bi-folder-symlink ms-3"></i>آرشیو مدارک 
+                    <i class="bi bi-book ms-3"></i>مدیریت مقالات
                 </a>
             </li>
             <li class="nav-item mb-2">
                 <a href="#" class="nav-link ">
-                    <i class="bi bi-bar-chart ms-3"></i>درآمد 
+                    <i class="bi bi-bar-chart ms-3"></i>درآمد سایت 
                 </a>
             </li>
             <li class="nav-item mb-2">
@@ -65,18 +99,23 @@
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
+            <li class="nav-item mb-2">
+                <a href="#" class="nav-link ">
+                    <i class="bi bi-gear ms-3"></i>تنظیمات سایت 
+                </a>
+            </li>
         </ul>
-        <div class="px-3 mt-5 pt-3">
+        <div class="px-3 mt-2 pt-1">
             <div class="d-flex align-items-center justify-content-between">
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
-                        <i class="bi bi-gear-fill"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
-                        <i class="bi bi-globe"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
-                        <i class="bi bi-power"></i>
-                    </a>
+                <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
             </div>
         </div>
     </aside>
@@ -95,18 +134,18 @@
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-bell fs-4"></i>
+                <i class="bi bi-bell fs-4 text-white"></i>
             <span class="badge bg-danger rounded-pill notification-badge">3</span>
             </button>
         
             <!-- لیست اعلان‌ها -->
             <ul class="dropdown-menu for_notif_admin dropdown-menu-end shadow fade rounded-4" aria-labelledby="notifDropdown">
-            <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> اعلان های ادمین</li>
+            <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> اعلان های داخلی</li>
             <li class="notification-item me-2 ms-2">
                 <img src="assets/Images/sample-profile/prof1.png" alt="user1">
                 <div class="content">
-                    <strong>علیرضا محمدی</strong><br>
-                    درخواست جابه جایی نوبت<br>
+                    <strong>منشی فیزیوتراپی</strong><br>
+                    درخواست بازیابی رمز<br>
                     <a href="#" class="text-primary">مشاهده</a>
                 </div>
             </li>
@@ -114,8 +153,8 @@
             <li class="notification-item me-2 ms-2">
                 <img src="assets/Images/sample-profile/prof2.png" alt="user2">
                 <div class="content">
-                <strong>مینا رضایی</strong><br>
-                درخواست لغو نوبت<br>
+                <strong>منشی آب درمانی</strong><br>
+                تایید پذیرش خانم احمدی<br>
                 <a href="#" class="text-primary">مشاهده</a>
                 </div>
             </li>    
@@ -127,17 +166,17 @@
         <!--پروفایل ادمین-->
         <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-decoration-none" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="assets/Images/sample-profile/prof3.png" alt="admin_profile" width="40" height="40" class="rounded-circle shadow-sm">
+            <img src="assets/Images/JahanGiri/Jahan_Giri_profile.jpg" alt="jahan giri profile" width="40" height="40" class="rounded-circle shadow-sm">
             </a>
         
             <!-- منوی کشویی -->
-            <ul class="dropdown-menu for_admin_prof dropdown-menu-end text-end p-3" aria-labelledby="profileDropdown" style="min-width: 250px;">
+            <ul class="dropdown-menu for_admin_prof dropdown-menu-end text-end p-3" aria-labelledby="profileDropdown" style="min-width: 350px;">
             <!-- اطلاعات کاربر -->
             <li class="d-flex align-items-center mb-3">
-                <img src="assets/Images/sample-profile/prof3.png" alt="admin profile" width="50" height="50" class="rounded-circle me-2">
+                <img src="assets/Images/JahanGiri/Jahan_Giri_profile.jpg" alt="jahan giri profile" width="50" height="50" class="rounded-circle me-2">
                 <div class="me-2">
-                <h6 class="mb-1 fw-bold">فهیمه رشیدی</h6>
-                <small class="text-muted">Rashidi_fahime@gmail.com</small>
+                <h6 class="mb-1 fw-bold">خانم مهندس جهانگیری</h6>
+                <small class="text-muted">Jahangiri@gmail.com</small>
                 </div>
             </li>
             <li><hr class="dropdown-divider"></li>
@@ -165,9 +204,343 @@
     </header>
     <!--محتوای اصلی-->
     <main class="main-content pt-5 px-3" style="min-height: 100vh;">
-        <div class="container-fluid ps-5 pe-5">
-            <div class="pt-5 mt-5">
-                محتوای اصلی در اینجا قرار می گیرد
+        <div class="container-fluid ps-5 pe-5 clear-mb">
+            <div style="height: 5vh;"></div>
+            <!-- کارت‌های آماری -->
+            <div class="container">
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(199, 255, 215);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter_master" data-target="27">0</span>
+                                </h5>
+                                <span class="amar">تعداد نوبت های اخذ شده از سایت (امروز)</span>
+                            </div>
+                            <div class="stat-icon rounded-circle p-3">
+                                <i class="bi bi-person-plus fs-4 text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(255, 213, 215);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter_master" data-target="1">0</span>
+                                </h5>
+                                <span class="amar">تعداد نوبت های لغو شده (امروز)</span>
+                            </div>
+                            <div class="stat-icon  rounded-circle p-3">
+                                <i class="bi bi-trash fs-4 text-danger"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(255, 251, 199);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter_master" data-target="8">0</span>
+                                </h5>
+                                <span class="amar">تیکت های خوانده نشده</span>
+                            </div>
+                            <div class="stat-icon  rounded-circle p-3">
+                                <i class="bi bi-envelope fs-4 text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card p-3 d-flex flex-row align-items-center justify-content-between shadow-sm" style="background-color: rgb(199, 205, 255);">
+                            <div>
+                                <h5 class="fw-bold mb-0">
+                                    <span class="counter_master" data-target="120">0</span>
+                                </h5>
+                                <span class="amar">آمار بازدید سایت</span>
+                            </div>
+                            <div class="stat-icon  rounded-circle p-3">
+                                <i class="bi bi-eye fs-4 blue-light"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--خلاصه یادداشت های روزانه-->
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card bg-light pt-3 d-flex justify-content-center align-items-center h-auto">
+                            <div class="d-flex justify-content-between align-items-center w-100 my-2 flex-wrap">
+                                <h5 class="fw-bold mb-2 mb-sm-0 pe-3">
+                                    <i class="bi bi-bell ms-1"></i>
+                                    یادآوری های امروز
+                                  </h5>
+                                  <h5><a href="Nobat.html" class="fw-bold text-decoration-none ps-3">مشاهده همه</a></h5>
+                            </div>
+                            <div class="table-wrapper-sanabad mt-3" style="overflow-x: auto; width: 100%;">
+                                <table class="table table-sanabad table-sanabad-inner table-hover text-center align-middle m-0" style="min-width: 1000px;">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="py-3 text-center">شماره یادداشت</th>
+                                            <th scope="col">تاریخ</th>
+                                            <th scope="col">موضوع</th>
+                                            <th scope="col">خلاصه یادداشت</th>
+                                            <th scope="col">عملیات</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="note-number text-center">1</td>
+                                            <td>1404/04/24</td>
+                                            <td>تماس با بخش آب درمانی</td>
+                                            <td>تماس با مسئول آب درمانی برای هماهنگی به منظور ...</td>
+                                            <td>
+                                                <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                    <i class="bi bi-eye" data-bs-toggle="modal" data-bs-target="#appDetail_note1"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                    <i class="bi bi-download"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="note-number text-center">2</td>
+                                            <td>1404/04/25</td>
+                                            <td>رفتن به بخش فیزیوتراپی</td>
+                                            <td>اطلاع درباره ی بیمه های تحت پوشش فیزیوتراپی...</td>
+                                            <td>
+                                                <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                    <i class="bi bi-eye" data-bs-toggle="modal" data-bs-target="#appDetail_note1"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                    <i class="bi bi-download"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="note-number text-center">3</td>
+                                            <td>1404/04/26</td>
+                                            <td>ارجاع بیمار دکترمجد به آب درمانی</td>
+                                            <td>خانم احمدی برای درمان به بخش آب درمانی برود ...</td>
+                                            <td>
+                                                <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                    <i class="bi bi-eye" data-bs-toggle="modal" data-bs-target="#appDetail_note1"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                    <i class="bi bi-download"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="note-number text-center">4</td>
+                                            <td>1404/04/27</td>
+                                            <td>ارسال گزارشات ماهانه</td>
+                                            <td>گزارش فعالیت های تیرماه به جناب آقای دکتر محسنی ...</td>
+                                            <td>
+                                                <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                    <i class="bi bi-eye" data-bs-toggle="modal" data-bs-target="#appDetail_note1"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                    <i class="bi bi-download"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="note-number text-center">5</td>
+                                            <td>1404/04/27</td>
+                                            <td>گزارشات اداره ی بیمه</td>
+                                            <td>صورت حساب تیرماه به اداره ی بیمه ارسال شود ...</td>
+                                            <td>
+                                                <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                    <i class="bi bi-eye" data-bs-toggle="modal" data-bs-target="#appDetail_note1"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                    <i class="bi bi-download"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--کارکنان مشغول به کار در مجموعه و آمار ترافیک سایت-->
+            <div class="container">
+                <div class="row mb-4 g-4">
+                    <!--نمایش کارکنان-->
+                    <div class="col-lg-6">
+                        <div class="card bg-light p-3 d-flex flex-column justify-content-center align-content-center h-100">
+                            <div class="d-flex justify-content-between align-items-center w-100 my-4 flex-wrap">
+                                <h5 class="fw-bold">
+                                    <i class="bi bi-people ms-1"></i>
+                                    پرسنل درمانگاه سناباد</h5>
+                                <h5><a href="admin-tickets.html" class="fw-bold">مشاهده همه</a></h5>
+                            </div>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof1.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">رضا مرتضوی<i class="bi bi-patch-check-fill text-info small me-1"></i></h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>آب درمانی و فیزیوتراپی</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند تمام وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                            <hr>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof2.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">زهرا باقری حسن کیاده</h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>طراح و پشتیبان سایت</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند نیمه وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                            <hr>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof3.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">رعنا علی پور <i class="bi bi-patch-check-fill text-info small me-1"></i></h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>دندان پزشکی</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند تمام وقت وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                            <hr>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof3.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">فهیمه رشید <i class="bi bi-patch-check-fill text-info small me-1"></i></h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>مغز و اعصاب و روانکاوی</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند تمام وقت وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                            <hr>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof1.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">فرید محمدی</h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>اپراتور عمومی</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند نیمه وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                            <hr>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof1.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">حمید فراستی</h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>اپراتور عمومی</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند نیمه وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                            <hr>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof2.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">مونا رضایی<i class="bi bi-patch-check-fill text-info small me-1"></i></h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>پرستاری</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند تمام وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                            <hr>
+                            <div class="d-sm-flex justify-content-between align-items-center">
+                                <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
+                                    <div class="flex-shrink-0">
+                                        <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof3.png" alt="sample profile">
+                                    </div>
+                                    <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">فریده میرزایی<i class="bi bi-patch-check-fill text-info small me-1"></i></h6>
+                                        <ul class="list-inline mb-0 small p-0 mt-2">
+                                            <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>حسابداری</li>
+                                            <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند تمام وقت</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-sanabad mb-0">پروفایل</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--نمایش آمار ترافیک سایت-->
+                    <div class="col-lg-6">
+                        <div class="card bg-light p-3 h-100">
+                            <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+                                <h5 class="fw-bold">
+                                    <i class="bi bi-graph-up ms-1"></i>
+                                    آمار ترافیک سایت
+                                </h5>
+                            </div>
+                            <div class="d-flex flex-column justify-content-center align-items-center bg-light p-2" style="border-radius: 20px;">
+                                <canvas id="ChartTrafficViews_master" style="max-width:350px;" ></canvas>
+                                <ul class="list-unstyled mb-3 text-end" style="align-self: flex-start;">
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-primary"></i>صفحه اصلی</li>
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-success"></i>صفحه دریافت نوبت</li>
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-warning"></i>صفحه دکتر مجد محسنی بیرجندی</li>
+                                    <li class="my-3 fw-bold"><i class="fas fa-circle ms-2 text-danger"></i>وبلاگ سایت</li>
+                                </ul>  
+                            </div>
+                        </div> 
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -175,12 +548,91 @@
     <!--bootstrap javascript cdn-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
+    <!--chart js-->
+    <script src="assets/vendor/js/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
             tooltipTriggerList.forEach(function (tooltipTriggerEl) {
               new bootstrap.Tooltip(tooltipTriggerEl);
             });
+            const counters_master = document.querySelectorAll(".counter_master");
+  
+    counters_master.forEach(counters_master => {
+      const target = +counters_master.getAttribute("data-target");
+      const format = counters_master.getAttribute("data-format");
+      let count = 0;
+      const duration = 8000; // مجموع زمان شمارش (۲ ثانیه)
+      const steps = 200; // دفعات اجرا
+      const increment = target / steps;
+  
+      const update = () => {
+        count += increment;
+        if (count >= target) {
+          counters_master.innerText = formatNumber(target, format);
+        } else {
+          counters_master.innerText = formatNumber(Math.ceil(count), format);
+          requestAnimationFrame(update);
+        }
+      };
+  
+      const formatNumber = (num, format) => {
+        if (format === "currency") {
+          return num.toLocaleString("fa-IR") + " تومان";
+        } else {
+          return num.toLocaleString("fa-IR");
+        }
+      };
+  
+      update();
+    });
+    const ctx = document.getElementById('ChartTrafficViews_master').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['صفحه اصلی', 'صفحه دریافت نوبت', 'صفحه دکتر مجد محسنی بیرجندی', 'وبلاگ سایت'],
+            datasets: [{
+                data: [500, 300, 200, 100],
+                backgroundColor: [
+                    'rgba(13, 110, 253, 0.9)',
+                    'rgba(25, 135, 84, 0.9)',
+                    'rgba(255, 193, 7, 0.9)',
+                    'rgba(220, 53, 69, 0.9)'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive:true,
+            cutout: '70%',
+            layout: {
+                padding: 0
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.label}: ${context.parsed} بازدید`;
+                        }
+                    },
+                    backgroundColor: '#fff',
+                    titleColor: '#000',
+                    bodyColor: '#000',
+                    borderColor: '#ddd',
+                    borderWidth: 2,
+                    cornerRadius: 5
+                }
+            },
+            animation: {
+                animateRotate: true,
+                animateScale: true
+            }
+        }
+    });
           });
     </script>
 </body>
