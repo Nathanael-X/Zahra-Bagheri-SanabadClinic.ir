@@ -25,3 +25,38 @@
     font-size: 16px;
     line-height: 1;
 }
+.upload-box 
+{
+    padding:2vh 19.5vh;
+    margin-top: 10px;
+    border: 2px dashed #aaa;
+    border-radius: 12px;
+    text-align: center;
+    background: rgb(241, 241, 241);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+.upload-box:hover , .upload-box_img:hover 
+{
+    border-color: #28b6f6;
+}
+.upload-box.dragover , .upload-box_img.dragover 
+{
+    border-color: #2196f3;
+    background-color: #e3f2fd;
+}
+.upload-box input[type="file"] , .upload-box_img input[type="file"]
+{
+    display: none;
+}
+.upload-text 
+{
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.upload-icon 
+{
+    font-size: 48px;
+    color: #aaa;
+}

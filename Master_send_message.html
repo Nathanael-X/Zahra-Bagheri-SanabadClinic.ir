@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <title>داشبورد ادمین | درمانگاه سناباد</title>
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/style/admin-dashboard.css" rel="stylesheet">
+    <!--librearies-->
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <style>
+        @media (max-width:400px)
+        {
+            .clear-mb
+            {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!--مودال خروج از حساب کاربری-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="logoutModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                خروج از حساب</h5>
+            </div>
+            <div class="modal-body text-center">
+              آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="index.html" class="btn btn-danger w-25">خروج</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Modal تایید حذف -->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="deleteConfirmModalLabel">حذف قالب</h5>
+            </div>
+            <div class="modal-body">
+            آیا از حذف قالب مورد نظر اطمینان دارید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">بله، حذف شود</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- مودال افزودن قالب -->
+    <div class="modal fade" id="addTemplateModal" tabindex="-1" aria-labelledby="addTemplateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title" id="addTemplateModalLabel">افزودن قالب جدید</h5>
+            </div>
+            <div class="modal-body">
+            <div class="mb-3">
+                <label for="templateTitle" class="form-label">عنوان قالب</label>
+                <input type="text" class="form-control" id="templateTitle">
+            </div>
+            <div class="mb-3">
+                <label for="templateContent" class="form-label">متن پیام</label>
+                <textarea class="form-control" id="templateContent" rows="3"></textarea>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+            <button class="btn btn-primary" id="submitTemplateBtn">ثبت قالب</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- مودال ویرایش قالب -->
+    <div class="modal fade" id="editTemplateModal" tabindex="-1" aria-labelledby="editTemplateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title">ویرایش قالب</h5>
+            </div>
+            <div class="modal-body">
+            <div class="mb-3">
+                <label for="editTemplateTitle" class="form-label">عنوان قالب</label>
+                <input type="text" class="form-control" id="editTemplateTitle">
+            </div>
+            <div class="mb-3">
+                <label for="editTemplateContent" class="form-label">متن پیام</label>
+                <textarea class="form-control" id="editTemplateContent" rows="3"></textarea>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                <button class="btn btn-primary" id="saveEditTemplate">ذخیره تغییرات</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- مودال موفقیت -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0 bg-success text-white">
+            <h5 class="modal-title w-100" id="successModalLabel">تاییدیه</h5>
+            </div>
+            <div class="modal-body pb-0 mb-0">
+                <p class="pt-3">
+                    پیام شما با موفقیت ارسال شد.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- سایدبار -->
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+        <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
+            <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
+            <strong class="brand-name">کلینیک سناباد طوس</strong>
+        </div>
+        <ul class="nav flex-column px-3 fs-5 pb-4">
+            <li class="nav-item mt-3 mb-2">
+                <a href="Master-dashboard.html" class="nav-link">
+                    <i class="bi bi-house ms-3"></i>داشبورد
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_ticket.html" class="nav-link ">
+                    <i class="bi bi-chat-dots ms-3"></i>تیکت و پشتیبانی
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_send_message.html" class="nav-link active-link">
+                    <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master-user-control.html" class="nav-link ">
+                    <i class="bi bi-person ms-3"></i>کنترل حساب
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master-comments.html" class="nav-link ">
+                    <i class="bi bi-chat ms-3"></i>نظرات کاربران 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_article_management.html" class="nav-link ">
+                    <i class="bi bi-book ms-3"></i>مدیریت مقالات
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master-earning.html" class="nav-link ">
+                    <i class="bi bi-bar-chart ms-3"></i>درآمد سایت 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_note.html" class="nav-link ">
+                    <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
+                </a>
+            </li>
+            
+        </ul>
+        <div class="px-3 mt-4 pt-1">
+            <div class="d-flex align-items-center justify-content-between">
+                <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+    <!--پایان سایدبار-->
+    <!-- بک‌گراند تار در حالت موبایل -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- هدر بالا -->
+    <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+                <span class="bar top-bar"></span>
+                <span class="bar middle-bar"></span>
+                <span class="bar bottom-bar"></span>
+            </button>
+        </div>               
+        <!--اعلان های ادمین-->
+        <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
+            <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell fs-4 text-white"></i>
+            <span class="badge bg-danger rounded-pill notification-badge">3</span>
+            </button>
+        
+            <!-- لیست اعلان‌ها -->
+            <ul class="dropdown-menu for_notif_admin dropdown-menu-end shadow fade rounded-4" aria-labelledby="notifDropdown">
+            <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> اعلان های داخلی</li>
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof1.png" alt="user1">
+                <div class="content">
+                    <strong>منشی فیزیوتراپی</strong><br>
+                    درخواست بازیابی رمز<br>
+                    <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>
+            
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof2.png" alt="user2">
+                <div class="content">
+                <strong>منشی آب درمانی</strong><br>
+                تایید پذیرش خانم احمدی<br>
+                <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>    
+            <li class="text-center py-2">
+                <a href="users.html" class="text-decoration-none text-primary">مشاهده همه</a>
+            </li>
+            </ul> 
+        </div>
+        <!--پروفایل ادمین-->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-decoration-none" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="assets/Images/JahanGiri/Jahan_Giri_profile.jpg" alt="jahan giri profile" width="40" height="40" class="rounded-circle shadow-sm">
+            </a>
+        
+            <!-- منوی کشویی -->
+            <ul class="dropdown-menu for_admin_prof dropdown-menu-end text-end p-3" aria-labelledby="profileDropdown" style="min-width: 350px;">
+            <!-- اطلاعات کاربر -->
+            <li class="d-flex align-items-center mb-3">
+                <img src="assets/Images/JahanGiri/Jahan_Giri_profile.jpg" alt="jahan giri profile" width="50" height="50" class="rounded-circle me-2">
+                <div class="me-2">
+                <h6 class="mb-1 fw-bold">خانم مهندس جهانگیری</h6>
+                <small class="text-muted">Jahangiri@gmail.com</small>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+        
+             <!-- لینک‌های تنظیمات -->
+             <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="Master-profile.html">
+                <i class="bi bi-gear ms-2"></i> تنظیمات
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="index.html">
+                <i class="bi bi-globe ms-2"></i> صفحه اصلی
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center text-danger fw-bold" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="bi bi-box-arrow-right ms-2"></i> خروج
+                </a>
+            </li>
+            </ul>
+        </div>
+    
+    </header>
+    <!--محتوای اصلی-->
+    <main class="main-content pt-5 px-3" style="min-height: 100vh;">
+        <div class="container-fluid ps-5 pe-5 clear-mb">
+            <div style="height: 5vh;"></div>
+            <div class="container py-4">
+                <div class="d-flex align-items-center justify-content-between flex-wrap ">
+                    <h4 class="fw-bold blue-light mb-4 lh-lg">سیستم ارسال پیامک کلینیک شبانه روزی سناباد</h4>    
+                </div>
+                <div class="card pt-3 d-flex justify-content-center align-items-center h-auto">
+                    <form onsubmit="return false" class="w-100 px-5">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-6 form-floating mb-3">
+                                <input type="text" class="form-control rounded border border-1 lh-lg" id="user_phoneNumber" placeholder="شماره کاربر" required style="border-color: #b9e9ff !important;">
+                                <label for="user_phoneNumber" class="PhoneUser_lbl">شماره کاربر</label>
+                            </div>
+                            <div class="col-lg-6 form-floating mb-3 justify-content-center">
+                                <select type="text" class="form-control rounded border border-1 pt-2" id="type-messege" placeholder="نوع پیام" required style="border-color: #b9e9ff !important;">
+                                    <option value="" selected disabled>نوع پیام</option>
+                                    <option value="0">تخفیف ویژه مشترکین سناباد</option>
+                                    <option value="5">تبلیغاتی</option>
+                                    <option value="6">تشکر و قدردانی</option>
+                                    <option value="7">پیام های مناسبتی</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-6 form-floating mb-3">
+                                <select type="text" class="form-control rounded border border-1 pt-2" id="name_clinic" placeholder="انتخاب بخش" required style="border-color: #b9e9ff !important;">
+                                    <option value="" selected disabled>انتخاب بخش</option>
+                                    <option>پذیرش</option>
+                                    <option>مدیریت</option>
+                                    <option>فنی</option>
+                                    <option>مدد کاری</option>
+                                    <option>دکتر عمومی</option>
+                                    <option>مطب پرستاری</option>
+                                    <option>دندان پزشکی</option>
+                                    <option>فیزیوتراپی</option>
+                                    <option>آب درمانی</option>
+                                    <option>جراح مغز و اعصاب</option>
+                                    <option>روان شناسی</option>
+                                    <option>اعصاب و روان</option>
+                                    <option>آزمایشگاه</option>
+                                    <option>متخصص تغذیه</option>
+                                    <option>واحد زنان و زایمان</option>
+                                    <option>متخصص پوست و مو</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 form-floating mb-3">
+                                <select type="text" class="form-control rounded border border-1 pt-2" id="name_dr" placeholder="انتخاب پزشک" required style="border-color: #b9e9ff !important;">
+                                    <option value="">انتخاب پزشک</option>
+                                    <option>----</option>
+                                    <option>اکرم رحیمی</option>
+                                    <option>محمد پورعلی</option>
+                                    <option>آسیه پنجه شاهین</option>
+                                    <option>حسین فزونی</option>
+                                    <option>فیروزه خلیلی</option>
+                                    <option>فاطمه فرخ آبادی</option>
+                                    <option>فرحناز بخشی</option>
+                                    <option>مهرک دباغی</option>
+                                    <option>رضا محسنی بیرجندی</option>
+                                    <option>مجد محسنی بیرجندی</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-lg-12 mb-3">
+                                <textarea class="form-control border border-1 bg-light rounded"
+                                    style="min-height: 120px; border-color: #b9e9ff !important;"
+                                    id="how_meet"
+                                    placeholder="متن پیام خود را وارد نمایید ...."
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="row align-items-center justify-content-between pb-3">
+                            <div class="col-lg-6 mb-3">
+                                <input class="form-check-input" type="checkbox" value="" id="sendMessageToAll" onchange=" togglePhoneNumberField(this)">
+                                <label for="sendMessageToAll" class="text-white fw-bold me-2">
+                                    ارسال پیام به تمامی کاربران سناباد
+                                </label>
+                            </div>
+                            <div class="col-lg-6 mb-3 text-start">
+                                <button class="btn btn-info text-white fw-bold"  data-bs-toggle="modal" data-bs-target="#successModal">ارسال پیام</button>
+                                <button class="btn btn-secondary"  type="reset">انصراف</button>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="d-flex align-items-center justify-content-between flex-wrap my-4">
+                    <h4 class="fw-bold blue-light lh-lg">قالب های آماده ارسال پیامک</h4>   
+                    <button class="btn btn-info fw-bold text-white ms-2" data-bs-toggle="modal" data-bs-target="#addTemplateModal">افزودن قالب</button>
+                </div>
+                <div class="card p-3 d-flex justify-content-center align-items-center h-auto">
+                    <div class="row w-100 g-3" id="templateContainer">
+                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                          <p class="fw-bold pt-2">تخفیف ویژه مشترکین سناباد</p>
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                          </div>
+                        </div>
+                      
+                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                          <p class="fw-bold pt-2">تبلیغاتی</p>
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                          </div>
+                        </div>
+                      
+                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                          <p class="fw-bold pt-2">تشکر و قدردانی</p>
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                          </div>
+                        </div>
+                      
+                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                          <p class="fw-bold pt-2">پیام های مناسبتی</p>
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--پایان محتوای اصلی-->
+    <!--bootstrap javascript cdn-->
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/admin-dashboard.js"></script>
+    <script src="assets/scripts/Master-message.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+              new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+ 
+          });
+          function togglePhoneNumberField(checkbox) 
+            {
+                const input = document.getElementById('user_phoneNumber');
+                const input_text_1 = document.getElementsByClassName('PhoneUser_lbl').item(0);
+                if (checkbox.checked) {
+                    input.disabled = true;
+                    input_text_1.classList.add('text-muted');
+                } else {
+                    input.disabled = false;
+                    input_text_1.classList.remove('text-muted');      
+                }
+            }
+
+    </script>
+</body>
+</html>

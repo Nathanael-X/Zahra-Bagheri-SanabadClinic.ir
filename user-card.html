@@ -26,7 +26,26 @@
     </style>
 </head>
 <body>
-    
+        <!-- مودال یادداشت های حسابداری -->
+        <div class="modal fade" id="accountNoteModal" tabindex="-1" aria-labelledby="accountNoteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg rounded-3">
+                <div class="modal-header bg-dark text-white fw-bold">
+                <h5 class="modal-title" id="accountNoteModalLabel">یادداشت حسابداری</h5>
+                <button type="button" class="btn-close btn-close-white ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+                </div>
+                <div class="modal-body lh-lg" style="text-align: justify;">
+                <p class="mb-0">
+                    این درخواست به دلیل عدم تطابق اطلاعات حساب مقصد با اطلاعات ثبت‌شده در سیستم رد شده است. لطفاً اطلاعات بانکی خود را بررسی و در صورت نیاز، ویرایش نمایید.
+                </p>
+                </div>
+                <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                </div>
+            </div>
+            </div>
+        </div>
+  
     <!--مودال افزودن کارت بانکی جدید-->
     <div class="modal fade" id="addNewcard" tabindex="-1" aria-labelledby="addNewcardLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -196,16 +215,18 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
             </div>
             </div>
-            <div class="modal-body" style="text-align: justify;">
-            <p class="lh-lg mb-3">برای بازگشت وجه به حساب بانکی ثبت شده در داشبورد، لطفاً از طریق <strong>ارسال تیکت</strong> با پشتیبانی تماس بگیرید.</p>
-            <p class="text-danger small">در حال حاضر امکان بازگشت وجه به‌صورت خودکار وجود ندارد.</p>
+            <div class="modal-body pb-0" style="text-align: justify;">
+                <p class="lh-lg">
+                    مراجع گرامی، در صورت ثبت درخواست عودت وجه، مبلغ موجود در کیف پول شما با کسر ۱۰٪ مالیات، حداکثر تا ۷۲ ساعت آینده به حساب بانکی شما واریز خواهد شد.<br>
+                    <strong>آیا مایل به ادامه هستید؟</strong>
+                    </p>                    
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-sanabad-cancle flex-fill fw-bold" data-bs-dismiss="modal">
-                بستن
+            <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">
+                انصراف
             </button>
-            <a href="user-ticket.html" class="btn btn-sanabad flex-fill fw-bold" style="border-radius: 80px !important;">
-                <i class="fa-solid fa-headset me-1"></i> تماس با پشتیبانی
+            <a href="#" class="btn btn-info fw-bold text-white" onclick="showRefundToast()">
+                درخواست عودت وجه
             </a>
             </div>
         </div>
@@ -461,6 +482,160 @@
                             </div>
                         </div>
                         <div class="col-12">
+                            <div class="border" style="border-radius: 20px;">
+                                <div class="card-header bg-light">
+                                    <div class="row g-3 align-items-center justify-content-between">
+                                        <div class="col-md-8">
+                                            <h5 class="fw-bold text-dark my-2 fs-5">وضعیت درخواست های کیف  پول</h5>   
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form>
+                                                <select class="form-select border-0 z-index-9 bg-transparent mt-2 fw-bold text-dark" aria-label=".form-select-sm">
+                                                    <option value="">مرتب سازی</option>
+                                                    <option>تاریخ ثبت درخواست</option>
+                                                    <option>تاریخ واریز</option>
+                                                    <option>مبلغ قابل عودت</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive border-0">
+                                        <table class="table table-light text-center align-middle p-4 mb-0 table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="py-3" style="border-top-right-radius: 20px;">شماره پیگیری</th>
+                                                    <th scope="col" class="py-3">تاریخ ثبت درخواست</th>
+                                                    <th scope="col" class="py-3">مبلغ قابل عودت</th>
+                                                    <th scope="col" class="py-3" >حساب مقصد</th>
+                                                    <th scope="col" class="py-3">وضعیت درخواست</th>
+                                                    <th scope="col" class="py-3">تاریخ واریز</th>
+                                                    <th scope="col" class="py-3"  style="border-top-left-radius: 20px;">عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>#2841B</td>
+                                                    <td>1404/04/02</td>
+                                                    <td>231,030</td>
+                                                    <td>بانک رفاه</td>
+                                                    <td>در انتظار بررسی</td>
+                                                    <td>____</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2841B</td>
+                                                    <td>1404/04/02</td>
+                                                    <td>۲۵۶٬۷۰۰</td>
+                                                    <td>بانک رفاه</td>
+                                                    <td>در انتظار بررسی</td>
+                                                    <td>____</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2842C</td>
+                                                    <td>1404/04/01</td>
+                                                    <td>۱۴۳٬۵۰۰</td>
+                                                    <td>بانک ملت</td>
+                                                    <td>در انتظار بررسی</td>
+                                                    <td>____</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2843D</td>
+                                                    <td>1404/03/30</td>
+                                                    <td>۹۸٬۰۰۰</td>
+                                                    <td>بانک ملی</td>
+                                                    <td>واریز شد</td>
+                                                    <td>1404/04/02</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2844E</td>
+                                                    <td>1404/03/29</td>
+                                                    <td>۳۱۰٬۲۵۰</td>
+                                                    <td>بانک صادرات</td>
+                                                    <td>رد شد</td>
+                                                    <td>____</td>
+                                                    <td><a href="#" data-bs-toggle="modal" data-bs-target="#accountNoteModal">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2845F</td>
+                                                    <td>1404/03/28</td>
+                                                    <td>۲۲۱٬۰۰۰</td>
+                                                    <td>بانک پارسیان</td>
+                                                    <td>در انتظار بررسی</td>
+                                                    <td>____</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2846G</td>
+                                                    <td>1404/03/25</td>
+                                                    <td>۴۵۰٬۰۰۰</td>
+                                                    <td>بانک کشاورزی</td>
+                                                    <td>واریز شد</td>
+                                                    <td>1404/03/28</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2847H</td>
+                                                    <td>1404/03/22</td>
+                                                    <td>۱۹۹٬۹۰۰</td>
+                                                    <td>بانک آینده</td>
+                                                    <td>در انتظار بررسی</td>
+                                                    <td>____</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#2848I</td>
+                                                    <td>1404/03/20</td>
+                                                    <td>۵۰۰٬۰۰۰</td>
+                                                    <td>بانک ملت</td>
+                                                    <td>واریز شد</td>
+                                                    <td>1404/03/23</td>
+                                                    <td><a href="#">
+                                                        <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
+                                                    </a></td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
+                                    <ul class="pagination custom-pagination">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">۱</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">۲</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">۳</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
+                                    </li>
+                                    </ul>
+                                </nav>  
+                            </div>
+                            
+                        </div>
+                        <div class="col-12">
                             <div class="card pay-card border rounded mb-4">
                                 <div class="card-header bg-light d-sm-flex justify-content-sm-between align-items-center border-bottom py-3">
                                     <h5 class="mb-2 mb-sm-0 fs-5 fw-bold">کارت های بانکی من</h5>
@@ -669,6 +844,24 @@
             },
             "retina_detect": true
           });
+          function showRefundToast() {
+            const send_recModal = document.getElementById('refundModal');
+            const send_rec = bootstrap.Modal.getInstance(send_recModal);
+            send_rec.hide();
+            var toastEl = document.getElementById('refundToast');
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+          }
     </script>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
+            <div class="toast-body text-end fe-bold">
+              درخواست شما با موفقیت ثبت شد و برای بررسی به حسابداری ارسال گردید.
+            </div>
+          </div>
+        </div>
+      </div>      
 </body>
 </html>

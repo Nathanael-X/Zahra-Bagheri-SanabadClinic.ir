@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <title>داشبورد امور مالی | درمانگاه سناباد</title>
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/style/admin-dashboard.css" rel="stylesheet">
+    <link href="assets/style/admin-note.css" rel="stylesheet">
+    <!--librearies-->
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <style>
+        .selected-row td
+        {
+            background-color: #1f232c !important;
+            color: white !important;
+        }
+        .bg-blue-light
+        {
+            background-color: #c2ecff !important;
+        }
+        @media (max-width:400px)
+        {
+            .clear-mb
+            {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--مودال یادداشت 1-->
+    <div class="modal fade" id="appDetail_note1" tabindex="-1" aria-labelledby="appDetaillabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                
+                <!-- Modal header -->
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="appDetaillabel">جزئیات یادداشت</h5>
+                    <button type="button" class="btn btn-sm text-white mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+    
+                <!-- Modal body -->
+                <div class="modal-body p-5">
+                    <!-- Name -->
+                    <span class="small fw-bold">تاریخ یادداشت:</span>
+                    <h6 class="mb-3 mt-2">1404/02/22</h6>
+    
+                    <!-- Email -->
+                    <span class="small fw-bold">موضوع یادداشت:</span>
+                    <h6 class="mb-3 mt-2">بررسی شماره شبا</h6>
+    
+                    <!-- Summary -->
+                    <span class="small fw-bold">متن یادداشت:</span>
+                    <p class="text-dark mb-2 mt-2" style="text-align: justify;line-height:2">
+                        شماره شبای ثبت‌شده توسط آقای رضایی بررسی شد. با توجه به اطلاعات ارائه‌شده، شماره واردشده با فرمت استاندارد مطابقت ندارد و در سیستم بانکی نیز تأیید نشد.
+                        لطفاً از صحت شماره شبای واردشده اطمینان حاصل فرمایند و در صورت نیاز به اصلاح، از طریق پنل کاربری اقدام نمایند. در صورت بروز مشکل مجدد، لطفاً تصویر مدرک بانکی حاوی شماره شبا ارسال شود تا پیگیری دقیق‌تری انجام گیرد.                        
+                    </p>
+                </div>
+    
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary my-0" data-bs-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--مودال حذف یادداشت-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-end">
+            <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="deleteModalLabel">حذف یادداشت</h5>
+            </div>
+            <div class="modal-body">
+                آیا از حذف یادداشت مورد نظر اطمینان دارید؟
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">بله، حذف شود</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--مودال خروج از حساب کاربری-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="logoutModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                خروج از حساب</h5>
+            </div>
+            <div class="modal-body text-center">
+              آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="index.html" class="btn btn-danger w-25">خروج</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    <!-- سایدبار -->
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+        <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
+            <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
+            <strong class="brand-name">کلینیک سناباد طوس</strong>
+        </div>
+        <ul class="nav flex-column px-3 fs-5 h-75">
+            <li class="nav-item mt-3 mb-2">
+                <a href="Finance-dashboard.html" class="nav-link">
+                    <i class="bi bi-house ms-3"></i>داشبورد
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Finance-Ticket.html" class="nav-link">
+                    <i class="bi bi-chat-dots ms-3"></i>تیکت و پشتیبانی
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Finance_Note.html" class="nav-link active-link">
+                    <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
+                </a>
+            </li>
+        </ul>
+        <div class="px-3 mt-4 pt-1">
+            <div class="d-flex align-items-center justify-content-between">
+                <a class="h5 mb-0 blue-light" href="Finance_profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+    <!--پایان سایدبار-->
+    <!-- بک‌گراند تار در حالت موبایل -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- هدر بالا -->
+    <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+                <span class="bar top-bar"></span>
+                <span class="bar middle-bar"></span>
+                <span class="bar bottom-bar"></span>
+            </button>
+        </div>               
+        <!--اعلان های ادمین-->
+        <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
+            <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell fs-4 text-white"></i>
+            <span class="badge bg-danger rounded-pill notification-badge">2</span>
+            </button>
+        
+            <!-- لیست اعلان‌ها -->
+            <ul class="dropdown-menu for_notif_admin dropdown-menu-end shadow fade rounded-4" aria-labelledby="notifDropdown">
+            <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> درخواست های عودت وجه</li>
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof1.png" alt="user1">
+                <div class="content">
+                    <strong>سهیل مولودی</strong><br>
+                   درخواست عودت وجه<br>
+                    <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>
+            
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof2.png" alt="user2">
+                <div class="content">
+                <strong>شیرین بهبهانی</strong><br>
+                درخواست عودت وجه<br>
+                <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>    
+            <li class="text-center py-2">
+                <a href="Finance-Ticket.html" class="text-decoration-none text-primary">مشاهده همه</a>
+            </li>
+            </ul> 
+        </div>
+        <!--پروفایل ادمین-->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-decoration-none" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="assets/Images/sample-profile/prof1.png" alt="sample profile" width="40" height="40" class="rounded-circle shadow-sm">
+            </a>
+        
+            <!-- منوی کشویی -->
+            <ul class="dropdown-menu for_admin_prof dropdown-menu-end text-end p-3" aria-labelledby="profileDropdown" style="min-width: 350px;">
+            <!-- اطلاعات کاربر -->
+            <li class="d-flex align-items-center mb-3">
+                <img src="assets/Images/sample-profile/prof1.png" alt="sample profile" width="50" height="50" class="rounded-circle me-2">
+                <div class="me-2">
+                <h6 class="mb-1 fw-bold">حسابداری سناباد</h6>
+                <small class="text-muted">Sanabad.Finance@gmail.com</small>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+        
+             <!-- لینک‌های تنظیمات -->
+             <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="Finance_profile.html">
+                <i class="bi bi-gear ms-2"></i> تنظیمات
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="index.html">
+                <i class="bi bi-globe ms-2"></i> صفحه اصلی
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center text-danger fw-bold" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="bi bi-box-arrow-right ms-2"></i> خروج
+                </a>
+            </li>
+            </ul>
+        </div>
+    
+        
+    </header>
+    <!--محتوای اصلی-->
+    <main class="main-content pt-5 px-3" style="min-height: 100vh;">
+        <div class="container-fluid ps-5 pe-5 clear-mb">
+            <div style="height: 5vh;"></div>
+            <div class="container py-4">
+                <div class="mb-2">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap ">
+                        <h5 class="section-title"><i class="bi bi-journal-text ms-2"></i>ثبت یادداشت روزانه</h5>
+                    </div>
+                    <!-- تب‌ها -->
+                    <ul class="nav nav-tabs mb-3 pe-0" id="userTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="insertNote-tab" data-bs-toggle="tab" data-bs-target="#insert_not" type="button" role="tab">ثبت یادداشت</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="allNotes-tab" data-bs-toggle="tab" data-bs-target="#all_nots" type="button" role="tab">یادداشت های ثبت شده</button>
+                        </li>
+                    </ul>
+                    <!--محتوای تب ها-->
+                    <div class="tab-content" id="noteTabsContent">
+                        <!--تب ثبت نوت-->
+                        <div class="tab-pane fade show active" id="insert_not" role="tabpanel">
+                            <!-- 1. یادداشت روزانه -->
+                            <div class="section-box">
+                                <form>
+                                <div class="row mb-3 g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">موضوع یادداشت</label>
+                                        <input type="text" class="form-control" placeholder="مثلا: یادآوری حسابرسی فیزیوتراپی">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="date" class="form-label">تاریخ یادداشت (شمسی)</label>
+                                        <div>
+                                            <div class="row g-2">
+                                                <div class="col-4">
+                                                  <select id="day" class="form-select">
+                                                    <option value="">روز</option>
+                                                    <option>01</option>
+                                                    <option>02</option>
+                                                    <option>03</option>
+                                                    <option>04</option>
+                                                    <option>05</option>
+                                                    <option>06</option>
+                                                    <option>07</option>
+                                                    <option>08</option>
+                                                    <option>09</option>
+                                                    <option>10</option>
+                                                    <option>11</option>
+                                                    <option>12</option>
+                                                    <option>13</option>
+                                                    <option>14</option>
+                                                    <option>15</option>
+                                                    <option>16</option>
+                                                    <option>17</option>
+                                                    <option>18</option>
+                                                    <option>19</option>
+                                                    <option>20</option>
+                                                    <option>21</option>
+                                                    <option>22</option>
+                                                    <option>23</option>
+                                                    <option>24</option>
+                                                    <option>25</option>
+                                                    <option>26</option>
+                                                    <option>27</option>
+                                                    <option>28</option>
+                                                    <option>29</option>
+                                                    <option>30</option>
+                                                    <option>31</option>
+                                                  </select>
+                                                </div>
+                                              
+                                                <div class="col-4">
+                                                  <select id="month" class="form-select">
+                                                    <option value="">ماه</option>
+                                                    <option value="01">فروردین</option>
+                                                    <option value="02">اردیبهشت</option>
+                                                    <option value="03">خرداد</option>
+                                                    <option value="04">تیر</option>
+                                                    <option value="05">مرداد</option>
+                                                    <option value="06">شهریور</option>
+                                                    <option value="07">مهر</option>
+                                                    <option value="08">آبان</option>
+                                                    <option value="09">آذر</option>
+                                                    <option value="10">دی</option>
+                                                    <option value="11">بهمن</option>
+                                                    <option value="12">اسفند</option>
+                                                  </select>
+                                                </div>
+                                              
+                                                <div class="col-4">
+                                                  <select id="year" class="form-select">
+                                                    <option value="">سال</option>
+                                                    <option value="1404">1404</option>
+                                                    <option value="1405">1405</option>
+                                                    <option value="1406">1406</option>
+                                                    <option value="1407">1407</option>
+                                                    <option value="1408">1408</option>
+                                                    <option value="1409">1409</option>
+                                                    <option value="1410">1410</option>
+                                                    <option value="1411">1411</option>
+                                                    <option value="1412">1412</option>
+                                                    <option value="1413">1413</option>
+                                                    <option value="1414">1414</option>
+                                                    <option value="1415">1415</option>
+                                                    <option value="1416">1416</option>
+                                                    <option value="1417">1417</option>
+                                                    <option value="1418">1418</option>
+                                                    <option value="1419">1419</option>
+                                                    <option value="1420">1420</option>
+                                                  </select>
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-6">
+                                        <label class="form-label">اتفاقات و یادداشت‌ها</label>
+                                        <textarea class="form-control" rows="5" placeholder=" مثلا با خانم جهانگیری در خصوص حسابرسی ماهانه تماس گرفته شود..."></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="fileUpload">
+                                            <div class="upload-box" id="uploadArea" style="padding: 2vh 19.5vh;">
+                                              <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
+                                              <div class="upload-text">فایل خود را بکشید یا اینجا کلیک کنید</div>
+                                              <input type="file" id="fileUpload">
+                                            </div>
+                                        </label>
+                                        
+                                        <p id="fileName" style="margin-top: 15px; color: #333;"></p>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#successModal">ذخیره یادداشت</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!--تب نوت های ثبت شده-->
+                        <div class="tab-pane fade show" id="all_nots" role="tabpanel">
+                            <div class="bg-light border mb-4" style="border-radius: 20px;">
+                                <div class="card-body pb-0">
+                                    <div class="table-responsive border-0">
+                                        <table class="table align-middle p-4 mb-0 table-hover"  id="notesTable">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="py-3 text-center" style="border-top-right-radius: 20px;">شماره یادداشت</th>
+                                                    <th scope="col">تاریخ</th>
+                                                    <th scope="col">موضوع</th>
+                                                    <th scope="col">خلاصه یادداشت</th>
+                                                    <th scope="col" style="border-top-left-radius: 20px;">عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center">1</td>
+                                                    <td>1404/02/22</td>
+                                                    <td>بررسی شماره شبا</td>
+                                                    <td>شماره شبای ثبت‌شده توسط آقای رضایی...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده" data-bs-toggle="modal" data-bs-target="#appDetail_note1">
+                                                            <i class="bi bi-eye"  data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center">2</td>
+                                                    <td>1404/02/22</td>
+                                                    <td>تایید عودت وجه</td>
+                                                    <td>درخواست عودت خانم سلامی بررسی و...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center">3</td>
+                                                    <td>1404/02/21</td>
+                                                    <td>ثبت واریز</td>
+                                                    <td>مبلغ رزرو لغوشده توسط آقای حسینی...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center">4</td>
+                                                    <td>1404/02/20</td>
+                                                    <td>تایید شماره حساب</td>
+                                                    <td>شماره حساب خانم احمدی پس ...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center">5</td>
+                                                    <td>1404/02/19</td>
+                                                    <td>لغو واریز</td>
+                                                    <td>درخواست واریز آقای زارعی به‌دلیل...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center">6</td>
+                                                    <td>1404/02/18</td>
+                                                    <td>یادآوری واریز</td>
+                                                    <td>برای خانم شریفی یادآوری واریز...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center">7</td>
+                                                    <td>1404/02/17</td>
+                                                    <td>ارسال رسید</td>
+                                                    <td>رسید پرداخت به حساب آقای...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center">8</td>
+                                                    <td>1404/02/16</td>
+                                                    <td>تایید کیف پول</td>
+                                                    <td>افزایش موجودی کیف پول...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center">9</td>
+                                                    <td>1404/02/15</td>
+                                                    <td>بررسی مغایرت</td>
+                                                    <td>مغایرت گزارش‌شده توسط آقای رضایی...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center">10</td>
+                                                    <td>1404/02/14</td>
+                                                    <td>پیگیری انتقال وجه</td>
+                                                    <td>وضعیت انتقال وجه به شبای آقای...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center">11</td>
+                                                    <td>1404/02/13</td>
+                                                    <td>تایید بازپرداخت</td>
+                                                    <td>درخواست بازپرداخت آقای بهرامی...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center">12</td>
+                                                    <td>1404/02/12</td>
+                                                    <td>پاسخ به تیکت مالی</td>
+                                                    <td>پاسخ به تیکت خانم عابدینی درباره...</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
+                                                            <i class="bi bi-eye"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                            <i class="bi bi-trash"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <nav aria-label="صفحه بندی نوت های ثبت شده" class="d-flex justify-content-center mt-4">
+                                <ul class="pagination custom-pagination">
+                                  <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
+                                  </li>
+                                  <li class="page-item active"><a class="page-link" href="#">۱</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">۲</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">۳</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
+                                  </li>
+                                </ul>
+                            </nav> 
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </main>
+    <!--پایان محتوای اصلی-->
+    <!--bootstrap javascript cdn-->
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/admin-dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+              new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+            const rows = document.querySelectorAll(".clickable-row");
+
+            rows.forEach(row => {
+                row.addEventListener("click", function () {
+                    // حذف رنگ قبلی
+                    rows.forEach(r => r.classList.remove("selected-row"));
+                    // رنگ دادن به سطر کلیک‌شده
+                    this.classList.add("selected-row");
+                });
+            });
+           // ذخیره کردن ردیف انتخاب شده
+           let selectedRow = null;
+
+           // پیدا کردن تمام دکمه‌های حذف
+           const deleteButtons = document.querySelectorAll('.delete-btn');
+           deleteButtons.forEach(button => {
+               button.addEventListener('click', function(event) {
+                   event.preventDefault();
+                   // انتخاب ردیف مربوطه
+                   selectedRow = button.closest('tr');
+                   // نمایش مودال
+                   new bootstrap.Modal(document.getElementById('deleteModal')).show();
+               });
+           });
+
+           // عملکرد دکمه تایید حذف
+           document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+               // حذف ردیف انتخاب شده
+               if (selectedRow) {
+                   selectedRow.remove();
+               }
+               const rows = document.querySelectorAll('#notesTable tbody tr');
+               rows.forEach((row, index) => {
+                   row.querySelector('.note-number').textContent =index + 1; // شماره یادداشت‌ها از 1 شروع می‌شود
+               });
+               // بستن مودال
+               bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+           }); 
+            
+        });
+    </script>
+    
+    
+</body>
+</html>

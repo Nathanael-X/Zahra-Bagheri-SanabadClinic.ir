@@ -4,13 +4,13 @@
     <title>کلینیک سناباد طوس</title>
     <meta name="publisher" content="Zahra Bagheri Hassankiade" />
     <meta name="title" content="sanabad toos hospital" />
-    <meta name="description" content="برای دریافت نوبت از پزشکان مجموعه و اطلاع درباره ی کلینیک کلیک کنید" /><!--description for home page to increase seo-->
+    <meta name="description" content="کلینیک شبانه‌روزی سناباد در مشهد، ارائه‌دهنده خدمات پزشکی، تخصصی و عمومی با امکان رزرو نوبت آنلاین، معرفی پزشکان، و پاسخگویی ۲۴ ساعته. سناباد، همراه سلامت شما در هر ساعت از شبانه‌روز." />
     <meta http-equiv="content-language" content="fa" />
-    <meta name="keywords" content="جراح مغز و اعصاب,روانکاوی,روانشناسی,کلینیک سناباد,پزشکی,سلامت,رزرو نوبت" /><!--key words for increasing seo-->
+    <meta name="keywords" content="درمانگاه سناباد, کلینیک شبانه‌روزی مشهد, رزرو نوبت آنلاین پزشک, نوبت‌دهی اینترنتی درمانگاه, دکتر عمومی شبانه‌روزی, پزشک متخصص مشهد, کلینیک شبانه‌روزی سناباد, درمانگاه شبانه‌روزی مشهد, درمانگاه شبانه‌روزی, نوبت‌دهی پزشک آنلاین, پزشک آنلاین مشهد, نوبت‌دهی سناباد, پذیرش آنلاین درمانگاه, دکتر شبانه روزی, نوبت اینترنتی سناباد, کلینیک مشهد, خدمات درمانی شبانه‌روزی, مشاوره پزشکی آنلاین, کلینیک شبانه‌روزی, پزشکان سناباد"/>
     <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
 	  <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--styles-->
+    <!--styles we made-->
     <link rel="stylesheet" type="text/css" href="assets/style/header_footer.css"/>
     <link rel="stylesheet" type="text/css" href="assets/style/home-page.css"/>
     <!--bootstrap css cdn-->
@@ -27,115 +27,117 @@
     <script src="assets/vendor/js/popper.min.js"></script>
     <script src="assets/vendor/js/tippy-bundle.umd.min.js"></script>
     <style>
-        a
+      @media (max-width:1024px) and (min-width:730px)
+      {
+        #title-search
         {
-          text-decoration: none !important;
+          font-size: 20px !important;
         }
-        @media (max-width:1357px) and (min-width:992px)
+      }
+      @media (max-width:1357px) and (min-width:992px)
+      {
+        .dr-profile
         {
+          display: none !important;
+        }
+      }
+      @media (max-width:400px)
+      {
+          .section-zoom-bg .content-pc
+          {
+              width: 80% !important;
+              left: 30% !important;
+          }
+          .contact-card
+          {
+              padding: 0px !important;
+          }
+          .contact-card-info ul
+          {
+            padding-right: 0px !important;
+          }
+      }
+      @media (max-width:991px)
+      {
+          .card-best-dr-info
+          {
+            right: 0px !important;
+          }
+          .contact-card-info
+          {
+            width: 100% !important;
+          }
           .dr-profile
           {
-            display: none !important;
-          }
-        }
-        @media (max-width:400px)
-        {
-            .section-zoom-bg .content-pc
-            {
-                width: 80% !important;
-                left: 30% !important;
-            }
-            .contact-card
-            {
-                padding: 0px !important;
-            }
-            .contact-card-info ul
-            {
-              padding-right: 0px !important;
-            }
-        }
-        @media (max-width:991px)
-        {
-            .card-best-dr-info
-            {
-              right: 0px !important;
-            }
-            .contact-card-info
-            {
-              width: 100% !important;
-            }
-            .dr-profile
-            {
-              display: block !important;
-            }
-            #majd_picture
-            {
-              justify-content: center !important;
-              margin-top: 0px !important;
-            }
-            .zoom-container 
-            {
-                width: 579px;
-                height: 403px;
-                right: -20px;
-            }
-            .work-history-box , .small-zoom-container
-            {
-                display: none !important;
-            }
-            .summary
-            {
-                text-align: center !important;
-                line-height: 2;
-            }
-        }
-        @media (max-width:545px)
-        {
-            #profile-majd,#reza-list , #Majd-list
-            {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-            }
-        }
-        /* نمایش همبرگر فقط زیر 1250px */
-        @media (max-width: 1225px) 
-        {
-            .login_Sighnup_btn,
-            .nav-full,
-            .nav-partial {
-            display: none !important;
-            }
-            #hamburgerBtn {
             display: block !important;
-            }
-        }
-        /* نمایش partial بین 1250 تا 1399px */
-        @media (min-width: 1226px) and (max-width: 1399px) 
-        {
-            .nav-full {
-            display: none !important;
-            }
-            .nav-partial {
-            display: flex !important;
-            }
-        }
-        /* نمایش full navbar از 1400px به بالا */
-        @media (min-width: 1400px)
-        {
-            .nav-full {
-            display: flex !important;
-            }
-            .nav-partial,
-            #hamburgerBtn,
-            #mobileSidebar,
-            #sidebarBackdrop {
-            display: none !important;
-            }
-        }    
+          }
+          #majd_picture
+          {
+            justify-content: center !important;
+            margin-top: 0px !important;
+          }
+          .zoom-container 
+          {
+              width: 579px;
+              height: 403px;
+              right: -20px;
+          }
+          .work-history-box , .small-zoom-container
+          {
+              display: none !important;
+          }
+          .summary
+          {
+              text-align: center !important;
+              line-height: 2;
+          }
+      }
+      @media (max-width:545px)
+      {
+          #profile-majd,#reza-list , #Majd-list
+          {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+          }
+      }
+      /* نمایش همبرگر فقط زیر 1250px */
+      @media (max-width: 1225px) 
+      {
+          .login_Sighnup_btn,
+          .nav-full,
+          .nav-partial {
+          display: none !important;
+          }
+          #hamburgerBtn {
+          display: block !important;
+          }
+      }
+      /* نمایش partial بین 1250 تا 1399px */
+      @media (min-width: 1226px) and (max-width: 1399px) 
+      {
+          .nav-full {
+          display: none !important;
+          }
+          .nav-partial {
+          display: flex !important;
+          }
+      }
+      /* نمایش full navbar از 1400px به بالا */
+      @media (min-width: 1400px)
+      {
+          .nav-full {
+          display: flex !important;
+          }
+          .nav-partial,
+          #hamburgerBtn,
+          #mobileSidebar,
+          #sidebarBackdrop {
+          display: none !important;
+          }
+      }    
     </style>
 </head>
 <body>
-    
     <!--پاپ اپ ایجاد حساب کاربری-->
     <div class="modal fade" id="Loginsignup_popup" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- بزرگ‌تر برای دو ستون -->
@@ -184,7 +186,7 @@
                         <p class="text-muted mb-1">
                           کد تأیید به شماره <span class="fw-bold text-info" id="user-phone-login">09123456789</span> ارسال شد.
                         </p>
-                        <a href="#" class="small blue-light">
+                        <a href="#" class="small blue-light"  data-bs-toggle="modal" data-bs-target="#Loginsignup_popup" data-bs-dismiss="modal">
                           <i class="fas fa-edit ps-2"></i>
                           ویرایش شماره</a>
                       </div>
@@ -295,9 +297,7 @@
                 
                     <!-- دکمه ثبت -->
                     <div class="col-12 d-grid mt-4">
-                      <a href="booking.html" class="text-white">
-                        <button type="submit" class="btn btn-sanabad rounded-pill py-2 w-100">ثبت اطلاعات</button>
-                      </a>
+                        <button type="submit" class="btn btn-sanabad rounded-pill py-2 w-100" id="submit_to_userDashboard">ثبت اطلاعات</button>
                     </div>
                   </div>
                 </div>
@@ -306,6 +306,22 @@
                   
                 </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--مودال پیغام خوش آمد گویی و راهنمایی رزرو کاربر-->
+    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-bluelight text-white fw-bold">
+            <h5 class="modal-title"  id="welcomeModalLabel"></h5>
+          </div>
+          <div class="modal-body pb-1 lh-lg" style="text-align: justify !important;">
+            <p id="welcomeMessage"></p>
+          </div>
+          <div class="modal-footer py-2">
+            <button type="button" class="btn btn-sanabad" id="closeWelcomeModal">رفتن به داشبورد</button>
           </div>
         </div>
       </div>
@@ -373,6 +389,7 @@
         </div>
       </div>
     </div>
+    <!--Toast پیغام موفقیت در ارسال نظر سنجی کاربر-->
     <div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
       <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header d-flex justify-content-between" style="color: white !important; background-color:#28b6f6 !important;">
@@ -384,7 +401,26 @@
         </div>
       </div>
     </div>
-     
+    <!--پاپ آپ ارسال موفقیت آمیز فرم تماس با ما-->
+    <div class="modal fade" id="SendContactUs_Successfull" tabindex="-1" aria-labelledby="SendContactUs_SuccessfullLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-bluelight text-white">
+            <h5 class="modal-title fw-bold" >
+              از بازخورد ارزشمندتان سپاسگزاریم
+            </h5>
+          </div>
+          <div class="modal-body pb-1 lh-lg" style="text-align: justify !important;">
+            <p>
+              پیغام شما با موفقیت فرستاده شد؛ پرسنل ما از طریق ایمیل و یا شماره ی تماس، با شما در ارتباط خواهند بود.
+            </p>
+          </div>
+          <div class="modal-footer py-2">
+            <button type="button" class="btn btn-sanabad" data-bs-dismiss="modal">فهمیدم</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Top Bar Header -->
     <div class="top-bar">
         <div class="container-fluid d-flex align-items-center" >
@@ -644,15 +680,17 @@
                   <div class="swiper-button-next"></div>
                 </div>
                 <!-- CTA پایین سمت چپ -->
-                <div class="reservationArea position-absolute bottom-0 start-0 translate-middle-y bg-white p-1 ps-3 pe-3 m-5 d-flex align-items-center gap-3">
-                  <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
-                    <img src="assets/Images/home/doctor.png" alt="doctor logo">
+                <a href="booking.html">
+                  <div class="reservationArea position-absolute bottom-0 start-0 translate-middle-y bg-white p-1 ps-3 pe-3 m-5 d-flex align-items-center gap-3">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                      <img src="assets/Images/home/doctor.png" alt="doctor logo">
+                    </div>
+                    <div class="text-end mt-2">
+                      <p class="mb-1 fw-bold">برای رزرو کلیک کنید</p>
+                      <p>تماس: <small class="blue-light">05138436060</small></p>
+                    </div>
                   </div>
-                  <div class="text-end mt-2">
-                    <p class="mb-1 fw-bold">برای رزرو کلیک کنید</p>
-                    <p>تماس: <small class="blue-light">05138436060</small></p>
-                  </div>
-                </div>
+                </a>
             </div>
             <!-- ستون چپ: متن -->
             <div class="col-lg-6 p-5 text-center text-lg-end wave-bottom">
@@ -662,10 +700,10 @@
                 درمانگاه‌سناباد با همت والا توسط مدیران متخصص و متعهد در حرفه‌ی پزشکی با هدف تامین نیازهای بهداشتی و درمانی جامعه، از سال ۱۳۷۸ آغاز بکار نمود...
               </p>
               <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
-                <a href="#" class="btn btn-sanabad">
+                <a href="about-us.html" class="btn btn-sanabad">
                   خواندن موارد بیشتر
                 </a>
-                <a href="#" class="btn btn-video d-flex align-items-center justify-content-center">
+                <a href="https://youtube.com/@drmajdmohsenibirjandi?si=JjfZ3J42ynsiuGEB" class="btn btn-video d-flex align-items-center justify-content-center">
                     <i class="bi bi-play-circle-fill video-icon"></i>
                     <span>تماشای ویدیو</span>
                 </a>
@@ -1226,13 +1264,13 @@
                             <label for="message">متن پیام <span class="blue-light">(اجباری)</span></label>
                           </div>
                           <div class="d-flex text-end gap-3">
-                            <button type="submit" class="btn btn-sanabad rounded-pill py-2" id="submit-contact-us">
+                            <button class="btn btn-sanabad rounded-pill py-2" id="submit-contact-us" data-bs-toggle="modal" data-bs-target="#SendContactUs_Successfull">
                               <i class="fas fa-paper-plane ms-2"></i>
                               ارسال پیام
                             </button>
                             <button type="reset" class="btn btn-sanabad rounded-pill pt-1" id="reset-contact-us">
                               <i class="fas fa-times-circle ms-2"></i>
-                              لغو ارسال
+                             پاک کردن
                             </button>
                           </div>
                         </form>
@@ -1480,7 +1518,7 @@
                 <div class="d-flex justify-content-start align-items-center">
                   <i class="fas fa-headset ms-3 blue-light" style="font-size: 3.2rem;"></i>
                   <div class="d-flex flex-column pt-2">
-                    <a href="#" class="blue-light fw-bold lh-lg">
+                    <a href="#section_7" class="blue-light fw-bold lh-lg">
                       به پشتیبانی نیاز دارید؟
                     </a>
                     <p>پیغام خود را برای ما بنویسید.</p>
@@ -1543,6 +1581,9 @@
           </div>
         </footer>  
         <!--پایان فوتر-->
+        <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+          <i class="bi bi-chevron-up"></i>
+        </button>               
     </main>
     <!--پایان محتوای اصلی-->
     <!--scripts-->
@@ -1555,19 +1596,6 @@
     <script src="assets/vendor/js/scrollreveal.js"></script>
     <script src="assets/vendor/js/lottie.min.js"></script>
     <script>
-      const sendBtn = document.getElementById('sendBtn');
-      const toastElement = document.getElementById('liveToast');
-
-      const toast = new bootstrap.Toast(toastElement, {
-        delay: 5000,     // مدت زمان نمایش: ۵ ثانیه
-        autohide: true   // مخفی شدن خودکار
-      });
-
-      sendBtn.addEventListener('click', function () {
-        setTimeout(() => {
-          toast.show();
-        }, 300); // صبر می‌کنیم تا مودال بسته بشه
-      });
       //انیمیشن فوتر
       particlesJS("particles-js", {
         "particles": {
@@ -1643,7 +1671,7 @@
         }
       });
       //scroll animation
-      if (window.innerWidth > 768)
+      if ((window.innerWidth > 768)&&!(window.innerWidth === 812 && window.innerHeight === 375))
       {
         ScrollReveal().reveal('.zoom-in', {
           scale: 0.8,
@@ -1682,25 +1710,6 @@
           reset: true,
         });
       }
-      //بیمار اتباع خارجی است
-      function toggleIDNumberField(checkbox) 
-      {
-          const input = document.getElementById('nationalCode');
-          const input_text_1 = document.getElementsByClassName('nationalCode_lbl').item(0);
-          const input_text_2 = document.getElementsByClassName('nationalCode_lbl').item(1);
-
-          if (checkbox.checked) {
-              input.disabled = true;
-              input_text_1.classList.add('text-muted');
-              input_text_2.classList.add('text-muted');
-          } else {
-              input.disabled = false;
-              input_text_1.classList.remove('text-muted');
-              input_text_2.classList.remove('text-muted');
-
-          }
-      }
-      
     </script>    
 </body>
 </html>

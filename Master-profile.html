@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <title>داشبورد ادمین | درمانگاه سناباد</title>
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="assets/style/admin-dashboard.css" rel="stylesheet">
+    <link href="assets/style/admin-profile.css" rel="stylesheet">
+    <!--librearies-->
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+    <style>
+        @media (max-width:400px)
+        {
+            .clear-mb
+            {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--مودال خروج از حساب کاربری-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="logoutModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                خروج از حساب</h5>
+            </div>
+            <div class="modal-body text-center">
+              آیا مطمئن هستید که می‌خواهید از حساب کاربری خود خارج شوید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="index.html" class="btn btn-danger w-25">خروج</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Modal for Delete Confirmation -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger fw-bold text-white">
+            <h5 class="modal-title" id="confirmDeleteLabel">تأیید حذف</h5>
+            </div>
+            <div class="modal-body text-center fw-bold">
+            <p>آیا از حذف عکس پروفایل خود مطمئن هستید؟</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">بله، حذف شود</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- سایدبار -->
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+        <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
+            <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
+            <strong class="brand-name">کلینیک سناباد طوس</strong>
+        </div>
+        <ul class="nav flex-column px-3 fs-5 pb-4">
+            <li class="nav-item mt-3 mb-2">
+                <a href="Master-dashboard.html" class="nav-link">
+                    <i class="bi bi-house ms-3"></i>داشبورد
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_ticket.html" class="nav-link ">
+                    <i class="bi bi-chat-dots ms-3"></i>تیکت و پشتیبانی
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_send_message.html" class="nav-link ">
+                    <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master-user-control.html" class="nav-link ">
+                    <i class="bi bi-person ms-3"></i>کنترل حساب
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master-comments.html" class="nav-link ">
+                    <i class="bi bi-chat ms-3"></i>نظرات کاربران 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_article_management.html" class="nav-link ">
+                    <i class="bi bi-book ms-3"></i>مدیریت مقالات
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master-earning.html" class="nav-link ">
+                    <i class="bi bi-bar-chart ms-3"></i>درآمد سایت 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="Master_note.html" class="nav-link ">
+                    <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
+                </a>
+            </li>
+        </ul>
+        <div class="px-3 mt-4 pt-1">
+            <div class="d-flex align-items-center justify-content-between">
+                <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+    <!--پایان سایدبار-->
+    <!-- بک‌گراند تار در حالت موبایل -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- هدر بالا -->
+    <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
+        <div class="d-flex align-items-center gap-2">
+            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+                <span class="bar top-bar"></span>
+                <span class="bar middle-bar"></span>
+                <span class="bar bottom-bar"></span>
+            </button>
+        </div>               
+        <!--اعلان های ادمین-->
+        <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
+            <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell fs-4 text-white"></i>
+            <span class="badge bg-danger rounded-pill notification-badge">3</span>
+            </button>
+        
+            <!-- لیست اعلان‌ها -->
+            <ul class="dropdown-menu for_notif_admin dropdown-menu-end shadow fade rounded-4" aria-labelledby="notifDropdown">
+            <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> اعلان های داخلی</li>
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof1.png" alt="user1">
+                <div class="content">
+                    <strong>منشی فیزیوتراپی</strong><br>
+                    درخواست بازیابی رمز<br>
+                    <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>
+            
+            <li class="notification-item me-2 ms-2">
+                <img src="assets/Images/sample-profile/prof2.png" alt="user2">
+                <div class="content">
+                <strong>منشی آب درمانی</strong><br>
+                تایید پذیرش خانم احمدی<br>
+                <a href="#" class="text-primary">مشاهده</a>
+                </div>
+            </li>    
+            <li class="text-center py-2">
+                <a href="Master_ticket.html" class="text-decoration-none text-primary">مشاهده همه</a>
+            </li>
+            </ul> 
+        </div>
+        <!--پروفایل ادمین-->
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-decoration-none" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="assets/Images/JahanGiri/Jahan_Giri_profile.jpg" alt="jahan giri profile" width="40" height="40" class="rounded-circle shadow-sm">
+            </a>
+        
+            <!-- منوی کشویی -->
+            <ul class="dropdown-menu for_admin_prof dropdown-menu-end text-end p-3" aria-labelledby="profileDropdown" style="min-width: 350px;">
+            <!-- اطلاعات کاربر -->
+            <li class="d-flex align-items-center mb-3">
+                <img src="assets/Images/JahanGiri/Jahan_Giri_profile.jpg" alt="jahan giri profile" width="50" height="50" class="rounded-circle me-2">
+                <div class="me-2">
+                <h6 class="mb-1 fw-bold">خانم مهندس جهانگیری</h6>
+                <small class="text-muted">Jahangiri@gmail.com</small>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+        
+            <!-- لینک‌های تنظیمات -->
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="Master-profile.html">
+                <i class="bi bi-gear ms-2"></i> تنظیمات
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="index.html">
+                <i class="bi bi-globe ms-2"></i> صفحه اصلی
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex align-items-center text-danger fw-bold" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="bi bi-box-arrow-right ms-2"></i> خروج
+                </a>
+            </li>
+            </ul>
+        </div>
+    
+        
+    </header>
+    <!--محتوای اصلی-->
+    <main class="main-content pt-5 px-3" style="min-height: 100vh;">
+        <div class="container-fluid ps-5 pe-5 clear-mb">
+            <div style="height: 5vh;"></div>
+            <div class="container py-4">
+                <div class="bg-light border rounded-3">
+					<div class="card-header border-bottom py-3">
+						<h3 class="card-header-title mb-0 fw-bold fs-5">ویرایش اطلاعات حساب کاربری</h3>
+					</div>
+					<div class="card-body">
+						<form class="row g-4">
+							<div class="col-12 justify-content-center align-items-center">
+								<label class="form-label">تصویر</label>
+								<div class="row g-3 d-flex align-items-center">
+                                    <div class="col-md-2">
+                                        <label class="position-relative ms-4" for="uploadfile-1" title="Replace this pic">
+                                            <img id="uploadfile-1-preview" class="rounded-circle border border-white border-3 shadow" src="assets/Images/JahanGiri/Jahan_Giri_profile.jpg" alt="admin profile" style="width: 120px; height:120px;">
+                                            <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
+                                        </label>
+                                    </div>
+									<div class="col-md-6">
+                                        <label class="btn btn-info mb-0" for="uploadfile-1">تغییر عکس پروفایل</label>
+									    <input id="uploadfile-1" class="form-control d-none" type="file">
+                                    </div>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<label class="form-label">نام</label>
+								<input type="text" class="form-control" value="رعنا" placeholder="نام">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">نام خانوادگی</label>
+								<input type="text" class="form-control" value="جهان گیری" placeholder="نام خانوادگی">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">نام کاربری</label>
+								<div class="input-group">
+									<span class="input-group-text">@sanabad_admin</span>
+									<input type="text" class="form-control" value="Rana_JahanGiri">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">ایمیل</label>
+								<input class="form-control" type="email" value="RGahangiri78@gmail.com"  placeholder="ایمیل">
+							</div>
+							<div class="col-md-6">
+								<label class="form-label">شماره تلفن</label>
+								<input type="text" class="form-control" value="09159120180" placeholder="شماره تماس">
+							</div>
+
+							<div class="col-md-6">
+								<div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">کشور</label>
+                                        <select id="country" class="form-select">
+                                            <option value="">انتخاب</option>
+                                            <option>ایران</option>
+                                            <option>عراق</option>
+                                            <option>آلمان</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">استان</label>
+                                        <select id="nation" class="form-select">
+                                            <option value="">انتخاب</option>
+                                            <option>خراسان رضوی</option>
+                                            <option>تهران</option>
+                                            <option>اصفهان</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">شهر</label>
+                                        <select id="city" class="form-select">
+                                            <option value="">انتخاب</option>
+                                            <option>مشهد</option>
+                                            <option>تهران</option>
+                                            <option>اصفهان</option>
+                                        </select>
+                                    </div>
+                                </div>
+							</div>
+                            <div class="col-md-6">
+                                <label for="date" class="form-label">سال تولد </label>
+                                <div>
+                                    <div class="row g-2">
+                                        <div class="col-4">
+                                          <select id="day" class="form-select">
+                                            <option value="">روز</option>
+                                            <option>01</option>
+                                            <option>02</option>
+                                            <option>03</option>
+                                            <option>04</option>
+                                            <option>05</option>
+                                            <option>06</option>
+                                            <option>07</option>
+                                            <option>08</option>
+                                            <option>09</option>
+                                            <option>10</option>
+                                            <option>11</option>
+                                            <option>12</option>
+                                            <option>13</option>
+                                            <option>14</option>
+                                            <option>15</option>
+                                            <option>16</option>
+                                            <option>17</option>
+                                            <option>18</option>
+                                            <option>19</option>
+                                            <option>20</option>
+                                            <option>21</option>
+                                            <option>22</option>
+                                            <option>23</option>
+                                            <option selected>24</option>
+                                            <option>25</option>
+                                            <option>26</option>
+                                            <option>27</option>
+                                            <option>28</option>
+                                            <option>29</option>
+                                            <option>30</option>
+                                            <option>31</option>
+                                          </select>
+                                        </div>
+                                      
+                                        <div class="col-4">
+                                          <select id="month" class="form-select">
+                                            <option value="">ماه</option>
+                                            <option value="01">فروردین</option>
+                                            <option value="02">اردیبهشت</option>
+                                            <option value="03">خرداد</option>
+                                            <option value="04">تیر</option>
+                                            <option value="05">مرداد</option>
+                                            <option value="06">شهریور</option>
+                                            <option value="07" selected>مهر</option>
+                                            <option value="08">آبان</option>
+                                            <option value="09">آذر</option>
+                                            <option value="10">دی</option>
+                                            <option value="11">بهمن</option>
+                                            <option value="12">اسفند</option>
+                                          </select>
+                                        </div>
+                                      
+                                        <div class="col-4">
+                                          <select id="year" class="form-select">
+                                            <option value="">سال</option>
+                                            <option value="1310">1310</option>
+                                            <option value="1311">1311</option>
+                                            <option value="1312">1312</option>
+                                            <option value="1313">1313</option>
+                                            <option value="1314">1314</option>
+                                            <option value="1315">1315</option>
+                                            <option value="1316">1316</option>
+                                            <option value="1317">1317</option>
+                                            <option value="1318">1318</option>
+                                            <option value="1319">1319</option>
+                                            <option value="1320">1320</option>
+                                            <option value="1321">1321</option>
+                                            <option value="1322">1322</option>
+                                            <option value="1323">1323</option>
+                                            <option value="1324">1324</option>
+                                            <option value="1325">1325</option>
+                                            <option value="1326">1326</option>
+                                            <option value="1327">1327</option>
+                                            <option value="1328">1328</option>
+                                            <option value="1329">1329</option>
+                                            <option value="1330">1330</option>
+                                            <option value="1331">1331</option>
+                                            <option value="1332">1332</option>
+                                            <option value="1333">1333</option>
+                                            <option value="1334">1334</option>
+                                            <option value="1335">1335</option>
+                                            <option value="1336">1336</option>
+                                            <option value="1337">1337</option>
+                                            <option value="1338">1338</option>
+                                            <option value="1339">1339</option>
+                                            <option value="1340">1340</option>
+                                            <option value="1341">1341</option>
+                                            <option value="1342">1342</option>
+                                            <option value="1343">1343</option>
+                                            <option value="1344">1344</option>
+                                            <option value="1345">1345</option>
+                                            <option value="1346">1346</option>
+                                            <option value="1347">1347</option>
+                                            <option value="1348">1348</option>
+                                            <option value="1349">1349</option>
+                                            <option value="1350">1350</option>
+                                            <option value="1351">1351</option>
+                                            <option value="1352">1352</option>
+                                            <option value="1353">1353</option>
+                                            <option value="1354">1354</option>
+                                            <option value="1355">1355</option>
+                                            <option value="1356">1356</option>
+                                            <option value="1357">1357</option>
+                                            <option value="1358">1358</option>
+                                            <option value="1359">1359</option>
+                                            <option value="1360">1360</option>
+                                            <option value="1361">1361</option>
+                                            <option value="1362">1362</option>
+                                            <option value="1363">1363</option>
+                                            <option value="1364">1364</option>
+                                            <option value="1365">1365</option>
+                                            <option value="1366">1366</option>
+                                            <option value="1367">1367</option>
+                                            <option value="1368">1368</option>
+                                            <option value="1369">1369</option>
+                                            <option value="1370">1370</option>
+                                            <option value="1371">1371</option>
+                                            <option value="1372">1372</option>
+                                            <option value="1373">1373</option>
+                                            <option value="1374">1374</option>
+                                            <option value="1375">1375</option>
+                                            <option value="1376">1376</option>
+                                            <option value="1377">1377</option>
+                                            <option value="1378" selected>1378</option>
+                                            <option value="1379">1379</option>
+                                            <option value="1380">1380</option>
+                                            <option value="1381">1381</option>
+                                            <option value="1382">1382</option>
+                                            <option value="1383">1383</option>
+                                            <option value="1384">1384</option>
+                                            <option value="1385">1385</option>
+                                            <option value="1386">1386</option>
+                                            <option value="1387">1387</option>
+                                            <option value="1388">1388</option>
+                                            <option value="1389">1389</option>
+                                            <option value="1390">1390</option>
+                                            <option value="1391">1391</option>
+                                            <option value="1392">1392</option>
+                                            <option value="1393">1393</option>
+                                            <option value="1394">1394</option>
+                                            <option value="1395">1395</option>
+                                            <option value="1396">1396</option>
+                                            <option value="1397">1397</option>
+                                            <option value="1398">1398</option>
+                                            <option value="1399">1399</option>
+                                            <option value="1400">1400</option>
+                                            <option value="1401">1401</option>
+                                            <option value="1402">1402</option>
+                                            <option value="1403">1403</option>
+                                            <option value="1404">1404</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Clinic_parts" class="form-label">در کدام بخش فعالیت دارید</label>
+                                <select id="Clinic_parts" class="form-select">
+                                    <option value="">سمت</option>
+                                    <option>پذیرش</option>
+                                    <option>حساب داری</option>
+                                    <option>IT</option>
+                                    <option>مدیریت</option>
+                                    <option>فنی</option>
+                                    <option>مدد کاری</option>
+                                    <option>دکتر عمومی</option>
+                                    <option>مطب پرستاری</option>
+                                    <option>دندان پزشکی</option>
+                                    <option>فیزیوتراپی</option>
+                                    <option>آب درمانی</option>
+                                    <option>جراح مغز و اعصاب</option>
+                                    <option>روان شناسی</option>
+                                    <option>اعصاب و روان</option>
+                                    <option>آزمایشگاه</option>
+                                    <option>متخصص تغذیه</option>
+                                    <option>واحد زنان و زایمان</option>
+                                    <option>متخصص پوست و مو</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="typeOfDeal" class="form-label">نوع قرارداد</label>
+                                <select id="typeOfDeal" class="form-select">
+                                    <option value="">قرارداد همکاری</option>
+                                    <option>تمام وقت</option>
+                                    <option>نیمه وقت</option>
+                                    <option>ساعتی</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="DayOfWork" class="form-label">روزهای حضور</label>
+                                <select id="DayOfWork" class="form-select">
+                                    <option value="">تمام هفته</option>
+                                    <option>روزهای زوج</option>
+                                    <option>روزهای فرد</option>
+                                    <option>شنبه تا چهارشنبه</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+								<label class="form-label">درباره من</label>
+								<textarea class="form-control" rows="3" style="line-height: 2;" placeholder="توضیحات خود را اینجا بنویسید..."></textarea>
+								<div class="form-text">توضیحات مختصری برای پروفایل شما</div> 
+							</div>
+                            <div class="col-md-6">
+                                <label for="fileUpload">
+                                    بارگذاری پرونده پرسنلی
+                                    <div class="upload-box" id="uploadArea" style="padding: 0.3vh 19.5vh;">
+                                      <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
+                                      <div class="upload-text">فایل خود را بکشید یا اینجا کلیک کنید</div>
+                                      <input type="file" id="fileUpload"> 
+                                    </div>
+                                </label>
+                                <div class="form-text">قراردادها و مستندات کاری خود را در اینجا بارگذاری نمایید</div> 
+                                <p id="fileName" style="margin-top: 15px; color: #333;"></p>
+                            </div>
+							<div class="d-sm-flex justify-content-end">
+								<button type="button" class="btn btn-info mb-0">ذخیره</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+				<div class="row g-4 mt-3">
+
+					<div class="col-lg-12">
+						<div class="bg-light border rounded-3">
+							<div class="card-header bg-transparent border-bottom">
+								<h5 class="card-header-title mb-0">تغییر رمز عبور</h5>
+							</div>
+							<div class="card-body">
+								<div class="mb-3">
+									<label class="form-label">رمز فعلی</label>
+									<input class="form-control" type="password" placeholder="* * * * * * * *">
+								</div>
+								<div class="mb-3">
+									<label class="form-label"> رمز جدید</label>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="* * * * * * * *">
+										<span class="input-group-text p-0 bg-info ">
+											<i class="far fa-eye cursor-pointer p-2 w-40px"></i>
+										</span>
+									</div>
+									<div class="rounded mt-1" id="psw-strength"></div>
+								</div>
+								<div>
+									<label class="form-label">تکرار رمز جدید</label>
+									<input class="form-control" type="password" placeholder="* * * * * * * *">
+								</div>
+								<div class="d-flex justify-content-end mt-4">
+									<button type="button" class="btn btn-info mb-0">تغییر رمز</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </main>
+    <!--پایان محتوای اصلی-->
+    <!--bootstrap javascript cdn-->
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/admin-dashboard.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+              new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+            
+            //حذف عکس پروفایل
+            const deleteButton = document.querySelector(".uploadremove");
+            const confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+            const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+            const profileImage = document.getElementById("uploadfile-1-preview");
+            deleteButton.addEventListener("click", function (e) {
+              e.preventDefault();
+              confirmModal.show();
+            });
+        
+            confirmDeleteBtn.addEventListener("click", function () {
+              // تغییر تصویر پروفایل
+              profileImage.src = "assets/Images/sample-profile/sample-pic.jpeg";
+              // بستن مودال
+              confirmModal.hide();
+              deleteButton.style.display="none";
+            });
+
+            //تغییر عکس پروفایل
+            const fileInput = document.getElementById("uploadfile-1");
+            const previewImage = document.getElementById("uploadfile-1-preview");
+
+            fileInput.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (file && file.type.startsWith("image/")) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                previewImage.src = e.target.result;
+                deleteButton.style.display="block";
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                alert("لطفاً یک فایل تصویری معتبر انتخاب کنید.");
+            }
+            });
+          });
+          const uploadArea = document.getElementById("uploadArea");
+            const fileInput_1 = document.getElementById("fileUpload");
+            const fileNameDisplay_1 = document.getElementById("fileName");
+
+            uploadArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            uploadArea.classList.add("dragover");
+            });
+
+            uploadArea.addEventListener("dragleave", () => {
+            uploadArea.classList.remove("dragover");
+            });
+
+            uploadArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove("dragover");
+            const file = e.dataTransfer.files[0];
+            fileInput_1.files = e.dataTransfer.files;
+            fileNameDisplay_1.textContent = `فایل انتخاب‌شده: ${file.name}`;
+            });
+
+            fileInput_1.addEventListener("change", () => {
+            if (fileInput_1.files.length > 0) {
+                fileNameDisplay_1.textContent = `فایل انتخاب‌شده: ${fileInput_1.files[0].name}`;
+            }
+            });
+    </script>
+</body>
+</html>

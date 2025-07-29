@@ -383,7 +383,12 @@ a.card-pro:hover{
     font-size: 0.875rem;
     color: #6c757d;
 }
-
+.article-title
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 @media (max-width:992px)
 {
     .op-description , .author

@@ -33,6 +33,10 @@ body
     max-width: 100% !important;
     overflow-x: hidden !important;
 } */
+a
+{
+  text-decoration: none !important;
+}
 /*آغاز استایل دهی سکشن اول*/
 .mySwiper
 {
@@ -89,6 +93,7 @@ body
 }
 .reservationArea
 {
+    color: #1F232C;
     z-index: 10;
     border-radius: 20px !important;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
@@ -527,7 +532,7 @@ body
 {
     position: absolute;
     top: 50%;
-    right: 8%;
+    left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 20px;
@@ -568,6 +573,7 @@ body
         -webkit-box-orient: vertical;
     }
 }
+/* نمایش full navbar از 1400px به بالا */
 @media (min-width: 991px) and (max-width: 1200px) 
 {
     .zoom-container 

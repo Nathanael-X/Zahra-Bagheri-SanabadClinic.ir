@@ -30,6 +30,14 @@
         {
             border-bottom: none !important;
         }
+        @media (max-width:400px)
+        {
+            .clear-mb
+            {
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -58,7 +66,7 @@
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5">
+        <ul class="nav flex-column px-3 fs-5 pb-4">
             <li class="nav-item mt-3 mb-2">
                 <a href="Master-dashboard.html" class="nav-link active-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -70,44 +78,39 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
+                <a href="Master_send_message.html" class="nav-link ">
                     <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
+                <a href="Master-user-control.html" class="nav-link ">
                     <i class="bi bi-person ms-3"></i>کنترل حساب
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
+                <a href="Master-comments.html" class="nav-link ">
                     <i class="bi bi-chat ms-3"></i>نظرات کاربران 
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
+                <a href="Master_article_management.html" class="nav-link ">
                     <i class="bi bi-book ms-3"></i>مدیریت مقالات
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
+                <a href="Master-earning.html" class="nav-link ">
                     <i class="bi bi-bar-chart ms-3"></i>درآمد سایت 
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
+                <a href="Master_note.html" class="nav-link ">
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
-            <li class="nav-item mb-2">
-                <a href="#" class="nav-link ">
-                    <i class="bi bi-gear ms-3"></i>تنظیمات سایت 
-                </a>
-            </li>
         </ul>
-        <div class="px-3 mt-2 pt-1">
+        <div class="px-3 mt-4 pt-1">
             <div class="d-flex align-items-center justify-content-between">
-                <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
                 </a>
                 <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
@@ -159,7 +162,7 @@
                 </div>
             </li>    
             <li class="text-center py-2">
-                <a href="users.html" class="text-decoration-none text-primary">مشاهده همه</a>
+                <a href="Master_ticket.html" class="text-decoration-none text-primary">مشاهده همه</a>
             </li>
             </ul> 
         </div>
@@ -181,19 +184,19 @@
             </li>
             <li><hr class="dropdown-divider"></li>
         
-            <!-- لینک‌های تنظیمات -->
-            <li>
-                <a class="dropdown-item d-flex align-items-center fw-bold" href="#">
+             <!-- لینک‌های تنظیمات -->
+             <li>
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="Master-profile.html">
                 <i class="bi bi-gear ms-2"></i> تنظیمات
                 </a>
             </li>
             <li>
-                <a class="dropdown-item d-flex align-items-center fw-bold" href="#">
+                <a class="dropdown-item d-flex align-items-center fw-bold" href="index.html">
                 <i class="bi bi-globe ms-2"></i> صفحه اصلی
                 </a>
             </li>
             <li>
-                <a class="dropdown-item d-flex align-items-center text-danger fw-bold" href="#">
+                <a class="dropdown-item d-flex align-items-center text-danger fw-bold" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                 <i class="bi bi-box-arrow-right ms-2"></i> خروج
                 </a>
             </li>
@@ -273,7 +276,7 @@
                                     <i class="bi bi-bell ms-1"></i>
                                     یادآوری های امروز
                                   </h5>
-                                  <h5><a href="Nobat.html" class="fw-bold text-decoration-none ps-3">مشاهده همه</a></h5>
+                                  <h5><a href="Master_note.html" class="fw-bold text-decoration-none ps-3">مشاهده همه</a></h5>
                             </div>
                             <div class="table-wrapper-sanabad mt-3" style="overflow-x: auto; width: 100%;">
                                 <table class="table table-sanabad table-sanabad-inner table-hover text-center align-middle m-0" style="min-width: 1000px;">
@@ -389,7 +392,7 @@
                                 <h5 class="fw-bold">
                                     <i class="bi bi-people ms-1"></i>
                                     پرسنل درمانگاه سناباد</h5>
-                                <h5><a href="admin-tickets.html" class="fw-bold">مشاهده همه</a></h5>
+                                <h5><a href="Master-user-control.html" class="fw-bold">مشاهده همه</a></h5>
                             </div>
                             <div class="d-sm-flex justify-content-between align-items-center">
                                 <div class="d-sm-flex align-items-center mb-1 mb-sm-0">
@@ -445,7 +448,7 @@
                                         <img width="50" height="50" class="rounded-circle ms-2" src="assets/Images/sample-profile/prof3.png" alt="sample profile">
                                     </div>
                                     <div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
-                                        <h6 class="mb-1 fw-bold me-2 fs-5">فهیمه رشید <i class="bi bi-patch-check-fill text-info small me-1"></i></h6>
+                                        <h6 class="mb-1 fw-bold me-2 fs-5">فهیمه رشیدی <i class="bi bi-patch-check-fill text-info small me-1"></i></h6>
                                         <ul class="list-inline mb-0 small p-0 mt-2">
                                             <li class="list-inline-item fw-light  mb-1 mb-sm-0"><i class="fas fa-book text-dark ms-1"></i>مغز و اعصاب و روانکاوی</li>
                                             <li class="list-inline-item fw-light me-2 mb-1 mb-sm-0"><i class="fas fa-star text-warning ms-1"></i>کارمند تمام وقت وقت</li>
@@ -546,7 +549,7 @@
     </main>
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
     <!--chart js-->
     <script src="assets/vendor/js/chart.js"></script>

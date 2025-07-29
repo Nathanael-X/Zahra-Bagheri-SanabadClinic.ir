@@ -41,7 +41,42 @@ document.addEventListener('DOMContentLoaded', function() {
        }
      });
    });
+   // نمایش دکمه هنگام اسکرول
+  window.onscroll = function () {
+    const btn = document.getElementById("backToTopBtn");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      btn.style.opacity = "1";
+      btn.style.visibility = "visible";
+    } else {
+      btn.style.opacity = "0";
+      btn.style.visibility = "hidden";
+    }
+  };
+
+  // هدایت به بالا با انیمیشن نرم
+  document.getElementById("backToTopBtn").addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
 });
+//بیمار اتباع خارجی است
+function toggleIDNumberField(checkbox) 
+{
+    const input = document.getElementById('nationalCode');
+    const input_text_1 = document.getElementsByClassName('nationalCode_lbl').item(0);
+    const input_text_2 = document.getElementsByClassName('nationalCode_lbl').item(1);
+
+    if (checkbox.checked) {
+        input.disabled = true;
+        input_text_1.classList.add('text-muted');
+        input_text_2.classList.add('text-muted');
+    } else {
+        input.disabled = false;
+        input_text_1.classList.remove('text-muted');
+        input_text_2.classList.remove('text-muted');
+
+    }
+}
 //for preloader
 window.addEventListener('load', function() {
   const preloader = document.getElementById('preloader');

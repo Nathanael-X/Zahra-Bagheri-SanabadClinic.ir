@@ -231,7 +231,7 @@ body
 }
 
 .service-item:hover a.btn {
-  bottom: -24px;
+  bottom: -15px;
   opacity: 1;
 }
 .dr-profile
@@ -373,7 +373,7 @@ body
 {
     position: absolute;
     top: 50%;
-    right: 8%;
+    left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 20px;

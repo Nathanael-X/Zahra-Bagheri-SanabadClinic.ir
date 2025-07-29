@@ -82,9 +82,48 @@ document.addEventListener("DOMContentLoaded", function () {
       const myModal = new bootstrap.Modal(document.getElementById('paymentSuccessModal'));
       myModal.show();
     }
+
+
+    const sendBtn = document.getElementById('sendBtn');
+      const toastElement = document.getElementById('liveToast');
+
+      const toast = new bootstrap.Toast(toastElement, {
+        delay: 5000,     // مدت زمان نمایش: ۵ ثانیه
+        autohide: true   // مخفی شدن خودکار
+      });
+
+      sendBtn.addEventListener('click', function () {
+        setTimeout(() => {
+          toast.show();
+        }, 300); // صبر می‌کنیم تا مودال بسته بشه
+      });
   });
-document.addEventListener('shown.bs.modal', function () {
-    document.body.style.paddingRight = '0';
-  });
+//نمایش مودال خوش امد گویی ثبت اطلاعات کاربر
+document.getElementById('submit_to_userDashboard').addEventListener('click', function(event) {
+    event.preventDefault(); // جلوگیری از ارسال فرم در ابتدا
+
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    document.getElementById('welcomeModalLabel').textContent = `کاربر ${firstName} ${lastName}، خوش آمدید!`;
+    // ساخت پیام خوش‌آمدگویی
+    const welcomeMessage = `اطلاعات شما با موفقیت ثبت گردید؛ با کلیک برروی دکمه ی رزرو نوبت جدید می توانید از خدمات ما بهره مند شوید`;
+
+    // بسته شدن مودال ثبت اطلاعات
+    var userModal = bootstrap.Modal.getInstance(document.getElementById('userinformationForm_popup'));
+    userModal.hide();
+
+    // نمایش مودال خوش‌آمدگویی
+    document.getElementById('welcomeMessage').textContent = welcomeMessage;
+    var welcomeModal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+    welcomeModal.show();
+});
+
+// افزودن listener برای دکمه بستن مودال خوش‌آمدگویی
+document.getElementById('closeWelcomeModal').addEventListener('click', function() {
+    // هدایت به داشبورد کاربری
+    window.location.href = 'user-dashboard.html';
+});
+
+
 
   

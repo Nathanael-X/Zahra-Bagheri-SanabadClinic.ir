@@ -70,12 +70,17 @@
     background-color: #1f232c;
 }
 .table th {
-    background-color: #c2ecff !important;
+    background-color: #c2ecff;
     color: #1f232c;
 }
 .color-row td
 {
-    background-color: #c2ecff !important;
+    background-color: #c2ecff;
+}
+.selected-row td
+{
+    background-color: #1f232c !important;
+    color: white !important;
 }
 .table td 
 {
@@ -150,4 +155,72 @@
 }
 .file-size {
     font-size: 13px;
+}
+.uploadremove , #uploaduserremove
+{
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    width: 34px;
+    height: 34px;
+    background-color:rgb(220, 53, 70);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 1;
+}
+.uploadremove:hover , #uploaduserremove:hover
+{
+    background-color: rgba(167, 0, 17, 0.9); /* قرمز هنگام هاور */
+}
+.uploadremove i , #uploaduserremove i
+{
+    font-size: 16px;
+    line-height: 1;
+}
+.nav-link_window
+{
+    color: #1f232c !important;
+    font-weight: bold !important;
+    background-color: #c2ecff !important;
+    transition: all .3s ease-in;
+}
+.nav-link_window:focus
+{
+    background-color: #1f232c !important;
+    color: white !important;
+}
+.bg-light-blue
+{
+    background-color: #28b5f66e;
+}
+.blocked-user 
+{
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(100%);
+    position: relative;
+}  
+.unblock-btn-container 
+{
+    pointer-events:fill;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+            
+}
+.btn-unblock
+{
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
 }

@@ -16,5 +16,13 @@ if (window.innerWidth > 768) {
 document.addEventListener('shown.bs.modal', function () {
     document.body.style.paddingRight = '0';
   });
+//سکشن چهارم فلیپ کارت
+function flipCard(card) 
+{
+    if (window.innerWidth < 768) 
+    { // فقط برای موبایل
+      card.classList.toggle('flipped');
+    }
+}
 
   

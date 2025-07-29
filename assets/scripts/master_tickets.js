@@ -261,7 +261,28 @@ let currentUsermodal = "";
                 bootstrap.Modal.getInstance(document.getElementById('deleteNotificationConfirmModal')).hide();
                 }
             });
+            let rowTicketToDelete = null;
+            //برای حذف تیکت های ارسالی
+            document.querySelectorAll('.btn-delete-ticket').forEach(btn => {
+              btn.addEventListener('click', function (e) {
+              e.preventDefault();
+              rowTicketToDelete = this.closest('tr'); // ذخیره سطر هدف
+              const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+              deleteModal.show();
+              });
+          });
 
+          // وقتی کاربر در مودال تأیید حذف رو میزنه
+          document.getElementById('confirmDeleteTicketBtn').addEventListener('click', function () {
+              if (rowTicketToDelete) {
+                rowTicketToDelete.remove();
+              updateRowNumbers();
+              rowTicketToDelete = null;
+
+              // بستن مودال
+              bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal')).hide();
+              }
+          });
             // تابع به‌روزرسانی شماره ردیف‌ها
             function updateRowNumbers() {
                 const rows = document.querySelectorAll('table tbody tr');
