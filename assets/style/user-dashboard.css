@@ -27,6 +27,10 @@ body.loading {
   object-fit: cover;
   display: block;
 }
+.showToast
+{
+    z-index: 9999 !important;
+}
 /* import the font style file */
 @import url(../Font/clinicSanabadFont.css);
 a

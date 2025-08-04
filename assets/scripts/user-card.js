@@ -131,7 +131,8 @@ function closeNotifCard(btn) {
     const toastWrapper = document.getElementById('refundToast').parentElement;
     // نمایش wrapper
     toastWrapper.classList.remove('d-none');
-    toastWrapper.classList.add('d-block'); 
+    toastWrapper.classList.add('d-block');
+    toastWrapper.classList.add('showToast');  
     var toastEl = document.getElementById('refundToast');
     var toast = new bootstrap.Toast(toastEl);
     toast.show();
