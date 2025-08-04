@@ -1,3 +1,30 @@
+/*استایل پریلودر*/
+html.loading,
+body.loading {
+  overflow: hidden;
+  height: 100%;
+}
+
+#preloader {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease;
+}
+
+.heartbeat-loader img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
 /* import the font style file */
 @import url(../Font/clinicSanabadFont.css);
 a

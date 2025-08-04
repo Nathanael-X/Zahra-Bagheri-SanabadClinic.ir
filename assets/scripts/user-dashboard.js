@@ -1,4 +1,16 @@
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.style.opacity = "0";
+    preloader.style.transition = "opacity 0.6s ease";
 
+    setTimeout(() => {
+      preloader.style.display = "none";
+      document.documentElement.classList.remove("loading");
+      document.body.classList.remove("loading");
+    }, 600);
+  }
+});
 document.addEventListener("DOMContentLoaded", () => {
     const counters = document.querySelectorAll(".counter");
   
