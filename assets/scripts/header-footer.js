@@ -1,4 +1,6 @@
-document.documentElement.classList.add('loading');
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.documentElement.classList.add('loading');
   document.body.classList.add('loading');
 
   window.addEventListener("load", () => {
@@ -12,7 +14,6 @@ document.documentElement.classList.add('loading');
       }, 600);
     }
   });
-document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('login-header-link').addEventListener('click',()=>
   {
     const sidebar = document.getElementById('mobileSidebar');
