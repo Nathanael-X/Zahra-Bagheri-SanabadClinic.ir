@@ -26,6 +26,17 @@
     </style>
 </head>
 <body>
+    <!--توست موفقیت ارسال درخواست به حساب داری-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
+            <div class="toast-body text-end fe-bold">
+              درخواست شما با موفقیت ثبت شد و برای بررسی به حسابداری ارسال گردید.
+            </div>
+          </div>
+        </div>
+    </div>  
         <!-- مودال یادداشت های حسابداری -->
         <div class="modal fade" id="accountNoteModal" tabindex="-1" aria-labelledby="accountNoteModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -758,15 +769,6 @@
           });
           
     </script>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-        <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="d-flex">
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
-            <div class="toast-body text-end fe-bold">
-              درخواست شما با موفقیت ثبت شد و برای بررسی به حسابداری ارسال گردید.
-            </div>
-          </div>
-        </div>
-    </div>      
+        
 </body>
 </html>

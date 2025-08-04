@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const toasts = document.querySelectorAll('.toast');
+  toasts.forEach(t => {
+    if (!t.classList.contains('show')) {
+      t.style.display = 'none';
+    }
+  });
+
     const rows = document.querySelectorAll(".clickable-row");
 
             rows.forEach(row => {
