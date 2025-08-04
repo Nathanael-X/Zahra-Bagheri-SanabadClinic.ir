@@ -1,19 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.documentElement.classList.add('loading');
-  document.body.classList.add('loading');
-
-  window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    if (preloader) {
-      preloader.style.opacity = "0";
-      setTimeout(() => {
-        preloader.style.display = "none";
-        document.documentElement.classList.remove('loading');
-        document.body.classList.remove('loading');
-      }, 600);
-    }
-  });
   document.getElementById('login-header-link').addEventListener('click',()=>
   {
     const sidebar = document.getElementById('mobileSidebar');
