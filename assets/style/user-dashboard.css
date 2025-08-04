@@ -1,3 +1,7 @@
+.nav-tabs
+{
+    overflow-y: hidden !important;
+}
 /*استایل پریلودر*/
 html.loading,
 body.loading {
@@ -523,7 +527,24 @@ body
     70% { box-shadow: 0 0 0 15px rgba(40, 182, 246, 0); }
     100% { box-shadow: 0 0 0 0 rgba(40, 182, 246, 0); }
   }
-  
+@media (max-width: 768px) 
+  {
+      .nav-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    
+      .nav-tabs .nav-item {
+        display: inline-block;
+      }
+    
+      .nav-tabs .nav-link {
+        white-space: nowrap;
+      }
+  }
+    
 @media (max-width:450px)
 {
     .div-undone-notif
