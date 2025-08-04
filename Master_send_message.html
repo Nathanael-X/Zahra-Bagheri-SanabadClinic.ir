@@ -16,16 +16,6 @@
     <!--librearies-->
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-        @media (max-width:400px)
-        {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-        }
-    </style>
 </head>
 <body>
     
@@ -132,12 +122,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 pb-4">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="Master-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -178,10 +168,9 @@
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
-            
         </ul>
-        <div class="px-3 mt-4 pt-1">
-            <div class="d-flex align-items-center justify-content-between">
+        <div class="px-3 mt-auto">
+            <div class="d-flex align-items-center justify-content-between btm-bar">
                 <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
                 </a>
@@ -200,7 +189,7 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
@@ -220,7 +209,7 @@
                 <img src="assets/Images/sample-profile/prof1.png" alt="user1">
                 <div class="content">
                     <strong>منشی فیزیوتراپی</strong><br>
-                    درخواست بازیابی رمز<br>
+                    درخواست تغییر شیفت کاری<br>
                     <a href="#" class="text-primary">مشاهده</a>
                 </div>
             </li>
@@ -374,7 +363,7 @@
                           <p class="fw-bold pt-2">تخفیف ویژه مشترکین سناباد</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
-                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5 delete-temp"><i class="bi bi-trash"></i></a>
                           </div>
                         </div>
                       
@@ -382,7 +371,7 @@
                           <p class="fw-bold pt-2">تبلیغاتی</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
-                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5 delete-temp"><i class="bi bi-trash"></i></a>
                           </div>
                         </div>
                       
@@ -390,7 +379,7 @@
                           <p class="fw-bold pt-2">تشکر و قدردانی</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
-                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5 delete-temp"><i class="bi bi-trash"></i></a>
                           </div>
                         </div>
                       
@@ -398,7 +387,7 @@
                           <p class="fw-bold pt-2">پیام های مناسبتی</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
-                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
+                            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5 delete-temp"><i class="bi bi-trash"></i></a>
                           </div>
                         </div>
                     </div>
@@ -406,32 +395,13 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
     <script src="assets/scripts/Master-message.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
- 
-          });
-          function togglePhoneNumberField(checkbox) 
-            {
-                const input = document.getElementById('user_phoneNumber');
-                const input_text_1 = document.getElementsByClassName('PhoneUser_lbl').item(0);
-                if (checkbox.checked) {
-                    input.disabled = true;
-                    input_text_1.classList.add('text-muted');
-                } else {
-                    input.disabled = false;
-                    input_text_1.classList.remove('text-muted');      
-                }
-            }
-
-    </script>
 </body>
 </html>

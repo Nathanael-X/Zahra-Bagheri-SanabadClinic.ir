@@ -27,25 +27,25 @@
 }
 .upload-box 
 {
-    padding:2vh 19.5vh;
     margin-top: 10px;
     border: 2px dashed #aaa;
     border-radius: 12px;
+    padding: 13px;
     text-align: center;
     background: rgb(241, 241, 241);
     cursor: pointer;
     transition: border-color 0.3s ease;
 }
-.upload-box:hover , .upload-box_img:hover 
+.upload-box:hover 
 {
     border-color: #28b6f6;
 }
-.upload-box.dragover , .upload-box_img.dragover 
+.upload-box.dragover 
 {
     border-color: #2196f3;
     background-color: #e3f2fd;
 }
-.upload-box input[type="file"] , .upload-box_img input[type="file"]
+.upload-box input[type="file"] 
 {
     display: none;
 }

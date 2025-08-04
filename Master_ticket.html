@@ -19,20 +19,14 @@
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
     <style>
-        @media (max-width:991px)
+        @media (max-width:1081px)
         {
-            #successToast
-            {
-                display: none !important;
-            }
-        }
-        @media (max-width:400px)
-        {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
+            .nav-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+              }
         }
     </style>
 </head>
@@ -54,7 +48,6 @@
         </div>
         </div>
     </div>
-    
      <!--مودال خروج از حساب کاربری-->
      <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -580,12 +573,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 pb-4">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="Master-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -627,8 +620,8 @@
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-4 pt-1">
-            <div class="d-flex align-items-center justify-content-between">
+        <div class="px-3 mt-auto">
+            <div class="d-flex align-items-center justify-content-between btm-bar">
                 <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
                 </a>
@@ -647,12 +640,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>              
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -667,7 +660,7 @@
                 <img src="assets/Images/sample-profile/prof1.png" alt="user1">
                 <div class="content">
                     <strong>منشی فیزیوتراپی</strong><br>
-                    درخواست بازیابی رمز<br>
+                    درخواست تغییر شیفت کاری<br>
                     <a href="#" class="text-primary">مشاهده</a>
                 </div>
             </li>
@@ -766,22 +759,30 @@
                                 <div class="bg-light" style="border-radius: 20px;">
                                     <div class="card-body">
                                         <form class="row g-4">
-                                            <div class="col-lg-6">
+                                            <div class="col-xl-6 col-lg-12">
                                                 <label class="form-label fw-bold">شناسه کاربری: <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" placeholder="شناسه کاربری را وارد نمایید">
-                                                <div class="form-text mt-2 me-2">مثال: username_userfamily22</div>
+                                                <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
+                                                    <option value="">شناسه کاربری را انتخاب نمایید</option>
+                                                    <option>@sanabad_admin_abdarmani</option>
+                                                    <option>@sanabad_admin_fizioTrapy</option>
+                                                    <option>@sanabad_admin_drMajdMohseni</option>
+                                                    <option>@sanabad_admin_drRezaMohseni</option>
+                                                    <option>@sanabad_admin_master</option>
+                                                    <option>@sanabad_admin_finance</option>
+                                                    <option>@sanabad_admin_general</option>
+                                                </select>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-xl-6 col-lg-12">
                                                 <label class="form-label fw-bold">موضوع تیکت <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" placeholder="موضوع را وارد نمایید">
                                                 <div class="form-text mt-2 me-2">مثال: موافقت با جا به جایی نوبت</div>
                                             </div>
             
-                                            <div class="col-lg-6">
+                                            <div class="col-xl-6 col-lg-12">
                                                 <label class="form-label fw-bold">متن تیکت <span class="text-danger">*</span></label>
                                                 <textarea class="form-control" rows="5" placeholder="متن تیکت را اینجا بنویسید..."></textarea>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-6 pt-4">
                                                 <label for="fileUpload">
                                                     <div class="upload-box" id="uploadArea">
                                                       <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
@@ -792,46 +793,29 @@
                                                 
                                                 <p id="fileName" style="margin-top: 15px; color: #333;"></p>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-xl-6 col-lg-12">
                                                 <label class="form-label fw-bold">نام پزشک</label>
                                                 <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
                                                     <option value="">پزشک</option>
-                                                    <option>----</option>
-                                                    <option>اکرم رحیمی</option>
-                                                    <option>محمد پورعلی</option>
-                                                    <option>آسیه پنجه شاهین</option>
-                                                    <option>حسین فزونی</option>
-                                                    <option>فیروزه خلیلی</option>
-                                                    <option>فاطمه فرخ آبادی</option>
-                                                    <option>فرحناز بخشی</option>
-                                                    <option>مهرک دباغی</option>
+                                                    <option>پرسنل آب درمانی</option>
+                                                    <option>پرسنل فیزیوتراپی</option>
                                                     <option>رضا محسنی بیرجندی</option>
                                                     <option>مجد محسنی بیرجندی</option>
                                                 </select>
                                                 <div style="line-height: 2;" class="form-text">اگر تیکت شما مرتبط با پزشک خاصی می باشد لطفا نام پزشک را انتخاب نمایید.</div>
                                             </div>
             
-                                            <div class="col-lg-6">
+                                            <div class="col-xl-6 col-lg-12">
                                                 <label class="form-label fw-bold">بخش خدماتی</label>
                                                 <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
                                                     <option value="">بخش</option>
-                                                    <option>تیکت کاربری</option>
-                                                    <option>پذیرش</option>
-                                                    <option>مدیریت</option>
-                                                    <option>فنی</option>
-                                                    <option>مدد کاری</option>
-                                                    <option>دکتر عمومی</option>
-                                                    <option>مطب پرستاری</option>
-                                                    <option>دندان پزشکی</option>
                                                     <option>فیزیوتراپی</option>
                                                     <option>آب درمانی</option>
                                                     <option>جراح مغز و اعصاب</option>
-                                                    <option>روان شناسی</option>
                                                     <option>اعصاب و روان</option>
-                                                    <option>آزمایشگاه</option>
-                                                    <option>متخصص تغذیه</option>
-                                                    <option>واحد زنان و زایمان</option>
-                                                    <option>متخصص پوست و مو</option>
+                                                    <option>پذیرش</option>
+                                                    <option>مدیریت</option>
+                                                    <option>حسابداری</option>
                                                 </select>
                                                 <div class="form-text" style="line-height: 2;">اگر تیکت شما مرتبط با بخش خاصی از درمانگاه می باشد لطفا آن بخش را انتخاب نمایید.</div>
                                             </div>
@@ -851,19 +835,19 @@
                                             <div class="col-12 justify-content-center align-items-center">
                                                 <label class="form-label">تصویر بندانگشتی اعلان</label>
                                                 <div class="row g-3 d-flex align-items-center">
-                                                    <div class="col-md-2 text-center">
+                                                    <div class="col-xl-2 text-center col-lg-12">
                                                         <label class="position-relative" for="uploadfile-1" title="Replace this pic">
                                                             <button type="button" class="uploadremove pt-1" style="display:none;"><i class="bi bi-x text-white fs-4"></i></button>
                                                           <img id="uploadfile-1-preview" class="rounded-circle border border-white border-3 shadow" src="assets/Images/JahanGiri/defult image logo.png" alt="defult image logo" style="width: 90px; height:90px;">
                                                           <input id="uploadfile-1" class="form-control d-none" type="file">
                                                         </label>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-xl-5 col-lg-12">
                                                         <label class="form-label fw-bold">موضوع اعلان: <span class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" placeholder="لطفا موضوع اعلان را وارد نمایید.">
                                                         <div class="form-text mt-2 me-2">مثال : تخفیف ویژه کلینیک دندان پزشکی سناباد</div>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-xl-5 col-lg-12">
                                                         <label class="form-label fw-bold">لطفا دسته بندی اعلان را وارد نمایید</label>
                                                         <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
                                                             <option value="">بدون دسته بندی</option>
@@ -888,16 +872,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="row g-3 d-flex align-items-center">
-                                                    <div class="col-md-2"></div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-xl-2 col-lg-12"></div>
+                                                    <div class="col-xl-5 col-lg-12">
                                                         <label class="form-label fw-bold mt-4">توضیحات: <span class="text-danger">*</span></label>
                                                         <textarea class="form-control" rows="2" placeholder="لطفا توضیحات خلاصه ای راجع به اعلان بنویسید ..."></textarea>
                                                         <div class="form-text mt-2 me-2">مثال : فقط تا پایان این ماه فرصت داری!</div>
                                                     </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-xl-5 col-lg-12">
                                                         <div class="d-sm-flex justify-content-start pt-4 gap-3">
-                                                            <button type="reset" class="btn btn-secondary mb-0 me-2">پاک کردن</button>
-                                                            <button type="button" class="btn btn-sanabad mb-0" data-bs-toggle="modal" data-bs-target="#successModal_notification">ارسال به تمامی کاربران</button>
+                                                            <button type="reset" class="btn btn-secondary mb-2 me-2">پاک کردن</button>
+                                                            <button type="button" class="btn btn-sanabad mb-2 me-2" data-bs-toggle="modal" data-bs-target="#successModal_notification">ارسال به تمامی کاربران</button>
                                                         </div>
                                                     </div>
 
@@ -938,8 +922,13 @@
                                 </div>
                             </div>
                             <div class="card-body">
+                                 <!-- وقتی هیچ اعلانی نبود نبود -->
+                                 <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                    <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                    <p class="text-muted pt-3">شما هنوز هیچ اعلانی را ارسال نکرده اید.</p>
+                                </div>
                                 <div class="table-responsive border-0">
-                                    <table class="table table-light text-end align-middle p-4 mb-0 table-hover">
+                                    <table class="table text-end align-middle p-4 mb-0 table-hover">
                                         <thead>
                                             <tr>
                                                 <th scope="col" style="border-top-right-radius: 20px;">ردیف</th>
@@ -951,8 +940,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
+                                            <tr class="clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         1
                                                     </div>
@@ -970,8 +959,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr class="color-row">
-                                                <td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         2
                                                     </div>
@@ -989,8 +978,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
+                                            <tr class="clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         3
                                                     </div>
@@ -1008,8 +997,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr class="color-row">
-                                                <td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         4
                                                     </div>
@@ -1028,8 +1017,8 @@
                                                 </td>
                                             </tr>
 
-                                            <tr>
-                                                <td>
+                                            <tr class="clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         5
                                                     </div>
@@ -1047,8 +1036,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr class="color-row">
-                                                <td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         6
                                                     </div>
@@ -1066,8 +1055,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
+                                            <tr class="clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         7
                                                     </div>
@@ -1085,8 +1074,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr class="color-row">
-                                                <td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-4">
                                                     <div class="d-flex align-items-center justify-content-start">
                                                         8
                                                     </div>
@@ -1111,7 +1100,7 @@
                             </div>
                         </div>
                         <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                            <ul class="pagination custom-pagination">
+                            <ul class="pagination custom-pagination px-0 mx-0">
                               <li class="page-item disabled">
                                 <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                               </li>
@@ -1164,8 +1153,13 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
+                                         <!-- وقتی هیچ تیکتی نبود -->
+                                         <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                            <p class="text-muted pt-3">شما هنوز تیکتی دریافت نکرده اید.</p>
+                                        </div>
                                         <div class="table-responsive border-0">
-                                            <table class="table table-light text-end align-middle p-4 mb-0 table-hover">
+                                            <table class="table text-end align-middle p-4 mb-0 table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" style="border-top-right-radius: 20px;">نام درخواست دهنده</th>
@@ -1177,7 +1171,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="user_Ticket">
+                                                    <tr class="user_Ticket clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1198,7 +1192,7 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_alireza" onclick="markAsRead('علیرضا محمدی', 'appDetail_alireza', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr class="color-row">
+                                                    <tr class="color-row clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1219,7 +1213,7 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_mina"  onclick="markAsRead('مینا رضایی', 'appDetail_mina', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr class="clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1240,7 +1234,7 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_ayda"  onclick="markAsRead('آیدا رئیسی', 'appDetail_ayda', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr class="color-row">
+                                                    <tr class="color-row clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1259,7 +1253,7 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr class="clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1278,7 +1272,7 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_javad"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr class="color-row">
+                                                    <tr class="color-row clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1297,7 +1291,7 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr class="clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1317,7 +1311,7 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_farid"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr class="color-row">
+                                                    <tr class="color-row clickable-row">
                                                         <td>
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1345,7 +1339,7 @@
                                     </div>
                                 </div>
                                 <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                                    <ul class="pagination custom-pagination">
+                                    <ul class="pagination custom-pagination px-0 mx-0">
                                     <li class="page-item disabled">
                                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                     </li>
@@ -1385,8 +1379,13 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
+                                        <!-- وقتی هیچ تیکتی نبود -->
+                                        <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                            <p class="text-muted pt-3">شما هنوز تیکتی دریافت نکرده اید.</p>
+                                        </div>
                                         <div class="table-responsive border-0">
-                                            <table class="table table-light text-end align-middle p-4 mb-0 table-hover">
+                                            <table class="table text-end align-middle p-4 mb-0 table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" style="border-top-right-radius: 20px;">ردیف</th>
@@ -1398,8 +1397,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
+                                                    <tr class="clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 1
                                                             </div>
@@ -1416,8 +1415,8 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_managerReport" onclick="markAsRead_modir('نام منشی فیزیوتراپی','appDetail_managerReport', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr class="color-row">
-                                                        <td>
+                                                    <tr class="color-row clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 2
                                                             </div>
@@ -1435,8 +1434,8 @@
                                                             <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
+                                                    <tr class="clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 3
                                                             </div>
@@ -1454,8 +1453,8 @@
                                                             <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr class="color-row">
-                                                        <td>
+                                                    <tr class="color-row clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 4
                                                             </div>
@@ -1472,8 +1471,8 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
+                                                    <tr class="clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 5
                                                             </div>
@@ -1488,8 +1487,8 @@
                                                             <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr> 
-                                                    <tr class="color-row">
-                                                        <td>
+                                                    <tr class="color-row clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 6
                                                             </div>
@@ -1507,8 +1506,8 @@
                                                             <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>
+                                                    <tr class="clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 7
                                                             </div>
@@ -1526,8 +1525,8 @@
                                                             <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
-                                                    <tr class="color-row">
-                                                        <td>
+                                                    <tr class="color-row clickable-row">
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 8
                                                             </div>
@@ -1548,7 +1547,7 @@
                                     </div>
                                 </div>
                                 <nav aria-label="صفحه بندی تیکت دریافت داخلی" class="d-flex justify-content-center mt-4">
-                                    <ul class="pagination custom-pagination">
+                                    <ul class="pagination custom-pagination px-0 mx-0">
                                       <li class="page-item disabled">
                                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                       </li>
@@ -1602,8 +1601,13 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
+                                            <!-- وقتی هیچ تیکتی نبود -->
+                                            <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                                <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                                <p class="text-muted pt-3">شما هنوز تیکتی ارسال نکرده اید.</p>
+                                            </div>
                                             <div class="table-responsive border-0">
-                                                <table class="table table-light text-end align-middle p-4 mb-0 table-hover">
+                                                <table class="table text-end align-middle p-4 mb-0 table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col" style="border-top-right-radius: 20px;">ردیف</th>
@@ -1615,8 +1619,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     1
                                                                 </div>
@@ -1635,8 +1639,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     2
                                                                 </div>
@@ -1654,8 +1658,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     3
                                                                 </div>
@@ -1673,8 +1677,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     4
                                                                 </div>
@@ -1693,8 +1697,8 @@
                                                             </td>
                                                         </tr>
                                                         
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     5
                                                                 </div>
@@ -1712,8 +1716,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     6
                                                                 </div>
@@ -1731,8 +1735,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     7
                                                                 </div>
@@ -1750,8 +1754,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     8
                                                                 </div>
@@ -1776,7 +1780,7 @@
                                         </div>
                                     </div>
                                     <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                                        <ul class="pagination custom-pagination">
+                                        <ul class="pagination custom-pagination px-0 mx-0">
                                           <li class="page-item disabled">
                                             <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                           </li>
@@ -1815,8 +1819,13 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
+                                            <!-- وقتی هیچ تیکتی نبود -->
+                                            <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                                <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                                <p class="text-muted pt-3">شما هنوز تیکتی ارسال نکرده اید.</p>
+                                            </div>
                                             <div class="table-responsive border-0">
-                                                <table class="table table-light text-end align-middle p-4 mb-0 table-hover">
+                                                <table class="table text-end align-middle p-4 mb-0 table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col" style="border-top-right-radius: 20px;">ردیف</th>
@@ -1828,8 +1837,8 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     1
                                                                 </div>
@@ -1847,8 +1856,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     2
                                                                 </div>
@@ -1866,8 +1875,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     3
                                                                 </div>
@@ -1885,8 +1894,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     4
                                                                 </div>
@@ -1904,8 +1913,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     5
                                                                 </div>
@@ -1923,8 +1932,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     6
                                                                 </div>
@@ -1942,8 +1951,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>
+                                                        <tr class="clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     7
                                                                 </div>
@@ -1961,8 +1970,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
-                                                            <td>
+                                                        <tr class="color-row clickable-row">
+                                                            <td class="py-4">
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     8
                                                                 </div>
@@ -1987,7 +1996,7 @@
                                         </div>
                                     </div>
                                     <nav aria-label="صفحه بندی تیکت ارسال شده داخلی" class="d-flex justify-content-center mt-4">
-                                        <ul class="pagination custom-pagination">
+                                        <ul class="pagination custom-pagination px-0 mx-0">
                                           <li class="page-item disabled">
                                             <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                           </li>
@@ -2006,88 +2015,21 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/scripts/admin-dashboard.js"></script>
     <script src="assets/scripts/master_tickets.js"></script>
-    <!--chart js-->
-    <script src="assets/vendor/js/chart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            //حذف عکس پروفایل
-            const deleteButton = document.querySelector(".uploadremove");
-            const confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-            const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
-            const profileImage = document.getElementById("uploadfile-1-preview");
-            deleteButton.addEventListener("click", function (e) {
-              e.preventDefault();
-              confirmModal.show();
-            });
-        
-            confirmDeleteBtn.addEventListener("click", function () {
-                // تغییر تصویر پروفایل به تصویر پیش‌فرض
-                profileImage.src = "assets/Images/JahanGiri/defult image logo.png";
-                // بستن مودال تایید حذف
-                confirmModal.hide();
-                // مخفی کردن دکمه حذف
-                deleteButton.style.display = "none";
-              });
-
-            //تغییر عکس پروفایل
-            const fileInput = document.getElementById("uploadfile-1");
-            const previewImage = document.getElementById("uploadfile-1-preview");
-
-            fileInput.addEventListener("change", function () {
-                const file = this.files[0];
-              
-                if (file && file.type.startsWith("image/")) {  // تغییر از "assets/Images/" به "image/"
-                  const reader = new FileReader();
-              
-                  reader.onload = function (e) {
-                    previewImage.src = e.target.result;
-                    deleteButton.style.display = "block";
-                  };
-              
-                  reader.readAsDataURL(file);
-                } else {
-                  alert("لطفاً یک فایل تصویری معتبر انتخاب کنید.");
-                }
-              });
-
-              //مشاهده کردن اعلان
-            const viewButtons = document.querySelectorAll('.btn-show-notif');
-
-            // پیدا کردن مودال و المان‌های داخل آن
-            const showNotifModal = new bootstrap.Modal(document.getElementById('ShowNotifModal'));
-            const modalTitle = document.getElementById('ShowNotifModalLabel');
-            const modalBody = document.querySelector('#ShowNotifModal .modal-body p');
-
-            // اضافه کردن رویداد کلیک به همه دکمه‌های مشاهده اعلان
-            viewButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // جلوگیری از رفتار پیش‌فرض لینک
-                    e.preventDefault();
-
-                    // دریافت داده‌های مربوط به اعلان از تگ‌های جدول
-                    const row = button.closest('tr'); // پیدا کردن ردیف (این ردیف شامل اطلاعات اعلان است)
-                    const subject = row.querySelector('td:nth-child(2) h6').textContent; // موضوع اعلان
-                    const description = row.querySelector('td:nth-child(4)').textContent; // توضیحات اعلان
-
-                    // قرار دادن اطلاعات در مودال
-                    modalTitle.textContent = subject; // قرار دادن موضوع در عنوان مودال
-                    modalBody.textContent = description; // قرار دادن توضیحات در بدنه مودال
-
-                    // نمایش مودال
-                    showNotifModal.show();
-                });
-            });
-
-          });
+           // فعال‌سازی Tooltipها
+           const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+           tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+               new bootstrap.Tooltip(tooltipTriggerEl, {
+                   container: 'body'
+               });
+           });           
     </script>
 </body>
 </html>

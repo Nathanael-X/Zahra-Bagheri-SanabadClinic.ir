@@ -15,16 +15,6 @@
     <link href="assets/style/admin-note.css" rel="stylesheet">
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-        @media (max-width:400px)
-        {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-        }
-    </style>
 </head>
 <body>
     
@@ -117,13 +107,13 @@
             </div>
         </div>
     </div>
-    <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+     <!-- سایدبار -->
+     <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="admin-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -135,7 +125,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="admin-send-messege.html" class="nav-link">
+                <a href="admin-send-messege.html" class="nav-link ">
                     <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
                 </a>
             </li>
@@ -160,19 +150,20 @@
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-5">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between btm-bar">
-                    <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
-                        <i class="bi bi-gear-fill"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
-                        <i class="bi bi-globe"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
-                        <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
-                    </a>
+                <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
             </div>
         </div>
+        
     </aside>
     <!--پایان سایدبار-->
     <!-- بک‌گراند تار در حالت موبایل -->
@@ -180,7 +171,7 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2 text-white" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
@@ -283,11 +274,11 @@
                             <div class="section-box">
                                 <form>
                                 <div class="row mb-3 g-3">
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label class="form-label">موضوع یادداشت</label>
                                         <input type="text" class="form-control" placeholder="مثلا: تماس با بیمار">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label for="date" class="form-label">تاریخ یادداشت (شمسی)</label>
                                         <div>
                                             <div class="row g-2">
@@ -373,11 +364,11 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label class="form-label">اتفاقات و یادداشت‌ها</label>
                                         <textarea class="form-control" rows="5" placeholder="مثلاً: دکتر فلاحی با تأخیر آمد، تماس با بیمار خانم کریمی انجام شد..."></textarea>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label for="fileUpload">
                                             <div class="upload-box" id="uploadArea">
                                               <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
@@ -396,9 +387,36 @@
                         <!--تب نوت های ثبت شده-->
                         <div class="tab-pane fade show" id="all_nots" role="tabpanel">
                             <div class="bg-light border mb-4" style="border-radius: 20px;">
+                                <div class="card-header border-bottom">
+                                    <div class="row g-3 align-items-center justify-content-between">
+                                        <div class="col-md-8">
+                                            <form class="rounded position-relative mt-3">
+                                                <input class="form-control" type="search" placeholder="جستجوی یادداشت ..." aria-label="Search">
+                                                <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
+                                                    <i class="fas fa-search fs-6 "></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form class="mt-3">
+                                                <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
+                                                    <option value="">مرتب سازی</option>
+                                                    <option>تاریخ</option>
+                                                    <option>جدید ترین</option>
+                                                    <option>قدیمی ترین</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card-body pb-0">
+                                    <!-- وقتی هیچ یادداشتی برای نمایش نبود -->
+                                    <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                        <p class="text-muted">شما هنوز هیچ یادداشتی به ثبت نرسانده اید.</p>
+                                    </div>
                                     <div class="table-responsive border-0">
-                                        <table class="table table-light align-middle p-4 mb-0 table-hover"  id="notesTable">
+                                        <table class="table align-middle p-4 mb-0 table-hover"  id="notesTable">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="py-3 text-center" style="border-top-right-radius: 20px;">شماره یادداشت</th>
@@ -409,206 +427,206 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="note-number text-center">1</td>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center py-3">1</td>
                                                     <td>1404/02/22</td>
                                                     <td>تماس با مراجع</td>
                                                     <td>با خانم احمدی تماس گرفته شود ...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye" data-bs-toggle="modal" data-bs-target="#appDetail_note1"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white" data-bs-toggle="modal" data-bs-target="#appDetail_note1"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td class="note-number text-center">2</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center py-3">2</td>
                                                     <td>1404/02/22</td>
                                                     <td>تماس با مراجع</td>
                                                     <td>با خانم سلامی تماس گرفته شود ...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="note-number text-center">3</td>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center py-3">3</td>
                                                     <td>1404/02/21</td>
                                                     <td>ارسال ایمیل</td>
                                                     <td>ایمیل به آقای رضایی ارسال شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td class="note-number text-center">4</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center py-3">4</td>
                                                     <td>1404/02/20</td>
                                                     <td>ملاقات حضوری</td>
                                                     <td>ملاقات با آقای محمدی تنظیم شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="note-number text-center">5</td>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center py-3">5</td>
                                                     <td>1404/02/19</td>
                                                     <td>ارسال پیامک</td>
                                                     <td>پیامک به آقای زارعی ارسال شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0"  title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td class="note-number text-center">6</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center py-3">6</td>
                                                     <td>1404/02/18</td>
                                                     <td>پیگیری پرداخت</td>
                                                     <td>پیگیری پرداخت با آقای شریفی انجام شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="note-number text-center">7</td>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center py-3">7</td>
                                                     <td>1404/02/17</td>
                                                     <td>ارسال فاکتور</td>
                                                     <td>فاکتور برای خانم احمدی ارسال شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td class="note-number text-center">8</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center py-3">8</td>
                                                     <td>1404/02/16</td>
                                                     <td>ملاقات آنلاین</td>
                                                     <td>ملاقات آنلاین با آقای محمدی برگزار شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="note-number text-center">9</td>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center py-3">9</td>
                                                     <td>1404/02/15</td>
                                                     <td>پیگیری درخواست</td>
                                                     <td>درخواست آقای رضایی بررسی شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td class="note-number text-center">10</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center py-3">10</td>
                                                     <td>1404/02/14</td>
                                                     <td>بررسی وضعیت</td>
                                                     <td>وضعیت درخواست آقای جمشیدی بررسی شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="note-number text-center">11</td>
+                                                <tr class="clickable-row">
+                                                    <td class="note-number text-center py-3">11</td>
                                                     <td>1404/02/13</td>
                                                     <td>ارسال گزارش</td>
                                                     <td>گزارش برای آقای بهرامی ارسال شد...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td class="note-number text-center">12</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="note-number text-center py-3">12</td>
                                                     <td>1404/02/12</td>
                                                     <td>پیگیری پشتیبانی</td>
                                                     <td>پشتیبانی برای آقای عابدینی انجام شد...</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                    <td class="btn-action">
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده">
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
+                                                        <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" title="حذف">
                                                             <i class="bi bi-trash"></i>
                                                         </a>
-                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت یادداشت">
+                                                        <a href="#" class="btn btn-primary btn-round me-1 mb-1 mb-md-0" title="پرینت یادداشت">
                                                             <i class="bi bi-download"></i>
                                                         </a>
                                                     </td>
@@ -619,7 +637,7 @@
                                 </div>
                             </div>
                             <nav aria-label="صفحه بندی نوت های ثبت شده" class="d-flex justify-content-center mt-4">
-                                <ul class="pagination custom-pagination">
+                                <ul class="pagination custom-pagination px-0 mx-0">
                                   <li class="page-item disabled">
                                     <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                   </li>
@@ -639,74 +657,12 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl, {
-                container: tooltipTriggerEl.closest('.btm-bar')
-              });
-            });
-          });
-            const uploadArea = document.getElementById("uploadArea");
-            const fileInput = document.getElementById("fileUpload");
-            const fileNameDisplay = document.getElementById("fileName");
-
-            uploadArea.addEventListener("dragover", (e) => {
-            e.preventDefault();
-            uploadArea.classList.add("dragover");
-            });
-
-            uploadArea.addEventListener("dragleave", () => {
-            uploadArea.classList.remove("dragover");
-            });
-
-            uploadArea.addEventListener("drop", (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove("dragover");
-            const file = e.dataTransfer.files[0];
-            fileInput.files = e.dataTransfer.files;
-            fileNameDisplay.textContent = `فایل انتخاب‌شده: ${file.name}`;
-            });
-
-            fileInput.addEventListener("change", () => {
-            if (fileInput.files.length > 0) {
-                fileNameDisplay.textContent = `فایل انتخاب‌شده: ${fileInput.files[0].name}`;
-            }
-            });
-            // ذخیره کردن ردیف انتخاب شده
-            let selectedRow = null;
-
-            // پیدا کردن تمام دکمه‌های حذف
-            const deleteButtons = document.querySelectorAll('.delete-btn');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    // انتخاب ردیف مربوطه
-                    selectedRow = button.closest('tr');
-                    // نمایش مودال
-                    new bootstrap.Modal(document.getElementById('deleteModal')).show();
-                });
-            });
-
-            // عملکرد دکمه تایید حذف
-            document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
-                // حذف ردیف انتخاب شده
-                if (selectedRow) {
-                    selectedRow.remove();
-                }
-                const rows = document.querySelectorAll('#notesTable tbody tr');
-                rows.forEach((row, index) => {
-                    row.querySelector('.note-number').textContent =index + 1; // شماره یادداشت‌ها از 1 شروع می‌شود
-                });
-                // بستن مودال
-                bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
-            });
-    </script>
+    <script src="assets/scripts/admin-note.js"></script>
 </body>
 </html>

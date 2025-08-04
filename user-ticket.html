@@ -26,6 +26,24 @@
     </style>
 </head>
 <body>
+    <!-- مودال موفقیت -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0 bg-success text-white">
+            <h5 class="modal-title w-100" id="successModalLabel">از بازخورد شما سپاسگزاریم</h5>
+            </div>
+            <div class="modal-body pb-0 mb-0">
+                <p class="pt-3">
+                    تیکت شما با موفقیت ارسال شد.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!--مودال خروج از حساب کاربری-->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -412,14 +430,8 @@
                                             <label class="form-label fw-bold">نام پزشک</label>
                                             <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
                                                 <option value="">پزشک</option>
-                                                <option>اکرم رحیمی</option>
-                                                <option>محمد پورعلی</option>
-                                                <option>آسیه پنجه شاهین</option>
-                                                <option>حسین فزونی</option>
-                                                <option>فیروزه خلیلی</option>
-                                                <option>فاطمه فرخ آبادی</option>
-                                                <option>فرحناز بخشی</option>
-                                                <option>مهرک دباغی</option>
+                                                <option>پرسنل آب درمانی</option>
+                                                <option>پرسنل فیزیوتراپی</option>
                                                 <option>رضا محسنی بیرجندی</option>
                                                 <option>مجد محسنی بیرجندی</option>
                                             </select>
@@ -430,19 +442,13 @@
                                             <label class="form-label fw-bold">بخش خدماتی <span class="text-danger">*</span></label>
                                             <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
                                                 <option value="">بخش</option>
-                                                <option>مدیریت</option>
-                                                <option>دکتر عمومی</option>
-                                                <option>مطب پرستاری</option>
-                                                <option>دندان پزشکی</option>
                                                 <option>فیزیوتراپی</option>
                                                 <option>آب درمانی</option>
                                                 <option>جراح مغز و اعصاب</option>
-                                                <option>روان شناسی</option>
                                                 <option>اعصاب و روان</option>
-                                                <option>آزمایشگاه</option>
-                                                <option>متخصص تغذیه</option>
-                                                <option>واحد زنان و زایمان</option>
-                                                <option>متخصص پوست و مو</option>
+                                                <option>پذیرش</option>
+                                                <option>مدیریت</option>
+                                                <option>حسابداری</option>
                                             </select>
                                             <div class="form-text" style="line-height: 2;">اگر تیکت شما مرتبط با بخش خاصی از درمانگاه می باشد لطفا انتخاب نمایید.</div>
                                         </div>
@@ -457,6 +463,11 @@
                         </div>
                         <!--تب سوم-->
                         <div class="tab-pane fade" id="sendtickets" role="tabpanel">
+                            <!-- وقتی هیچ تیکت ارسال شده ای نبود نبود -->
+                            <div id="no-notifications" class="col-12 text-center d-none my-5">
+                                <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                <p class="text-muted">شما هنوز هیچ تیکت ارسال شده ای ندارید.</p>
+                            </div>
                             <div class="bg-light border" style="border-radius: 20px;">
                                 <div class="card-header border-bottom">
                                     <div class="row g-3 align-items-center justify-content-between">
@@ -484,7 +495,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive border-0">
-                                        <table class="table table-light text-end align-middle p-4 mb-0 table-hover">
+                                        <table class="table text-end align-middle p-4 mb-0 table-hover">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" style="border-top-right-radius: 20px;">ردیف</th>
@@ -496,8 +507,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">
                                                         1
                                                     </td>
                                                     <td>
@@ -513,8 +524,8 @@
                                                         <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_asieh" onclick="clear_notif()"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>2</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">2</td>
                                                     <td>پیشنهاد و انتقاد</td>
                                                     <td>فاطمه فرخ آبادی</td>
                                                     <td>پزشک عمومی</td>
@@ -523,8 +534,8 @@
                                                         <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>3</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">3</td>
                                                     <td>درخواست جابه جایی وقت</td>
                                                     <td>مجد محسنی بیرجندی</td>
                                                     <td>جراح مغز و اعصاب</td>
@@ -533,8 +544,8 @@
                                                         <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>4</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">4</td>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-start gap-2">
                                                             <span>درخواست تمدید نسخه</span>
@@ -547,8 +558,8 @@
                                                         <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>5</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">5</td>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-start gap-2">
                                                             <span class="bg-success rounded-circle" style="width: 10px; height: 10px;"></span>
@@ -562,8 +573,8 @@
                                                         <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>6</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">6</td>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-start gap-2">
                                                             <span class="bg-success rounded-circle" style="width: 10px; height: 10px;"></span>
@@ -577,8 +588,8 @@
                                                         <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>7</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">7</td>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-start gap-2">
                                                             <span>سوال درباره رژیم</span>
@@ -591,8 +602,8 @@
                                                         <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>8</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">8</td>
                                                     <td>
                                                         <div class="d-flex align-items-center justify-content-start gap-2">
                                                             <span>درخواست مشاوره روان‌شناسی</span>
@@ -611,7 +622,7 @@
                                 </div>
                             </div>
                             <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                                <ul class="pagination custom-pagination">
+                                <ul class="pagination custom-pagination px-0 mx-0">
                                 <li class="page-item disabled">
                                     <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                 </li>
@@ -629,42 +640,17 @@
             </div>
             
         </section>
+        <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+            <i class="bi bi-chevron-up"></i>
+        </button> 
         <!--پایان محتوای اصلی-->
     </main>
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/js/particles.min.js"></script>
     <script src="assets/scripts/user-dashboard.js"></script>
+    <script src="assets/scripts/user_ticket.js"></script>
     <script>
-        function clear_notif()
-        {
-            document.getElementsByClassName('new-notif-tag').item(0).style.display="none";
-        }
-        const uploadArea = document.getElementById("uploadArea");
-        const fileInput = document.getElementById("fileUpload");
-        const fileNameDisplay = document.getElementById("fileName");
-
-        uploadArea.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        uploadArea.classList.add("dragover");
-        });
-
-        uploadArea.addEventListener("dragleave", () => {
-        uploadArea.classList.remove("dragover");
-        });
-
-        uploadArea.addEventListener("drop", (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove("dragover");
-        const file = e.dataTransfer.files[0];
-        fileInput.files = e.dataTransfer.files;
-        fileNameDisplay.textContent = `فایل انتخاب‌شده: ${file.name}`;
-        });
-
-        fileInput.addEventListener("change", () => {
-        if (fileInput.files.length > 0) {
-            fileNameDisplay.textContent = `فایل انتخاب‌شده: ${fileInput.files[0].name}`;
-        }
-        });
+        
         //انیمیشن بنر
         particlesJS("particles-js-banner", {
             "particles": {
@@ -702,43 +688,7 @@
             },
             "retina_detect": true
           });
-          //برای حذف اعلان های دریافتی کاربر
-            const checkboxes = document.querySelectorAll('.notif-checkbox');
-            const deleteContainer = document.getElementById('delete-selected-container');
-            const deleteBtn = document.getElementById('delete-selected-btn');
-            const confirmDeleteBtn = document.getElementById('confirm-delete');
-            const noNotifications = document.getElementById('no-notifications');
           
-            function updateDeleteButtonVisibility() {
-              const anyChecked = [...checkboxes].some(cb => cb.checked);
-              deleteContainer.classList.toggle('d-none', !anyChecked);
-            }
-          
-            checkboxes.forEach(cb => {
-              cb.addEventListener('change', updateDeleteButtonVisibility);
-            });
-          
-            deleteBtn.addEventListener('click', () => {
-              const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-              modal.show();
-            });
-          
-            confirmDeleteBtn.addEventListener('click', () => {
-              [...checkboxes].forEach(cb => {
-                if (cb.checked) {
-                  cb.closest('.notification-item').remove();
-                }
-              });
-          
-              const remaining = document.querySelectorAll('.notification-item').length;
-              if (remaining === 0) {
-                noNotifications.classList.remove('d-none');
-              }
-          
-              const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
-              modal.hide();
-              deleteContainer.classList.add('d-none');
-            });
     </script>
 </body>
 </html>

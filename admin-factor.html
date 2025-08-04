@@ -16,19 +16,46 @@
     <!--librearies-->
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-        @media (max-width:400px)
-        {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-        }
-    </style>
 </head>
 <body>
-    
+    <!-- مودال عودت وجه -->
+    <div class="modal fade" id="refundModal" tabindex="-1" aria-labelledby="refundModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+            <h5 class="modal-title" id="refundModalLabel">درخواست عودت وجه برای کاربر</h5>
+            <div class="d-flex justify-content-start">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            </div>
+            <div class="modal-body pb-0" style="text-align: justify;">
+                <p class="lh-lg">
+                    در صورت درخواست عودت وجه برای کاربر، مبلغ مذکور با کسر ده درصد مالیات، پس از تایید بخش حسابداری ، با گذشت 72 ساعت پس از ارسال درخواست، به حساب وی عودت داده خواهد شد. لطفا پیش از انجام عملیات درخواست عودت وجه، کاربر را از قوانین عودت، مطلع نمایید.
+                    <strong>آیا مایل به ادامه هستید؟</strong>
+                    </p>                    
+            </div>
+            <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">
+                انصراف
+            </button>
+            <a href="#" class="btn btn-info fw-bold text-white" onclick="showRefundToast()">
+                درخواست عودت وجه
+            </a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--توست موفقیت امیز بودن ارسال درخواست عودت وجه برای کاربر-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
+            <div class="toast-body text-end fe-bold">
+              درخواست شما با موفقیت ثبت شد و برای بررسی به حسابداری ارسال گردید.
+            </div>
+          </div>
+        </div>
+    </div>
     <!--مودال خروج از حساب کاربری-->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -49,12 +76,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="admin-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -66,7 +93,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="admin-send-messege.html" class="nav-link">
+                <a href="admin-send-messege.html" class="nav-link ">
                     <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
                 </a>
             </li>
@@ -76,7 +103,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="admin-factor.html" class="nav-link active-link">
+                <a href="admin-factor.html" class="nav-link  active-link">
                     <i class="fas fa-history ms-3"></i>تاریخچه فاکتورها 
                 </a>
             </li>
@@ -91,19 +118,20 @@
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-5">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between btm-bar">
-                    <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
-                        <i class="bi bi-gear-fill"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
-                        <i class="bi bi-globe"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
-                        <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
-                    </a>
+                <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
             </div>
         </div>
+        
     </aside>
     <!--پایان سایدبار-->
     <!-- بک‌گراند تار در حالت موبایل -->
@@ -111,12 +139,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2 text-white" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>              
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -218,9 +246,14 @@
                             </div>
                         </div>
                     </div>
+                    <!-- وقتی هیچ فاکتوری نبود -->
+                    <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                        <p class="text-muted">هیچ فاکتوری برای نمایش وجود ندارد.</p>
+                    </div>
                     <div class="card-body pb-0">
                         <div class="table-responsive border-0">
-                            <table class="table table-light align-middle p-4 mb-0 table-hover">
+                            <table class="table align-middle p-4 mb-0 table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col" class="py-3">شماره فاکتور</th>
@@ -233,7 +266,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>#021</td>
                                         <td>
                                             <h6 class="table-responsive-title mb-0 fw-normal">زهرا مهویدی</h6>
@@ -249,12 +282,12 @@
                                             در انتظار پرداخت
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>#022</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">علی صادقی</h6></td>
                                         <td>1404/02/13 - 10:00</td>
@@ -264,15 +297,15 @@
                                         </td>
                                         <td>لغو شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
-                                            <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
+                                            <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" title="عودت وجه" data-bs-toggle="modal" data-bs-target="#refundModal">
                                                 <i class="fa-solid fa-rotate-left"></i>
                                             </a>
                                         </td>                                    
                                     </tr>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>#023</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">مریم قاسمی</h6></td>
                                         <td>1404/02/14 - 14:15</td>
@@ -282,12 +315,12 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="پرینت فاکتور" aria-label="Download">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="" data-bs-original-title="پرینت فاکتور" aria-label="Download">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>                                    
                                     </tr> 
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>#024</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">پویا رحیمی</h6></td>
                                         <td>1404/02/14 - 16:45</td>
@@ -297,15 +330,15 @@
                                         </td>
                                         <td>لغو شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
-                                            <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
+                                            <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" title="عودت وجه" data-bs-toggle="modal" data-bs-target="#refundModal">
                                                 <i class="fa-solid fa-rotate-left"></i>
                                             </a>
                                         </td>                                    
                                     </tr>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>#025</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">نازنین فلاحی</h6></td>
                                         <td>1404/02/15 - 09:00</td>
@@ -315,12 +348,12 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>
                                     </tr>              
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>#026</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">محمد سلیمانی</h6></td>
                                         <td>1404/02/15 - 11:30</td>
@@ -330,12 +363,12 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>#027</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">ریحانه صبوری</h6></td>
                                         <td>1404/02/16 - 08:45</td>
@@ -345,12 +378,12 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>#028</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">حمید چگینی</h6></td>
                                         <td>1404/02/16 - 13:00</td>
@@ -360,12 +393,12 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td> 
                                     </tr>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>#029</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">یاسمن ترابی</h6></td>
                                         <td>1404/02/17 - 12:00</td>
@@ -375,12 +408,12 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>#030</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">پارسا کرمی</h6></td>
                                         <td>1404/02/18 - 18:00</td>
@@ -390,12 +423,12 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>#031</td>
                                         <td><h6 class="table-responsive-title mb-0 fw-normal">فرشاد نیک‌خواه</h6></td>
                                         <td>1404/02/19 - 15:30</td>
@@ -406,7 +439,7 @@
                                         </td>
                                         <td>پرداخت شده</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                            <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="پرینت فاکتور">
                                                 <i class="bi bi-download"></i>
                                             </a>
                                         </td>
@@ -417,7 +450,7 @@
                     </div>
                 </div>
                 <nav aria-label="صفحه بندی فاکتور های کاربران" class="d-flex justify-content-center mt-4">
-                    <ul class="pagination custom-pagination">
+                    <ul class="pagination custom-pagination mx-0 px-0">
                       <li class="page-item disabled">
                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                       </li>
@@ -431,20 +464,14 @@
                 </nav> 
             </div>
         </div>
+        <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+            <i class="bi bi-chevron-up"></i>
+        </button>
     </main>
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl, {
-                container: tooltipTriggerEl.closest('.btm-bar')
-              });
-            });
-          });           
-    </script>
+    <script src="assets/scripts/admin-factor.js"></script>
 </body>
 </html>

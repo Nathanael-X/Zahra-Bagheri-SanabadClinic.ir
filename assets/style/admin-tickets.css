@@ -1,3 +1,7 @@
+.nav-tabs
+{
+    overflow-y: hidden !important;
+}
 /* تب‌ها */
 .nav-tabs .nav-link {
     background-color: white;
@@ -10,6 +14,7 @@
     color: black;
     background-color: #c2ecff;
     font-weight: bold;
+   
 }
 /* صفحه‌بندی */
 .custom-pagination {
@@ -224,3 +229,27 @@
     font-weight: bold;
     font-size: 16px;
 }
+.selected-row td
+{
+    background-color: #1f232c !important;
+    color: white !important;
+}
+
+@media (max-width: 768px) 
+{
+    .nav-tabs {
+      overflow-x: auto;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .nav-tabs .nav-item {
+      display: inline-block;
+    }
+  
+    .nav-tabs .nav-link {
+      white-space: nowrap;
+    }
+}
+  

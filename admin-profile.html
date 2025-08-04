@@ -16,19 +16,44 @@
     <!--librearies-->
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-        @media (max-width:400px)
-        {
-           
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-        }
-    </style>
 </head>
 <body>
+     <!-- مودال موفقیت در ذخیره ی اطلاعات حساب کاربری -->
+     <div class="modal fade" id="successSaveProfileModal" tabindex="-1" aria-labelledby="successSaveProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0 bg-success text-white">
+            <h5 class="modal-title w-100" id="successSaveProfileModalLabel">به روز رسانی اطلاعات کاربری</h5>
+            </div>
+            <div class="modal-body pb-0 mb-0">
+                <p class="pt-3">
+                    اطلاعات جدید شما با موفقیت ذخیره شد.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- مودال موفقیت در ذخیره ی رمز عبور -->
+    <div class="modal fade" id="successSavePasswordModal" tabindex="-1" aria-labelledby="successSavePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0 bg-success text-white">
+            <h5 class="modal-title w-100" id="successSavePasswordModalLabel">به روز رسانی رمز عبور</h5>
+            </div>
+            <div class="modal-body pb-0 mb-0">
+                <p class="pt-3">
+                   رمز عبور شما با موفقیت تغییر یافت.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!--مودال خروج از حساب کاربری-->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -66,12 +91,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5 mb-2">
             <li class="nav-item mt-3 mb-2">
                 <a href="admin-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -83,7 +108,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="admin-send-messege.html" class="nav-link">
+                <a href="admin-send-messege.html" class="nav-link ">
                     <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
                 </a>
             </li>
@@ -98,24 +123,30 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="admin-note.html" class="nav-link">
+                <a href="admin-articles.html" class="nav-link ">
+                    <i class="bi bi-book ms-3"></i>مقالات 
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a href="admin-note.html" class="nav-link ">
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-5">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between btm-bar">
-                    <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
-                        <i class="bi bi-gear-fill"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
-                        <i class="bi bi-globe"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
-                        <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
-                    </a>
+                <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
             </div>
         </div>
+        
     </aside>
     <!--پایان سایدبار-->
     <!-- بک‌گراند تار در حالت موبایل -->
@@ -123,7 +154,7 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2 text-white" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
@@ -214,46 +245,46 @@
 							<div class="col-12 justify-content-center align-items-center">
 								<label class="form-label">تصویر</label>
 								<div class="row g-3 d-flex align-items-center">
-                                    <div class="col-md-2">
+                                    <div class="col-lg-3 col-xl-2">
                                         <label class="position-relative ms-4" for="uploadfile-1" title="Replace this pic">
                                             <img id="uploadfile-1-preview" class="rounded-circle border border-white border-3 shadow" src="assets/Images/sample-profile/prof3.png" alt="admin profile" style="width: 120px; height:120px;">
                                             <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
                                         </label>
                                     </div>
-									<div class="col-md-6">
+									<div class="col-lg-6">
                                         <label class="btn btn-info mb-0" for="uploadfile-1">تغییر عکس پروفایل</label>
 									    <input id="uploadfile-1" class="form-control d-none" type="file">
                                     </div>
 								</div>
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<label class="form-label">نام</label>
 								<input type="text" class="form-control" value="فهیمه" placeholder="نام">
 							</div>
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<label class="form-label">نام خانوادگی</label>
 								<input type="text" class="form-control" value="رشیدی" placeholder="نام خانوادگی">
 							</div>
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<label class="form-label">نام کاربری</label>
 								<div class="input-group">
 									<span class="input-group-text">@sanabad_admin</span>
 									<input type="text" class="form-control" value="fahime_rashidi">
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<label class="form-label">ایمیل</label>
 								<input class="form-control" type="email" value="Fahime.Rashidi@gmail.com"  placeholder="ایمیل">
 							</div>
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<label class="form-label">شماره تلفن</label>
 								<input type="text" class="form-control" value="09152208436" placeholder="شماره تماس">
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-lg-6">
 								<div class="row g-3">
-                                    <div class="col-md-4">
+                                    <div class="col-lg-4">
                                         <label class="form-label">کشور</label>
                                         <select id="country" class="form-select">
                                             <option value="">انتخاب</option>
@@ -262,7 +293,7 @@
                                             <option>آلمان</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-lg-4">
                                         <label class="form-label">استان</label>
                                         <select id="nation" class="form-select">
                                             <option value="">انتخاب</option>
@@ -271,7 +302,7 @@
                                             <option>اصفهان</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-lg-4">
                                         <label class="form-label">شهر</label>
                                         <select id="city" class="form-select">
                                             <option value="">انتخاب</option>
@@ -282,7 +313,7 @@
                                     </div>
                                 </div>
 							</div>
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
                                 <label for="date" class="form-label">سال تولد </label>
                                 <div>
                                     <div class="row g-2">
@@ -444,7 +475,7 @@
                                       </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
                                 <label for="Clinic_parts" class="form-label">در کدام بخش فعالیت دارید</label>
                                 <select id="Clinic_parts" class="form-select">
                                     <option value="">سمت</option>
@@ -468,7 +499,7 @@
                                     <option>متخصص پوست و مو</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
                                 <label for="typeOfDeal" class="form-label">نوع قرارداد</label>
                                 <select id="typeOfDeal" class="form-select">
                                     <option value="">قرارداد همکاری</option>
@@ -477,7 +508,7 @@
                                     <option>ساعتی</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
                                 <label for="DayOfWork" class="form-label">روزهای حضور</label>
                                 <select id="DayOfWork" class="form-select">
                                     <option value="">تمام هفته</option>
@@ -486,12 +517,12 @@
                                     <option>شنبه تا چهارشنبه</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
 								<label class="form-label">درباره من</label>
 								<textarea class="form-control" rows="3" style="line-height: 2;" placeholder="توضیحات خود را اینجا بنویسید..."></textarea>
 								<div class="form-text">توضیحات مختصری برای پروفایل شما</div> 
 							</div>
-                            <div class="col-md-6">
+                            <div class="col-lg-6">
                                 <label for="fileUpload">
                                     بارگذاری پرونده پرسنلی
                                     <div class="upload-box" id="uploadArea">
@@ -504,7 +535,7 @@
                                 <p id="fileName" style="margin-top: 15px; color: #333;"></p>
                             </div>
 							<div class="d-sm-flex justify-content-end">
-								<button type="button" class="btn btn-info mb-0">ذخیره</button>
+								<button type="button" class="btn btn-info mb-0" data-bs-toggle="modal" data-bs-target="#successSaveProfileModal">ذخیره</button>
 							</div>
 						</form>
 					</div>
@@ -537,7 +568,7 @@
 									<input class="form-control" type="password" placeholder="* * * * * * * *">
 								</div>
 								<div class="d-flex justify-content-end mt-4">
-									<button type="button" class="btn btn-info mb-0">تغییر رمز</button>
+									<button type="button" class="btn btn-info mb-0" data-bs-toggle="modal" data-bs-target="#successSavePasswordModal">تغییر رمز</button>
 								</div>
 							</div>
 						</div>
@@ -546,84 +577,13 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl, {
-                container: tooltipTriggerEl.closest('.btm-bar')
-              });
-            });
-
-            //حذف عکس پروفایل
-            const deleteButton = document.querySelector(".uploadremove");
-            const confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-            const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
-            const profileImage = document.getElementById("uploadfile-1-preview");
-            deleteButton.addEventListener("click", function (e) {
-              e.preventDefault();
-              confirmModal.show();
-            });
-        
-            confirmDeleteBtn.addEventListener("click", function () {
-              // تغییر تصویر پروفایل
-              profileImage.src = "assets/Images/sample-profile/sample-pic.jpeg";
-              // بستن مودال
-              confirmModal.hide();
-              deleteButton.style.display="none";
-            });
-
-            //تغییر عکس پروفایل
-            const fileInput = document.getElementById("uploadfile-1");
-            const previewImage = document.getElementById("uploadfile-1-preview");
-
-            fileInput.addEventListener("change", function () {
-            const file = this.files[0];
-
-            if (file && file.type.startsWith("image/")) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                previewImage.src = e.target.result;
-                deleteButton.style.display="block";
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                alert("لطفاً یک فایل تصویری معتبر انتخاب کنید.");
-            }
-            });
-          });
-          const uploadArea = document.getElementById("uploadArea");
-            const fileInput_1 = document.getElementById("fileUpload");
-            const fileNameDisplay_1 = document.getElementById("fileName");
-
-            uploadArea.addEventListener("dragover", (e) => {
-            e.preventDefault();
-            uploadArea.classList.add("dragover");
-            });
-
-            uploadArea.addEventListener("dragleave", () => {
-            uploadArea.classList.remove("dragover");
-            });
-
-            uploadArea.addEventListener("drop", (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove("dragover");
-            const file = e.dataTransfer.files[0];
-            fileInput_1.files = e.dataTransfer.files;
-            fileNameDisplay_1.textContent = `فایل انتخاب‌شده: ${file.name}`;
-            });
-
-            fileInput_1.addEventListener("change", () => {
-            if (fileInput_1.files.length > 0) {
-                fileNameDisplay_1.textContent = `فایل انتخاب‌شده: ${fileInput_1.files[0].name}`;
-            }
-            });
-    </script>
+    <script src="assets/scripts/admin-profile.js"></script>
 </body>
 </html>

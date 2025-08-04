@@ -18,14 +18,17 @@
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
     <style>
-    
+        @media (max-width:1081px)
+        {
+            .nav-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+              }
+        }
         @media (max-width:400px)
         {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
             .icon-user
             {
                 display: none;
@@ -36,84 +39,84 @@
             color: #565a5e !important;
             font-weight: bold !important;
         }
-        .upload-box 
-        {
-            padding:1vh 19vh;
-            margin-top: 10px;
-            border: 2px dashed #aaa;
-            border-radius: 12px;
-            text-align: center;
-            background: rgb(241, 241, 241);
-            cursor: pointer;
-            transition: border-color 0.3s ease;
-        }
-        .upload-box:hover , .upload-box_img:hover 
-        {
-            border-color: #28b6f6;
-        }
-        .upload-box.dragover , .upload-box_img.dragover 
-        {
-            border-color: #2196f3;
-            background-color: #e3f2fd;
-        }
-        .upload-box input[type="file"] , .upload-box_img input[type="file"]
-        {
-            display: none;
-        }
-        .upload-text 
-        {
-            color: #777;
-            font-size: 16px;
-        }
-        .upload-icon 
-        {
-            font-size: 38px;
-            color: #aaa;
-        }
-
     </style>
 </head>
 <body>
-    
-<!--  مودال فایل های پرسنلی-->
-<div class="modal fade" id="documentsModal" tabindex="-1" aria-labelledby="documentsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header fw-bold bg-dark justify-content-between text-white">
-          <h5 class="modal-title" id="documentsModalLabel">مستندات پرسنلی - رضا مرتضوی</h5>
-          <div class="d-flex justify-content-start">
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
+    <!--مودال خروج حساب کاربری از حالت آرشیو-->
+    <div class="modal fade" id="DearchiveConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-end">
+            <div class="modal-header bg-success">
+              <h5 class="modal-title fw-bold text-white">هشدار مدیریتی</h5>
+              <button type="button" class="btn-close btn-close-white ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body lh-lg pb-0">
+              <p>آیا مطمئن هستید که می‌خواهید این حساب کاربری  را از حالت آرشیو خارج کنید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+              <button type="button" class="btn btn-success" id="confirm-dearchive-btn">بله، بازگردانی کن</button>
+            </div>
           </div>
         </div>
-        <div class="modal-body">
-  
-            <div class="row g-3 mb-3">
-                <div class="col-md-4 text-center ">
-                  <img src="assets/Images/JahanGiri/picture.png" style="max-height: 50px;" class="mb-1">
-                  <p class="small mb-2">کارت ملی</p>
-                  <a href="assets/Images/JahanGiri/picture.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                </div>
-                <div class="col-md-4 text-center">
-                  <img src="assets/Images/JahanGiri/pdf.png" style="max-height: 50px;" class="mb-1">
-                  <p class="small mb-2">گواهی عدم سوء پیشینه</p>
-                  <a href="assets/Images/JahanGiri/گواهی سو پیشینه.pdf" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                </div>
-                <div class="col-md-4 text-center">
-                    <img src="assets/Images/JahanGiri/doc.png" style="max-height: 50px;" class="mb-1">
-                    <p class="small mb-2">مستندات بیمه</p>
-                    <a href="assets/Images/JahanGiri/doc.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                </div>
-                <div class="col-md-4 text-center">
-                    <img src="assets/Images/JahanGiri/xls.png" style="max-height: 50px;" class="mb-1">
-                    <p class="small mb-2">مدارک تحصیلی</p>
-                    <a href="assets/Images/JahanGiri/xls.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                </div>
+    </div>   
+    <!--مودال ارشیو حساب کاربری-->
+    <div class="modal fade" id="archiveConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-end">
+            <div class="modal-header bg-warning">
+              <h5 class="modal-title fw-bold">هشدار مدیریتی</h5>
+              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
             </div>
-  
+            <div class="modal-body lh-lg pb-0">
+              <p>آیا مطمئن هستید که می‌خواهید حساب کاربری <span id="archive-user-name" class="fw-bold text-primary"></span> را آرشیو کنید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+              <button type="button" class="btn btn-warning confirm-archive-btn">بله، آرشیو کن</button>
+            </div>
+          </div>
         </div>
-      </div>
+    </div>      
+    <!--  مودال فایل های پرسنلی-->
+    <div class="modal fade" id="documentsModal" tabindex="-1" aria-labelledby="documentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header fw-bold bg-dark justify-content-between text-white">
+            <h5 class="modal-title" id="documentsModalLabel">مستندات پرسنلی - رضا مرتضوی</h5>
+            <div class="d-flex justify-content-start">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            </div>
+            <div class="modal-body">
+    
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4 text-center ">
+                    <img src="assets/Images/JahanGiri/picture.png" style="max-height: 50px;" class="mb-1">
+                    <p class="small mb-2">کارت ملی</p>
+                    <a href="assets/Images/JahanGiri/picture.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                    <img src="assets/Images/JahanGiri/pdf.png" style="max-height: 50px;" class="mb-1">
+                    <p class="small mb-2">گواهی عدم سوء پیشینه</p>
+                    <a href="assets/Images/JahanGiri/گواهی سو پیشینه.pdf" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="assets/Images/JahanGiri/doc.png" style="max-height: 50px;" class="mb-1">
+                        <p class="small mb-2">مستندات بیمه</p>
+                        <a href="assets/Images/JahanGiri/doc.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="assets/Images/JahanGiri/xls.png" style="max-height: 50px;" class="mb-1">
+                        <p class="small mb-2">مدارک تحصیلی</p>
+                        <a href="assets/Images/JahanGiri/xls.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        </div>
     </div>
-</div>
     <!--حذف عکس پروفایل-->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -131,8 +134,25 @@
         </div>
         </div>
     </div>
+     <!--حذف عکس پروفایل پرسنل-->
+     <div class="modal fade" id="personelDelete_profile" tabindex="-1" aria-labelledby="personelDelete_profileLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger fw-bold text-white">
+            <h5 class="modal-title" id="personelDelete_profileLabel">تأیید حذف عکس پروفایل</h5>
+            </div>
+            <div class="modal-body fw-bold" style="text-align: justify !important;">
+            <p>آیا از حذف عکس پروفایل پرسنل اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            <button type="button" class="btn btn-danger" id="confirmpersonelDelete_profileBtn">بله، حذف شود</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!--مودال حذف حساب کاربری-->
-    <div class="modal fade" id="delete_user_account" tabindex="-1" aria-labelledby="delete_user_accountLabel" aria-hidden="true" style="z-index:1082 !important ;">
+    <div class="modal fade" id="delete_user_account" tabindex="-1" aria-labelledby="delete_user_accountLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
@@ -151,7 +171,7 @@
         </div>
     </div>
     <!--مودال حذف سوابق بیمار-->
-    <div class="modal fade" id="delete_all_avtivities" tabindex="-1" aria-labelledby="delete_all_avtivitiesLabel" aria-hidden="true" style="z-index:1082 !important ;">
+    <div class="modal fade" id="delete_all_avtivities" tabindex="-1" aria-labelledby="delete_all_avtivitiesLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
@@ -170,7 +190,7 @@
         </div>
     </div>
     <!--مودال بلاک بیمار-->
-    <div class="modal fade" id="BlockUserModal" tabindex="-1" aria-labelledby="BlockUserModalLabel" aria-hidden="true" style="z-index:1082 !important ;">
+    <div class="modal fade" id="BlockUserModal" tabindex="-1" aria-labelledby="BlockUserModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
@@ -189,7 +209,7 @@
         </div>
     </div>
     <!--مودال رفع مسدودیت کاربر-->
-    <div class="modal fade" id="UnBlockUserModal" tabindex="-1" aria-labelledby="UnBlockUserModalLabel" aria-hidden="true" style="z-index:1082 !important ;">
+    <div class="modal fade" id="UnBlockUserModal" tabindex="-1" aria-labelledby="UnBlockUserModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-success" style=" color:white; font-weight:bold;">
@@ -207,8 +227,8 @@
           </div>
         </div>
     </div>
-    <!-- Reservation History Modal -->
-    <div class="modal fade" id="reservationHistoryModal" tabindex="-1" aria-labelledby="reservationHistoryModalLabel" aria-hidden="true" style="z-index: 1080 !important;">
+    <!-- مودال سوابق رزرو نوبت کاربر -->
+    <div class="modal fade" id="reservationHistoryModal" tabindex="-1" aria-labelledby="reservationHistoryModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl rounded">
             <div class="modal-content h-auto">
                 <!-- Modal Header -->
@@ -408,7 +428,7 @@
                     </tbody>
                     </table>
                     <nav aria-label="صفحه بندی نوبت های رزرو شده کاربران" class="d-flex justify-content-end mt-4">
-                        <ul class="pagination custom-pagination">
+                        <ul class="pagination custom-pagination px-0 mx-0">
                           <li class="page-item disabled">
                             <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                           </li>
@@ -426,7 +446,7 @@
             </div>
         </div>
     </div>  
-    <!-- Modal: Confirm Reset Password -->
+    <!-- مودال بازنشانی رمز عبور -->
     <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4">
@@ -447,15 +467,32 @@
         </div>
         </div>
     </div>
-  
-    <!-- Modal: Show New Password -->
+    <!-- مودال موفقیت در ذخیره ی اطلاعات حساب کاربری -->
+    <div class="modal fade" id="successSaveProfileModal" tabindex="-1" aria-labelledby="successSaveProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0 bg-success text-white">
+            <h5 class="modal-title w-100" id="successSaveProfileModalLabel">ذخیره اطلاعات حساب کاربری</h5>
+            </div>
+            <div class="modal-body pb-0 mb-0">
+                <p class="pt-3">
+                    اطلاعات وارد شده با موفقیت ذخیره شد.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- مودال نمایش رمز یک بار مصرف کاربر -->
     <div class="modal fade" id="newPasswordModal" tabindex="-1" aria-labelledby="newPasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4">
             <div class="modal-header justify-content-between bg-info">
             <h5 class="modal-title text-white fw-bold" id="newPasswordModalLabel">رمز عبور جدید کاربر</h5>
             <div class="d-flex justify-content-start">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+                <button type="button" class="btn-close" id="allPassModalClose" data-bs-dismiss="modal" aria-label="بستن"></button>
             </div>
             </div>
             <div class="modal-body text-center">
@@ -486,13 +523,13 @@
         </div>
     </div>
     
-    <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+      <!-- سایدبار -->
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 pb-4">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="Master-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -504,7 +541,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="Master_send_message.html" class="nav-link">
+                <a href="Master_send_message.html" class="nav-link ">
                     <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
                 </a>
             </li>
@@ -533,10 +570,9 @@
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
-            
         </ul>
-        <div class="px-3 mt-4 pt-1">
-            <div class="d-flex align-items-center justify-content-between">
+        <div class="px-3 mt-auto">
+            <div class="d-flex align-items-center justify-content-between btm-bar">
                 <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
                 </a>
@@ -555,12 +591,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>                
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -575,7 +611,7 @@
                 <img src="assets/Images/sample-profile/prof1.png" alt="user1">
                 <div class="content">
                     <strong>منشی فیزیوتراپی</strong><br>
-                    درخواست بازیابی رمز<br>
+                    درخواست تغییر شیفت کاری<br>
                     <a href="#" class="text-primary">مشاهده</a>
                 </div>
             </li>
@@ -652,6 +688,9 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="private_add_user" data-bs-toggle="tab" data-bs-target="#add_users" type="button" role="tab">افزودن کاربر جدید</button>
                         </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="archive_users" data-bs-toggle="tab" data-bs-target="#archive_personels" type="button" role="tab">آرشیو حساب های کاربری</button>
+                        </li>
                     </ul>
                 
                 <!--محتوای تب ها-->
@@ -660,6 +699,11 @@
                      <div class="tab-pane fade show active" id="general_users" role="tabpanel">
                         <div class="bg-white" style="border-radius: 20px;">
                             <div class="card-body">
+                                <!-- وقتی هیچ کاربر عمومی نبود نبود -->
+                                <div id="empty_general_users" class="col-12 text-center my-5 d-none">
+                                    <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                    <p class="text-muted pt-3">هنوز هیچ کاربری در سایت ثبت نام نکرده است.</p>
+                                </div>
                                 <div class="row g-3 align-items-center justify-content-between">
                                     <div class="col-md-7">
                                         <form class="rounded position-relative">
@@ -674,7 +718,8 @@
                                             <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
                                                 <option value="">مرتب سازی</option>
                                                 <option>نام و نام خانوادگی</option>
-                                                <option>شهر</option>
+                                                <option>تاریخ عضویت</option>
+                                                <option>شناسه کاربری</option>
                                             </select>
                                         </form>
                                     </div>
@@ -697,7 +742,7 @@
                                     <!--نمایش پنجره ای-->
                                     <div class="tab-pane fade show active" id="nav-preview-tab-1">
                                         <div class="row g-4">
-                                            <div class="col-12 col-lg-6" id="alireza_col">
+                                            <div class="col-lg-12 col-xl-6" id="alireza_col">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -770,7 +815,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-lg-12 col-xl-6">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -844,7 +889,7 @@
                                                 </div>
                                             </div>
                                             <!--سطر بعد-->
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-lg-12 col-xl-6">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -917,7 +962,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-lg-12 col-xl-6">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -987,7 +1032,7 @@
                                                 </div>
                                             </div>
                                             <!--سطر بعد-->
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-lg-12 col-xl-6">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -1056,7 +1101,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-lg-12 col-xl-6">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -1126,7 +1171,7 @@
                                                 </div>
                                             </div>
                                             <!--سطر بعد-->
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-lg-12 col-xl-6">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -1195,7 +1240,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-lg-6">
+                                            <div class="col-lg-12 col-xl-6">
                                                 <div class="card bg-white border h-100"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
@@ -1266,7 +1311,7 @@
                                             </div>
                                             
                                             <nav aria-label="صفحه بندی اکانت کاربران" class="d-flex justify-content-center mt-4">
-                                                <ul class="pagination custom-pagination">
+                                                <ul class="pagination custom-pagination px-0 mx-0">
                                                   <li class="page-item disabled">
                                                     <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                                   </li>
@@ -1284,7 +1329,7 @@
                                     <div class="tab-pane fade" id="nav-html-tab-1">
                                         <div class="card-body">
                                             <div class="table-responsive border-0">
-                                                <table class="table table-light text-center align-middle p-4 mb-0 table-hover">
+                                                <table class="table text-center align-middle p-4 mb-0 table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col" style="border-top-right-radius: 20px;">نام و نام خانوادگی</th>
@@ -1300,7 +1345,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1328,7 +1373,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1356,7 +1401,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1384,7 +1429,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1412,7 +1457,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1440,7 +1485,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1470,7 +1515,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1500,7 +1545,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -1532,7 +1577,7 @@
                                                 </table>
                                             </div>
                                             <nav aria-label="صفحه بندی اکانت کاربران" class="d-flex justify-content-center mt-4">
-                                                <ul class="pagination custom-pagination">
+                                                <ul class="pagination custom-pagination px-0 mx-0">
                                                   <li class="page-item disabled">
                                                     <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                                   </li>
@@ -1568,24 +1613,14 @@
                                             <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
                                                 <option value="">مرتب سازی</option>
                                                 <option>نام و نام خانوادگی</option>
-                                                <option>پذیرش</option>
-                                                <option>حساب داری</option>
-                                                <option>IT</option>
-                                                <option>مدیریت</option>
-                                                <option>فنی</option>
-                                                <option>مدد کاری</option>
-                                                <option>دکتر عمومی</option>
-                                                <option>مطب پرستاری</option>
-                                                <option>دندان پزشکی</option>
-                                                <option>فیزیوتراپی</option>
+                                                <option>شناسه کاربری</option>
+                                                <option>تاریخ عضویت</option>
                                                 <option>آب درمانی</option>
-                                                <option>جراح مغز و اعصاب</option>
-                                                <option>روان شناسی</option>
+                                                <option>فیزیوتراپی</option>
                                                 <option>اعصاب و روان</option>
-                                                <option>آزمایشگاه</option>
-                                                <option>متخصص تغذیه</option>
-                                                <option>واحد زنان و زایمان</option>
-                                                <option>متخصص پوست و مو</option>
+                                                <option>مغز و اعصاب</option>
+                                                <option>مدیریت</option>
+                                                <option>پذیرش</option>
                                             </select>
                                         </form>
                                     </div>
@@ -1608,8 +1643,8 @@
                                     <!--نمایش پنجره ای-->
                                     <div class="tab-pane fade show active" id="nav-personel-tab-1">
                                         <div class="row g-4">
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100"  data-user-id="user-1"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -1683,8 +1718,8 @@
                                                 </div>
                                             </div>
                                             <!--کارمند دوم-->
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100" data-user-id="user-2"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -1758,8 +1793,8 @@
                                                 </div>
                                             </div>
                                             <!--کارمند سوم-->
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100" data-user-id="user-3"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -1833,8 +1868,8 @@
                                                 </div>
                                             </div>
                                             <!--کارمند چهارم-->
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100" data-user-id="user-4"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -1908,8 +1943,8 @@
                                                 </div>
                                             </div>
                                             <!--کارمند پنجم-->
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100" data-user-id="user-5"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -1983,8 +2018,8 @@
                                                 </div>
                                             </div>
                                             <!--کارمند ششم-->
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100" data-user-id="user-6"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -2058,8 +2093,8 @@
                                                 </div>
                                             </div>
                                             <!--کارمند هفتم-->
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100" data-user-id="user-7"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -2133,8 +2168,8 @@
                                                 </div>
                                             </div>
                                             <!--کارمند هشتم-->
-                                            <div class="col-12 col-lg-6">
-                                                <div class="card bg-white border h-100"> 
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="card bg-white border h-100" data-user-id="user-08"> 
                                                     <div class="card-header border-bottom d-flex justify-content-between">
                                                         <div class="d-sm-flex align-items-center">
                                                             <div class="flex-shrink-0">
@@ -2209,7 +2244,7 @@
                                             </div>
 
                                             <nav aria-label="صفحه بندی اکانت کاربران" class="d-flex justify-content-center mt-4">
-                                                <ul class="pagination custom-pagination">
+                                                <ul class="pagination custom-pagination px-0 mx-0">
                                                   <li class="page-item disabled">
                                                     <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                                   </li>
@@ -2227,7 +2262,7 @@
                                     <div class="tab-pane fade" id="nav-personel-tab-2">
                                         <div class="card-body">
                                             <div class="table-responsive border-0">
-                                                <table class="table table-light text-center align-middle p-4 mb-0 table-hover">
+                                                <table class="table text-center align-middle p-4 mb-0 table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col" style="border-top-right-radius: 20px;">نام و نام خانوادگی</th>
@@ -2246,7 +2281,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2277,7 +2312,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2310,7 +2345,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2341,7 +2376,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2372,7 +2407,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2405,7 +2440,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2438,7 +2473,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr class="clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2469,7 +2504,7 @@
                                                                 <a href="#" class="btn btn-info me-1 mb-1 mb-lg-0 text-white"  ata-bs-toggle="tooltip" data-bs-placement="top" title="حذف حساب کاربری"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                        <tr class="color-row">
+                                                        <tr class="color-row clickable-row">
                                                             <td>
                                                                 <div class="d-flex align-items-center justify-content-start">
                                                                     <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -2504,7 +2539,7 @@
                                                 </table>
                                             </div>
                                             <nav aria-label="صفحه بندی اکانت کاربران" class="d-flex justify-content-center mt-4">
-                                                <ul class="pagination custom-pagination">
+                                                <ul class="pagination custom-pagination px-0 mx-0">
                                                   <li class="page-item disabled">
                                                     <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                                   </li>
@@ -2522,6 +2557,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--تب سوم-->
                     <div class="tab-pane fade" id="add_users" role="tabpanel">
                         <!--هدر تب ها-->
                         <ul class="nav nav-tabs mb-3 pe-0 border-0" id="users_add_tabs" role="tablist">
@@ -2541,43 +2577,43 @@
                                 <div class="bg-white" style="border-radius: 20px;">
                                     <div class="card-body">
                                         <div class="row g-3">
-                                            <div class="col-md-12 justify-content-center align-items-center">
+                                            <div class="col-lg-12 justify-content-center align-items-center">
                                                 <label class="form-label">تصویر پروفایل کاربر</label>
                                                 <div class="row g-3 d-flex align-items-center">
-                                                    <div class="col-md-2">
+                                                    <div class="col-lg-3 col-xl-2">
                                                         <label class="position-relative ms-4" for="uploadfile-user" title="Replace this pic">
                                                             <img id="uploadfile-user-preview" class="rounded-circle border border-white border-3 shadow" src="assets/Images/JahanGiri/defult image logo.png" alt="user profile" style="width: 120px; height:120px;">
-                                                            <button type="button" id="uploaduserremove" class="d-none" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"><i class="bi bi-x text-white"></i></button>
+                                                            <button type="button" id="uploaduserremove" class="d-none"><i class="bi bi-x text-white"></i></button>
                                                         </label>
                                                     </div>
-                                                    <div class="col-md-10">
+                                                    <div class="col-lg-6">
                                                         <label class="btn btn-sanabad mb-0" for="uploadfile-user">انتخاب عکس پروفایل</label>
                                                         <input id="uploadfile-user" class="form-control d-none" type="file">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">نام</label>
                                                 <input type="text" class="form-control" value="نام مراجعه کننده را وارد نمایید" placeholder="نام">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">نام خانوادگی</label>
                                                 <input type="text" class="form-control" value="نام خانوادگی مراجعه کننده را وارد نمایید" placeholder="نام خانوادگی">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">نام کاربری</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text">@user-sanabad</span>
                                                     <input type="text" class="form-control" value="نام کاربری را وارد نمایید">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">شماره تلفن</label>
                                                 <input type="text" class="form-control" value="تلفن همراه مراجعه کننده را وارد نمایید" placeholder="شماره تماس">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <div class="row g-3">
-                                                    <div class="col-md-4">
+                                                    <div class="col-xl-4">
                                                         <label class="form-label">کشور</label>
                                                         <select id="country" class="form-select">
                                                             <option value="">انتخاب</option>
@@ -2586,7 +2622,7 @@
                                                             <option>آلمان</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-xl-4">
                                                         <label class="form-label">استان</label>
                                                         <select id="nation" class="form-select">
                                                             <option value="">انتخاب</option>
@@ -2595,7 +2631,7 @@
                                                             <option>اصفهان</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-xl-4">
                                                         <label class="form-label">شهر</label>
                                                         <select id="city" class="form-select">
                                                             <option value="">انتخاب</option>
@@ -2607,11 +2643,11 @@
                                                 </div>
                                                 
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">کد ملی</label>
                                                 <input type="text" class="form-control" value="0925466840" placeholder="کد ملی">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label for="date" class="form-label">سال تولد </label>
                                                 <div>
                                                     <div class="row g-2">
@@ -2773,7 +2809,7 @@
                                                       </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">جنسیت</label>
                                                 <div class="d-flex gap-4 align-items-center">
                                                     <div class="form-check d-flex justify-align-center align-items-center pe-1">
@@ -2795,9 +2831,9 @@
                                                 <textarea class="form-control" rows="3" style="line-height: 2;" placeholder="توضیحات خود را اینجا بنویسید..."></textarea>
                                                 <div class="form-text">بیماری خاص مراجعه کننده، داروی مصرفی خاص و ...</div> 
                                             </div>
-                                            <div class="col-md-12 d-flex justify-content-end align-items-center gap-3">
-                                                <button type="button" class="btn btn-info mb-0 text-white fw-bold">ذخیره</button>
-                                                <button type="reset" class="btn btn-secondary mb-0">پاک کردن</button>
+                                            <div class="col-xl-12 d-flex justify-content-end align-items-center gap-3">
+                                                <button type="reset" class="btn btn-secondary mb-0 py-1">پاک کردن</button>
+                                                <button type="button" class="btn btn-sanabad mb-0 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#successSaveProfileModal">ذخیره</button>
                                             </div>
                                         </div>
                                         
@@ -2809,43 +2845,43 @@
                                 <div class="bg-white" style="border-radius: 20px;">
                                     <div class="card-body">
                                         <div class="row g-3">
-                                            <div class="col-md-12 justify-content-center align-items-center">
+                                            <div class="col-lg-12 justify-content-center align-items-center">
                                                 <label class="form-label">تصویر پروفایل کارمند</label>
                                                 <div class="row g-3 d-flex align-items-center">
-                                                    <div class="col-md-2">
+                                                    <div class="col-lg-3 col-xl-2">
                                                         <label class="position-relative ms-4" for="uploadfile-1" title="Replace this pic">
                                                             <img id="uploadfile-1-preview" class="rounded-circle border border-white border-3 shadow" src="assets/Images/JahanGiri/defult image logo.png" alt="user profile" style="width: 120px; height:120px;">
-                                                            <button type="button" class="uploadremove d-none"><i class="bi bi-x text-white"></i></button>
+                                                            <button type="button"  id="uploadremove-personel" class="uploadremove d-none"><i class="bi bi-x text-white"></i></button>
                                                         </label>
                                                     </div>
-                                                    <div class="col-md-10">
+                                                    <div class="col-lg-6">
                                                         <label class="btn btn-sanabad mb-0" for="uploadfile-1">انتخاب عکس پروفایل</label>
                                                         <input id="uploadfile-1" class="form-control d-none" type="file">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">نام</label>
                                                 <input type="text" class="form-control" value="نام کارمند را وارد نمایید" placeholder="نام">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">نام خانوادگی</label>
                                                 <input type="text" class="form-control" value="نام خانوادگی کارمند را وارد نمایید" placeholder="نام خانوادگی">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">نام کاربری</label>
                                                 <div class="input-group">
                                                     <span class="input-group-text">@user-sanabad</span>
                                                     <input type="text" class="form-control" value="نام کاربری کارمند را وارد نمایید">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">شماره تلفن</label>
                                                 <input type="text" class="form-control" value="تلفن همراه کارمند را وارد نمایید" placeholder="شماره تماس">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <div class="row g-3">
-                                                    <div class="col-md-4">
+                                                    <div class="col-xl-4">
                                                         <label class="form-label">کشور</label>
                                                         <select id="country" class="form-select">
                                                             <option value="">انتخاب</option>
@@ -2854,7 +2890,7 @@
                                                             <option>آلمان</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-xl-4">
                                                         <label class="form-label">استان</label>
                                                         <select id="nation" class="form-select">
                                                             <option value="">انتخاب</option>
@@ -2863,7 +2899,7 @@
                                                             <option>اصفهان</option>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-xl-4">
                                                         <label class="form-label">شهر</label>
                                                         <select id="city" class="form-select">
                                                             <option value="">انتخاب</option>
@@ -2875,11 +2911,11 @@
                                                 </div>
                                                 
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">کد ملی</label>
                                                 <input type="text" class="form-control" value="0925466840" placeholder="کد ملی">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label for="date" class="form-label">سال تولد </label>
                                                 <div>
                                                     <div class="row g-2">
@@ -3041,7 +3077,7 @@
                                                       </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label for="Clinic_parts" class="form-label">در کدام بخش فعالیت دارد</label>
                                                 <select id="Clinic_parts" class="form-select">
                                                     <option value="">سمت</option>
@@ -3049,8 +3085,6 @@
                                                     <option>حساب داری</option>
                                                     <option>IT</option>
                                                     <option>مدیریت</option>
-                                                    <option>فنی</option>
-                                                    <option>مدد کاری</option>
                                                     <option>دکتر عمومی</option>
                                                     <option>مطب پرستاری</option>
                                                     <option>دندان پزشکی</option>
@@ -3065,7 +3099,7 @@
                                                     <option>متخصص پوست و مو</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label for="typeOfDeal" class="form-label">نوع قرارداد</label>
                                                 <select id="typeOfDeal" class="form-select">
                                                     <option value="">قرارداد همکاری</option>
@@ -3074,7 +3108,7 @@
                                                     <option>ساعتی</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label for="DayOfWork" class="form-label">روزهای حضور</label>
                                                 <select id="DayOfWork" class="form-select">
                                                     <option value="">تمام هفته</option>
@@ -3083,28 +3117,39 @@
                                                     <option>شنبه تا چهارشنبه</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-xl-6">
                                                 <label class="form-label">توضیحات</label>
-                                                <textarea class="form-control" rows="3" style="line-height: 2;" placeholder="توضیحات مربوط به کارمند را اینجا بنویسید..."></textarea>
+                                                <textarea class="form-control" rows="4" style="line-height: 2;" placeholder="توضیحات مربوط به کارمند را اینجا بنویسید..."></textarea>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="fileUpload">
-                                                    بارگذاری پرونده پرسنلی
-                                                    <div class="upload-box" id="uploadArea">
-                                                      <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
-                                                      <div class="upload-text">فایل کارمند را بکشید یا اینجا کلیک کنید</div>
-                                                      <input type="file" id="fileUpload"> 
-                                                    </div>
-                                                </label>
-                                                <div class="form-text mt-2">قراردادها و مستندات کاری کارمند را در اینجا بارگذاری نمایید</div> 
-                                                <p id="fileName" style="margin-top: 15px; color: #333;"></p>
+                                            <div class="col-xl-6">
+                                                    <label for="fileUpload">
+                                                        <div class="upload-box px-5" id="uploadArea">
+                                                          <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
+                                                          <div class="upload-text py-0 my-0">محل بارگذاری مستندات پرسنلی</div>
+                                                          <input type="file" id="fileUpload">
+                                                        </div>
+                                                    </label>
+                                                    <p id="fileName" style="margin-top: 15px; color: #333;"></p>
                                             </div>
-                                            <div class="col-md-12 d-flex justify-content-end align-items-center gap-3">
-                                                <button type="button" class="btn btn-info mb-0 text-white fw-bold">ذخیره</button>
-                                                <button type="reset" class="btn btn-secondary mb-0">پاک کردن</button>
+                                            <div class="col-xl-12 d-flex justify-content-end align-items-center gap-3">
+                                                <button type="reset" class="btn btn-secondary mb-0 py-1">پاک کردن</button>
+                                                <button type="button" class="btn btn-sanabad mb-0 text-white fw-bold" data-bs-toggle="modal" data-bs-target="#successSaveProfileModal">ذخیره</button>
                                             </div>
                                         </div>
                                         
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--تب چهارم-->
+                    <div class="tab-pane fade" id="archive_personels" role="tabpanel">
+                        <div class="bg-white" style="border-radius: 20px;">
+                            <div class="card-body">
+                                <div class="row g-4">
+                                    <div id="no-notifications" class="col-12 text-center my-5">
+                                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                        <p class="text-muted pt-3">آرشیو حساب های کاربری خالی است.</p>
                                     </div>
                                 </div>
                             </div>
@@ -3114,182 +3159,15 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-          });
-          document.getElementById('confirmDeleteUserAccount').addEventListener('click',function(){
-            document.getElementById('alireza_col').style.display="none";
-            var deleteAccountModal = bootstrap.Modal.getInstance(document.getElementById('delete_user_account'));
-            deleteAccountModal.hide();
-            // نمایش Toast موفقیت
-            var successDeleteAccountToast = new bootstrap.Toast(document.getElementById('deleteAccountSuccessToast'));
-            successDeleteAccountToast.show();
-          });
-          document.getElementById('confirmDeleteAllBtn').addEventListener('click', function(){
-            document.getElementById("full_activity").classList.add("d-none");
-            document.getElementById("empty_activity").classList.remove("d-none");
-            // پس از موفقیت عملیات حذف:
-        
-            // بستن هر دو مودال
-            var deleteModal = bootstrap.Modal.getInstance(document.getElementById('delete_all_avtivities'));
-            deleteModal.hide();
-            var historyModal = bootstrap.Modal.getInstance(document.getElementById('reservationHistoryModal'));
-            historyModal.hide();
-        
-            // نمایش Toast موفقیت
-            var successToast = new bootstrap.Toast(document.getElementById('deleteSuccessToast'));
-            successToast.show();
-          });
-          // تابع تولید رمز موقت تصادفی
-            function generateRandomPassword(length) {
-                const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                let password = '';
-                for (let i = 0; i < length; i++) {
-                    password += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                return password;
-            }
-
-            // وقتی ادمین روی دکمه بازیابی رمز کلیک می‌کند
-            function openResetPasswordModal(userName, userId) {
-                document.getElementById('resetUserName').innerText = userName;
-                // ذخیره userId برای ارسال به سرور در صورت نیاز
-                document.getElementById('confirmResetBtn').setAttribute('data-userid', userId);
-
-                // نمایش مودال تایید
-                const resetModal = new bootstrap.Modal(document.getElementById('resetPasswordModal'));
-                resetModal.show();
-            }
-
-            // تایید بازیابی رمز عبور
-            document.getElementById('confirmResetBtn').addEventListener('click', function(){
-                const userId = this.getAttribute('data-userid');
-                
-                // تولید رمز جدید
-                const newPass = generateRandomPassword(8);
-                document.getElementById('newGeneratedPassword').innerText = newPass;
-
-                // ارسال رمز جدید به سرور برای بروزرسانی دیتابیس (ajax یا fetch)
-                /*
-                fetch('/api/reset-password', {
-                    method: 'POST',
-                    body: JSON.stringify({userId: userId, newPassword: newPass}),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    // نمایش مودال رمز جدید پس از تایید موفق
-                });
-                */
-
-                // بستن مودال تایید و نمایش مودال رمز جدید
-                const resetModalEl = document.getElementById('resetPasswordModal');
-                const resetModal = bootstrap.Modal.getInstance(resetModalEl);
-                resetModal.hide();
-
-                const newPassModal = new bootstrap.Modal(document.getElementById('newPasswordModal'));
-                newPassModal.show();
-            });
-            document.getElementById('confirmBlockUser').addEventListener('click', function(){
-                const userCol = document.getElementById('alireza_col');
-            
-                // اضافه کردن کلاس استایل بلاک
-                userCol.classList.add('blocked-user');
-            
-                // اگه overlay اضافه نشده بود، اضافه کن
-                if (!userCol.querySelector('.blocked-overlay')) {
-                    const overlay = document.createElement('div');
-                    overlay.className = 'blocked-overlay';
-                    userCol.appendChild(overlay);
-                }
-            
-                // اضافه کردن دکمه رفع مسدودیت (اگه قبلاً نیست)
-                if (!userCol.querySelector('.unblock-btn-container')) {
-                    const unblockDiv = document.createElement('div');
-                    unblockDiv.className = 'unblock-btn-container';
-            
-                    unblockDiv.innerHTML = `
-                        <button class="btn btn-success btn-sm btn-unblock" data-bs-toggle="modal" data-bs-target="#UnBlockUserModal">رفع مسدودیت</button>
-                    `;
-            
-                    userCol.appendChild(unblockDiv);
-                }
-            
-                // بستن مودال
-                const BlockUser = bootstrap.Modal.getInstance(document.getElementById('BlockUserModal'));
-                BlockUser.hide();
-            });
-            function confirmUnBlockUser()
-            {
-                const userCol = document.getElementById(userId);
-                userCol.classList.remove('blocked-user');
-            
-                const unblockDiv = userCol.querySelector('.unblock-btn-container');
-                if (unblockDiv) unblockDiv.remove();
-            
-                const overlay = userCol.querySelector('.blocked-overlay');
-                if (overlay) overlay.remove();
-
-                // بستن مودال
-                const un_BlockUser = bootstrap.Modal.getInstance(document.getElementById('UnBlockUserModal'));
-                un_BlockUser.hide();
-            }
-            //حذف عکس پروفایل
-            const deleteButtonUser =document.getElementById("uploaduserremove");
-            const confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-            const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
-            const profileImage = document.getElementById("uploadfile-user-preview");
-            deleteButtonUser.addEventListener("click", function (e) {
-              e.preventDefault();
-              confirmModal.show();
-            });
-        
-            confirmDeleteBtn.addEventListener("click", function () {
-                // تغییر تصویر پروفایل به تصویر پیش‌فرض
-                profileImage.src = "assets/Images/JahanGiri/defult image logo.png";
-                // بستن مودال تایید حذف
-                confirmModal.hide();
-                // مخفی کردن دکمه حذف
-                deleteButtonUser.classList.remove("d-block");
-                deleteButtonUser.classList.add("d-none");
-              });
-
-            //تغییر عکس پروفایل
-            const fileInput = document.getElementById("uploadfile-user");
-            const previewImage = document.getElementById("uploadfile-user-preview");
-
-            fileInput.addEventListener("change", function () {
-                const file = this.files[0];
-              
-                if (file && file.type.startsWith("image/")) {  // تغییر از "assets/Images/" به "image/"
-                  const reader = new FileReader();
-              
-                  reader.onload = function (e) {
-                    previewImage.src = e.target.result;
-                    deleteButtonUser.classList.remove("d-none");
-                    deleteButtonUser.classList.add("d-block");
-                  };
-              
-                  reader.readAsDataURL(file);
-                } else {
-                  alert("لطفاً یک فایل تصویری معتبر انتخاب کنید.");
-                }
-              });
-
-            
-              
-    </script>
+    <script src="assets/scripts/Master_user_control.js"></script>
+    <script src="assets/scripts/Master_archive_control.js"></script>
     <!-- Success Toast -->
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
         <div id="deleteSuccessToast" class="toast align-items-center bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
@@ -3315,6 +3193,5 @@
         </div>
         </div>
     </div>
-    
 </body>
 </html>

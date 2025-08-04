@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
     <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="assets/style/admin-dashboard.css" rel="stylesheet">
-    <link href="assets/style/admin-tickets.css" rel="stylesheet">
+    <link href="assets/style/admin-factor.css" rel="stylesheet">
     <!--librearies-->
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
@@ -22,17 +22,47 @@
         {
             background-color: #c2ecff;
         }
-        @media (max-width:400px)
-        {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- مودال عودت وجه -->
+    <div class="modal fade" id="refundModal" tabindex="-1" aria-labelledby="refundModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+            <h5 class="modal-title" id="refundModalLabel">درخواست عودت وجه برای کاربر</h5>
+            <div class="d-flex justify-content-start">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            </div>
+            <div class="modal-body pb-0" style="text-align: justify;">
+                <p class="lh-lg">
+                    در صورت درخواست عودت وجه برای کاربر، مبلغ مذکور با کسر ده درصد مالیات، پس از تایید بخش حسابداری ، با گذشت 72 ساعت پس از ارسال درخواست، به حساب وی عودت داده خواهد شد. لطفا پیش از انجام عملیات درخواست عودت وجه، کاربر را از قوانین عودت، مطلع نمایید.
+                    <strong>آیا مایل به ادامه هستید؟</strong>
+                    </p>                    
+            </div>
+            <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">
+                انصراف
+            </button>
+            <a href="#" class="btn btn-info fw-bold text-white" onclick="showRefundToast()">
+                درخواست عودت وجه
+            </a>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--توست موفقیت امیز بودن ارسال درخواست عودت وجه برای کاربر-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
+            <div class="toast-body text-end fe-bold">
+              درخواست شما با موفقیت ثبت شد و برای بررسی به حسابداری ارسال گردید.
+            </div>
+          </div>
+        </div>
+    </div>
     <!--مودال خروج از حساب کاربری-->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -53,12 +83,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 pb-4">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="Master-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -100,8 +130,8 @@
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-4 pt-1">
-            <div class="d-flex align-items-center justify-content-between">
+        <div class="px-3 mt-auto">
+            <div class="d-flex align-items-center justify-content-between btm-bar">
                 <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
                 </a>
@@ -120,12 +150,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>             
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -140,7 +170,7 @@
                 <img src="assets/Images/sample-profile/prof1.png" alt="user1">
                 <div class="content">
                     <strong>منشی فیزیوتراپی</strong><br>
-                    درخواست بازیابی رمز<br>
+                    درخواست تغییر شیفت کاری<br>
                     <a href="#" class="text-primary">مشاهده</a>
                 </div>
             </li>
@@ -203,807 +233,787 @@
             <div style="height: 5vh;"></div>
             <div class="container py-4">
                 <div class="d-flex align-items-center justify-content-between flex-wrap ">
-                    <h4 class="fw-bold blue-light">درآمد آنلاین سایت کلینیک شبانه روزی سناباد</h4>    
+                    <h4 class="fw-bold blue-light mb-4">درآمد آنلاین سایت کلینیک شبانه روزی سناباد</h4>    
                 </div>
-            </div>
-            <!--کارت های آماری درآمدها-->
-            <div class="row g-4 mb-4">
-				<div class="col-sm-6 col-lg-4">
-					<div class="p-4 bg-blue-light rounded-3">
-						<h6 class="fw-bold lh-lg fs-5">درآمد رزرو های ماهانه
-                            <a tabindex="0" class="h6 mb-0 me-1" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="با احتساب مالیات" data-bs-original-title="" title="">
-								<i class="bi bi-info-circle-fill"></i>
-							</a>
-                        </h6>
-						<h2 class="mb-0 fs-4 text-primary">
-                            <span class="counter_earning_Master" data-target="3541900">0</span>
-                            تومان
-                        </h2>
-					</div>
-				</div>
+                <!--کارت های آماری درآمدها-->
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-lg-6 col-xl-4">
+                        <div class="p-4 bg-blue-light rounded-3">
+                            <h6 class="fw-bold lh-lg fs-5">درآمد رزرو های ماهانه
+                                <a tabindex="0" class="h6 mb-0 me-1" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="با احتساب مالیات" data-bs-original-title="" title="">
+                                    <i class="bi bi-info-circle-fill"></i>
+                                </a>
+                            </h6>
+                            <h2 class="mb-0 fs-4 text-primary">
+                                <span class="counter_earning_Master" data-target="3541900">0</span>
+                                تومان
+                            </h2>
+                        </div>
+                    </div>
 
-				<div class="col-sm-6 col-lg-4">
-					<div class="p-4 bg-blue-light rounded-3">
-						<h6 class="fw-bold lh-lg fs-5">در انتظار پرداخت
-							
-						</h6>
-						<h2 class="mb-0 fs-4 text-primary">
-                            <span class="counter_earning_Master" data-target="5480253">0</span>
-                            تومان
-                        </h2>
-					</div>
-				</div>
-				<div class="col-sm-6 col-lg-4">
-					<div class="p-4 bg-blue-light rounded-3">
-						<h6 class="fw-bold lh-lg fs-5">درآمد رزروهای امروز</h6>
-						<h2 class="mb-0 fs-4 text-primary">
-                            <span class="counter_earning_Master" data-target="899000">0</span>
-                            تومان</h2>
-					</div>
-				</div>
-			</div>
-            <!-- تب‌ها -->
-            <ul class="nav nav-tabs mb-3 pe-0" id="earningTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="Neurologist-tab" data-bs-toggle="tab" data-bs-target="#Neurologist" type="button" role="tab">جراح مغز و اعصاب</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="Hydrotherapy_tab" data-bs-toggle="tab" data-bs-target="#Hydrotherapy" type="button" role="tab">آب درمانی</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="Physiotherapy_tab" data-bs-toggle="tab" data-bs-target="#Physiotherapy" type="button" role="tab">فیزیوتراپی</button>
-                </li>
-            </ul>
-            <!-- محتوای تب‌ها -->
-            <div class="tab-content" id="earningTabsContent">
-                <!--تب اول-->
-                <div class="tab-pane fade show active" id="Neurologist" role="tabpanel">
-                    <div class="container py-4">
-                        <div class="bg-light border" style="border-radius: 20px;">
-                            <div class="card-header border-bottom">
-                                <div class="row g-3 align-items-center justify-content-between">
-                                    <div class="col-md-8">
-                                        <form class="rounded position-relative mt-3">
-                                            <input class="form-control" type="search" placeholder="جستجوی بیمار ..." aria-label="Search">
-                                            <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
-                                                <i class="fas fa-search fs-6 "></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <form class="mt-3">
-                                            <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
-                                                <option value="">مرتب سازی</option>
-                                                <option>شماره فاکتور</option>
-                                                <option>تاریخ</option>
-                                                <option>مبلغ پرداختی</option>
-                                                <option>جدید ترین</option>
-                                                <option>قدیمی ترین</option>
-                                            </select>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body pb-0">
-                                <div class="table-responsive border-0">
-                                    <table class="table table-light align-middle p-4 mb-0 table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="py-3">شماره فاکتور</th>
-                                                <th scope="col">نام بیمار</th>
-                                                <th scope="col">زمان نوبت</th>
-                                                <th scope="col">نوع بیمه</th>
-                                                <th scope="col">مبلغ پرداختی</th>
-                                                <th scope="col">وضعیت پرداخت</th>
-                                                <th scope="col">عملیات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#021</td>
-                                                <td>
-                                                    <h6 class="table-responsive-title mb-0 fw-normal">زهرا مهویدی</h6>
-                                                </td>
-                                                <td>1404/02/12 - 17:30</td>
-                                                <td>
-                                                    بیمه سپه
-                                                </td>
-                                                <td>300,000 تومان
-                                                    
-                                                </td>
-                                                <td>
-                                                    در انتظار پرداخت
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#022</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">علی صادقی</h6></td>
-                                                <td>1404/02/13 - 10:00</td>
-                                                <td>بیمه تامین اجتماعی</td>
-                                                <td>200,000 تومان                                                    
-                                                </td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>                                    
-                                            </tr>
-                                            <tr>
-                                                <td>#023</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">مریم قاسمی</h6></td>
-                                                <td>1404/02/14 - 14:15</td>
-                                                <td>آزاد</td>
-                                                <td>400,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="پرینت فاکتور" aria-label="Download">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>                                    
-                                            </tr> 
-                                            <tr class="color-row">
-                                                <td>#024</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">پویا رحیمی</h6></td>
-                                                <td>1404/02/14 - 16:45</td>
-                                                <td>بیمه نیروهای مسلح</td>
-                                                <td>250,000 تومان                                                    
-                                                </td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>                                    
-                                            </tr>
-                                            <tr>
-                                                <td>#025</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">نازنین فلاحی</h6></td>
-                                                <td>1404/02/15 - 09:00</td>
-                                                <td>آزاد</td>
-                                                <td>400,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>              
-                                            <tr class="color-row">
-                                                <td>#026</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">محمد سلیمانی</h6></td>
-                                                <td>1404/02/15 - 11:30</td>
-                                                <td>بیمه سلامت</td>
-                                                <td>180,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#027</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">ریحانه صبوری</h6></td>
-                                                <td>1404/02/16 - 08:45</td>
-                                                <td>آزاد</td>
-                                                <td>400,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#028</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">حمید چگینی</h6></td>
-                                                <td>1404/02/16 - 13:00</td>
-                                                <td>بیمه تامین اجتماعی</td>
-                                                <td>200,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td> 
-                                            </tr>
-                                            <tr>
-                                                <td>#029</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">یاسمن ترابی</h6></td>
-                                                <td>1404/02/17 - 12:00</td>
-                                                <td>آزاد</td>
-                                                <td>400,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#030</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">پارسا کرمی</h6></td>
-                                                <td>1404/02/18 - 18:00</td>
-                                                <td>بیمه نیروهای مسلح</td>
-                                                <td>250,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#031</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">فرشاد نیک‌خواه</h6></td>
-                                                <td>1404/02/19 - 15:30</td>
-                                                <td>آزاد</td>
-                                                <td>400,000 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>                                    
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="col-12 col-lg-6 col-xl-4">
+                        <div class="p-4 bg-blue-light rounded-3">
+                            <h6 class="fw-bold lh-lg fs-5">در انتظار پرداخت
+                                
+                            </h6>
+                            <h2 class="mb-0 fs-4 text-primary">
+                                <span class="counter_earning_Master" data-target="5480253">0</span>
+                                تومان
+                            </h2>
                         </div>
-                        <nav aria-label="صفحه بندی فاکتور های کاربران" class="d-flex justify-content-center mt-4">
-                            <ul class="pagination custom-pagination">
-                              <li class="page-item disabled">
-                                <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
-                              </li>
-                              <li class="page-item active"><a class="page-link" href="#">۱</a></li>
-                              <li class="page-item"><a class="page-link" href="#">۲</a></li>
-                              <li class="page-item"><a class="page-link" href="#">۳</a></li>
-                              <li class="page-item">
-                                <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
-                              </li>
-                            </ul>
-                        </nav> 
+                    </div>
+                    <div class="col-12 col-lg-6 col-xl-4">
+                        <div class="p-4 bg-blue-light rounded-3">
+                            <h6 class="fw-bold lh-lg fs-5">درآمد رزروهای امروز</h6>
+                            <h2 class="mb-0 fs-4 text-primary">
+                                <span class="counter_earning_Master" data-target="899000">0</span>
+                                تومان</h2>
+                        </div>
                     </div>
                 </div>
-                <!--تب دوم-->
-                <div class="tab-pane fade" id="Hydrotherapy" role="tabpanel">
-                    <div class="container py-4">
-                        <div class="bg-light border" style="border-radius: 20px;">
-                            <div class="card-header border-bottom">
-                                <div class="row g-3 align-items-center justify-content-between">
-                                    <div class="col-md-8">
-                                        <form class="rounded position-relative mt-3">
-                                            <input class="form-control" type="search" placeholder="جستجوی بیمار ..." aria-label="Search">
-                                            <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
-                                                <i class="fas fa-search fs-6 "></i>
-                                            </button>
-                                        </form>
+                <!-- تب‌ها -->
+                <ul class="nav nav-tabs mb-3 pe-0" id="earningTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="Neurologist-tab" data-bs-toggle="tab" data-bs-target="#Neurologist" type="button" role="tab">جراح مغز و اعصاب</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="Hydrotherapy_tab" data-bs-toggle="tab" data-bs-target="#Hydrotherapy" type="button" role="tab">آب درمانی</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="Physiotherapy_tab" data-bs-toggle="tab" data-bs-target="#Physiotherapy" type="button" role="tab">فیزیوتراپی</button>
+                    </li>
+                </ul>
+                <!-- محتوای تب‌ها -->
+                <div class="tab-content" id="earningTabsContent">
+                    <!--تب اول-->
+                    <div class="tab-pane fade show active" id="Neurologist" role="tabpanel">
+                        <div class="container py-4">
+                            <div class="bg-light border" style="border-radius: 20px;">
+                                <div class="card-header border-bottom">
+                                    <div class="row g-3 align-items-center justify-content-between">
+                                        <div class="col-md-8">
+                                            <form class="rounded position-relative mt-3">
+                                                <input class="form-control" type="search" placeholder="جستجوی بیمار ..." aria-label="Search">
+                                                <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
+                                                    <i class="fas fa-search fs-6 "></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form class="mt-3">
+                                                <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
+                                                    <option value="">مرتب سازی</option>
+                                                    <option>شماره فاکتور</option>
+                                                    <option>تاریخ</option>
+                                                    <option>مبلغ پرداختی</option>
+                                                    <option>جدید ترین</option>
+                                                    <option>قدیمی ترین</option>
+                                                </select>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <form class="mt-3">
-                                            <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
-                                                <option value="">مرتب سازی</option>
-                                                <option>شماره فاکتور</option>
-                                                <option>تاریخ</option>
-                                                <option>مبلغ پرداختی</option>
-                                                <option>جدید ترین</option>
-                                                <option>قدیمی ترین</option>
-                                            </select>
-                                        </form>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <!-- وقتی هیچ فاکتوری نبود -->
+                                    <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                        <p class="text-muted pt-3">هنوز هیچ فاکتوری به ثبت نرسیده است</p>
+                                    </div>
+                                    <div class="table-responsive border-0">
+                                        <table class="table align-middle p-4 mb-0 table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="py-3">شماره فاکتور</th>
+                                                    <th scope="col">نام بیمار</th>
+                                                    <th scope="col">زمان نوبت</th>
+                                                    <th scope="col">نوع بیمه</th>
+                                                    <th scope="col">مبلغ پرداختی</th>
+                                                    <th scope="col">وضعیت پرداخت</th>
+                                                    <th scope="col">عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="clickable-row">
+                                                    <td class="py-4">#021</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا مهویدی</h6>
+                                                    </td>
+                                                    <td>1404/02/12 - 17:30</td>
+                                                    <td>
+                                                        بیمه سپه
+                                                    </td>
+                                                    <td>300,000 تومان
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        در انتظار پرداخت
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#022</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">علی صادقی</h6></td>
+                                                    <td>1404/02/13 - 10:00</td>
+                                                    <td>بیمه تامین اجتماعی</td>
+                                                    <td>200,000 تومان                                                    
+                                                    </td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>                                    
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#023</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">مریم قاسمی</h6></td>
+                                                    <td>1404/02/14 - 14:15</td>
+                                                    <td>آزاد</td>
+                                                    <td>400,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="پرینت فاکتور" aria-label="Download">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>                                    
+                                                </tr> 
+                                                <tr class="color-row clickable-row">
+                                                    <td>#024</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">پویا رحیمی</h6></td>
+                                                    <td>1404/02/14 - 16:45</td>
+                                                    <td>بیمه نیروهای مسلح</td>
+                                                    <td>250,000 تومان                                                    
+                                                    </td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>                                    
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#025</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">نازنین فلاحی</h6></td>
+                                                    <td>1404/02/15 - 09:00</td>
+                                                    <td>آزاد</td>
+                                                    <td>400,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>              
+                                                <tr class="color-row clickable-row">
+                                                    <td>#026</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">محمد سلیمانی</h6></td>
+                                                    <td>1404/02/15 - 11:30</td>
+                                                    <td>بیمه سلامت</td>
+                                                    <td>180,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#027</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">ریحانه صبوری</h6></td>
+                                                    <td>1404/02/16 - 08:45</td>
+                                                    <td>آزاد</td>
+                                                    <td>400,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#028</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">حمید چگینی</h6></td>
+                                                    <td>1404/02/16 - 13:00</td>
+                                                    <td>بیمه تامین اجتماعی</td>
+                                                    <td>200,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td> 
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#029</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">یاسمن ترابی</h6></td>
+                                                    <td>1404/02/17 - 12:00</td>
+                                                    <td>آزاد</td>
+                                                    <td>400,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#030</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">پارسا کرمی</h6></td>
+                                                    <td>1404/02/18 - 18:00</td>
+                                                    <td>بیمه نیروهای مسلح</td>
+                                                    <td>250,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#031</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">فرشاد نیک‌خواه</h6></td>
+                                                    <td>1404/02/19 - 15:30</td>
+                                                    <td>آزاد</td>
+                                                    <td>400,000 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>                                    
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body pb-0">
-                                <div class="table-responsive border-0">
-                                    <table class="table table-light align-middle p-4 mb-0 table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="py-3">شماره فاکتور</th>
-                                                <th scope="col">نام بیمار</th>
-                                                <th scope="col">تعداد روزهای انتخابی / بسته انتخابی</th>
-                                                <th scope="col">تاریخ و ساعت شروع جلسات</th>
-                                                <th scope="col">مبلغ پرداختی</th>
-                                                <th scope="col">وضعیت پرداخت</th>
-                                                <th scope="col">عملیات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#021</td>
-                                                <td>
-                                                    <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
-                                                </td>
-                                                <td>10 جلسه آب درمانی (آزاد)</td>
-                                                <td>1404/02/13 - 10:00</td>
-                                                <td>4,900,000 تومان
-                                                    
-                                                </td>
-                                                <td>
-                                                    در انتظار پرداخت
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#022</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">شهره سیستانی</h6></td>
-                                                <td>6 روز</td>
-                                                <td>1404/04/14 - 08:30</td>
-                                                <td>2,721,945 تومان                                                    
-                                                </td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>                                    
-                                            </tr>
-                                            <tr>
-                                                <td>#023</td>
-                                                <td>
-                                                    <h6 class="table-responsive-title mb-0 fw-normal">محمد علی پور</h6>
-                                                </td>
-                                                <td>15 جلسه آب درمانی (آزاد)</td>
-                                                <td>1403/08/16 - 15:00</td>
-                                                <td>7,000,000 تومان
-                                                    
-                                                </td>
-                                                <td>
+                            <nav aria-label="صفحه بندی فاکتور های کاربران" class="d-flex justify-content-center mt-4">
+                                <ul class="pagination custom-pagination px-0 mx-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">۱</a></li>
+                                <li class="page-item"><a class="page-link" href="#">۲</a></li>
+                                <li class="page-item"><a class="page-link" href="#">۳</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
+                                </li>
+                                </ul>
+                            </nav> 
+                        </div>
+                    </div>
+                    <!--تب دوم-->
+                    <div class="tab-pane fade" id="Hydrotherapy" role="tabpanel">
+                        <div class="container py-4">
+                            <div class="bg-light border" style="border-radius: 20px;">
+                                <div class="card-header border-bottom">
+                                    <div class="row g-3 align-items-center justify-content-between">
+                                        <div class="col-md-8">
+                                            <form class="rounded position-relative mt-3">
+                                                <input class="form-control" type="search" placeholder="جستجوی بیمار ..." aria-label="Search">
+                                                <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
+                                                    <i class="fas fa-search fs-6 "></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form class="mt-3">
+                                                <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
+                                                    <option value="">مرتب سازی</option>
+                                                    <option>شماره فاکتور</option>
+                                                    <option>تاریخ</option>
+                                                    <option>مبلغ پرداختی</option>
+                                                    <option>جدید ترین</option>
+                                                    <option>قدیمی ترین</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <!-- وقتی هیچ فاکتوری نبود -->
+                                    <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                        <p class="text-muted pt-3">هنوز هیچ فاکتوری به ثبت نرسیده است</p>
+                                    </div>
+                                    <div class="table-responsive border-0">
+                                        <table class="table align-middle p-4 mb-0 table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="py-3">شماره فاکتور</th>
+                                                    <th scope="col">نام بیمار</th>
+                                                    <th scope="col">تعداد روزهای انتخابی / بسته انتخابی</th>
+                                                    <th scope="col">تاریخ و ساعت شروع جلسات</th>
+                                                    <th scope="col">مبلغ پرداختی</th>
+                                                    <th scope="col">وضعیت پرداخت</th>
+                                                    <th scope="col">عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="clickable-row">
+                                                    <td>#021</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
+                                                    </td>
+                                                    <td>10 جلسه آب درمانی (آزاد)</td>
+                                                    <td>1404/02/13 - 10:00</td>
+                                                    <td>4,900,000 تومان
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        در انتظار پرداخت
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#022</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">شهره سیستانی</h6></td>
+                                                    <td>6 روز</td>
+                                                    <td>1404/04/14 - 08:30</td>
+                                                    <td>2,721,945 تومان                                                    
+                                                    </td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>                                    
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#023</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">محمد علی پور</h6>
+                                                    </td>
+                                                    <td>15 جلسه آب درمانی (آزاد)</td>
+                                                    <td>1403/08/16 - 15:00</td>
+                                                    <td>7,000,000 تومان
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        پرداخت شده
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#024</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">علی محمودنژاد</h6></td>
+                                                    <td>3 روز</td>
+                                                    <td>1403/10/23 - 17:00</td>
+                                                    <td>1,371,945 تومان                                                    
+                                                    </td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>                                    
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#025</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">نسرین کاظمی</h6></td>
+                                                    <td>۱۰ جلسه آب درمانی (آزاد)</td>
+                                                    <td>1403/09/12 - 11:30</td>
+                                                    <td>۴,۹۰۰,۰۰۰ تومان</td>
+                                                    <td>در انتظار پرداخت</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#026</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">رضا عبدی</h6></td>
+                                                    <td>۴ روز</td>
+                                                    <td>1404/01/04 - 18:30</td>
+                                                    <td>۱,۸۷۰,۰۰۰ تومان</td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#027</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">ساناز داوری</h6></td>
+                                                    <td>20 جلسه آب درمانی (آزاد)</td>
+                                                    <td>1403/11/28 - 15:00</td>
+                                                    <td>9,000,000 تومان</td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#028</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">بابک فراهانی</h6></td>
+                                                    <td>۶ روز</td>
+                                                    <td>1404/02/20 - 17:00</td>
+                                                    <td>۲,۹۸۵,۰۰۰ تومان</td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#029</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">فرشته رحمتی</h6></td>
+                                                    <td>10 جلسه آب درمانی (آزاد)</td>
+                                                    <td>1404/03/11 - 10:00</td>
+                                                    <td>۴,۹۰۰,۰۰۰ تومان</td>
+                                                    <td>در انتظار پرداخت</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#030</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">حسین رادمنش</h6></td>
+                                                    <td>۲ روز</td>
+                                                    <td>1403/12/21 - 18:30</td>
+                                                    <td>۹۹۰,۰۰۰ تومان</td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#031</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">مهسا امینی</h6></td>
+                                                    <td>20 جلسه آب درمانی (آزاد)</td>
+                                                    <td>1404/04/05 - 08:00</td>
+                                                    <td>9,000,000 تومان</td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>                                                                  
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <nav aria-label="صفحه بندی فاکتور های کاربران" class="d-flex justify-content-center mt-4">
+                                <ul class="pagination custom-pagination px-0 mx-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">۱</a></li>
+                                <li class="page-item"><a class="page-link" href="#">۲</a></li>
+                                <li class="page-item"><a class="page-link" href="#">۳</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
+                                </li>
+                                </ul>
+                            </nav> 
+                        </div>
+                    </div>
+                    <!--تب سوم-->
+                    <div class="tab-pane fade" id="Physiotherapy" role="tabpanel">
+                        <div class="container py-4">
+                            <div class="bg-light border" style="border-radius: 20px;">
+                                <div class="card-header border-bottom">
+                                    <div class="row g-3 align-items-center justify-content-between">
+                                        <div class="col-md-8">
+                                            <form class="rounded position-relative mt-3">
+                                                <input class="form-control" type="search" placeholder="جستجوی بیمار ..." aria-label="Search">
+                                                <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
+                                                    <i class="fas fa-search fs-6 "></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form class="mt-3">
+                                                <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
+                                                    <option value="">مرتب سازی</option>
+                                                    <option>شماره فاکتور</option>
+                                                    <option>تاریخ</option>
+                                                    <option>مبلغ پرداختی</option>
+                                                    <option>جدید ترین</option>
+                                                    <option>قدیمی ترین</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <!-- وقتی هیچ فاکتوری نبود -->
+                                    <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                        <p class="text-muted pt-3">هنوز هیچ فاکتوری به ثبت نرسیده است</p>
+                                    </div>
+                                    <div class="table-responsive border-0">
+                                        <table class="table align-middle p-4 mb-0 table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" class="py-3">شماره فاکتور</th>
+                                                    <th scope="col">نام بیمار</th>
+                                                    <th scope="col">تعداد روزهای انتخابی</th>
+                                                    <th scope="col">تاریخ و ساعت شروع جلسات</th>
+                                                    <th scope="col">نوع بیمه</th>
+                                                    <th scope="col">مبلغ پرداختی</th>
+                                                    <th scope="col">وضعیت پرداخت</th>
+                                                    <th scope="col">عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="clickable-row">
+                                                    <td>#021</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">سمیه راد</h6>
+                                                    </td>
+                                                    <td>1 روز</td>
+                                                    <td>1403/11/10 - 11:30</td>
+                                                    <td>آزاد</td>
+                                                    <td>361,945 تومان
+                                                        
+                                                    </td>
+                                                    <td>
                                                     پرداخت شده
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#024</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">علی محمودنژاد</h6></td>
-                                                <td>3 روز</td>
-                                                <td>1403/10/23 - 17:00</td>
-                                                <td>1,371,945 تومان                                                    
-                                                </td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>                                    
-                                            </tr>
-                                            <tr>
-                                                <td>#025</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">نسرین کاظمی</h6></td>
-                                                <td>۱۰ جلسه آب درمانی (آزاد)</td>
-                                                <td>1403/09/12 - 11:30</td>
-                                                <td>۴,۹۰۰,۰۰۰ تومان</td>
-                                                <td>در انتظار پرداخت</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#026</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">رضا عبدی</h6></td>
-                                                <td>۴ روز</td>
-                                                <td>1404/01/04 - 18:30</td>
-                                                <td>۱,۸۷۰,۰۰۰ تومان</td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#027</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">ساناز داوری</h6></td>
-                                                <td>20 جلسه آب درمانی (آزاد)</td>
-                                                <td>1403/11/28 - 15:00</td>
-                                                <td>9,000,000 تومان</td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#028</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">بابک فراهانی</h6></td>
-                                                <td>۶ روز</td>
-                                                <td>1404/02/20 - 17:00</td>
-                                                <td>۲,۹۸۵,۰۰۰ تومان</td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#029</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">فرشته رحمتی</h6></td>
-                                                <td>10 جلسه آب درمانی (آزاد)</td>
-                                                <td>1404/03/11 - 10:00</td>
-                                                <td>۴,۹۰۰,۰۰۰ تومان</td>
-                                                <td>در انتظار پرداخت</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#030</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">حسین رادمنش</h6></td>
-                                                <td>۲ روز</td>
-                                                <td>1403/12/21 - 18:30</td>
-                                                <td>۹۹۰,۰۰۰ تومان</td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#031</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">مهسا امینی</h6></td>
-                                                <td>20 جلسه آب درمانی (آزاد)</td>
-                                                <td>1404/04/05 - 08:00</td>
-                                                <td>9,000,000 تومان</td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>                                                                  
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <nav aria-label="صفحه بندی فاکتور های کاربران" class="d-flex justify-content-center mt-4">
-                            <ul class="pagination custom-pagination">
-                              <li class="page-item disabled">
-                                <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
-                              </li>
-                              <li class="page-item active"><a class="page-link" href="#">۱</a></li>
-                              <li class="page-item"><a class="page-link" href="#">۲</a></li>
-                              <li class="page-item"><a class="page-link" href="#">۳</a></li>
-                              <li class="page-item">
-                                <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
-                              </li>
-                            </ul>
-                        </nav> 
-                    </div>
-                </div>
-                <!--تب سوم-->
-                <div class="tab-pane fade" id="Physiotherapy" role="tabpanel">
-                    <div class="container py-4">
-                        <div class="bg-light border" style="border-radius: 20px;">
-                            <div class="card-header border-bottom">
-                                <div class="row g-3 align-items-center justify-content-between">
-                                    <div class="col-md-8">
-                                        <form class="rounded position-relative mt-3">
-                                            <input class="form-control" type="search" placeholder="جستجوی بیمار ..." aria-label="Search">
-                                            <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
-                                                <i class="fas fa-search fs-6 "></i>
-                                            </button>
-                                        </form>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#022</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">صابر روشن پژوه</h6></td>
+                                                    <td>7 روز</td>
+                                                    <td>1404/01/08 - 15:00</td>
+                                                    <td>سلامت</td>
+                                                    <td>2,401,945 تومان                                                    
+                                                    </td>
+                                                    <td>در انتظار پرداخت</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>                                    
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#023</td>
+                                                    <td>
+                                                        <h6 class="table-responsive-title mb-0 fw-normal">سهیل لطفی</h6>
+                                                    </td>
+                                                    <td>10 روز</td>
+                                                    <td>1403/08/16 - 15:00</td>
+                                                    <td>نیروهای مسلح</td>
+                                                    <td>3,421,945 تومان
+                                                        
+                                                    </td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#024</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">محسن نجفی</h6></td>
+                                                    <td>۳ روز</td>
+                                                    <td>1403/09/22 - 17:00</td>
+                                                    <td>سلامت</td>
+                                                    <td>۹۸۵,۰۰۰ تومان</td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#025</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">زهره سادات خادمی</h6></td>
+                                                    <td>۶ روز</td>
+                                                    <td>1404/02/14 - 08:30</td>
+                                                    <td>نیروهای مسلح</td>
+                                                    <td>۲,۷۱۰,۰۰۰ تومان</td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#026</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">شهاب موسوی نژاد</h6></td>
+                                                    <td>۲ روز</td>
+                                                    <td>1403/10/11 - 18:30</td>
+                                                    <td>آزاد</td>
+                                                    <td>۷۲۰,۰۰۰ تومان</td>
+                                                    <td>در انتظار پرداخت</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#027</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">مهتاب رضوی</h6></td>
+                                                    <td>۵ روز</td>
+                                                    <td>1404/01/28 - 08:30</td>
+                                                    <td>سلامت</td>
+                                                    <td>۱,۹۸۰,۰۰۰ تومان</td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#028</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">فرزانه رضاییان</h6></td>
+                                                    <td>۴ روز</td>
+                                                    <td>1404/03/04 - 11:30</td>
+                                                    <td>نیروهای مسلح</td>
+                                                    <td>۱,۳۶۰,۰۰۰ تومان</td>
+                                                    <td>لغو شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#refundModal">
+                                                            <i class="fa-solid fa-rotate-left" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#029</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">بهراد نیک‌فر</h6></td>
+                                                    <td>۱ روز</td>
+                                                    <td>1403/12/18 - 15:00</td>
+                                                    <td>آزاد</td>
+                                                    <td>۳۸۵,۰۰۰ تومان</td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="clickable-row">
+                                                    <td>#030</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">نگار یوسفی</h6></td>
+                                                    <td>۷ روز</td>
+                                                    <td>1404/02/05 - 08:00</td>
+                                                    <td>سلامت</td>
+                                                    <td>۲,۴۶۰,۰۰۰ تومان</td>
+                                                    <td>در انتظار پرداخت</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="color-row clickable-row">
+                                                    <td>#031</td>
+                                                    <td><h6 class="table-responsive-title mb-0 fw-normal">رامین سهرابی</h6></td>
+                                                    <td>۱۰ روز</td>
+                                                    <td>1404/04/10 - 17:00</td>
+                                                    <td>نیروهای مسلح</td>
+                                                    <td>۳,۴۰۰,۰۰۰ تومان</td>
+                                                    <td>پرداخت شده</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
+                                                            <i class="bi bi-download"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                                                                    
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="col-md-3">
-                                        <form class="mt-3">
-                                            <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
-                                                <option value="">مرتب سازی</option>
-                                                <option>شماره فاکتور</option>
-                                                <option>تاریخ</option>
-                                                <option>مبلغ پرداختی</option>
-                                                <option>جدید ترین</option>
-                                                <option>قدیمی ترین</option>
-                                            </select>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body pb-0">
-                                <div class="table-responsive border-0">
-                                    <table class="table table-light align-middle p-4 mb-0 table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" class="py-3">شماره فاکتور</th>
-                                                <th scope="col">نام بیمار</th>
-                                                <th scope="col">تعداد روزهای انتخابی</th>
-                                                <th scope="col">تاریخ و ساعت شروع جلسات</th>
-                                                <th scope="col">نوع بیمه</th>
-                                                <th scope="col">مبلغ پرداختی</th>
-                                                <th scope="col">وضعیت پرداخت</th>
-                                                <th scope="col">عملیات</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#021</td>
-                                                <td>
-                                                    <h6 class="table-responsive-title mb-0 fw-normal">سمیه راد</h6>
-                                                </td>
-                                                <td>1 روز</td>
-                                                <td>1403/11/10 - 11:30</td>
-                                                <td>آزاد</td>
-                                                <td>361,945 تومان
-                                                    
-                                                </td>
-                                                <td>
-                                                   پرداخت شده
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#022</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">صابر روشن پژوه</h6></td>
-                                                <td>7 روز</td>
-                                                <td>1404/01/08 - 15:00</td>
-                                                <td>سلامت</td>
-                                                <td>2,401,945 تومان                                                    
-                                                </td>
-                                                <td>در انتظار پرداخت</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>                                    
-                                            </tr>
-                                            <tr>
-                                                <td>#023</td>
-                                                <td>
-                                                    <h6 class="table-responsive-title mb-0 fw-normal">سهیل لطفی</h6>
-                                                </td>
-                                                <td>10 روز</td>
-                                                <td>1403/08/16 - 15:00</td>
-                                                <td>نیروهای مسلح</td>
-                                                <td>3,421,945 تومان
-                                                    
-                                                </td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#024</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">محسن نجفی</h6></td>
-                                                <td>۳ روز</td>
-                                                <td>1403/09/22 - 17:00</td>
-                                                <td>سلامت</td>
-                                                <td>۹۸۵,۰۰۰ تومان</td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#025</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">زهره سادات خادمی</h6></td>
-                                                <td>۶ روز</td>
-                                                <td>1404/02/14 - 08:30</td>
-                                                <td>نیروهای مسلح</td>
-                                                <td>۲,۷۱۰,۰۰۰ تومان</td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#026</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">شهاب موسوی نژاد</h6></td>
-                                                <td>۲ روز</td>
-                                                <td>1403/10/11 - 18:30</td>
-                                                <td>آزاد</td>
-                                                <td>۷۲۰,۰۰۰ تومان</td>
-                                                <td>در انتظار پرداخت</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#027</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">مهتاب رضوی</h6></td>
-                                                <td>۵ روز</td>
-                                                <td>1404/01/28 - 08:30</td>
-                                                <td>سلامت</td>
-                                                <td>۱,۹۸۰,۰۰۰ تومان</td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#028</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">فرزانه رضاییان</h6></td>
-                                                <td>۴ روز</td>
-                                                <td>1404/03/04 - 11:30</td>
-                                                <td>نیروهای مسلح</td>
-                                                <td>۱,۳۶۰,۰۰۰ تومان</td>
-                                                <td>لغو شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-success btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="عودت وجه">
-                                                        <i class="fa-solid fa-rotate-left"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#029</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">بهراد نیک‌فر</h6></td>
-                                                <td>۱ روز</td>
-                                                <td>1403/12/18 - 15:00</td>
-                                                <td>آزاد</td>
-                                                <td>۳۸۵,۰۰۰ تومان</td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>#030</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">نگار یوسفی</h6></td>
-                                                <td>۷ روز</td>
-                                                <td>1404/02/05 - 08:00</td>
-                                                <td>سلامت</td>
-                                                <td>۲,۴۶۰,۰۰۰ تومان</td>
-                                                <td>در انتظار پرداخت</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr class="color-row">
-                                                <td>#031</td>
-                                                <td><h6 class="table-responsive-title mb-0 fw-normal">رامین سهرابی</h6></td>
-                                                <td>۱۰ روز</td>
-                                                <td>1404/04/10 - 17:00</td>
-                                                <td>نیروهای مسلح</td>
-                                                <td>۳,۴۰۰,۰۰۰ تومان</td>
-                                                <td>پرداخت شده</td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" title="پرینت فاکتور">
-                                                        <i class="bi bi-download"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                                                                                  
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <nav aria-label="صفحه بندی فاکتور های کاربران" class="d-flex justify-content-center mt-4">
+                                <ul class="pagination custom-pagination px-0 mx-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">۱</a></li>
+                                <li class="page-item"><a class="page-link" href="#">۲</a></li>
+                                <li class="page-item"><a class="page-link" href="#">۳</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
+                                </li>
+                                </ul>
+                            </nav> 
                         </div>
-                        <nav aria-label="صفحه بندی فاکتور های کاربران" class="d-flex justify-content-center mt-4">
-                            <ul class="pagination custom-pagination">
-                              <li class="page-item disabled">
-                                <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
-                              </li>
-                              <li class="page-item active"><a class="page-link" href="#">۱</a></li>
-                              <li class="page-item"><a class="page-link" href="#">۲</a></li>
-                              <li class="page-item"><a class="page-link" href="#">۳</a></li>
-                              <li class="page-item">
-                                <a class="page-link" href="#" aria-label="بعدی">&raquo;</a>
-                              </li>
-                            </ul>
-                        </nav> 
                     </div>
                 </div>
             </div>
+            
             
             
         </div>
     </main>
+    <button id="backToTopBtn" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
     <!--chart js-->
     <script src="assets/vendor/js/chart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-  const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-            const counters = document.querySelectorAll(".counter_earning_Master");
-  
-            counters.forEach(counter => {
-            const target = +counter.getAttribute("data-target");
-            const format = counter.getAttribute("data-format");
-            let count = 0;
-            const duration = 8000; // مجموع زمان شمارش (۲ ثانیه)
-            const steps = 200; // دفعات اجرا
-            const increment = target / steps;
-        
-            const update = () => {
-                count += increment;
-                if (count >= target) {
-                counter.innerText = formatNumber(target, format);
-                } else {
-                counter.innerText = formatNumber(Math.ceil(count), format);
-                requestAnimationFrame(update);
-                }
-            };
-        
-            const formatNumber = (num, format) => {
-                if (format === "currency") {
-                return num.toLocaleString("fa-IR") + " تومان";
-                } else {
-                return num.toLocaleString("fa-IR");
-                }
-            };
-        
-            update();
-            });
-        });
-    </script>
+    <script src="assets/scripts/Master-earning.js"></script>
 </body>
 </html>

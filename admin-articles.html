@@ -19,44 +19,93 @@
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-        @media (min-width:991px)
-        {
-            #sidebar
-            {
-                overflow: hidden !important;
-            }
-        }
-        @media (max-width:400px)
-        {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-        }
-    </style>
+    
 </head>
 <body>
+     <!--مودال دستورالعمل ویرایش مقاله ی مدیریت مدیریت-->
+     <div class="modal fade" id="appDetail_managerReport" tabindex="-1" aria-labelledby="appDetail_managerReportlabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                
+                <!-- Modal header -->
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="appDetail_managerReportlabel">جزئیات تیکت</h5>
+                    <button type="button" class="btn btn-sm text-white mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+    
+                <!-- Modal body -->
+                <div class="modal-body p-5">
+                    <!-- Name -->
+                    <span class="small fw-bold">نام شخص:</span>
+                    <h6 class="mb-3 mt-2">رعنا جهانگیری</h6>
+    
+                    <!-- شناسه کاربری -->
+                    <span class="small fw-bold">شناسه کاربری:</span>
+                    <h6 class="mb-3 mt-2">Rana_Jahangiri</h6>
+    
+                    <!-- نام بخش -->
+                    <span class="small fw-bold">نام بخش:</span>
+                    <h6 class="mb-3 mt-2">مدیریت</h6>
+    
+                    <!-- متن تیکت -->
+                    <span class="small fw-bold">متن تیکت:</span>
+                    <p class="text-dark pb-3 mt-2" style="text-align: justify;line-height:2">
+                        تاریخ : 1404/05/11
+                        <br>
+                        با سلام و احترام،
+                        <br>
+                        مقاله‌ی ارسالی شما با عنوان «[تشخیص و درمان دیسک کمر]» پس از بررسی اولیه، نیازمند اصلاحات زیر است تا امکان انتشار در وب‌سایت فراهم شود:
+                        <br>
+                        1. اصلاح نگارشی و ساختاری:  
+                        - بازبینی متن از نظر غلط‌های املایی و انشایی.  
+                        - رعایت علائم نگارشی و ساختار صحیح جملات.  
+                        <br>
+                        2. رعایت استانداردهای محتوایی:  
+                        - افزودن حداقل یک تصویر مرتبط با کیفیت مناسب.  
+                        - به‌کارگیری تیترهای H2 و H3 برای بهبود ساختار مقاله.  
+                        - اجتناب از محتوای کپی‌شده و حفظ اصالت مطالب.  
+                        <br>
+                        3. بهینه‌سازی برای سئو:  
+                        - استفاده از کلمات کلیدی در عنوان، تیترها و متن.  
+                        - افزودن توضیحات متا (Meta Description) متناسب با موضوع مقاله.  
+                        <br>
+                        به منظور راهنمایی بیشتر، به فایل word پیوست شده به همین تیکت، مراجعه نمایید.
+                        <br>
+                        با تشکر  
+                        <br>
+                        **مدیریت سناباد**
 
-    <!-- مودال موفقیت -->
-    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content text-center">
-            <div class="modal-header border-0 bg-success text-white">
-            <h5 class="modal-title w-100" id="successModalLabel">تاییدیه</h5>
+                    </p>
+
+                    <!--دانلود فایل-->
+                    <span class="small fw-bold">فایل های پیوند:</span>
+                    <a href="#" download class="file-download-box d-inline-flex align-items-center p-3 w-100 mt-4">
+                        <img src="assets/Images/JahanGiri/doc.png" alt="word Icon" width="40" class="me-3">
+                        <div>
+                            <div class="file-name fw-bold">موارد مورد نیاز برای ویرایش.docx</div>
+                            <div class="file-size text-muted">حجم فایل: 15KB</div>
+                        </div>
+                    </a>
+                </div>
+    
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary my-0" data-bs-dismiss="modal">بستن</button>
+                </div>
             </div>
-            <div class="modal-body pb-0 mb-0">
-                <p class="pt-3">
-                   مقاله ی شما برای بررسی به ادمین ارسال گردید.
-                </p>
-            </div>
-            <div class="modal-footer justify-content-center border-0">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">فهمیدم</button>
-            </div>
-        </div>
         </div>
     </div>
+    <!--توست موفقیت امیز بودن ارسال مقاله منشی به ادمین-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="sendToMaster" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
+            <div class="toast-body text-end fe-bold">
+              مقاله ی شما با موفقیت به منظور بررسی، به ادمین مستر ارسال گردید.
+            </div>
+          </div>
+        </div>
+    </div> 
     <!--مودال انتشار مقاله-->
     <div class="modal fade" id="publishModal" tabindex="-1" aria-labelledby="publishModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -67,49 +116,16 @@
                 هشدار انتشار</h5>
             </div>
             <div class="modal-body">
-                آیا از انتشار محتوای مورد نظر اطمینان دارید؟
+               آیا از ارسال مقاله به ادمین اطمینان دارید؟
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
-            <button type="button" class="btn btn-sanabad" id="confirmPublishBtn">بله، منتشر شود</button>
+            <button type="button" class="btn btn-sanabad" id="confirmPublishBtn">بله، ارسال شود</button>
             </div>
         </div>
         </div>
-    </div>
-    <!-- مقاله تایید حذف -->
-    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header" style="background-color: #1f232c; color:white; font-weight:bold;">
-                <h5 class="modal-title w-100" id="deleteConfirmModalLabel">
-                  <i class="bi bi-trash pt-2 ps-2"></i>
-                 هشدار حذف مقاله</h5>
-              </div>
-              <div class="modal-body text-center">
-               آیا از حذف این مقاله اطمینان دارید؟
-              </div>
-              <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
-                <button type="button" id="confirmDeleteBtn" class="btn btn-danger">بله، حذف شود</button>
-              </div>
-            </div>
-          </div>
-    </div>
-    
-    <!--پیغام توست-->
-    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100;">
-        <div id="successToast" class="toast align-items-center bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="d-flex align-items-center justify-content-between">
-            <div class="toast-body text-white fw-bold">
-              مقاله شما با موفقیت منتشر شد
-            </div>
-            <div class="d-flex justify-content-start ps-3">
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
-            </div>
-          </div>
-        </div>
-    </div>      
-    <!-- Modal for Delete Confirmation -->
+    </div>  
+    <!-- مودال حذف تصویر بند انگشتی -->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -121,7 +137,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">بله، حذف شود</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn_thumbnail">بله، حذف شود</button>
             </div>
         </div>
         </div>
@@ -146,12 +162,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="admin-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -163,7 +179,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="admin-send-messege.html" class="nav-link">
+                <a href="admin-send-messege.html" class="nav-link ">
                     <i class="bi bi-envelope ms-3"></i>سیستم پیامکی 
                 </a>
             </li>
@@ -183,24 +199,25 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="admin-note.html" class="nav-link">
+                <a href="admin-note.html" class="nav-link ">
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-5">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between btm-bar">
-                    <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
-                        <i class="bi bi-gear-fill"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
-                        <i class="bi bi-globe"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
-                        <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
-                    </a>
+                <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
             </div>
         </div>
+        
     </aside>
     <!--پایان سایدبار-->
     <!-- بک‌گراند تار در حالت موبایل -->
@@ -208,12 +225,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2 text-white" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>              
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -315,7 +332,7 @@
                                     <label class="form-label fw-bold mb-0 text-muted">تصویر بند انگشتی <small style="white-space:nowrap;" class="text-danger">( اجباری* )</small></label>
                                 </div>
                                 <div class="row g-3 d-flex align-items-center mb-3 mt-2">
-                                    <div class="col-lg-2">
+                                    <div class="col-lg-3 col-xl-2">
                                         <label class="position-relative ms-4" for="uploadfile-1" title="Replace this pic">
                                             <img id="uploadfile-1-preview" class="rounded-circle border border-white border-3 shadow" src="assets/Images/blog/blog-fizio-2.jpg" alt="blog thumbnail" style="width: 120px; height:120px;">
                                             <button type="button" class="uploadremove"><i class="bi bi-x text-white"></i></button>
@@ -414,7 +431,7 @@
                                     <textarea id="editor"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-sanabad" data-bs-toggle="modal" data-bs-target="#publishModal">انتشار مقاله</button>
+                                    <button type="submit" class="btn btn-sanabad" data-bs-toggle="modal" data-bs-target="#publishModal">ارسال مقاله به ادمین</button>
                                 </div>
                             </div>
                         </div>
@@ -422,9 +439,41 @@
                         <div class="tab-pane fade show" id="all_Articles" role="tabpanel">
                             <div class="text-white">
                                 <div class="bg-light border mb-4" style="border-radius: 20px;">
+                                    <div class="card-header border-bottom">
+                                        <div class="row g-3 align-items-center justify-content-between">
+                                            <div class="col-md-8">
+                                                <form class="rounded position-relative mt-3">
+                                                    <input class="form-control" type="search" placeholder="جستجوی مقاله" aria-label="Search">
+                                                    <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
+                                                        <i class="fas fa-search fs-6 "></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <form class="mt-3">
+                                                    <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
+                                                        <option value="">مرتب سازی</option>
+                                                        <option>نام</option>
+                                                        <option>منتشر شده ها</option>
+                                                        <option>رد شده ها</option>
+                                                        <option>تاریخ</option>
+                                                        <option>جدید ترین</option>
+                                                        <option>قدیمی ترین</option>
+                                                        <option>پر بازدیدترین</option>
+                                                        <option>کم بازدیدترین</option>
+                                                    </select>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="card-body pb-0">
+                                        <!-- وقتی هیچ مقاله برای نمایش نبود -->
+                                        <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                            <p class="text-muted">هیچ مقاله ای برای مدیریت وجود ندارد.</p>
+                                        </div>
                                         <div class="table-responsive border-0">
-                                            <table class="table table-light align-middle p-4 mb-0 table-hover"  id="notesTable">
+                                            <table class="table align-middle p-4 mb-0 table-hover"  id="notesTable">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" class="py-3 text-center" style="border-top-right-radius: 20px; background-color:#1f232c !important; color:white;">تاریخ انتشار</th>
@@ -440,8 +489,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="text-center py-3">1404/02/20</td>
+                                                    <tr class="clickable-row">
+                                                        <td class="text-center py-4">1404/02/20</td>
                                                         <td>فهیمه رشیدی</td>
                                                         <td><a href="#" class="fw-bold">
                                                             تشخیص و درمان دیسک کمر
@@ -452,15 +501,16 @@
                                                         <td>1404/03/25</td>
                                                         <td>0</td>
                                                         <td>0</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                             رد شده توسط ادمین
                                                         </td>
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white" data-bs-toggle="modal" data-bs-target="#appDetail_managerReport"></i></button>
                                                         </td>
                                                       </tr>
-                                                      <tr class="color-row">
-                                                        <td class="text-center py-3">1402/12/15</td>
+                                                      <tr class="color-row clickable-row">
+                                                        <td class="text-center py-4">1402/12/15</td>
                                                         <td>فهیمه رشیدی</td>
                                                         <td><a href="#" class="fw-bold">
                                                             انواع تومور مغزی غیرسرطانی
@@ -471,15 +521,16 @@
                                                         <td>1404/02/10</td>
                                                         <td>875</td>
                                                         <td>14</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                             منتشر شده توسط ادمین
                                                         </td> 
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white"></i></button>                                                        
                                                         </td> 
                                                       </tr>
-                                                      <tr>
-                                                        <td class="text-center py-3">2024/09/12</td>
+                                                      <tr class="clickable-row">
+                                                        <td class="text-center py-4">2024/09/12</td>
                                                         <td>Fahime Rashidi</td>
                                                         <td><a href="#" class="fw-bold">
                                                             Understanding Skin Microbiome
@@ -490,15 +541,16 @@
                                                         <td>2024/10/01</td>
                                                         <td>2201</td>
                                                         <td>65</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                             در انتظار تایید ادمین
                                                         </td>
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white"></i></button>                                                        
                                                         </td>
                                                       </tr>
-                                                      <tr class="color-row">
-                                                        <td class="text-center py-3">1404/01/08</td>
+                                                      <tr class="color-row clickable-row">
+                                                        <td class="text-center py-4">1404/01/08</td>
                                                         <td>فهیمه رشیدی</td>
                                                         <td><a href="#" class="fw-bold">
                                                             درمان غیرجراحی دیسک کمر
@@ -509,15 +561,16 @@
                                                         <td>1404/02/09</td>
                                                         <td>543</td>
                                                         <td>9</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                             منتشر شده توسط ادمین
                                                         </td>
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white"></i></button>                                                        
                                                         </td>
                                                       </tr>
-                                                      <tr>
-                                                        <td class="text-center py-3">1402/11/03</td>
+                                                      <tr class="clickable-row">
+                                                        <td class="text-center py-4">1402/11/03</td>
                                                         <td>فهیمه رشیدی</td>
                                                         <td><a href="#" class="fw-bold">
                                                             نقش فیزیوتراپی در بهبود آسیب‌های نخاعی
@@ -528,15 +581,16 @@
                                                         <td>1402/12/20</td>
                                                         <td>1499</td>
                                                         <td>21</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                               در انتظار تایید ادمین
                                                         </td> 
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white"></i></button>
                                                         </td>
                                                       </tr>
-                                                      <tr class="color-row">
-                                                        <td class="text-center py-3">1402/11/03</td>
+                                                      <tr class="color-row clickable-row">
+                                                        <td class="text-center py-4">1402/11/03</td>
                                                         <td>فهیمه رشیدی</td>
                                                         <td><a href="#" class="fw-bold">
                                                             علائم هشدار دهنده سکته مغزی
@@ -547,15 +601,16 @@
                                                         <td>1402/10/25</td>
                                                         <td>0</td>
                                                         <td>0</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                             رد شده توسط ادمین
                                                         </td> 
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white" data-bs-toggle="modal" data-bs-target="#appDetail_managerReport"></i></button>
                                                         </td>
                                                       </tr>
-                                                      <tr>
-                                                        <td class="text-center py-3">1402/11/03</td>
+                                                      <tr class="clickable-row">
+                                                        <td class="text-center py-4">1402/11/03</td>
                                                         <td>فهیمه رشیدی</td>
                                                         <td><a href="#" class="fw-bold">
                                                             پارکینسون در مراحل ابتدایی
@@ -566,15 +621,16 @@
                                                         <td>1402/07/19</td>
                                                         <td>0</td>
                                                         <td>0</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                             رد شده توسط ادمین
                                                         </td> 
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white" data-bs-toggle="modal" data-bs-target="#appDetail_managerReport"></i></button>
                                                         </td>
                                                       </tr>
-                                                      <tr class="color-row">
-                                                        <td class="text-center py-3">1402/11/03</td>
+                                                      <tr class="color-row clickable-row">
+                                                        <td class="text-center py-4">1402/11/03</td>
                                                         <td>فهیمه رشیدی</td>
                                                         <td><a href="#" class="fw-bold">
                                                             میگرن یا سردرد معمول؟
@@ -585,11 +641,12 @@
                                                         <td>1402/09/27</td>
                                                         <td>670</td>
                                                         <td>25</td>
-                                                        <td class="text-muted text-center">
+                                                        <td class="text-muted">
                                                             منتشر شده توسط ادمین
                                                         </td> 
-                                                        <td class="text-center">
-                                                            <button class="border-0 bg-info rounded-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                        <td>
+                                                            <button class="border-0 bg-info rounded fs-5 ms-2 edit-article" data-bs-toggle="tooltip" data-bs-placement="top" title="ویرایش مقاله"><i class="bi bi-pencil-square text-white"></i></button>
+                                                            <button class="border-0 bg-info rounded fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده نظر ادمین"><i class="fa-solid fa-eye text-white"></i></button>
                                                         </td>                                                        
                                                       </tr>
 
@@ -600,7 +657,7 @@
                                 </div>
                                 <!-- Pagination START -->
                                 <nav aria-label="صفحه بندی مقالات منتشر شده" class="d-flex justify-content-center mt-4">
-                                    <ul class="pagination custom-pagination px-0">
+                                    <ul class="pagination custom-pagination px-0 mx-0">
                                     <li class="page-item disabled m-0">
                                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                     </li>
@@ -619,180 +676,13 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
-    <script src="assets/vendor/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        const uploadArea = document.getElementById("uploadArea");
-        const fileInput = document.getElementById("fileUpload");
-        const fileNameDisplay = document.getElementById("fileName");
-
-        uploadArea.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        uploadArea.classList.add("dragover");
-        });
-
-        uploadArea.addEventListener("dragleave", () => {
-        uploadArea.classList.remove("dragover");
-        });
-
-        uploadArea.addEventListener("drop", (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove("dragover");
-        const file = e.dataTransfer.files[0];
-        fileInput.files = e.dataTransfer.files;
-        fileNameDisplay.textContent = `فایل انتخاب‌شده: ${file.name}`;
-        });
-
-        fileInput.addEventListener("change", () => {
-        if (fileInput.files.length > 0) {
-            fileNameDisplay.textContent = `فایل انتخاب‌شده: ${fileInput.files[0].name}`;
-        }
-        });
-
-        //دومین فیلد فایل
-        const uploadArea_2 = document.getElementById("uploadArea_oltr");
-        const fileInput_2 = document.getElementById("fileUpload_oltr");
-        const fileNameDisplay_2 = document.getElementById("fileName_oltr");
-
-        uploadArea_2.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        uploadArea_2.classList.add("dragover");
-        });
-
-        uploadArea_2.addEventListener("dragleave", () => {
-            uploadArea_2.classList.remove("dragover");
-        });
-
-        uploadArea_2.addEventListener("drop", (e) => {
-        e.preventDefault();
-        uploadArea_2.classList.remove("dragover");
-        const file_2 = e.dataTransfer.files[0];
-        fileInput_2.files = e.dataTransfer.files;
-        fileNameDisplay_2.textContent = `فایل انتخاب‌شده: ${file_2.name}`;
-        });
-
-        fileInput_2.addEventListener("change", () => {
-        if (fileInput_2.files.length > 0) {
-            fileNameDisplay_2.textContent = `فایل انتخاب‌شده: ${fileInput_2.files[0].name}`;
-        }
-        });
-        function toggleHelpTooltip(iconElement) 
-            {
-                const tooltip = iconElement.parentElement.querySelector('.help-tooltip');
-                tooltip.classList.toggle('show');
-            }
-            document.addEventListener("DOMContentLoaded", function () {
-                document.querySelectorAll('.status-toggle').forEach(toggle => {
-                toggle.addEventListener('change', function () {
-                const isChecked = this.checked;
-                const articleId = this.getAttribute('data-id');
-                const label = document.getElementById('label-' + articleId);
-
-                label.textContent = isChecked ? 'منتشر شده' : 'پیش‌نویس';
-                });
-            });
-            tinymce.init({
-                selector: '#editor',
-                directionality: 'rtl',
-                language: 'fa',
-                language_url: 'assets/vendor/tinymce/langs/fa.js',
-                plugins: 'lists link image table code',
-                toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image table',
-                height: 300,
-                branding: false,
-                menubar: false,
-                skin: 'oxide',
-                content_css: 'default'
-                });
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl, {
-                container: tooltipTriggerEl.closest('.btm-bar')
-              });
-            });
-            
-              //حذف عکس پروفایل
-            const deleteButton = document.querySelector(".uploadremove");
-            const confirmModal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
-            const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
-            const profileImage = document.getElementById("uploadfile-1-preview");
-            deleteButton.addEventListener("click", function (e) {
-              e.preventDefault();
-              confirmModal.show();
-            });
-        
-            confirmDeleteBtn.addEventListener("click", function () {
-              // تغییر تصویر پروفایل
-              profileImage.src = "assets/Images/blog/default-thumbnail.png";
-              // بستن مودال
-              confirmModal.hide();
-              deleteButton.style.display="none";
-            });
-
-            //تغییر عکس پروفایل
-            const fileInput = document.getElementById("uploadfile-1");
-            const previewImage = document.getElementById("uploadfile-1-preview");
-
-            fileInput.addEventListener("change", function () {
-            const file = this.files[0];
-
-            if (file && file.type.startsWith("image/")) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                previewImage.src = e.target.result;
-                deleteButton.style.display="block";
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                alert("لطفاً یک فایل تصویری معتبر انتخاب کنید.");
-            }
-            });
-            document.getElementById('confirmPublishBtn').addEventListener('click', function () {
-                var toastEl = document.getElementById('successToast');
-                var toast = new bootstrap.Toast(toastEl);
-                toast.show();
-                // بستن مودال
-                var publishModalEl = document.getElementById('publishModal');
-                var modal = bootstrap.Modal.getInstance(publishModalEl);
-                if (modal) {
-                    modal.hide();
-                }
-              });
-
-              //حذف مقاله
-              // متغیر برای ذخیره ردیفی که باید حذف شود
-                let rowToDelete = null;
-
-                // گرفتن همه دکمه‌های حذف
-                const deleteButtons = document.querySelectorAll('.btn-delete-article');
-
-                // ایجاد نمونه مودال بوت‌استرپ
-                const deleteModalEl = document.getElementById('deleteConfirmModal');
-                const deleteModal = new bootstrap.Modal(deleteModalEl);
-
-                // وقتی روی دکمه حذف کلیک شد
-                deleteButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // پیدا کردن ردیف والد دکمه
-                    rowToDelete = btn.closest('tr');
-                    // باز کردن مودال تایید
-                    deleteModal.show();
-                });
-                });
-
-                // وقتی روی دکمه "بله، حذف شود" کلیک شد
-                document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
-                if(rowToDelete) {
-                    rowToDelete.remove();  // حذف ردیف از جدول
-                    rowToDelete = null;    // پاک کردن متغیر
-                }
-                deleteModal.hide(); // بستن مودال
-                });
-          });
-    </script>
+    <script src="assets/scripts/admin-article.js"></script>
 </body>
 </html>

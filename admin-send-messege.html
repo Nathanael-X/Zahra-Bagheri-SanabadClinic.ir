@@ -15,16 +15,6 @@
     <!--librearies-->
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-        @media (max-width:400px)
-      {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-      }
-    </style>
 </head>
 <body>
     
@@ -47,7 +37,7 @@
           </div>
         </div>
     </div>
-    <!-- Modal تایید حذف -->
+    <!--مودال حذف قالب -->
     <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center">
@@ -132,12 +122,12 @@
     </div>
   
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="admin-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -174,19 +164,20 @@
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-5">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between btm-bar">
-                    <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
-                        <i class="bi bi-gear-fill"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
-                        <i class="bi bi-globe"></i>
-                    </a>
-                    <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
-                        <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
-                    </a>
+                <a class="h5 mb-0 blue-light" href="admin-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="index.html" data-bs-toggle="tooltip" data-bs-placement="top" title="صفحه اصلی">
+                    <i class="bi bi-globe"></i>
+                </a>
+                <a class="h5 mb-0 blue-light" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="خروج">
+                    <i class="bi bi-power" data-bs-toggle="modal" data-bs-target="#logoutModal"></i>
+                </a>
             </div>
         </div>
+        
     </aside>
     <!--پایان سایدبار-->
     <!-- بک‌گراند تار در حالت موبایل -->
@@ -194,12 +185,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2 text-white" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>              
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -317,8 +308,10 @@
                                     required></textarea>
                             </div>
                         </div>
-                        <div class="row align-items-center justify-content-between">
-                            <button class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#successModal">ارسال پیام</button>
+                        <div class="row align-items-center">
+                            <div class="col-12 text-start">
+                                <button class="btn btn-sanabad"  data-bs-toggle="modal" data-bs-target="#successModal">ارسال پیام</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -328,7 +321,7 @@
                 </div>
                 <div class="card p-3 d-flex justify-content-center align-items-center h-auto">
                     <div class="row w-100 g-3" id="templateContainer">
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">تخفیف ویژه مشترکین سناباد</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -336,7 +329,7 @@
                           </div>
                         </div>
                       
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 col-lg-12 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">یادآوری نوبت</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -344,7 +337,7 @@
                           </div>
                         </div>
                       
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 col-lg-12 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">اطلاع رسانی لغو نوبت</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -352,7 +345,7 @@
                           </div>
                         </div>
                       
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 col-lg-12 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">اطلاع رسانی تمدید نوبت</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -360,7 +353,7 @@
                           </div>
                         </div>
                       
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 col-lg-12 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">اطلاع رسانی بازگشت وجه</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -368,7 +361,7 @@
                           </div>
                         </div>
                       
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 col-lg-12 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">تبلیغاتی</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -376,7 +369,7 @@
                           </div>
                         </div>
                       
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 col-lg-12 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">تشکر و قدردانی</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -384,7 +377,7 @@
                           </div>
                         </div>
                       
-                        <div class="col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
+                        <div class="col-xl-6 col-lg-12 bg-light py-2 px-4 d-flex align-items-center justify-content-between">
                           <p class="fw-bold pt-2">پیام های مناسبتی</p>
                           <div class="d-flex align-items-center gap-2">
                             <a href="#" class="rounded-pill bg-dark text-white p-2 fs-4"><i class="bi bi-pencil-square"></i></a>
@@ -396,6 +389,9 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>

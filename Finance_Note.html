@@ -18,26 +18,36 @@
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
     <style>
-        .selected-row td
-        {
-            background-color: #1f232c !important;
-            color: white !important;
-        }
         .bg-blue-light
         {
             background-color: #c2ecff !important;
         }
-        @media (max-width:400px)
+        .general-recive-tbl tr td:first-child
         {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
+            padding-top:1.2rem !important;
+            padding-bottom:1.2rem !important;
         }
     </style>
 </head>
 <body>
+     <!-- مودال موفقیت در ذخیره یادداشت-->
+     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0 bg-success text-white">
+            <h5 class="modal-title w-100" id="successModalLabel">تاییدیه</h5>
+            </div>
+            <div class="modal-body pb-0 mb-0">
+                <p class="pt-3">
+                    یادداشت شما با موفقیت ذخیره شد.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-center border-0">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!--مودال یادداشت 1-->
     <div class="modal fade" id="appDetail_note1" tabindex="-1" aria-labelledby="appDetaillabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -112,12 +122,12 @@
     </div>
     
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5 mb-2">
             <li class="nav-item mt-3 mb-2">
                 <a href="Finance-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -134,7 +144,7 @@
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-4 pt-1">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between">
                 <a class="h5 mb-0 blue-light" href="Finance_profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
@@ -154,12 +164,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>              
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -257,11 +267,11 @@
                             <div class="section-box">
                                 <form>
                                 <div class="row mb-3 g-3">
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label class="form-label">موضوع یادداشت</label>
-                                        <input type="text" class="form-control" placeholder="مثلا: یادآوری حسابرسی فیزیوتراپی">
+                                        <input type="text" class="form-control" placeholder="مثلا: تماس با بیمار">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label for="date" class="form-label">تاریخ یادداشت (شمسی)</label>
                                         <div>
                                             <div class="row g-2">
@@ -347,13 +357,13 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label class="form-label">اتفاقات و یادداشت‌ها</label>
-                                        <textarea class="form-control" rows="5" placeholder=" مثلا با خانم جهانگیری در خصوص حسابرسی ماهانه تماس گرفته شود..."></textarea>
+                                        <textarea class="form-control" rows="6" placeholder="مثلاً: دکتر فلاحی با تأخیر آمد، تماس با بیمار خانم کریمی انجام شد..."></textarea>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-xl-6">
                                         <label for="fileUpload">
-                                            <div class="upload-box" id="uploadArea" style="padding: 2vh 19.5vh;">
+                                            <div class="upload-box" id="uploadArea">
                                               <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
                                               <div class="upload-text">فایل خود را بکشید یا اینجا کلیک کنید</div>
                                               <input type="file" id="fileUpload">
@@ -363,16 +373,43 @@
                                         <p id="fileName" style="margin-top: 15px; color: #333;"></p>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#successModal">ذخیره یادداشت</button>
+                                <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#successModal">ذخیره یادداشت</button>
                                 </form>
                             </div>
                         </div>
                         <!--تب نوت های ثبت شده-->
                         <div class="tab-pane fade show" id="all_nots" role="tabpanel">
                             <div class="bg-light border mb-4" style="border-radius: 20px;">
+                                <div class="card-header border-bottom">
+                                    <div class="row g-3 align-items-center justify-content-between">
+                                        <div class="col-md-8">
+                                            <form class="rounded position-relative mt-3">
+                                                <input class="form-control" type="search" placeholder="جستجوی یادداشت ..." aria-label="Search">
+                                                <button class="bg-transparent p-2 position-absolute top-50 start-0 translate-middle-y border-0" type="submit">
+                                                    <i class="fas fa-search fs-6 "></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form class="mt-3">
+                                                <select class="form-select border-0 z-index-9 bg-transparent" aria-label=".form-select-sm">
+                                                    <option value="">مرتب سازی</option>
+                                                    <option>تاریخ</option>
+                                                    <option>جدید ترین</option>
+                                                    <option>قدیمی ترین</option>
+                                                </select>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="card-body pb-0">
+                                    <!-- وقتی هیچ یادداشتی نبود -->
+                                    <div id="no-ask-forReturn" class="col-12 text-center my-5 d-none">
+                                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                        <p class="text-muted pt-3">شما هنوز هیچ یادداشتی به ثبت نرسانده اید.</p>
+                                    </div>
                                     <div class="table-responsive border-0">
-                                        <table class="table align-middle p-4 mb-0 table-hover"  id="notesTable">
+                                        <table class="table general-recive-tbl align-middle p-4 mb-0 table-hover"  id="notesTable">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="py-3 text-center" style="border-top-right-radius: 20px;">شماره یادداشت</th>
@@ -389,8 +426,8 @@
                                                     <td>بررسی شماره شبا</td>
                                                     <td>شماره شبای ثبت‌شده توسط آقای رضایی...</td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" title="مشاهده" data-bs-toggle="modal" data-bs-target="#appDetail_note1">
-                                                            <i class="bi bi-eye"  data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                                                        <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#appDetail_note1">
+                                                            <i class="bi bi-eye text-white"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -407,7 +444,7 @@
                                                     <td>درخواست عودت خانم سلامی بررسی و...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -424,7 +461,7 @@
                                                     <td>مبلغ رزرو لغوشده توسط آقای حسینی...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -441,7 +478,7 @@
                                                     <td>شماره حساب خانم احمدی پس ...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -458,7 +495,7 @@
                                                     <td>درخواست واریز آقای زارعی به‌دلیل...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -475,7 +512,7 @@
                                                     <td>برای خانم شریفی یادآوری واریز...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -492,7 +529,7 @@
                                                     <td>رسید پرداخت به حساب آقای...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -509,7 +546,7 @@
                                                     <td>افزایش موجودی کیف پول...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -526,7 +563,7 @@
                                                     <td>مغایرت گزارش‌شده توسط آقای رضایی...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -543,7 +580,7 @@
                                                     <td>وضعیت انتقال وجه به شبای آقای...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -560,7 +597,7 @@
                                                     <td>درخواست بازپرداخت آقای بهرامی...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -577,7 +614,7 @@
                                                     <td>پاسخ به تیکت خانم عابدینی درباره...</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-round me-1 mb-1 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده">
-                                                            <i class="bi bi-eye"></i>
+                                                            <i class="bi bi-eye text-white"></i>
                                                         </a>
                                                         <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 delete-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                             <i class="bi bi-trash"></i>
@@ -594,7 +631,7 @@
                                 </div>
                             </div>
                             <nav aria-label="صفحه بندی نوت های ثبت شده" class="d-flex justify-content-center mt-4">
-                                <ul class="pagination custom-pagination">
+                                <ul class="pagination custom-pagination px-0 mx-0">
                                   <li class="page-item disabled">
                                     <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                   </li>
@@ -614,58 +651,13 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button>
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            const rows = document.querySelectorAll(".clickable-row");
-
-            rows.forEach(row => {
-                row.addEventListener("click", function () {
-                    // حذف رنگ قبلی
-                    rows.forEach(r => r.classList.remove("selected-row"));
-                    // رنگ دادن به سطر کلیک‌شده
-                    this.classList.add("selected-row");
-                });
-            });
-           // ذخیره کردن ردیف انتخاب شده
-           let selectedRow = null;
-
-           // پیدا کردن تمام دکمه‌های حذف
-           const deleteButtons = document.querySelectorAll('.delete-btn');
-           deleteButtons.forEach(button => {
-               button.addEventListener('click', function(event) {
-                   event.preventDefault();
-                   // انتخاب ردیف مربوطه
-                   selectedRow = button.closest('tr');
-                   // نمایش مودال
-                   new bootstrap.Modal(document.getElementById('deleteModal')).show();
-               });
-           });
-
-           // عملکرد دکمه تایید حذف
-           document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
-               // حذف ردیف انتخاب شده
-               if (selectedRow) {
-                   selectedRow.remove();
-               }
-               const rows = document.querySelectorAll('#notesTable tbody tr');
-               rows.forEach((row, index) => {
-                   row.querySelector('.note-number').textContent =index + 1; // شماره یادداشت‌ها از 1 شروع می‌شود
-               });
-               // بستن مودال
-               bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
-           }); 
-            
-        });
-    </script>
-    
-    
+    <script src="assets/scripts/Finance-note.js"></script>
 </body>
 </html>

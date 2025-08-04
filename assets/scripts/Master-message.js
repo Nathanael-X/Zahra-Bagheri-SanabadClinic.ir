@@ -1,123 +1,130 @@
-document.getElementById('type-messege').addEventListener('change', function () {
-    const textarea = document.getElementById('how_meet');
-    const selectedValue = this.value;
-  
-    const messages = {
-      "0": "مراجع گرامی، به پاس قدردانی شما از اعتماد به کلینیک شبانه روزی سناباد، تخفیف ویژه به شما تعلق گرفته است. شما می توانید با استفاده از کد ----- از 20 درصد تخفیف در مراجعه ی بعدی بهره مند شوید. سلامتی شما در زندگی، اولویت نخست ما است. - کلینیک شبانه روزی سناباد طوس",
-      "1": "یادآوری نوبت کلینیک شبانه روزی سناباد: لطفاً به‌خاطر داشته باشید که نوبت شما در تاریخ ------ و ساعت ------ رزرو شده است. حتراماً به اطلاع می‌رسد در صورت عدم حضور به‌موقع در کلینیک شبانه‌روزی سناباد، نوبت شما لغو شده تلقی شده و وجه پرداختی قابل بازگشت نخواهد بود.",
-      "2": "مراجع کننده گرامی کلینیک شبانه روزی سناباد، نوبت شما به دلیل ..........  لغو شده است. لطفاً جهت هماهنگی با ما تماس بگیرید.",
-      "3": "مراجع گرامی کلینیک شبانه روزی سناباد طوس، نوبت شما تمدید شد. جهت مشاهده جزئیات و زمان دقیق با پشتیبانی تماس حاصل فرمایید.",
-      "4": "مراجع محترم کلینیک شبانه روزی سناباد، وجه پرداختی شما با موفقیت به حساب شما بازگشت داده شد. از همراهی شما سپاسگزاریم.",
-      "5": "با خدمات نوین و تخصصی ما در کلینیک شبانه روزی سناباد، زندگی سالم‌تری را تجربه کنید. دریافت نوبت از طریق لینک زیر: sanabad.org.ac.ir",
-      "6": "مراجع کننده گرامی ، از اعتماد و همراهی شما با کلینیک شبانه روزی سناباد طوس صمیمانه سپاسگزاریم. امیدواریم همیشه سلامت و موفق باشید.",
-      "7": "فرارسیدن مناسبت ..... را تبریک عرض می‌کنیم. با آرزوی تندرستی و شادی برای شما. کلینیک شبانه روزی سناباد طوس"
-    };
-  
-    textarea.value = messages[selectedValue] || "";
+document.addEventListener('DOMContentLoaded', function () {
+  // ✅ فعال‌سازی Tooltipها به‌صورت استاندارد
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+      new bootstrap.Tooltip(tooltipTriggerEl, {
+          container: 'body' // جلوگیری از بهم‌ریختگی داخل جدول یا مودال
+      });
   });
 
-  let templateToDelete = null; // نگهداری قالبی که باید حذف شود
-    // اضافه کردن listener به تمام دکمه‌های حذف
-    document.querySelectorAll('.bi-trash').forEach(trashIcon => {
-        trashIcon.addEventListener('click', function (e) {
-        e.preventDefault();
+  // ✅ کنترل فعال/غیرفعال شدن فیلد شماره موبایل
+  const phoneCheckbox = document.querySelector('#sendMessageToAll');
+  if (phoneCheckbox) {
+      phoneCheckbox.addEventListener('change', function () {
+          const input = document.getElementById('user_phoneNumber');
+          const label = document.querySelector('.PhoneUser_lbl');
+          if (this.checked) {
+              input.disabled = true;
+              label.classList.add('text-muted');
+          } else {
+              input.disabled = false;
+              label.classList.remove('text-muted');
+          }
+      });
+  }
 
-        // پیدا کردن نزدیک‌ترین عنصر .col-lg-6
-        const container = this.closest('.col-lg-6');
-        templateToDelete = container;
+  // ✅ تغییر متن بر اساس نوع پیام انتخاب‌شده
+  const messageTypeSelect = document.getElementById('type-messege');
+  if (messageTypeSelect) {
+      messageTypeSelect.addEventListener('change', function () {
+          const textarea = document.getElementById('how_meet');
+          const messages = {
+              "0": "مراجع گرامی، به پاس قدردانی شما از اعتماد به کلینیک شبانه روزی سناباد، تخفیف ویژه به شما تعلق گرفته است...",
+              "1": "یادآوری نوبت کلینیک شبانه روزی سناباد: لطفاً به‌خاطر داشته باشید که نوبت شما در تاریخ ------ و ساعت ------ رزرو شده است...",
+              "2": "مراجع کننده گرامی کلینیک شبانه روزی سناباد، نوبت شما به دلیل ..........  لغو شده است...",
+              "3": "مراجع گرامی کلینیک شبانه روزی سناباد طوس، نوبت شما تمدید شد...",
+              "4": "مراجع محترم کلینیک شبانه روزی سناباد، وجه پرداختی شما با موفقیت به حساب شما بازگشت داده شد...",
+              "5": "با خدمات نوین و تخصصی ما در کلینیک شبانه روزی سناباد، زندگی سالم‌تری را تجربه کنید...",
+              "6": "مراجع کننده گرامی ، از اعتماد و همراهی شما با کلینیک شبانه روزی سناباد طوس صمیمانه سپاسگزاریم...",
+              "7": "فرارسیدن مناسبت ..... را تبریک عرض می‌کنیم..."
+          };
+          textarea.value = messages[this.value] || "";
+      });
+  }
 
-        // نمایش مودال
-        const deleteModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
-        deleteModal.show();
-        });
-    });
-    // وقتی کاربر روی دکمه "بله" کلیک کرد، قالب حذف شود
-    document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
-        if (templateToDelete) {
-        templateToDelete.remove();
-        templateToDelete = null;
-        }
+  // ✅ حذف قالب پیام (Delegation)
+  let templateToDelete = null;
+  document.addEventListener('click', function (e) {
+      if (e.target.closest('.delete-temp')) {
+          e.preventDefault();
+          templateToDelete = e.target.closest('.col-lg-6');
+          new bootstrap.Modal(document.getElementById('deleteConfirmModal')).show();
+      }
+  });
 
-        // بستن مودال به صورت دستی
-        const deleteModalEl = document.getElementById('deleteConfirmModal');
-        const deleteModal = bootstrap.Modal.getInstance(deleteModalEl);
-        deleteModal.hide();
-    });
-    document.getElementById("submitTemplateBtn").addEventListener("click", function () {
-        const title = document.getElementById("templateTitle").value.trim();
-        const content = document.getElementById("templateContent").value.trim();
-        const container = document.getElementById("templateContainer");
-    
-        if (title === "" || content === "") {
+  document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
+      if (templateToDelete) {
+          templateToDelete.remove();
+          templateToDelete = null;
+      }
+      bootstrap.Modal.getInstance(document.getElementById('deleteConfirmModal')).hide();
+  });
+
+  // ✅ افزودن قالب جدید
+  document.getElementById("submitTemplateBtn").addEventListener("click", function () {
+      const title = document.getElementById("templateTitle").value.trim();
+      const content = document.getElementById("templateContent").value.trim();
+      const container = document.getElementById("templateContainer");
+
+      if (!title || !content) {
           alert("لطفاً عنوان و متن پیام را وارد کنید.");
           return;
-        }
-    
-        // ساختن div قالب جدید
-        const newCol = document.createElement("div");
-        newCol.className = "col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between";
-        newCol.innerHTML = `
-            <p class="fw-bold pt-2">${title}</p>
-            <div class="d-flex align-items-center gap-2">
-            <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
-            <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5"><i class="bi bi-trash"></i></a>
-            </div>
-        `;
-    
-        container.appendChild(newCol);
-    
-        // پاک‌سازی فیلدها
-        document.getElementById("templateTitle").value = "";
-        document.getElementById("templateContent").value = "";
-    
-        // بستن مودال
-        const modal = bootstrap.Modal.getInstance(document.getElementById("addTemplateModal"));
-        modal.hide();
-      });
+      }
 
-        let currentTemplateDiv = null; // برای نگهداری عنصر انتخاب‌شده
-        document.addEventListener("click", function (e) {
-            if (e.target.closest(".bi-pencil-square")) {
-            e.preventDefault();
+      const newCol = document.createElement("div");
+      newCol.className = "col-lg-6 bg-light py-2 px-4 d-flex align-items-center justify-content-between";
+      newCol.innerHTML = `
+          <div>
+              <p class="fw-bold pt-2">${title}</p>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+              <a href="#" class="rounded-pill bg-dark text-white px-2 py-1 fs-5"><i class="bi bi-pencil-square"></i></a>
+              <a href="#" class="rounded-pill bg-danger text-white px-2 py-1 fs-5 delete-temp"><i class="bi bi-trash"></i></a>
+          </div>
+      `;
+      container.appendChild(newCol);
 
-            currentTemplateDiv = e.target.closest(".col-lg-6"); // گرفتن کل قالب
+      document.getElementById("templateTitle").value = "";
+      document.getElementById("templateContent").value = "";
 
-            const title = currentTemplateDiv.querySelector("p").innerText;
-            const content = currentTemplateDiv.querySelector("small")?.innerText || "";
+      bootstrap.Modal.getInstance(document.getElementById("addTemplateModal")).hide();
+  });
 
-            // مقداردهی به فیلدهای مودال
-            document.getElementById("editTemplateTitle").value = title;
-            document.getElementById("editTemplateContent").value = content;
+  // ✅ ویرایش قالب پیام (Delegation)
+  let currentTemplateDiv = null;
+  document.addEventListener("click", function (e) {
+      if (e.target.closest(".bi-pencil-square")) {
+          e.preventDefault();
+          currentTemplateDiv = e.target.closest(".col-lg-6");
 
-            // نمایش مودال
-            const modal = new bootstrap.Modal(document.getElementById("editTemplateModal"));
-            modal.show();
-            }
-        });
+          document.getElementById("editTemplateTitle").value = currentTemplateDiv.querySelector("p").innerText;
+          document.getElementById("editTemplateContent").value = currentTemplateDiv.querySelector("small")?.innerText || "";
 
-        document.getElementById("saveEditTemplate").addEventListener("click", function () {
-            const newTitle = document.getElementById("editTemplateTitle").value.trim();
-            const newContent = document.getElementById("editTemplateContent").value.trim();
+          new bootstrap.Modal(document.getElementById("editTemplateModal")).show();
+      }
+  });
 
-            if (newTitle === "") {
-            alert("عنوان نمی‌تواند خالی باشد.");
-            return;
-            }
+  document.getElementById("saveEditTemplate").addEventListener("click", function () {
+      const newTitle = document.getElementById("editTemplateTitle").value.trim();
+      const newContent = document.getElementById("editTemplateContent").value.trim();
 
-            // به‌روزرسانی DOM
-            currentTemplateDiv.querySelector("p").innerText = newTitle;
+      if (!newTitle) {
+          alert("عنوان نمی‌تواند خالی باشد.");
+          return;
+      }
 
-            // اگر <small> وجود دارد ویرایشش کن، اگر نه اضافه کن
-            let small = currentTemplateDiv.querySelector("small");
-            if (small) {
-            small.innerText = newContent;
-            } else if (newContent !== "") {
-            const smallTag = document.createElement("small");
-            smallTag.className = "text-muted";
-            smallTag.innerText = newContent;
-            currentTemplateDiv.querySelector("p").after(smallTag);
-            }
+      currentTemplateDiv.querySelector("p").innerText = newTitle;
 
-            // بستن مودال
-            bootstrap.Modal.getInstance(document.getElementById("editTemplateModal")).hide();
-        });
+      let small = currentTemplateDiv.querySelector("small");
+      if (small) {
+          small.innerText = newContent;
+      } else if (newContent) {
+          const smallTag = document.createElement("small");
+          smallTag.className = "text-muted";
+          smallTag.innerText = newContent;
+          currentTemplateDiv.querySelector("p").after(smallTag);
+      }
+
+      bootstrap.Modal.getInstance(document.getElementById("editTemplateModal")).hide();
+  });
+});

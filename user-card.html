@@ -55,45 +55,91 @@
                     <button type="button" class="btn btn-sm btn-light mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
                 </div>
                 <div class="modal-body">
-                    <form class="row text-end g-3">
-                        
+                    <form class="row text-end">
+                        <div class="col-12">
+                            <p class="fw-bold lh-lg" style="text-align: justify;">
+                                برای محاسبه شبا، شماره کارت متصل به حسابی که می خواهید واریز وجه به آن انجام شود را وارد کنید.
+                            </p>
+                        </div>
                         <!-- Card number -->
                         <div class="col-12">
-                            <label class="form-label">شماره کارت <span class="text-danger">*</span></label>
+                            <label class="form-label mb-3">شماره کارت <span class="text-danger">*</span></label>
                             <div class="position-relative">
                                 <input  id="card-number" type="text" class="form-control"  maxlength="16" placeholder="xxxx xxxx xxxx xxxx" style="border-color: #28b6f6 !important;border-radius:10px;">
-                            </div>	
-                        </div>
-                        <!-- Expiration Date -->
-                        <div class="col-md-6">
-                            <label class="form-label">تاریخ انقضا <span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <input type="text"  id="exp-month" class="form-control" maxlength="2" placeholder="ماه" style="border-color: #28b6f6 !important;border-radius:10px;">
-                                <input type="text" id="exp-year" class="form-control me-2" maxlength="4" placeholder="سال" style="border-color: #28b6f6 !important;border-radius:10px;">
-                            </div>
-                        </div>	
-                        <!--Cvv code  -->
-                        <div class="col-md-6">
-                            <label class="form-label">CVV / CVC <span class="text-danger">*</span></label>
-                            <input id="cvv" type="text" class="form-control" maxlength="3" placeholder="xxx" style="border-color: #28b6f6 !important;border-radius:10px;">
-                        </div>
-                        <!-- Card name -->
-                        <div class="col-12">
-                            <label class="form-label">صاحب کارت <span class="text-danger">*</span></label>
-                            <input  id="card-holder" type="text" class="form-control" aria-label="name of card holder" placeholder="دارنده کارت" style="border-color: #28b6f6 !important; border-radius:10px;">
-                        </div>
-                        <!-- Check box -->
-                        <div class="col-md-12">
-                            <div class="form-check mb-0">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="border-color: #28b6f6 !important;">
-                                <label class="form-check-label" for="exampleCheck1">ذخیره اطلاعات کارت</label>
                             </div>	
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-sanabad-cancle my-0" data-bs-dismiss="modal" style="border-radius: 5px !important;">بستن</button>
-                    <button type="button" class="btn btn-sanabad my-0" id="saveCardBtn">ذخیره</button>
+                    <button type="button" class="btn btn-sanabad my-0"  data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#authenticateModal">محاسبه شماره شبا</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--مودال تایید هویت برای کارت بانکی-->
+    <div class="modal fade" id="authenticateModal" tabindex="-1" aria-labelledby="authenticateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="authenticateModalLabel">لطفا هویت خود را تایید کنید</h5>
+                    <button type="button" class="btn btn-sm btn-light mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row text-end">
+                        <div class="col-12">
+                            <p class="fw-bold lh-lg" style="text-align: justify;">
+                                کد 5 رقمی به شماره 09925450351 ارسال گردید.
+                            </p>
+                        </div>
+                        <!-- Card number -->
+                        <div class="col-12">
+                            <label class="form-label mb-3">محل ورود کد 5 رقمی <span class="text-danger">*</span></label>
+                            <div class="position-relative input-group gap-4 w-lg-50 w-75" style="place-self: center;">
+                                <input  id="code-num1" type="password" class="form-control text-center"  maxlength="1" placeholder="*" style="border-color: #28b6f6 !important;border-radius:10px;">
+                                <input  id="code-num1" type="password" class="form-control text-center"  maxlength="1" placeholder="*" style="border-color: #28b6f6 !important;border-radius:10px;">
+                                <input  id="code-num1" type="password" class="form-control text-center"  maxlength="1" placeholder="*" style="border-color: #28b6f6 !important;border-radius:10px;">
+                                <input  id="code-num1" type="password" class="form-control text-center"  maxlength="1" placeholder="*" style="border-color: #28b6f6 !important;border-radius:10px;">
+                            </div>	
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-sanabad-cancle my-0" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#addNewcard" style="border-radius: 5px !important;">بازگشت</button>
+                    <button type="button" class="btn btn-sanabad my-0" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#finallAddCardModal">ادامه</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--مودال تایید نهایی کارت بانکی-->
+    <div class="modal fade" id="finallAddCardModal" tabindex="-1" aria-labelledby="finallAddCardModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="finallAddCardModalLabel">بررسی نهایی اطلاعات</h5>
+                    <button type="button" class="btn btn-sm btn-light mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row text-end">
+                        <div class="col-12">
+                            <p class="fw-bold lh-lg" style="text-align: justify;">
+                                لطفا اطلاعات زیر را جهت واریز وجوه به دقت بررسی کرده و اقدام لازم را انجام دهید.
+                            </p>
+                        </div>
+                        <!-- Card number -->
+                        <div class="col-12">
+                            <fieldset class="border rounded border-1 pt-3 pe-3">
+                               <p class="text-muted">شماره شبا:  <span class="pe-2 fw-bold text-dark">IR-07018-****-***-****-6963-3570</span></p>
+                               <p class="text-muted">شماره کارت:  <span class="pe-2 fw-bold text-dark">3492-****-0112-****-5058</span></p>
+                               <p class="text-muted">بانک صادرکننده: <span class="pe-2 fw-bold text-dark">سپه</span></p>
+                               <p class="text-muted">نام صاحب حساب: <span class="pe-2 fw-bold text-dark">زهرا باقری حسن کیاده</span></p>
+                            </fieldset>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-sanabad-cancle my-0" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#addNewcard" style="border-radius: 5px !important;">بازگشت</button>
+                    <button type="button" class="btn btn-sanabad my-0" id="confirmCardBtn">تایید اطلاعات کارت</button>
                 </div>
             </div>
         </div>
@@ -406,7 +452,7 @@
                                       <div class="w-100 text-start">
                                             <!-- Continue to Pay Button -->
                                         <a href="bank.html">
-                                            <button class="btn btn-sanabad px-4 py-2 fw-bold ms-1" style="border-radius: 80px !important;">
+                                            <button class="btn btn-sanabad px-4 py-2 fw-bold ms-1 mb-lg-0 mb-3" style="border-radius: 80px !important;">
                                                 <i class="fa-solid fa-arrow-left ms-2"></i>
                                                 ادامه جهت پرداخت
                                             </button>
@@ -435,7 +481,7 @@
                                       <div class="w-100 text-start">
                                             <!-- Continue to Pay Button -->
                                         <a href="bank.html">
-                                            <button class="btn btn-sanabad px-4 py-2 fw-bold ms-1" style="border-radius: 80px !important;">
+                                            <button class="btn btn-sanabad px-4 py-2 fw-bold ms-1 mb-lg-0 mb-3" style="border-radius: 80px !important;">
                                                 <i class="fa-solid fa-arrow-left ms-2"></i>
                                                 ادامه جهت پرداخت
                                             </button>
@@ -482,7 +528,30 @@
                             </div>
                         </div>
                         <div class="col-12">
+                            <div class="card pay-card border rounded mb-4">
+                                <div class="card-header bg-light d-sm-flex justify-content-sm-between align-items-center border-bottom py-3">
+                                    <h5 class="mb-3 mb-sm-0 fs-5 fw-bold">کارت های بانکی من</h5>
+                                    <a href="#" class="btn btn-sanabad mb-0 px-3 py-2" data-bs-toggle="modal" data-bs-target="#addNewcard" style="border-radius: 80px !important;">
+                                        <i class="fa-solid fa-plus me-1"></i>
+                                        افزودن کارت بانکی</a>
+                                </div>
+            
+                                <div class="card-body bank-card">
+                                     <!-- وقتی هیچ کارت بانکی ثبت نشده بود -->
+                                    <div id="no-notifications" class="col-12 text-center  my-5">
+                                        <img src="assets/Images/sample-profile/atm-card.png" alt="empty box" class="m-3" style="width: 100px;">
+                                        <p class="text-muted">شما هنوز هیچ کارت بانکی ثبت شده ای ندارید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
                             <div class="border" style="border-radius: 20px;">
+                                 <!-- وقتی هیچ درخواست عودت وجهی نبود نبود -->
+                                 <div id="no-request" class="col-12 text-center d-none my-5">
+                                    <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                    <p class="text-muted">جدول درخواست عودت وجه خالی است.</p>
+                                </div>
                                 <div class="card-header bg-light">
                                     <div class="row g-3 align-items-center justify-content-between">
                                         <div class="col-md-8">
@@ -502,7 +571,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive border-0">
-                                        <table class="table table-light text-center align-middle p-4 mb-0 table-hover">
+                                        <table class="table text-center align-middle p-4 mb-0 table-hover">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="py-3" style="border-top-right-radius: 20px;">شماره پیگیری</th>
@@ -515,8 +584,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>#2841B</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">#2841B</td>
                                                     <td>1404/04/02</td>
                                                     <td>231,030</td>
                                                     <td>بانک رفاه</td>
@@ -526,8 +595,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2841B</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">#2841B</td>
                                                     <td>1404/04/02</td>
                                                     <td>۲۵۶٬۷۰۰</td>
                                                     <td>بانک رفاه</td>
@@ -537,8 +606,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2842C</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">#2842C</td>
                                                     <td>1404/04/01</td>
                                                     <td>۱۴۳٬۵۰۰</td>
                                                     <td>بانک ملت</td>
@@ -548,8 +617,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2843D</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">#2843D</td>
                                                     <td>1404/03/30</td>
                                                     <td>۹۸٬۰۰۰</td>
                                                     <td>بانک ملی</td>
@@ -559,8 +628,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2844E</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">#2844E</td>
                                                     <td>1404/03/29</td>
                                                     <td>۳۱۰٬۲۵۰</td>
                                                     <td>بانک صادرات</td>
@@ -570,8 +639,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2845F</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">#2845F</td>
                                                     <td>1404/03/28</td>
                                                     <td>۲۲۱٬۰۰۰</td>
                                                     <td>بانک پارسیان</td>
@@ -581,8 +650,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2846G</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">#2846G</td>
                                                     <td>1404/03/25</td>
                                                     <td>۴۵۰٬۰۰۰</td>
                                                     <td>بانک کشاورزی</td>
@@ -592,8 +661,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2847H</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">#2847H</td>
                                                     <td>1404/03/22</td>
                                                     <td>۱۹۹٬۹۰۰</td>
                                                     <td>بانک آینده</td>
@@ -603,8 +672,8 @@
                                                         <i class="fas fa-eye"  data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده یادداشت حسابداری"></i>
                                                     </a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>#2848I</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">#2848I</td>
                                                     <td>1404/03/20</td>
                                                     <td>۵۰۰٬۰۰۰</td>
                                                     <td>بانک ملت</td>
@@ -619,8 +688,8 @@
                                         </table>
                                     </div>
                                 </div>
-                                <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                                    <ul class="pagination custom-pagination">
+                                <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center">
+                                    <ul class="pagination custom-pagination px-0 mx-0">
                                     <li class="page-item disabled">
                                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                     </li>
@@ -635,178 +704,21 @@
                             </div>
                             
                         </div>
-                        <div class="col-12">
-                            <div class="card pay-card border rounded mb-4">
-                                <div class="card-header bg-light d-sm-flex justify-content-sm-between align-items-center border-bottom py-3">
-                                    <h5 class="mb-2 mb-sm-0 fs-5 fw-bold">کارت های بانکی من</h5>
-                                    <a href="#" class="btn btn-sanabad mb-0 px-3 py-2" data-bs-toggle="modal" data-bs-target="#addNewcard" style="border-radius: 80px !important;">
-                                        <i class="fa-solid fa-plus me-1"></i>
-                                        افزودن کارت جدید</a>
-                                </div>
-            
-                                <div class="card-body bank-card">
-                                    <div class="bg-light border border-1 p-3 rounded-3 d-sm-flex justify-content-sm-between align-items-center mb-4">
-            
-                                        <div class="form-check d-flex align-items-center justify-content-start">
-                                            <input class="form-check-input mb-0" type="radio" name="bank-number" id="bank-number1" checked>
-                                            <div class="me-5 mt-2">
-                                                <img src="assets/Images/home/sepah.png" style="width: 50px; height:50px;">
-                                                <label class="form-check-label mb-0 h5 me-2" for="address1">بانک سپه</label>
-                                                <p class="mb-0 ms-4 mt-2">5058 - 0112 - **** - 3492</p>
-                                            </div>
-                                        </div>
-            
-                                        <!-- Button -->
-                                        <div>
-                                            <a href="#" class="btn btn btn-success mb-0 rounded">ویرایش</a>
-                                            <button class="btn btn btn-danger mb-0 rounded me-1 delete-cardbank">حذف</button>
-                                        </div>
-            
-                                    </div>
-            
-                                    <div class="bg-light border border-1 p-3 rounded-3 d-sm-flex justify-content-sm-between align-items-center mb-4">
-            
-                                        <div class="form-check d-flex align-items-center justify-content-start">
-                                            <input class="form-check-input mb-0" type="radio" name="bank-number" id="bank-number2" checked>
-                                            <div class="me-5 mt-2">
-                                                <img src="assets/Images/home/refah.png" style="width: 50px; height:50px;">
-                                                <label class="form-check-label mb-0 h5 me-2" for="address1">بانک رفاه</label>
-                                                <p class="mb-0 ms-4 mt-2">5894 - 8312 - **** - 3977</p>
-                                            </div>
-                                        </div>
-            
-                                        <div>
-                                            <a href="#" class="btn btn-success mb-0 rounded">ویرایش</a>
-                                            <button class="btn btn-danger mb-0 rounded me-1 delete-cardbank">حذف</button>
-                                        </div>
-            
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             
         </section>
+        <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+            <i class="bi bi-chevron-up"></i>
+        </button> 
         <!--پایان محتوای اصلی-->
     </main>
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/js/particles.min.js"></script>
     <script src="assets/scripts/user-dashboard.js"></script>
+    <script src="assets/scripts/user-card.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            //درج مبلغ بر اساس دکمه انتخاب شده
-            const amountButtons = document.querySelectorAll(".amount-btn");
-            const amountInput = document.getElementById("chargeAmountInput");
-        
-            amountButtons.forEach((btn) => {
-              btn.addEventListener("click", function () {
-                // حذف کلاس active از همه
-                amountButtons.forEach((b) => b.classList.remove("active-money"));
-        
-                // اضافه کردن کلاس active به دکمه فعلی
-                this.classList.add("active-money");
-        
-                // دریافت مقدار عددی از متن دکمه (حذف "ریال" و فاصله)
-                const amountText = this.innerText.replace("ریال", "").trim();
-                amountInput.value = amountText;
-              });
-                });
-
-            //حذف کارت بانکی
-            let cardToDelete = null; // نگهداری کارت انتخاب‌شده برای حذف
-            // وقتی روی دکمه حذف کارت کلیک شد
-            document.addEventListener('click', function (e) {
-                if (e.target.matches('.delete-cardbank') && e.target.textContent.includes('حذف')) {
-                e.preventDefault();
-
-                // پیدا کردن کارت والد و ذخیره آن
-                cardToDelete = e.target.closest('.bg-light.border');
-                
-                // نمایش مودال تأیید حذف
-                const deleteModal = new bootstrap.Modal(document.getElementById('deleteBankAcoount'));
-                deleteModal.show();
-                }
-            });
-
-            // وقتی کاربر در مودال روی "حذف حساب" کلیک می‌کنه
-            document.getElementById('confirmDeleteBtn').addEventListener('click', function () {
-                if (cardToDelete) {
-                cardToDelete.remove(); // حذف کارت از DOM
-                cardToDelete = null;
-                }
-
-                // بستن مودال
-                const modalElement = document.getElementById('deleteBankAcoount');
-                const modalInstance = bootstrap.Modal.getInstance(modalElement);
-                modalInstance.hide();
-            });
-            //اضافه کردن کارت بانکی
-            document.getElementById("saveCardBtn").addEventListener("click", function () {
-              const cardNumber = document.getElementById("card-number").value;
-              const cardHolder = document.getElementById("card-holder").value;
-        
-              if (!cardNumber || !cardHolder) {
-                alert("لطفاً شماره کارت و نام دارنده را وارد کنید");
-                return;
-              }
-        
-              const first4 = cardNumber.slice(0, 4);
-              const middle4 = cardNumber.slice(8, 12);
-              const last4 = cardNumber.slice(12, 16);
-
-              const newCardHTML = `
-                <div class="bg-light border border-1 p-3 rounded-3 d-sm-flex justify-content-sm-between align-items-center mb-4">
-                  <div class="form-check d-flex align-items-center justify-content-start">
-                    <input class="form-check-input mb-0" type="radio" name="address">
-                    <div class="me-5 mt-2">
-                      <img src="assets/Images/home/tejarat.png" style="width: 50px; height:50px;">
-                      <label class="form-check-label mb-0 h5 me-2">بانک تجارت</label>
-                      <p class="mb-0 ms-4 mt-2">${last4} - ${middle4} - **** - ${first4}</p>
-                    </div>
-                  </div>
-                  <div>
-                    <a href="#" class="btn btn-success mb-0 rounded">ویرایش</a>
-                    <button class="btn btn-danger mb-0 rounded me-1 delete-cardbank">حذف</button>
-                  </div>
-                </div>
-              `;
-        
-              const cardBody = document.querySelector(".bank-card");
-              cardBody.insertAdjacentHTML("beforeend", newCardHTML);
-        
-              // پاک کردن فرم
-              document.getElementById("card-number").value = "";
-              document.getElementById("card-holder").value = "";
-              document.getElementById("exp-month").value = "";
-              document.getElementById("exp-year").value = "";
-              document.getElementById("cvv").value = "";
-        
-              // بستن مودال
-              const modalEl = document.getElementById('addNewcard');
-              const modal = bootstrap.Modal.getInstance(modalEl);
-              modal.hide();
-            });
-          });
-
-        function closeNotifCard(btn) {
-            // کارت را مخفی کن
-            const card = btn.closest('.card');
-            if (card) {
-              card.style.display = 'none';
-            }
-        
-            // بررسی اینکه آیا کارت‌های قابل نمایش دیگری وجود دارند
-            const notifContainer = document.querySelector('.div-undone-notif');
-            const visibleCards = notifContainer.querySelectorAll('.card');
-        
-            const anyVisible = Array.from(visibleCards).some(c => c.style.display !== 'none');
-        
-            if (!anyVisible) {
-              notifContainer.style.display = 'none';
-            }
-          }
         //انیمیشن بنر
         particlesJS("particles-js-banner", {
             "particles": {
@@ -844,14 +756,7 @@
             },
             "retina_detect": true
           });
-          function showRefundToast() {
-            const send_recModal = document.getElementById('refundModal');
-            const send_rec = bootstrap.Modal.getInstance(send_recModal);
-            send_rec.hide();
-            var toastEl = document.getElementById('refundToast');
-            var toast = new bootstrap.Toast(toastEl);
-            toast.show();
-          }
+          
     </script>
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
         <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
@@ -862,6 +767,6 @@
             </div>
           </div>
         </div>
-      </div>      
+    </div>      
 </body>
 </html>

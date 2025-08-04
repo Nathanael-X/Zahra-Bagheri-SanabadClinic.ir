@@ -180,6 +180,11 @@
                 <!--پایان ساید بار دسکتاپ-->
                 <!--آغاز محتوای اصلی صفحه-->
                 <div class="col-12 col-lg-9">
+                    <!-- وقتی هیچ فاکتوری نبود -->
+                    <div id="no-notifications" class="col-12 text-center d-none my-5">
+                        <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                        <p class="text-muted">سابقه تراکنش ها خالی می باشد.</p>
+                    </div>
                     <div class="card pay-card border rounded">
                         <div class="card-header bg-light border-bottom py-3">
                             <h5 class="mb-2 mb-sm-0 fs-5 fw-bold">تاریخچه فاکتور ها</h5>
@@ -207,7 +212,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive border-0">
-                                <table class="table table-light align-middle p-4 mb-0 table-hover">
+                                <table class="table align-middle p-4 mb-0 table-hover">
                                     <thead style="text-align: center;">
                                         <tr>
                                             <th scope="col" class="py-3" style="border-top-right-radius: 20px;">شماره فاکتور</th>
@@ -221,8 +226,8 @@
                                         </tr>
                                     </thead>
                                     <tbody style="text-align: center;">
-                                            <tr>
-                                                <td>#20</td>
+                                            <tr class="clickable-row">
+                                                <td class="py-3">#20</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1404/02/12 - 17:30</td>
                                                 <td>نوبت گیری: جراح مغز و اعصاب</td>
@@ -235,8 +240,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>#21</td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-3">#21</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1404/02/12 - 17:30</td>
                                                 <td>نوبت گیری: فیزیوتراپی</td>
@@ -249,8 +254,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>#22</td>
+                                            <tr class="clickable-row">
+                                                <td class="py-3">#22</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1404/03/05 - 09:15</td>
                                                 <td>شارژ کیف پول</td>
@@ -263,8 +268,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>#23</td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-3">#23</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1404/03/10 - 11:00</td>
                                                 <td>متخصص پوست و مو</td>
@@ -277,8 +282,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>#24</td>
+                                            <tr class="clickable-row">
+                                                <td class="py-3">#24</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1404/03/15 - 14:45</td>
                                                 <td>نوبت گیری: متخصص تغذیه</td>
@@ -291,8 +296,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>#25</td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-3">#25</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1404/03/18 - 08:30</td>
                                                 <td>نوبت گیری: پزشک عمومی</td>
@@ -305,8 +310,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>#26</td>
+                                            <tr class="clickable-row">
+                                                <td class="py-3">#26</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1404/03/22 - 16:00</td>
                                                 <td>شارژ کیف پول</td>
@@ -319,8 +324,8 @@
                                                     </a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>#27</td>
+                                            <tr class="color-row clickable-row">
+                                                <td class="py-3">#27</td>
                                                 <td>زهرا باقری حسن کیاده</td>
                                                 <td>1396/09/05 - 18:00</td>
                                                 <td>نوبت گیری: اعصاب و روان</td>
@@ -339,7 +344,7 @@
                         </div>
                     </div>
                     <nav aria-label="صفحه بندی فاکتور کاربران" class="d-flex justify-content-center mt-4">
-                        <ul class="pagination custom-pagination">
+                        <ul class="pagination custom-pagination px-0 mx-0">
                         <li class="page-item disabled">
                             <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                         </li>
@@ -355,11 +360,15 @@
             </div>
             
         </section>
+        <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+            <i class="bi bi-chevron-up"></i>
+        </button> 
         <!--پایان محتوای اصلی-->
     </main>
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/js/particles.min.js"></script>
     <script src="assets/scripts/user-dashboard.js"></script>
+    <script src="assets/scripts/user_ticket.js"></script>
     <script>
         //انیمیشن بنر
         particlesJS("particles-js-banner", {

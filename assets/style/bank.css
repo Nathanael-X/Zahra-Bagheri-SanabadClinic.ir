@@ -192,4 +192,8 @@ body
     .order-details {
         margin-bottom: 20px;
     }
+    .payment-logo 
+    {
+        height: 30px;
+    }
 }

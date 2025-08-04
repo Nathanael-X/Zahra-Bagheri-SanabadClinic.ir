@@ -17,51 +17,6 @@
     <!--librearies-->
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-        @media (max-width:400px)
-        {
-            .clear-mb
-            {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
-            }
-        }
-        .upload-box 
-        {
-            margin-top: 0px;
-            border: 2px dashed #aaa;
-            border-radius: 12px;
-            padding: 1.8vh 10vh;
-            text-align: center;
-            background: rgb(241, 241, 241);
-            cursor: pointer;
-            transition: border-color 0.3s ease;
-        }
-        .upload-box:hover 
-        {
-            border-color: #28b6f6;
-        }
-        .upload-box.dragover 
-        {
-            border-color: #2196f3;
-            background-color: #e3f2fd;
-        }
-        .upload-box input[type="file"] 
-        {
-            display: none;
-        }
-        .upload-text 
-        {
-            color: #777;
-            font-size: 15px;
-            margin-top: 10px;
-        }
-        .upload-icon 
-        {
-            font-size: 35px;
-            color: #aaa;
-        }
-    </style>
 </head>
 <body>
     <!-- مودال حذف کامنت-->
@@ -137,11 +92,10 @@
           <div class="row g-3">
             <div class="col-lg-6">
                 <label for="adminReply" class="form-label fw-bold">پاسخ شما:</label>
-            <textarea id="adminReply" class="form-control" rows="4" placeholder="متن پاسخ را اینجا بنویسید..."></textarea>
+            <textarea id="adminReply" class="form-control" rows="6" placeholder="متن پاسخ را اینجا بنویسید..."></textarea>
             </div>
             <div class="col-lg-6">
                 <label for="fileUpload">
-                    <label class="form-label fw-bold">فایل های پیوست:</label>
                     <div class="upload-box" id="uploadArea">
                       <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
                       <div class="upload-text">فایل خود را بکشید یا اینجا کلیک کنید</div>
@@ -180,12 +134,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 pb-4">
+        <ul class="nav flex-column px-3 fs-5">
             <li class="nav-item mt-3 mb-2">
                 <a href="Master-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -227,8 +181,8 @@
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-4 pt-1">
-            <div class="d-flex align-items-center justify-content-between">
+        <div class="px-3 mt-auto">
+            <div class="d-flex align-items-center justify-content-between btm-bar">
                 <a class="h5 mb-0 blue-light" href="Master-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
                 </a>
@@ -241,18 +195,21 @@
             </div>
         </div>
     </aside>
+    <button id="backToTopBtn" title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button> 
     <!--پایان سایدبار-->
     <!-- بک‌گراند تار در حالت موبایل -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>              
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -267,7 +224,7 @@
                 <img src="assets/Images/sample-profile/prof1.png" alt="user1">
                 <div class="content">
                     <strong>منشی فیزیوتراپی</strong><br>
-                    درخواست بازیابی رمز<br>
+                    درخواست تغییر شیفت کاری<br>
                     <a href="#" class="text-primary">مشاهده</a>
                 </div>
             </li>
@@ -360,8 +317,13 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive border-0">
-                            <table class="table table-light text-end align-middle p-4 mb-0 table-hover">
+                        <!-- وقتی هیچ نظری نبود -->
+                        <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                            <p class="text-muted pt-3">هیچ نظری برای نمایش وجود ندارد.</p>
+                        </div>
+                        <div class="table-responsive border-0 ">
+                            <table class="table text-end align-middle p-4 mb-0 table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col" style="border-top-right-radius: 20px;">نام کاربر</th>
@@ -373,7 +335,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -408,7 +370,7 @@
                                               </a>
                                         </td>
                                     </tr>
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -443,7 +405,7 @@
                                               </a>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -479,7 +441,7 @@
                                         </td>
                                     </tr>
                                     
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -515,7 +477,7 @@
                                         </td>
                                     </tr>
                                     
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof2.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -551,7 +513,7 @@
                                         </td>
                                     </tr>
                                     
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -587,7 +549,7 @@
                                         </td>
                                     </tr>
                                     
-                                    <tr class="color-row">
+                                    <tr class="color-row clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof3.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -623,7 +585,7 @@
                                         </td>
                                     </tr>
                                     
-                                    <tr>
+                                    <tr class="clickable-row">
                                         <td>
                                             <div class="d-flex align-items-center justify-content-start">
                                                 <img src="assets/Images/sample-profile/prof1.png" class="rounded-circle" alt="user profile" style="width: 55px; height:55px;">
@@ -665,7 +627,7 @@
                     </div>
                 </div>
                 <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                    <ul class="pagination custom-pagination">
+                    <ul class="pagination custom-pagination px-0 mx-0">
                     <li class="page-item disabled">
                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                     </li>
@@ -684,93 +646,7 @@
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            //پاسخ به کاربر
-            document.getElementById('send_answerBTN').addEventListener('click',function(){
-                var unanswered=document.getElementsByClassName("unanswered").item(0);
-                var viewCommentModalEl = document.getElementById('viewCommentModal');
-                var confirmasnwerModal = bootstrap.Modal.getInstance(viewCommentModalEl);
-                unanswered.innerHTML="پاسخ داده شده";
-                unanswered.classList.remove('text-muted');
-                unanswered.classList.add('text-success');
-                unanswered.classList.add('fw-bold');
-                confirmasnwerModal.hide();
-                // نمایش Toast موفقیت
-                var successToast = new bootstrap.Toast(document.getElementById('sendSuccessToast'));
-                successToast.show();
-            });
-            //حذف نظر کاربر
-            
-            let rowToDelete = null; // متغیر برای ذخیره سطر انتخاب‌شده
-
-            // وقتی روی دکمه حذف کلیک شد
-            document.querySelectorAll('.btn-delete-comment').forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                // پیدا کردن سطر پدر
-                const row = btn.closest('tr');
-                rowToDelete = row;
-
-                // استخراج نام کاربر
-                const name = row.querySelector('h6').innerText;
-
-                // تنظیم متن داخل مودال
-                document.getElementById('DeleteCommentConfirmText').innerHTML = `آیا می‌خواهید نظر کاربر: ${name} را حذف کنید؟ <span class="text-danger">این عملیات غیرقابل بازگشت است.</span>`;
-                // نمایش مودال
-                const deleteModal = new bootstrap.Modal(document.getElementById('DeleteCommentModal'));
-                deleteModal.show();
-            });
-            });
-            // وقتی روی "بله، حذف شود" کلیک شد
-            document.querySelector('#DeleteCommentModal .btn-danger').addEventListener('click', function () {
-                if (rowToDelete) {
-                rowToDelete.remove();
-                rowToDelete = null;
-        
-                // بستن مودال
-                const deleteModalEl = document.getElementById('DeleteCommentModal');
-                const deleteModal = bootstrap.Modal.getInstance(deleteModalEl);
-                deleteModal.hide();
-                }
-            });
-            //مسدود سازی
-            let rowToBlock = null; // متغیر برای ذخیره سطر انتخاب‌شده
-
-            // وقتی روی دکمه حذف کلیک شد
-            document.querySelectorAll('.btn-block-comment').forEach(function (btn) {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                // پیدا کردن سطر پدر
-                const row = btn.closest('tr');
-                rowToBlock = row;
-                // نمایش مودال
-                const BlockModal = new bootstrap.Modal(document.getElementById('BlockUserModal'));
-                BlockModal.show();
-            });
-            });
-            // وقتی روی "مسدود سازی" کلیک شد
-            document.querySelector('#BlockUserModal .btn-danger').addEventListener('click', function () {
-                if (rowToBlock) {
-                rowToBlock.remove();
-                rowToBlock = null;
-        
-                // بستن مودال
-                const deleteModalEl = document.getElementById('BlockUserModal');
-                const deleteModal = bootstrap.Modal.getInstance(deleteModalEl);
-                deleteModal.hide();
-                }
-            });
-
-        });
-        
-    </script>
+    <script src="assets/scripts/Master-comments.js"></script>
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
         <div id="sendSuccessToast" class="toast align-items-center bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">

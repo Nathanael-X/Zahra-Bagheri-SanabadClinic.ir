@@ -22,17 +22,131 @@
         {
             background-color: #c2ecff !important;
         }
-        @media (max-width:400px)
+        @media (max-width:991px)
         {
-            .clear-mb
+            #unreadToast, #successToast_ticket,#successToast,#rejectToast
             {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
+                display: none !important;
             }
         }
     </style>
 </head>
 <body>
+     <!-- توست ارسال موفقیت امیز پیغام -->
+     <div class="position-fixed bottom-0 start-0 p-3">
+        <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="toast-body fw-bold">
+            پیغام شما با موفقیت ارسال شد.
+            </div>
+            <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="بستن"></button>
+        </div>
+        </div>
+    </div>
+    <!-- توست موفقیت امیز بودن رد درخواست کاربر -->
+    <div class="position-fixed bottom-0 start-0 p-3">
+        <div id="rejectToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="toast-body fw-bold">
+            درخواست عودت وجه کاربر رد شد.
+            </div>
+            <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="بستن"></button>
+        </div>
+        </div>
+    </div>
+    <!--مودال رد درخواست کاربر-->
+    <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">تأیید یا رد درخواست</h5>
+            </div>
+            <div class="modal-body">
+                <p id="rejectConfirmText">آیا می خواهید درخواست عودت وجه کاربر را رد کنید؟</p>
+                <span class="text-danger">این عملیات غیرقابل بازگشت است.</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                <button type="button" class="btn btn-danger" onclick="reject_userTicket()">رد درخواست</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- توست موفقیت امیز بودن ارسال تیکت -->
+    <div class="position-fixed bottom-0 start-0 p-3">
+        <div id="successToast_ticket" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="toast-body fw-bold">
+            تیکت شما با موفقیت ارسال شد.
+            </div>
+            <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="بستن"></button>
+        </div>
+        </div>
+    </div>
+    <!-- توست علامت گذاری به عنوان خوانده نشده -->
+    <div class="position-fixed bottom-0 start-0 p-3">
+        <div id="unreadToast" class="toast align-items-center text-black bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="toast-body fw-bold">
+            وضعیت تیکت به حالت خوانده نشده تغییر پیدا کرد.
+            </div>
+            <button type="button" class="btn-close ms-2" data-bs-dismiss="toast" aria-label="بستن"></button>
+        </div>
+        </div>
+    </div>
+    <!--مودال درخواست عودت وجه سهیل مولودی-->
+    <div class="modal fade" id="appDetail_SoheilMolody" tabindex="-1" aria-labelledby="appDetail_SoheilMolodylabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                
+                <!-- Modal header -->
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="appDetail_SoheilMolodylabel">جزئیات تیکت</h5>
+                    <button type="button" class="btn btn-sm text-white mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+    
+                <!-- Modal body -->
+                <div class="modal-body p-5">
+                    <span class="small fw-bold">نام کاربر:</span>
+                    <h6 class="mb-3 mt-2">سهیل مولودی</h6>
+    
+                    <span class="small fw-bold">شناسه کاربری:</span>
+                    <h6 class="mb-3 mt-2">suder_sanabad_Soheil</h6>
+    
+                    <span class="small fw-bold">شماره تماس:</span>
+                    <h6 class="mb-3 mt-2">09153000000</h6>
+    
+                    <span class="small fw-bold">متن تیکت:</span>
+                    <p class="text-dark mb-2 mt-2" style="text-align: justify;line-height:2">
+                        با سلام و احترام،
+                        <br>
+                        بدین‌وسیله به اطلاع می‌رسد آقای سهیل مولودی، با کد ملی ۱۲۳۴۵۶۷۸۹۰ و شماره پرونده ۷۸۵۲، در تاریخ ۱۴۰۴/۰۵/۱۰ مبلغ ۱٬۵۰۰٬۰۰۰ ریال بابت رزرو نوبت خدمات فیزیوتراپی به حساب کلینیک شبانه‌روزی سناباد واریز نموده‌اند. نظر به این‌که به دلایل شخصی امکان مراجعه ایشان در زمان مقرر فراهم نشده و همچنین با توجه به اطلاع‌رسانی به موقع و هماهنگی قبلی با پذیرش کلینیک، درخواست عودت وجه پرداختی ایشان خدمت شما ارسال می‌گردد.                        
+                        <br>
+                        خواهشمند است در صورت عدم وجود مانع مالی یا اداری، ترتیبی اتخاذ فرمایید تا مبلغ مذکور در اولین فرصت ممکن به شماره کارت ثبت‌شده در پرونده ایشان واریز گردد. در صورت نیاز به اطلاعات تکمیلی یا مستندات پرداخت، لطفاً مراتب را از طریق همین سامانه اطلاع‌رسانی فرمایید.
+                        <br>
+                        با تشکر از همکاری شما
+                    </p>
+    
+                    <!-- بخش پاسخ ادمین، مخفی در ابتدا -->
+                    <div id="adminReplyBox" class="mt-4 d-none">
+                        <label for="replyTextarea" class="form-label fw-bold">پاسخ شما به این تیکت:</label>
+                        <textarea id="replyTextarea" class="form-control mb-3" rows="4" placeholder="پاسخ خود را بنویسید..."></textarea>
+                        <div class="d-flex justify-content-end gap-2">
+                            <button class="btn btn-secondary" id="clearReplyBtn">پاک کردن</button>
+                            <button class="btn btn-sanabad" id="showToastBtn">ارسال پاسخ</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Modal footer -->
+                <div class="modal-footer justify-content-start">
+                        <button type="button" class="btn btn-warning" title="علامت گذاری به عنوان خوانده نشده" onclick="open_unread_toast()"><i class="fa-solid fa-bookmark text-white"></i></button>
+                        <button type="button" class="btn btn-danger" title="رد کردن درخواست" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#rejectModal"><i class="fa-solid fa-ban text-white"></i></button>
+                        <button type="button" class="btn btn-info" id="replyToggleBtn" title="پاسخ به تیکت"><i class="fa-solid fa-reply text-white"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- مودال پاسخ به کاربر -->
     <div class="modal fade" id="sendNoteModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -115,12 +229,12 @@
     </div>
     
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5 mb-2">
             <li class="nav-item mt-3 mb-2">
                 <a href="Finance-dashboard.html" class="nav-link active-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -132,12 +246,12 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="Finance_Note.html" class="nav-link ">
+                <a href="Finance_Note.html" class="nav-link">
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-4 pt-1">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between">
                 <a class="h5 mb-0 blue-light" href="Finance_profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
@@ -157,12 +271,12 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
             </button>
-        </div>               
+        </div>                  
         <!--اعلان های ادمین-->
         <div class="dropdown text-start mt-2 ms-3 admin_notif_ico">
             <button class="notification-btn" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -173,12 +287,19 @@
             <!-- لیست اعلان‌ها -->
             <ul class="dropdown-menu for_notif_admin dropdown-menu-end shadow fade rounded-4" aria-labelledby="notifDropdown">
             <li class="fw-bold px-3 pt-2 pb-2 notification-item me-2 ms-2"> <i class="bi bi-shield-lock ms-1 fs-5"></i> درخواست های عودت وجه</li>
+            <li class="notification-item me-2 ms-2 d-none">
+                <!-- وقتی هیچ اعلانی نبود -->
+                <div id="no-notifications" class="col-12 text-center my-3">
+                   <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="w-50 h-50 mb-3">
+                   <p class="text-muted">اعلان جدیدی برای نمایش وجود ندارد.</p>
+               </div>
+            </li>
             <li class="notification-item me-2 ms-2">
                 <img src="assets/Images/sample-profile/prof1.png" alt="user1">
                 <div class="content">
                     <strong>سهیل مولودی</strong><br>
                    درخواست عودت وجه<br>
-                    <a href="#" class="text-primary">مشاهده</a>
+                    <a href="#" class="text-primary" data-bs-toggle="modal" data-bs-target="#appDetail_SoheilMolody">مشاهده</a>
                 </div>
             </li>
             
@@ -267,6 +388,11 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <!-- وقتی هیچ درخواست عودت وجهی نبود -->
+                        <div id="no-ask-forReturn" class="col-12 text-center my-5 d-none">
+                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                            <p class="text-muted pt-3">هنوز هیچ درخواست عودت وجهی وجود ندارد.</p>
+                        </div>
                         <div class="table-responsive border-0">
                             <table class="table text-center align-middle p-4 mb-0 table-hover">
                                 <thead>
@@ -284,7 +410,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="clickable-row">
-                                        <td>#2845F</td>
+                                        <td class="py-3">#2845F</td>
                                         <td>1404/03/28</td>
                                         <td>زهرا باقری حسن کیاده</td>
                                         <td>10%</td>
@@ -315,7 +441,7 @@
                                     </tr>
 
                                     <tr class="clickable-row color-row">
-                                        <td>#3847G</td>
+                                        <td class="py-3">#3847G</td>
                                         <td>1404/02/12</td>
                                         <td>مریم احمدی نژاد</td>
                                         <td>10%</td>
@@ -338,7 +464,7 @@
                                         </td>
                                     </tr>
                                     <tr class="clickable-row">
-                                        <td>#4892B</td>
+                                        <td class="py-3">#4892B</td>
                                         <td>1404/03/05</td>
                                         <td>حسین شکوهی فر</td>
                                         <td>10%</td>
@@ -361,7 +487,7 @@
                                         </td>
                                     </tr>
                                     <tr class="clickable-row color-row">
-                                        <td>#5771M</td>
+                                        <td class="py-3">#5771M</td>
                                         <td>1404/01/24</td>
                                         <td>الهه عسگری کیا</td>
                                         <td>10%</td>
@@ -384,7 +510,7 @@
                                         </td>
                                     </tr>
                                     <tr class="clickable-row">
-                                        <td>#2980K</td>
+                                        <td class="py-3">#2980K</td>
                                         <td>1404/04/03</td>
                                         <td>کامران مرادی قنبری</td>
                                         <td>10%</td>
@@ -407,7 +533,7 @@
                                         </td>
                                     </tr>
                                     <tr class="clickable-row color-row">
-                                        <td>#6123Z</td>
+                                        <td class="py-3">#6123Z</td>
                                         <td>1404/02/18</td>
                                         <td>نگین رضایی مهر</td>
                                         <td>10%</td>
@@ -430,7 +556,7 @@
                                         </td>
                                     </tr>
                                     <tr class="clickable-row">
-                                        <td>#3902Y</td>
+                                        <td class="py-3">#3902Y</td>
                                         <td>1404/03/10</td>
                                         <td>فرهاد خسروی اصل</td>
                                         <td>10%</td>
@@ -453,7 +579,7 @@
                                         </td>
                                     </tr>
                                     <tr class="clickable-row color-row">
-                                        <td>#8439N</td>
+                                        <td class="py-3">#8439N</td>
                                         <td>1404/01/30</td>
                                         <td>شکیبا فلاح نیا</td>
                                         <td>10%</td>
@@ -484,7 +610,7 @@
                     
                 </div>
                 <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                    <ul class="pagination custom-pagination">
+                    <ul class="pagination custom-pagination px-0 mx-0">
                     <li class="page-item disabled">
                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                     </li>
@@ -502,113 +628,14 @@
             
         </div>
     </main>
+    <button id="backToTopBtn"  title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button>
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/scripts/admin-dashboard.js"></script>
     <script src="assets/vendor/js/taghvim/persian-date.min.js"></script>
     <script src="assets/vendor/js/taghvim/persian-datepicker.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            const rows = document.querySelectorAll(".clickable-row");
-
-            rows.forEach(row => {
-                row.addEventListener("click", function () {
-                    // حذف رنگ قبلی
-                    rows.forEach(r => r.classList.remove("selected-row"));
-                    // رنگ دادن به سطر کلیک‌شده
-                    this.classList.add("selected-row");
-                });
-            });
-            
-            
-        });
-            let currentActionCell = null;
-            const rows_2 = document.querySelectorAll("tbody tr");
-            let currentUserName = "";
-            const today = new persianDate().format('YYYY/MM/DD');
-            var approved_Modal=new bootstrap.Modal(document.getElementById("aproveModal"));
-            var denied_Modal=new bootstrap.Modal(document.getElementById("deniedModal"));
-            var sendNotes_Modal = new bootstrap.Modal(document.getElementById('sendNoteModal'));
-            function funcAproved(name,actionTd)
-            {
-                currentActionCell = actionTd;
-                currentUserName=name;
-                document.getElementById("user_reciver").textContent=currentUserName;
-                approved_Modal.show();
-            }
-            function return_money()
-            {
-                const row_2 = currentActionCell.closest('tr');
-                if (!row_2) return;
-                row_2.querySelector('.aproved').disabled=true;
-                row_2.querySelector('.aproved').classList.remove('btn-info');
-                row_2.querySelector('.aproved').classList.add('btn-secondary');
-                row_2.querySelector('.denied').disabled=true;
-                row_2.querySelector('.denied').classList.remove('btn-info');
-                row_2.querySelector('.denied').classList.add('btn-secondary');
-                const statusCell = row_2.querySelector('td:nth-child(7)'); // ستون وضعیت
-                const dateCell = row_2.querySelector('td:nth-child(8)');   // ستون تاریخ واریز
-
-                statusCell.textContent = "واریز شده";
-                dateCell.textContent = today;
-
-                statusCell.classList.remove("text-danger");
-                statusCell.classList.add("text-success", "fw-bold");
-                
-                approved_Modal.hide();
-            }
-            function funcDenied(name,actionTd)
-            {
-                currentActionCell = actionTd;
-                currentUserName=name;
-                document.getElementById("user_reciver_denied").textContent=currentUserName;
-                denied_Modal.show();
-            }
-            document.getElementById("deniedMoney").addEventListener("click",()=>{
-                const row_3 = currentActionCell.closest('tr');
-                if (!row_3) return;
-                row_3.querySelector('.aproved').disabled=true;
-                row_3.querySelector('.aproved').classList.remove('btn-info');
-                row_3.querySelector('.aproved').classList.add('btn-secondary');
-                row_3.querySelector('.denied').disabled=true;
-                row_3.querySelector('.denied').classList.remove('btn-info');
-                row_3.querySelector('.denied').classList.add('btn-secondary');
-                const statusCell = row_3.querySelector('td:nth-child(7)'); // ستون وضعیت
-                statusCell.textContent = "رد شده";
-                statusCell.classList.remove("text-success");
-                statusCell.classList.add("text-danger", "fw-bold");
-                denied_Modal.hide();
-            });
-            function funcAddNote(name)
-            {
-                currentUserName=name;
-                document.getElementById("replyToName").textContent=currentUserName;
-                sendNotes_Modal.show();
-            }
-            document.getElementById("btn-send-not").addEventListener("click",()=>{
-                const toast = new bootstrap.Toast(document.getElementById("successToast"));
-                toast.show();
-                sendNotes_Modal.hide();
-            });
-
-    </script>
-     
-
-    <!-- Toast -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
-        <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="toast-body fw-bold">
-            پیغام شما با موفقیت ارسال شد.
-            </div>
-            <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="بستن"></button>
-        </div>
-        </div>
-    </div>
+    <script src="assets/scripts/Finance-dashboard.js"></script>
 </body>
 </html>

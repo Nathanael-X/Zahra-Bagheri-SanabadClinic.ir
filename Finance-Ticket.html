@@ -22,21 +22,38 @@
         {
             background-color: #c2ecff;
         }
-        .upload-box 
+        .general-recive-tbl tr td:first-child
         {
-            padding: 1.8vh 19.5vh !important;
+            padding-top:1.2rem !important;
+            padding-bottom:1.2rem !important;
         }
-        @media (max-width:400px)
+        @media (max-width:991px)
         {
-            .clear-mb
+            #successToast_Ticket
             {
-                padding-left: 2px !important;
-                padding-right: 2px !important;
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <!--مودال حذف تیکت-->
+    <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-end">
+            <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="deleteConfirmModalLabel">حذف تیکت</h5>
+            </div>
+            <div class="modal-body">
+            آیا از حذف این تیکت اطمینان دارید؟
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteTicketBtn">بله، حذف شود</button>
+            </div>
+        </div>
+        </div>
+    </div>
     <!-- مودال موفقیت -->
     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -110,8 +127,8 @@
             </div>
         </div>
     </div>
-    <!-- Toast -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <!-- توست موفقیت در ارسال تیکت -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
         <div id="successToast_Ticket" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">
@@ -140,7 +157,7 @@
         </div>
         </div>
     </div>
-    <!-- Modal رد -->
+    <!-- مودال رد درخواست کاربر -->
     <div class="modal fade" id="rejectModal" tabindex="-1" aria-labelledby="rejectModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -218,12 +235,12 @@
         </div>
     </div>
     <!-- سایدبار -->
-    <aside id="sidebar" class="sidebar border-end p-3 pt-5">
+    <aside id="sidebar" class="sidebar border-end p-3 pt-5 d-flex flex-column h-100">
         <div class="brand d-flex flex-column align-items-center gap-2 justify-content-center">
             <img src="assets/Images/home/Sanabad_logo.png" alt="لوگو" class="logo-animated" />
             <strong class="brand-name">کلینیک سناباد طوس</strong>
         </div>
-        <ul class="nav flex-column px-3 fs-5 h-75">
+        <ul class="nav flex-column px-3 fs-5 mb-2">
             <li class="nav-item mt-3 mb-2">
                 <a href="Finance-dashboard.html" class="nav-link">
                     <i class="bi bi-house ms-3"></i>داشبورد
@@ -235,12 +252,12 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="Finance_Note.html" class="nav-link ">
+                <a href="Finance_Note.html" class="nav-link">
                     <i class="bi bi-journal-text ms-3"></i>گزارش روزانه 
                 </a>
             </li>
         </ul>
-        <div class="px-3 mt-4 pt-1">
+        <div class="px-3 mt-auto">
             <div class="d-flex align-items-center justify-content-between">
                 <a class="h5 mb-0 blue-light" href="Finance_profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="تنظیمات">
                     <i class="bi bi-gear-fill"></i>
@@ -260,7 +277,7 @@
     <!-- هدر بالا -->
     <header class="glass-header position-fixed top-0 w-100 py-2 px-3 d-flex justify-content-end align-items-center shadow-sm">
         <div class="d-flex align-items-center gap-2">
-            <button id="sidebarToggle" class="hamburger-btn d-md-none me-2" aria-label="باز کردن منو">
+            <button id="sidebarToggle" class="hamburger-btn d-lg-none me-2 text-white" aria-label="باز کردن منو">
                 <span class="bar top-bar"></span>
                 <span class="bar middle-bar"></span>
                 <span class="bar bottom-bar"></span>
@@ -334,8 +351,6 @@
             </li>
             </ul>
         </div>
-    
-        
     </header>
     <!--محتوای اصلی-->
     <main class="main-content pt-5 px-3" style="min-height: 100vh;">
@@ -400,6 +415,11 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
+                                        <!-- وقتی هیچ تیکتی نبود -->
+                                        <div id="no-ask-forReturn" class="col-12 text-center my-5 d-none">
+                                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                            <p class="text-muted pt-3">شما هیچ تیکتی دریافت نکرده اید.</p>
+                                        </div>
                                         <div class="table-responsive border-0">
                                             <table class="table text-end align-middle p-4 mb-0 table-hover">
                                                 <thead>
@@ -428,9 +448,9 @@
                                                         
                                                         <td class="unread_ticket text-center">خوانده نشده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0"  onclick="openReplyModal('علیرضا محمدی','appDetail_alireza', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0"  onclick="openRejectModal('علیرضا محمدی', 'appDetail_alireza', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_alireza" onclick="markAsRead('علیرضا محمدی', 'appDetail_alireza', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0"  onclick="openReplyModal('علیرضا محمدی','appDetail_alireza', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0"  onclick="openRejectModal('علیرضا محمدی', 'appDetail_alireza', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_alireza" onclick="markAsRead('علیرضا محمدی', 'appDetail_alireza', this.parentElement)"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="color-row clickable-row">
@@ -449,9 +469,9 @@
                                                         
                                                         <td class="unread_ticket text-center">خوانده نشده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal('مینا رضایی', 'appDetail_mina', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" onclick="openRejectModal('مینا رضایی', 'appDetail_mina', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_mina"  onclick="markAsRead('مینا رضایی', 'appDetail_mina', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal('مینا رضایی', 'appDetail_mina', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" onclick="openRejectModal('مینا رضایی', 'appDetail_mina', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_mina"  onclick="markAsRead('مینا رضایی', 'appDetail_mina', this.parentElement)"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="clickable-row">
@@ -470,9 +490,9 @@
                                                         
                                                         <td class="unread_ticket text-center">خوانده نشده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal('آیدا رئیسی', 'appDetail_ayda', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" onclick="openRejectModal('آیدا رئیسی', 'appDetail_ayda', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_ayda"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal('آیدا رئیسی', 'appDetail_ayda', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" onclick="openRejectModal('آیدا رئیسی', 'appDetail_ayda', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_ayda"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="color-row clickable-row">
@@ -491,7 +511,7 @@
                                                         
                                                         <td class="blocked_ticket text-center">رد شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="clickable-row">
@@ -510,7 +530,7 @@
                                                         
                                                         <td class="read_ticket text-center">پاسخ داده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_javad"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_javad"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="color-row clickable-row">
@@ -529,7 +549,7 @@
                                                         
                                                         <td class="read_ticket text-center">پاسخ داده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="clickable-row">
@@ -547,9 +567,9 @@
                                                         <td>8 ساعت پیش</td>
                                                        
                                                         <td class="blocked_ticket text-center">رد شده</td>
-                                                        <i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                        <i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_farid"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_farid"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="color-row clickable-row">
@@ -568,10 +588,10 @@
                                                         
                                                         <td class="unansweard_ticket text-center">خوانده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal('مینا رضایی', 'appDetail_mina', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" onclick="openRejectModal('مینا رضایی', 'appDetail_mina', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_mina"  onclick="markAsRead('مینا رضایی', 'appDetail_mina', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
-                                                            <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal('مینا رضایی', 'appDetail_mina', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" onclick="openRejectModal('مینا رضایی', 'appDetail_mina', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_mina"  onclick="markAsRead('مینا رضایی', 'appDetail_mina', this.parentElement)"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-warning me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -580,7 +600,7 @@
                                     </div>
                                 </div>
                                 <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                                    <ul class="pagination custom-pagination">
+                                    <ul class="pagination custom-pagination px-0 mx-0">
                                     <li class="page-item disabled">
                                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                     </li>
@@ -620,6 +640,11 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
+                                        <!-- وقتی هیچ تیکتی نبود -->
+                                        <div id="no-ask-forReturn" class="col-12 text-center my-5 d-none">
+                                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                            <p class="text-muted pt-3">شما هیچ تیکتی دریافت نکرده اید.</p>
+                                        </div>
                                         <div class="table-responsive border-0">
                                             <table class="table text-end align-middle p-4 mb-0 table-hover">
                                                 <thead>
@@ -634,7 +659,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr class="clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 1
                                                             </div>
@@ -646,13 +671,13 @@
                                                         <td>مدیریت</td>
                                                         <td class="unread_ticket text-center">خوانده نشده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت" onclick="openReplyModal_modir('نام مدیریت','appDetail_managerReport', this.parentElement)"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"  onclick="openRejectModal_modir('نام مدیریت','appDetail_managerReport', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_managerReport" onclick="markAsRead_modir('نام مدیریت','appDetail_managerReport', this.parentElement)"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت" onclick="openReplyModal_modir('نام مدیریت','appDetail_managerReport', this.parentElement)"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"  onclick="openRejectModal_modir('نام مدیریت','appDetail_managerReport', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_managerReport" onclick="markAsRead_modir('نام مدیریت','appDetail_managerReport', this.parentElement)"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="color-row clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 2
                                                             </div>
@@ -664,14 +689,14 @@
                                                         <td>فیزیوتراپی</td>
                                                         <td class="unansweard_ticket text-center">خوانده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام مدیریت', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام مدیریت', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
-                                                            <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام مدیریت', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام مدیریت', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-warning me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 3
                                                             </div>
@@ -683,14 +708,14 @@
                                                         <td>فیزیوتراپی</td>
                                                         <td class="unansweard_ticket text-center">خوانده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام مدیریت', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام مدیریت', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
-                                                            <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام مدیریت', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام مدیریت', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-warning me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="color-row clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 4
                                                             </div>
@@ -702,13 +727,13 @@
                                                         <td>آب درمانی</td>
                                                         <td class="unread_ticket text-center">خوانده نشده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت" onclick="openReplyModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"  onclick="openRejectModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت" onclick="openReplyModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست"  onclick="openRejectModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 5
                                                             </div>
@@ -720,11 +745,11 @@
                                                         <td>مدیریت</td>
                                                         <td class="read_ticket text-center">پاسخ داده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr> 
                                                     <tr class="color-row clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 6
                                                             </div>
@@ -736,14 +761,14 @@
                                                         <td>فیزیوتراپی</td>
                                                         <td class="unansweard_ticket text-center">خوانده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
-                                                            <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام پرسنل فیزیوتراپی', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-warning me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 7
                                                             </div>
@@ -755,14 +780,14 @@
                                                         <td>مدیریت</td>
                                                         <td class="unansweard_ticket text-center">خوانده شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام مدیریت', this.parentElement)" ata-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
-                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام مدیریت', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
-                                                            <a href="#" class="btn btn-warning me-1 mb-0" ata-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
+                                                            <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0" onclick="openReplyModal_modir('نام مدیریت', this.parentElement)" data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت"><i class="fa-solid fa-reply"></i></a>
+                                                            <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0" data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست" onclick="openRejectModal_modir('نام مدیریت', this.parentElement)"><i class="fa-solid fa-ban"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-warning me-1 mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده"  onclick="markAsUnread(this)"><i class="fa-solid fa-bookmark text-white"></i></a>
                                                         </td>
                                                     </tr>
                                                     <tr class="color-row clickable-row">
-                                                        <td>
+                                                        <td class="py-4">
                                                             <div class="d-flex align-items-center justify-content-start">
                                                                 8
                                                             </div>
@@ -774,7 +799,7 @@
                                                         <td>مدیریت</td>
                                                         <td class="blocked_ticket text-center">رد شده</td>
                                                         <td class="text-end actions_btn">
-                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                            <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                         </td>
                                                     </tr>                                       
                                                 </tbody>
@@ -783,7 +808,7 @@
                                     </div>
                                 </div>
                                 <nav aria-label="صفحه بندی تیکت دریافت داخلی" class="d-flex justify-content-center mt-4">
-                                    <ul class="pagination custom-pagination">
+                                    <ul class="pagination custom-pagination px-0 mx-0">
                                       <li class="page-item disabled">
                                         <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                       </li>
@@ -803,22 +828,30 @@
                         <div class="bg-light" style="border-radius: 20px;">
                             <div class="card-body">
                                 <form class="row g-4">
-                                    <div class="col-lg-6">
+                                    <div class="col-12 col-xl-6">
                                         <label class="form-label fw-bold">شناسه کاربری: <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" placeholder="شناسه کاربری را وارد نمایید">
-                                        <div class="form-text mt-2 me-2">مثال: username_userfamily22</div>
+                                        <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
+                                            <option value="">شناسه کاربری را انتخاب نمایید</option>
+                                            <option>@sanabad_admin_abdarmani</option>
+                                            <option>@sanabad_admin_fizioTrapy</option>
+                                            <option>@sanabad_admin_drMajdMohseni</option>
+                                            <option>@sanabad_admin_drRezaMohseni</option>
+                                            <option>@sanabad_admin_master</option>
+                                            <option>@sanabad_admin_finance</option>
+                                            <option>@sanabad_admin_general</option>
+                                        </select>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-12 col-xl-6">
                                         <label class="form-label fw-bold">موضوع تیکت <span class="text-danger">*</span></label>
                                         <input type="text" class="form-control" placeholder="موضوع را وارد نمایید">
                                         <div class="form-text mt-2 me-2">مثال: موافقت با جا به جایی نوبت</div>
                                     </div>
     
-                                    <div class="col-lg-6">
+                                    <div class="col-12 col-xl-6">
                                         <label class="form-label fw-bold">متن تیکت <span class="text-danger">*</span></label>
-                                        <textarea class="form-control" rows="5" placeholder="متن تیکت را اینجا بنویسید..."></textarea>
+                                        <textarea class="form-control" rows="6" placeholder="متن تیکت را اینجا بنویسید..."></textarea>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-12 col-xl-6">
                                         <label for="fileUpload">
                                             <div class="upload-box" id="uploadArea">
                                               <div class="upload-icon"><i class="bi bi-paperclip"></i></div>
@@ -829,45 +862,29 @@
                                         
                                         <p id="fileName" style="margin-top: 15px; color: #333;"></p>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-12 col-xl-6">
                                         <label class="form-label fw-bold">نام پزشک</label>
                                         <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
                                             <option value="">پزشک</option>
-                                            <option>----</option>
-                                            <option>اکرم رحیمی</option>
-                                            <option>محمد پورعلی</option>
-                                            <option>آسیه پنجه شاهین</option>
-                                            <option>حسین فزونی</option>
-                                            <option>فیروزه خلیلی</option>
-                                            <option>فاطمه فرخ آبادی</option>
-                                            <option>فرحناز بخشی</option>
-                                            <option>مهرک دباغی</option>
+                                            <option>پرسنل آب درمانی</option>
+                                            <option>پرسنل فیزیوتراپی</option>
                                             <option>رضا محسنی بیرجندی</option>
                                             <option>مجد محسنی بیرجندی</option>
                                         </select>
                                         <div style="line-height: 2;" class="form-text">اگر تیکت شما مرتبط با پزشک خاصی می باشد لطفا نام پزشک را انتخاب نمایید.</div>
                                     </div>
     
-                                    <div class="col-lg-6">
+                                    <div class="col-12 col-xl-6">
                                         <label class="form-label fw-bold">بخش خدماتی</label>
                                         <select class="form-select js-choice z-index-9 border-0 bg-light" aria-label=".form-select-sm">
                                             <option value="">بخش</option>
-                                            <option>تیکت کاربری</option>
-                                            <option>پذیرش</option>
-                                            <option>مدیریت</option>
-                                            <option>حسابداری</option>
-                                            <option>دکتر عمومی</option>
-                                            <option>مطب پرستاری</option>
-                                            <option>دندان پزشکی</option>
                                             <option>فیزیوتراپی</option>
                                             <option>آب درمانی</option>
                                             <option>جراح مغز و اعصاب</option>
-                                            <option>روان شناسی</option>
                                             <option>اعصاب و روان</option>
-                                            <option>آزمایشگاه</option>
-                                            <option>متخصص تغذیه</option>
-                                            <option>زنان و زایمان</option>
-                                            <option>متخصص پوست و مو</option>
+                                            <option>پذیرش</option>
+                                            <option>مدیریت</option>
+                                            <option>حسابداری</option>
                                         </select>
                                         <div class="form-text" style="line-height: 2;">اگر تیکت شما مرتبط با بخش خاصی از درمانگاه می باشد لطفا آن بخش را انتخاب نمایید.</div>
                                     </div>
@@ -919,8 +936,13 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
+                                            <!-- وقتی هیچ تیکتی نبود -->
+                                        <div id="no-ask-forReturn" class="col-12 text-center my-5 d-none">
+                                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                            <p class="text-muted pt-3">شما هیچ تیکتی ارسال نکرده اید.</p>
+                                        </div>
                                             <div class="table-responsive border-0">
-                                                <table class="table text-end align-middle p-4 mb-0 table-hover">
+                                                <table class="table general-recive-tbl text-end align-middle p-4 mb-0 table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col" style="border-top-right-radius: 20px;">ردیف</th>
@@ -946,7 +968,7 @@
                                                             <td>50 دقیقه پیش</td>
                                                             
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_javad"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_javad"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -968,7 +990,7 @@
                                                             <td>2 ساعت پیش</td>
                                                             
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_javad"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_javad"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1101,7 +1123,7 @@
                                         </div>
                                     </div>
                                     <nav aria-label="صفحه بندی تیکت کاربران" class="d-flex justify-content-center mt-4">
-                                        <ul class="pagination custom-pagination">
+                                        <ul class="pagination custom-pagination px-0 mx-0">
                                           <li class="page-item disabled">
                                             <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                           </li>
@@ -1140,8 +1162,13 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
+                                            <!-- وقتی هیچ تیکتی نبود -->
+                                            <div id="no-ask-forReturn" class="col-12 text-center my-5 d-none">
+                                                <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                                                <p class="text-muted pt-3">شما هیچ تیکتی ارسال نکرده اید.</p>
+                                            </div>
                                             <div class="table-responsive border-0">
-                                                <table class="table text-end align-middle p-4 mb-0 table-hover">
+                                                <table class="table general-recive-tbl text-end align-middle p-4 mb-0 table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th scope="col" style="border-top-right-radius: 20px;">ردیف</th>
@@ -1166,7 +1193,7 @@
                                                             <td>مدیریت</td>
                                                             <td class="read_ticket fw-bold">خوانده شده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_fizio"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_fizio"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1185,7 +1212,7 @@
                                                             <td>فیزیوتراپی</td>
                                                             <td class="unansweard_ticket fw-bold">خوانده نشده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1204,7 +1231,7 @@
                                                             <td>فیزیوتراپی</td>
                                                             <td class="read_ticket fw-bold">خوانده شده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_doctor"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_doctor"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1223,7 +1250,7 @@
                                                             <td>آب درمانی</td>
                                                             <td class="unansweard_ticket fw-bold">خوانده نشده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_nutrition"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_nutrition"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1242,7 +1269,7 @@
                                                             <td>مدیریت</td>
                                                             <td class="read_ticket fw-bold">خوانده شده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_social"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_social"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1261,7 +1288,7 @@
                                                             <td>فیزیوتراپی</td>
                                                             <td class="unansweard_ticket fw-bold">خوانده نشده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_it"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_it"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1280,7 +1307,7 @@
                                                             <td>مدیریت</td>
                                                             <td class="read_ticket fw-bold">خوانده شده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_nurse"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_nurse"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1299,7 +1326,7 @@
                                                             <td>مدیریت</td>
                                                             <td class="unansweard_ticket fw-bold">خوانده نشده</td>
                                                             <td class="text-end">
-                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_archive"><i class="fa-solid fa-eye text-white" ata-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
+                                                                <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail_archive"><i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
                                                                 <a href="#" class="btn btn-danger btn-round me-1 mb-1 mb-md-0 btn-delete-ticket" data-bs-toggle="tooltip" data-bs-placement="top" title="حذف">
                                                                     <i class="bi bi-trash"></i>
                                                                 </a>
@@ -1312,7 +1339,7 @@
                                         </div>
                                     </div>
                                     <nav aria-label="صفحه بندی تیکت ارسال شده داخلی" class="d-flex justify-content-center mt-4">
-                                        <ul class="pagination custom-pagination">
+                                        <ul class="pagination custom-pagination px-0 mx-0">
                                           <li class="page-item disabled">
                                             <a class="page-link" href="#" aria-label="قبلی" tabindex="-1">&laquo;</a>
                                           </li>
@@ -1331,158 +1358,13 @@
             </div>
         </div>
     </main>
+    <button id="backToTopBtn"  title="بازگشت به بالا">
+        <i class="bi bi-chevron-up"></i>
+    </button>
     <!--پایان محتوای اصلی-->
     <!--bootstrap javascript cdn-->
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/scripts/admin-dashboard.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-              new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            const rows = document.querySelectorAll(".clickable-row");
-
-            rows.forEach(row => {
-                row.addEventListener("click", function () {
-                    // حذف رنگ قبلی
-                    rows.forEach(r => r.classList.remove("selected-row"));
-                    // رنگ دادن به سطر کلیک‌شده
-                    this.classList.add("selected-row");
-                });
-            });
-        });
-        let currentActionCell = null; // نگهدارنده td فعلی
-            let currentUserName = "";
-            function markAsRead(name, modalId, actionTd) {
-                currentActionCell = actionTd;
-                currentUserName = name;
-                if (currentActionCell) {
-                  const row = currentActionCell.closest('tr');
-                  if (!row) return;
-              
-                  // تغییر وضعیت ستون چهارم به "خوانده شده"
-                  const statusCell = row.querySelector('td:nth-child(4)');
-                  if (statusCell) {
-                    statusCell.className = 'unansweard_ticket text-center';
-                    statusCell.textContent = 'خوانده شده';
-                  }
-              
-                  // بازنویسی دکمه‌ها با modalId و name داینامیک
-                  const actionsCell = row.querySelector('.actions_btn');
-                  if (actionsCell) {
-                    actionsCell.innerHTML = `
-                      <a href="#" class="btn btn-success me-1 mb-1 mb-lg-0"
-                         onclick="openReplyModal('${name}','${modalId}', this.parentElement)"
-                         data-bs-toggle="tooltip" data-bs-placement="top" title="پاسخ به تیکت">
-                         <i class="fa-solid fa-reply"></i></a>
-              
-                      <a href="#" class="btn btn-danger me-1 mb-1 mb-lg-0"
-                         onclick="openRejectModal('${name}','${modalId}', this.parentElement)"
-                         data-bs-toggle="tooltip" data-bs-placement="top" title="رد کردن درخواست">
-                         <i class="fa-solid fa-ban"></i></a>
-              
-                      <a href="#" class="btn btn-info me-1 mb-0"
-                         onclick="markAsRead('${name}', '${modalId}', this.parentElement)"
-                         data-bs-toggle="modal" data-bs-target="#${modalId}">
-                         <i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i></a>
-              
-                      <a href="#" class="btn btn-warning me-1 mb-0"
-                         onclick="markAsUnread(this)"
-                         data-bs-toggle="tooltip" data-bs-placement="top" title="علامت گذاری به عنوان خوانده نشده">
-                         <i class="fa-solid fa-bookmark text-white"></i></a>
-                    `;
-                  }
-                }
-              }
-              function markAsUnread(button) {
-                const row = button.closest('tr');
-                const statusCell = row.querySelector('td[class*="ticket"]');
-            
-                if (statusCell) {
-                  // حذف کلاس خوانده شده و افزودن کلاس خوانده نشده
-                  statusCell.classList.remove('unansweard_ticket');
-                  statusCell.classList.add('unread_ticket');
-                  // تغییر متن وضعیت
-                  statusCell.textContent = 'خوانده نشده';
-                  button.style.display="none";
-                }
-              }
-              function openRejectModal(name, modalId, actionTd) {
-                currentRejectCell = actionTd;
-                currentRejectUser = name;
-                currentRejectModalId = modalId;
-                document.getElementById("rejectConfirmText").textContent =
-                  `آیا می‌خواهید درخواست ${name} را رد کنید؟`;
-                new bootstrap.Modal(document.getElementById("rejectModal")).show();
-              }
-              function confirmReject() {
-                if (currentRejectCell) {
-                  const row = currentRejectCell.closest('tr');
-                  if (!row) return;
-              
-                  // تغییر وضعیت ستون ششم
-                  const statusCell = row.querySelector('td:nth-child(4)');
-                  if (statusCell) {
-                    statusCell.className = 'blocked_ticket text-center';
-                    statusCell.textContent = 'رد شده';
-                  }
-              
-                  // ساخت دکمه فقط با استفاده از آیدی مودال دقیق
-                  const actionsCell = row.querySelector('.actions_btn');
-                  if (actionsCell) {
-                    actionsCell.innerHTML = `
-                      <a href="#" class="btn btn-info me-1 mb-0"
-                         data-bs-toggle="modal" data-bs-target="#${currentRejectModalId}">
-                         <i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i>
-                      </a>
-                    `;
-                  }
-              
-                  // بستن مودال
-                  bootstrap.Modal.getInstance(document.getElementById("rejectModal")).hide();
-                }
-              }
-              function openReplyModal(name,modalId_replay, actionTd) {
-                currentActionCell = actionTd;
-                currentUserName = name;
-                currentUsermodal=modalId_replay;
-                document.getElementById("replyToName").textContent = name;
-                document.getElementById("replyText").value = "";
-                new bootstrap.Modal(document.getElementById("replyModal")).show();
-              }
-              function submitReply() {
-                // نمایش Toast
-                const toast = new bootstrap.Toast(document.getElementById("successToast_Ticket"));
-                toast.show();
-            
-                // بستن مودال
-                bootstrap.Modal.getInstance(document.getElementById("replyModal")).hide();
-            
-                // جایگزینی دکمه‌ها
-                if (currentActionCell) {
-                   // دسترسی به <tr> والد
-                  const row = currentActionCell.closest('tr');
-                  if (!row) return;
-    
-                  // تغییر وضعیت ستون چهارم به "پاسخ داده شده"
-                  const statusCell = row.querySelector('td:nth-child(4)');
-                  if (statusCell) {
-                    statusCell.className = 'read_ticket text-center';
-                    statusCell.textContent = 'پاسخ داده شده';
-                  }
-    
-                  // پاک‌سازی دکمه‌های قبلی
-                  const actionsCell = row.querySelector('.actions_btn');
-                  if (actionsCell) {
-                    actionsCell.innerHTML = `
-                      <a href="#" class="btn btn-info me-1 mb-0" data-bs-toggle="modal" data-bs-target="#${currentUsermodal}">
-                        <i class="fa-solid fa-eye text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="مشاهده کردن تیکت"></i>
-                      </a>
-                    `;
-                  }
-                }
-              } 
-    </script>
+    <script src="assets/scripts/Finance-ticket.js"></script>
 </body>
 </html>

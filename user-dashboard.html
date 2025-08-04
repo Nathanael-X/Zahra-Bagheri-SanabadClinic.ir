@@ -203,7 +203,7 @@
                 </div>
                 <!--پایان ساید بار دسکتاپ-->
                 <!--آغاز محتوای اصلی صفحه-->
-                <div class="col-12 col-lg-9">
+                <div class="col-12 col-lg-9 d-flex flex-lg-column flex-column-reverse">
                     <div class="row mb-3 g-3">
                         <div class="col-lg-3">
                             <div class="counter-card rounded d-flex justify-content-center align-items-center gap-4 p-2">
@@ -259,6 +259,11 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- وقتی هیچ نوبتی نبود -->
+                        <div id="no-notifications" class="col-12 text-center my-5 d-none">
+                            <img src="assets/Images/sample-profile/empty box.png" alt="empty box" class="m-3" style="width: 250px;">
+                            <p class="text-muted">شما هنوز هیچ نوبت رزرو شده ای ندارید.</p>
+                        </div>
                         <div class="col-12">
                             <div class="bg-light border rounded">
                                 <div class="card-header border-bottom">
@@ -266,7 +271,7 @@
                                 </div>
                                 <div class="card-body pb-0">
                                     <div class="table-responsive border-0">
-                                        <table class="table table-light align-middle p-4 mb-0 table-hover">
+                                        <table class="table align-middle p-4 mb-0 table-hover">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="py-3" style="border-top-right-radius: 15px;">کد رهگیری</th>
@@ -281,8 +286,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>85627639</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">85627639</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
                                                     </td>
@@ -306,8 +311,8 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>85627638</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">85627638</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
                                                     </td>
@@ -328,8 +333,8 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>85627637</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">85627637</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">نجمه مومنی پورکرباسدهی</h6>
                                                     </td>
@@ -348,8 +353,8 @@
                                                         ----
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>85627636</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">85627636</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">نجمه مومنی پورکرباسدهی</h6>
                                                     </td>
@@ -368,8 +373,8 @@
                                                         ----
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>85627635</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">85627635</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
                                                     </td>
@@ -388,8 +393,8 @@
                                                         ----
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>85627644</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">85627644</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
                                                     </td>
@@ -408,8 +413,8 @@
                                                         ----
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>85627641</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">85627641</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
                                                     </td>
@@ -428,8 +433,8 @@
                                                         ----
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>85627642</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">85627642</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">نجمه مومنی پورکرباسدهی</h6>
                                                     </td>
@@ -448,8 +453,8 @@
                                                         ----
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>85627643</td>
+                                                <tr class="clickable-row">
+                                                    <td class="py-3">85627643</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">زهرا باقری حسن کیاده</h6>
                                                     </td>
@@ -468,8 +473,8 @@
                                                         ----
                                                     </td>
                                                 </tr>
-                                                <tr class="color-row">
-                                                    <td>85627640</td>
+                                                <tr class="color-row clickable-row">
+                                                    <td class="py-3">85627640</td>
                                                     <td>
                                                         <h6 class="table-responsive-title mb-0 fw-normal">عبدالمناف باقری حسن کیاده</h6>
                                                     </td>
@@ -517,6 +522,9 @@
             </div>
             
         </section>
+        <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+            <i class="bi bi-chevron-up"></i>
+        </button> 
         <!--پایان محتوای اصلی-->
     </main>
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>

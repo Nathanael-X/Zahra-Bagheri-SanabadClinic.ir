@@ -4,8 +4,8 @@
         <title>حریم خصوصی و امنیت | کلینیک سناباد طوس</title>
         <meta name="publisher" content="Zahra Bagheri Hassankiade" />
         <meta name="title" content="sanabad toos hospital" />
-        <meta name="description" content="قوانین حریم خصوصی و امنیت کلینیک شبانه روزی سناباد طوس مشهد" /><!--description for home page to increase seo-->
-        <meta name="keywords" content="پیشگیری از بیماری‌ها, درمان‌های نوین, سلامت عمومی, مشاوره پزشکی, تخصص‌های پزشکی, تجهیزات پزشکی, بیماری‌های مزمن, تغذیه و رژیم غذایی, سلامت روان, واکسیناسیون, مراقبت‌های بهداشتی, تحقیقات بالینی, آموزش بهداشت, فناوری‌های پزشکی, سلامت زنان و زایمان, سلامت کودکان, بیماری‌های عفونی, سلامت قلب و عروق, سلامت پوست و مو, سلامت دهان و دندان">
+        <meta name="description" content="قوانین و مقررات کلینیک شبانه‌روزی سناباد طوس را مطالعه کنید. آشنایی با حقوق مراجعین، شیوه‌های نوبت‌دهی، حفظ حریم خصوصی و شرایط استفاده از خدمات پزشکی و مشاوره‌ای کلینیک.">
+        <meta name="keywords" content="قوانین کلینیک, مقررات درمانگاه, سناباد طوس, حقوق مراجعین, شرایط نوبت‌دهی, خدمات پزشکی, مشاوره روانشناسی, حفظ حریم خصوصی, کلینیک شبانه‌روزی, تعرفه درمانی">
         <meta http-equiv="content-language" content="fa" />
         <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
         <meta charset="utf-8" />
@@ -118,7 +118,7 @@
                             <p class="text-muted mb-1">
                                 کد تأیید به شماره <span class="fw-bold text-info" id="user-phone-login">09123456789</span> ارسال شد.
                             </p>
-                            <a href="#" class="small blue-light">
+                            <a href="#" class="small blue-light" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup" data-bs-dismiss="modal">
                                 <i class="fas fa-edit ps-2"></i>
                                 ویرایش شماره</a>
                             </div>
@@ -331,7 +331,7 @@
                         
                             <a href="#" class="link-header text-decoration-none fw-bold" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup">دریافت نوبت</a>
                             <a href="about-us.html" class="link-header text-decoration-none fw-bold">درباره ما</a>
-                            <a href="index.html" class="link-header text-decoration-none fw-bold">تماس با ما</a>
+                            <a href="index.html#section_7" class="link-header text-decoration-none fw-bold">تماس با ما</a>
                         
                             <div class="dropdown">
                             <a class="dropdown-toggle link-header text-decoration-none fw-bold" href="#" data-bs-toggle="dropdown">
@@ -375,7 +375,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end text-end">
                                 <li><a class="dropdown-item" href="about-us.html">درباره ما</a></li>
-                                <li><a class="dropdown-item" href="index.html">تماس با ما</a></li>
+                                <li><a class="dropdown-item" href="index.html#section_7">تماس با ما</a></li>
                                 <li><a class="dropdown-item" href="Blog.html">مقالات آموزشی</a></li>
                                 <li><a class="dropdown-item" href="Acibadem.html">Acibadem</a></li>
                             </ul>
@@ -428,7 +428,7 @@
                     </div>
                 </div>
                 <a href="about-us.html" class="blue-dark text-decoration-none"><i class="fas fa-circle-info ms-2 small"></i>درباره ما</a>
-                <a id="tamas-ba-ma" href="index.html" class="blue-dark text-decoration-none"><i class="fas fa-phone-volume ms-2 small"></i>تماس با ما</a>
+                <a id="tamas-ba-ma" href="index.html#section_7" class="blue-dark text-decoration-none"><i class="fas fa-phone-volume ms-2 small"></i>تماس با ما</a>
                 <a id="login-header-link" href="#" class="blue-dark text-decoration-none" data-tippy-content="ورود به حساب کاربری" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup"><i class="fa-solid fa-user ms-2 small"></i>ورود به حساب کاربری</a>
                 <a href="#" class="blue-dark text-decoration-none" style="display: none;"><i class="fa-solid fa-user ms-2 small"></i>داشبورد من</a>
                 <!--آکاردئون مطالب بیشتر-->
@@ -747,7 +747,7 @@
                         <br>
                         <a href="about-us.html" class="text-light fw-bold">درباره ما</a>
                         <br>
-                        <a href="index.html" class="text-light fw-bold">تماس با ما</a>
+                        <a href="index.html#section_7" class="text-light fw-bold">تماس با ما</a>
                         <br>
                         <a href="Blog.html" class="text-light fw-bold">مقالات آموزشی</a>
                         <br>
@@ -764,6 +764,9 @@
                 </div>
             </footer>  
             <!--پایان فوتر-->
+            <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+              <i class="bi bi-chevron-up"></i>
+            </button> 
         </main>
         <!--scripts-->
         <!--bootstrap javascript cdn-->
@@ -847,24 +850,7 @@
                   userBtn.style.pointerEvents = 'auto';
                 }
               });
-               //بیمار اتباع خارجی است
-                function toggleIDNumberField(checkbox) 
-                {
-                    const input = document.getElementById('nationalCode');
-                    const input_text_1 = document.getElementsByClassName('nationalCode_lbl').item(0);
-                    const input_text_2 = document.getElementsByClassName('nationalCode_lbl').item(1);
-
-                    if (checkbox.checked) {
-                        input.disabled = true;
-                        input_text_1.classList.add('text-muted');
-                        input_text_2.classList.add('text-muted');
-                    } else {
-                        input.disabled = false;
-                        input_text_1.classList.remove('text-muted');
-                        input_text_2.classList.remove('text-muted');
-
-                    }
-                }
+              
                  //انیمیشن بنر
         particlesJS("particles-js-banner", {
             "particles": {

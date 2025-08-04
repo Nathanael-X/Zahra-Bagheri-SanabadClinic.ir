@@ -272,11 +272,15 @@
             </div>
             
         </section>
+        <button id="backToTopBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="بازگشت به بالا">
+          <i class="bi bi-chevron-up"></i>
+      </button> 
         <!--پایان محتوای اصلی-->
     </main>
     <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/js/particles.min.js"></script>
     <script src="assets/scripts/user-dashboard.js"></script>
+    <script src="assets/scripts/user-delete-account.js"></script>
     <script>
         //انیمیشن بنر
         particlesJS("particles-js-banner", {
@@ -314,12 +318,6 @@
               }
             },
             "retina_detect": true
-          });
-          document.querySelectorAll(".summary-btn").forEach((btn) => {
-            btn.addEventListener("click", function () {
-              const content = this.nextElementSibling;
-              content.classList.toggle("open");
-            });
           });
     </script>
 </body>

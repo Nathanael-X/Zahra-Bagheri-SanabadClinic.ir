@@ -1,13 +1,4 @@
-//for preloader
-window.addEventListener('load', function() {
-  const preloader = document.getElementById('preloader');
-  setTimeout(() => {
-  preloader.style.opacity = '0';
-  setTimeout(() => {
-      preloader.style.display = 'none';
-  }, 500);
-  }, 1000); // 1 ثانیه تأخیر برای نمایش انیمیشن
-});
+
 //ساید بار
 const sidebarToggle = document.getElementById("sidebarToggle");
 const sidebar = document.getElementById('sidebar');
@@ -22,6 +13,12 @@ overlay.addEventListener('click', () => {
 });
  //اسکریپت کارت های اماری
  document.addEventListener("DOMContentLoaded", () => {
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+      new bootstrap.Tooltip(tooltipTriggerEl, {
+          container: '.btm-bar', // مهم برای رفع به‌هم‌ریختگی
+      });
+  });
     const ctx = document.getElementById('ChartTrafficViews').getContext('2d');
 
     new Chart(ctx, {
@@ -98,8 +95,156 @@ overlay.addEventListener('click', () => {
   
       update();
     });
+    //پاسخ به مودال علیرضا محمدی
+    const replyToggleBtn = document.getElementById("replyToggleBtn");
+    const replyBox = document.getElementById("adminReplyBox");
+    const clearReplyBtn = document.getElementById("clearReplyBtn");
+    const replyTextarea = document.getElementById("replyTextarea");
 
-    
+    replyToggleBtn.addEventListener("click", function () {
+        replyBox.classList.toggle("d-none");
+        replyTextarea.focus();
+    });
+
+    clearReplyBtn.addEventListener("click", function () {
+        replyTextarea.value = "";
+    });
+
+    const rows = document.querySelectorAll(".clickable-row");
+
+            rows.forEach(row => {
+                row.addEventListener("click", function () {
+                    // حذف رنگ قبلی
+                    rows.forEach(r => r.classList.remove("selected-row"));
+                    // رنگ دادن به سطر کلیک‌شده
+                    this.classList.add("selected-row");
+                });
+            });
+            
   });
+  // نمایش دکمه هنگام اسکرول
+  window.onscroll = function () {
+    const btn = document.getElementById("backToTopBtn");
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.opacity = "1";
+    btn.style.visibility = "visible";
+    } else {
+    btn.style.opacity = "0";
+    btn.style.visibility = "hidden";
+    }
+    };
+    
+    // هدایت به بالا با انیمیشن نرم
+    document.getElementById("backToTopBtn").addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+     
+  let selectedRow = null;
+  // ذخیره کردن ردیف فعلی هنگام کلیک روی آیکون ویرایش
+  document.querySelectorAll('[data-bs-target="#Edit_schegualModal"]').forEach(btn => {
+      btn.addEventListener('click', function () {
+      selectedRow = this.closest('tr'); // ذخیره ردیف انتخاب‌شده
+
+      const trackingCode = selectedRow.children[0].textContent.trim();
+      const patientName = selectedRow.children[1].textContent.trim();
+      const dateTime = selectedRow.children[3].textContent.trim().split(' - ');
+
+      document.getElementById('trackingCode').value = trackingCode;
+      document.getElementById('patientName').value = patientName;
+      });
+  });
+
+  // وقتی روی "ثبت تغییرات" کلیک می‌کنیم
+  document.querySelector('.modal-footer .btn-success').addEventListener('click', function () {
+      if (!selectedRow) return;
+
+      const newDate = document.getElementById('appointmentDate').value;
+      const newTime_h = document.getElementById('appointmentTime_hour').value;
+      const newTime_m = document.getElementById('appointmentTime_minutes').value;
+
+      // آپدیت ستون "زمان نوبت"
+      selectedRow.children[3].textContent = `${newDate} - ${newTime_h+':'+newTime_m}`;
+
+      // بستن مودال
+      const modal = bootstrap.Modal.getInstance(document.getElementById('Edit_schegualModal'));
+      modal.hide();
+  });
+
+  function convertPersianToGregorian(shamsiDate) {
+      const formatted = shamsiDate.replaceAll('/', '-');
+      return moment.from(formatted, 'fa', 'jYYYY-jMM-jDD').format('YYYY-MM-DD');
+  }
+  const toastTriggersuccess = document.getElementById('showToastBtn');
+  const toastElementsuccess = document.getElementById('successToast');
+
+  if (toastTriggersuccess) {
+    toastTriggersuccess.addEventListener('click', () => {
+      const toastsuccess = new bootstrap.Toast(toastElementsuccess);
+      toastsuccess.show();
+      const user_ticket_modal = bootstrap.Modal.getInstance(document.getElementById('appDetail_alireza'));
+      user_ticket_modal.hide();
+    });
+  }
+  const toastElementreject = document.getElementById('rejectToast');
+  function reject_userTicket()
+  {
+    const rejectToast = new bootstrap.Toast(toastElementreject);
+    rejectToast.show();
+    const reject_modal = bootstrap.Modal.getInstance(document.getElementById('rejectModal'));
+    reject_modal.hide();
+  }
+  const toastElementonread = document.getElementById('unreadToast');
+  function open_unread_toast()
+  {
+    const onread_toast = new bootstrap.Toast(toastElementonread);
+    onread_toast.show();
+    const user_ticket_modal = bootstrap.Modal.getInstance(document.getElementById('appDetail_alireza'));
+    user_ticket_modal.hide();
+  }
+  let rowToCancel = null;
+
+// انتخاب ردیف مورد نظر وقتی روی آیکون لغو کلیک میشه
+document.querySelectorAll('.cancel-btn').forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    rowToCancel = e.target.closest('tr');
+  });
+});
+
+// وقتی "بله، لغو کن" زده شد
+document.getElementById('confirmCancelBtn').addEventListener('click', function () {
+  if (rowToCancel) {
+    // تغییر وضعیت نوبت به "لغو شده"
+    const statusCell = rowToCancel.children[8]; // ستون وضعیت
+    statusCell.textContent = 'لغو شده';
+
+    // اضافه کردن دکمه "عودت وجه" اگر قبلاً اضافه نشده
+    const actionCell = rowToCancel.querySelector('td.text-end');
+    if (!actionCell.querySelector('.btn-info')) {
+      const refundButton = document.createElement('a');
+      refundButton.href = '#';
+      refundButton.className = 'btn btn-sm btn-info ms-1';
+      refundButton.title = 'عودت وجه';
+      refundButton.setAttribute('data-bs-toggle', 'modal');
+      refundButton.setAttribute('data-bs-target', '#refundModal');
+      refundButton.innerHTML = '<i class="fas fa-undo-alt text-white"></i>';
+      actionCell.appendChild(refundButton);
+    }
+
+    rowToCancel = null;
+  }
+
+  // بستن مودال
+  const modalEl = document.getElementById('cancelConfirmModal');
+  const modalInstance = bootstrap.Modal.getInstance(modalEl);
+  modalInstance.hide();
+});
+  function showRefundToast() {
+    const send_recModal = document.getElementById('refundModal');
+    const send_rec = bootstrap.Modal.getInstance(send_recModal);
+    send_rec.hide();
+    var toastEl = document.getElementById('refundToast');
+    var toast = new bootstrap.Toast(toastEl);
+    toast.show();
+  }  
 
   
