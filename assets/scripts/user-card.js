@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const rows = document.querySelectorAll(".clickable-row");
 
             rows.forEach(row => {
@@ -106,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
         cardContainer.insertAdjacentHTML("beforeend", newCardHTML);
       });
   });
-
 function closeNotifCard(btn) {
     // کارت را مخفی کن
     const card = btn.closest('.card');
@@ -129,6 +127,11 @@ function closeNotifCard(btn) {
     const send_recModal = document.getElementById('refundModal');
     const send_rec = bootstrap.Modal.getInstance(send_recModal);
     send_rec.hide();
+    // والد toast که کلاس d-none داره
+    const toastWrapper = document.getElementById('refundToast').parentElement;
+    // نمایش wrapper
+    toastWrapper.classList.remove('d-none');
+    toastWrapper.classList.add('d-block'); 
     var toastEl = document.getElementById('refundToast');
     var toast = new bootstrap.Toast(toastEl);
     toast.show();

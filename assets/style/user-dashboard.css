@@ -27,13 +27,6 @@ body.loading {
   object-fit: cover;
   display: block;
 }
-/* مخفی کردن توست زمانی که نشان داده نمی شود*/
-.toast:not(.show)
-{
-    pointer-events: none !important;
-    opacity: 0 !important;
-}
-
 /* import the font style file */
 @import url(../Font/clinicSanabadFont.css);
 a

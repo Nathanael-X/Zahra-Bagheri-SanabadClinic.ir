@@ -33,7 +33,7 @@
         </div>
     </div>
     <!--توست موفقیت ارسال درخواست به حساب داری-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="d-flex">
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
@@ -372,7 +372,7 @@
         <!--محتوای اصلی-->
         <section class="container pb-5">
             <!-- سایدبار به صورت offcanvas -->
-            <div class="offcanvas offcanvas-end d-lg-none bg-dark text-white" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
+            <div class="offcanvas offcanvas-end d-lg-none bg-dark text-white" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel" style="z-index: 12;">
                 <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="userSidebarLabel">منوی کاربری</h5>
                 <div class="bg-light pe-3 px-2 py-3 rounded">
