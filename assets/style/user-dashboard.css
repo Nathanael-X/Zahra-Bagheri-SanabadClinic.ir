@@ -21,12 +21,17 @@ body.loading {
   align-items: center;
   transition: opacity 0.6s ease;
 }
-
 .heartbeat-loader img {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
   display: block;
+}
+/* مخفی کردن توست زمانی که نشان داده نمی شود*/
+.toast:not(.show)
+{
+    pointer-events: none !important;
+    opacity: 0 !important;
 }
 
 /* import the font style file */
