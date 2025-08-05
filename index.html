@@ -140,7 +140,9 @@
 <body>
     <!-- Preloader Wrapper -->
     <div id="preloader">
-      <div id="lottie-animation" style="width: 100vh; margin: auto;"></div>
+      <div class="heartbeat-loader">
+        <img src="assets/Images/preloader.svg" alt="در حال بارگذاری">
+      </div>
     </div>
     <!--پاپ اپ ایجاد حساب کاربری-->
     <div class="modal fade" id="Loginsignup_popup" tabindex="-1" aria-hidden="true">
@@ -1636,14 +1638,6 @@
           }
         },
         "retina_detect": true
-      });
-       // اجرای انیمیشن Lottie
-      const animation = lottie.loadAnimation({
-        container: document.getElementById('lottie-animation'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'assets/Images/preloader-sanabad.json'
       });
       lottie.loadAnimation({
         container: document.getElementById('lottie-bg'),
