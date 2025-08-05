@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (userCol) userCol.style.display = "none";
 
             bootstrap.Modal.getInstance(document.getElementById('delete_user_account')).hide();
-
+            const toastWrapper_delete_account = document.getElementById('deleteAccountSuccessToast').parentElement;
+            toastWrapper_delete_account.classList.remove('d-none');
+            toastWrapper_delete_account.classList.add('d-block');
+            toastWrapper_delete_account.classList.add('showToast');
             new bootstrap.Toast(document.getElementById('deleteAccountSuccessToast')).show();
         });
     }
@@ -36,7 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             bootstrap.Modal.getInstance(document.getElementById('delete_all_avtivities'))?.hide();
             bootstrap.Modal.getInstance(document.getElementById('reservationHistoryModal'))?.hide();
-
+            const toastWrapper_delete = document.getElementById('deleteSuccessToast').parentElement;
+            toastWrapper_delete.classList.remove('d-none');
+            toastWrapper_delete.classList.add('d-block');
+            toastWrapper_delete.classList.add('showToast');  
             new bootstrap.Toast(document.getElementById('deleteSuccessToast')).show();
         });
     }

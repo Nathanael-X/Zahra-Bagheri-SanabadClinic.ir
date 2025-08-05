@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="publisher" content="Zahra Bagheri Hassankiade" />
     <meta name="title" content="sanabad toos hospital" />
     <meta http-equiv="content-language" content="fa" />
@@ -22,6 +23,12 @@
     
 </head>
 <body>
+    <!-- Preloader Wrapper -->
+    <div id="preloader">
+        <div class="heartbeat-loader">
+          <img src="assets/Images/preloader.svg" alt="در حال بارگذاری">
+        </div>
+    </div>
      <!--مودال دستورالعمل ویرایش مقاله ی مدیریت مدیریت-->
      <div class="modal fade" id="appDetail_managerReport" tabindex="-1" aria-labelledby="appDetail_managerReportlabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -49,7 +56,7 @@
     
                     <!-- متن تیکت -->
                     <span class="small fw-bold">متن تیکت:</span>
-                    <p class="text-dark pb-3 mt-2" style="text-align: justify;line-height:2">
+                    <p class="text-dark mt-2" style="text-align: justify;line-height:2">
                         تاریخ : 1404/05/11
                         <br>
                         با سلام و احترام،
@@ -76,16 +83,6 @@
                         **مدیریت سناباد**
 
                     </p>
-
-                    <!--دانلود فایل-->
-                    <span class="small fw-bold">فایل های پیوند:</span>
-                    <a href="#" download class="file-download-box d-inline-flex align-items-center p-3 w-100 mt-4">
-                        <img src="assets/Images/JahanGiri/doc.png" alt="word Icon" width="40" class="me-3">
-                        <div>
-                            <div class="file-name fw-bold">موارد مورد نیاز برای ویرایش.docx</div>
-                            <div class="file-size text-muted">حجم فایل: 15KB</div>
-                        </div>
-                    </a>
                 </div>
     
                 <!-- Modal footer -->
@@ -96,7 +93,7 @@
         </div>
     </div>
     <!--توست موفقیت امیز بودن ارسال مقاله منشی به ادمین-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="sendToMaster" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="d-flex">
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>

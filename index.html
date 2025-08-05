@@ -140,9 +140,7 @@
 <body>
     <!-- Preloader Wrapper -->
     <div id="preloader">
-      <div class="heartbeat-loader">
-        <img src="assets/Images/preloader.svg" alt="در حال بارگذاری">
-      </div>
+      <div id="lottie-animation" style="width: 100vh; margin: auto;"></div>
     </div>
     <!--پاپ اپ ایجاد حساب کاربری-->
     <div class="modal fade" id="Loginsignup_popup" tabindex="-1" aria-hidden="true">
@@ -561,7 +559,7 @@
             <h4 class="my-2 fw-bold">درمانگاه شبانه روزی سناباد</h4>
         </div>
         <div class="p-3 d-flex flex-column gap-3 fs-5">
-            <a href="#" class="blue-dark text-decoration-none active-link-sanabad"><i class="fas fa-home ms-2 small"></i>صفحه اصلی</a>
+            <a href="index.html" class="blue-dark text-decoration-none active-link-sanabad"><i class="fas fa-home ms-2 small"></i>صفحه اصلی</a>
             <a href="#" id="system_nobat" class="blue-dark text-decoration-none" data-bs-toggle="modal" data-bs-target="#Loginsignup_popup"><i class="fas fa-calendar-check ms-2 small"></i>سیستم نوبت‌دهی</a>
             <!-- آکاردئون واحدهای درمانگاه -->
             <div class="accordion bg-transparent" id="clinicUnitsAccordion">
@@ -1638,6 +1636,14 @@
           }
         },
         "retina_detect": true
+      });
+       // اجرای انیمیشن Lottie
+      const animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'assets/Images/preloader-sanabad.json'
       });
       lottie.loadAnimation({
         container: document.getElementById('lottie-bg'),

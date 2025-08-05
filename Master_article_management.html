@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="publisher" content="Zahra Bagheri Hassankiade" />
     <meta name="title" content="sanabad toos hospital" />
     <meta http-equiv="content-language" content="fa" />
@@ -19,17 +20,14 @@
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <!--font awesome-->
     <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
-    <style>
-      @media (max-width:991px)
-      {
-        #success_sendSuggest_ToAdmin,#success_RejectArticle,#sendToMaster
-        {
-          display: none;
-        }
-      }
-    </style>
 </head>
 <body>
+    <!-- Preloader Wrapper -->
+    <div id="preloader">
+      <div class="heartbeat-loader">
+        <img src="assets/Images/preloader.svg" alt="در حال بارگذاری">
+      </div>
+    </div>
     <!-- Modal: نمایش میگرن یا سردرد معمول -->
     <div class="modal fade" id="viewArticleModal" tabindex="-1" aria-labelledby="viewArticleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
@@ -113,7 +111,7 @@
       </div>
     </div>
     <!--توست موفقیت امیز بودن ارسال نظر به ادمین-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
       <div id="success_sendSuggest_ToAdmin" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
           <div class="toast-body text-end fe-bold">
@@ -143,7 +141,7 @@
       </div>
     </div>
     <!--توست موفقیت امیز بودن رد مقاله توسط مستر-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
       <div id="success_RejectArticle" class="toast align-items-center text-white bg-danger border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
           <div class="toast-body text-end fe-bold">
@@ -173,7 +171,7 @@
       </div>
     </div>  
     <!--توست موفقیت امیز بودن انتشار مقاله برروی سایت-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
       <div id="sendToMaster" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
           <div class="toast-body text-end fe-bold">

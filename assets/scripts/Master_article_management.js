@@ -19,8 +19,12 @@ function send_suggest_admin() {
     collapseInstance.hide();
 
     // نمایش toast
+    const toastWrapper_suggest = document.getElementById('success_sendSuggest_ToAdmin').parentElement;
     const toastSuggest = document.getElementById('success_sendSuggest_ToAdmin');
     if (toastSuggest) {
+        toastWrapper_suggest.classList.remove('d-none');
+        toastWrapper_suggest.classList.add('d-block');
+        toastWrapper_suggest.classList.add('showToast'); 
         const toast = new bootstrap.Toast(toastSuggest);
         toast.show();
     }
@@ -46,7 +50,11 @@ function publish_admin_article()
 
             // نمایش Toast موفقیت
             const toastEl_publish = document.getElementById('sendToMaster');
+            const toastWrapper_publish = document.getElementById('sendToMaster').parentElement;
             if (toastEl_publish) {
+                toastWrapper_publish.classList.remove('d-none');
+                toastWrapper_publish.classList.add('d-block');
+                toastWrapper_publish.classList.add('showToast');
                 const toast_Publish = new bootstrap.Toast(toastEl_publish);
                 toast_Publish.show();
             }
@@ -66,10 +74,14 @@ function reject_admin_article()
             }
 
             // نمایش Toast موفقیت
-            const toastEl_publish = document.getElementById('success_RejectArticle');
-            if (toastEl_publish) {
-                const toast_Publish = new bootstrap.Toast(toastEl_publish);
-                toast_Publish.show();
+            const toastWrapper_depublish = document.getElementById('success_RejectArticle').parentElement;
+            const toastEl_depublish = document.getElementById('success_RejectArticle');
+            if (toastEl_depublish) {
+                toastWrapper_depublish.classList.remove('d-none');
+                toastWrapper_depublish.classList.add('d-block');
+                toastWrapper_depublish.classList.add('showToast');
+                const toast_dePublish = new bootstrap.Toast(toastEl_depublish);
+                toast_dePublish.show();
             }
         currentRow_publish =null;
 }

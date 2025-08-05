@@ -1,4 +1,17 @@
 
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+      preloader.style.opacity = "0";
+      preloader.style.transition = "opacity 0.6s ease";
+  
+      setTimeout(() => {
+        preloader.style.display = "none";
+        document.documentElement.classList.remove("loading");
+        document.body.classList.remove("loading");
+      }, 600);
+    }
+});
 //ساید بار
 const sidebarToggle = document.getElementById("sidebarToggle");
 const sidebar = document.getElementById('sidebar');
@@ -77,8 +90,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       new bootstrap.Modal(replyModal).show();
   };
-
+  const toastWrapper_success = document.getElementById('successToast').parentElement;
   window.submitReply = function () {
+      toastWrapper_success.classList.remove('d-none');
+      toastWrapper_success.classList.add('d-block');
+      toastWrapper_success.classList.add('showToast');  
       showToast("successToast");
       bootstrap.Modal.getInstance(document.getElementById("replyModal")).hide();
 

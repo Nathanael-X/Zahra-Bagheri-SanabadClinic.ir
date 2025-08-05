@@ -1,3 +1,16 @@
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.style.opacity = "0";
+    preloader.style.transition = "opacity 0.6s ease";
+
+    setTimeout(() => {
+      preloader.style.display = "none";
+      document.documentElement.classList.remove("loading");
+      document.body.classList.remove("loading");
+    }, 600);
+  }
+});
 //ساید بار
 const sidebarToggle = document.getElementById("sidebarToggle");
 const sidebar = document.getElementById('sidebar');
@@ -180,9 +193,13 @@ document.addEventListener("DOMContentLoaded", () => {
 //توست های نخوانده شده، مودال و توست رد شده، توست پاسخ داده شده و بستن مودال اعلان ادمین
 const toastTriggersuccess = document.getElementById('showToastBtn');
   const toastElementsuccess = document.getElementById('successToast');
+  const toastWrapper_success = document.getElementById('successToast').parentElement;
 
   if (toastTriggersuccess) {
     toastTriggersuccess.addEventListener('click', () => {
+      toastWrapper_success.classList.remove('d-none');
+      toastWrapper_success.classList.add('d-block');
+      toastWrapper_success.classList.add('showToast'); 
       const toastsuccess = new bootstrap.Toast(toastElementsuccess);
       toastsuccess.show();
       const user_ticket_modal = bootstrap.Modal.getInstance(document.getElementById('appDetail_FizioTrapy'));
@@ -190,16 +207,24 @@ const toastTriggersuccess = document.getElementById('showToastBtn');
     });
   }
   const toastElementreject = document.getElementById('rejectToast');
+  const toastWrapper_reject = document.getElementById('rejectToast').parentElement;
   function reject_userTicket()
   {
+    toastWrapper_reject.classList.remove('d-none');
+    toastWrapper_reject.classList.add('d-block');
+    toastWrapper_reject.classList.add('showToast');
     const rejectToast = new bootstrap.Toast(toastElementreject);
     rejectToast.show();
     const reject_modal = bootstrap.Modal.getInstance(document.getElementById('rejectModal'));
     reject_modal.hide();
   }
   const toastElementonread = document.getElementById('unreadToast');
+  const toastWrapper_onread = document.getElementById('unreadToast').parentElement;
   function open_unread_toast()
   {
+    toastWrapper_onread.classList.remove('d-none');
+    toastWrapper_onread.classList.add('d-block');
+    toastWrapper_onread.classList.add('showToast');
     const onread_toast = new bootstrap.Toast(toastElementonread);
     onread_toast.show();
     const user_ticket_modal = bootstrap.Modal.getInstance(document.getElementById('appDetail_FizioTrapy'));

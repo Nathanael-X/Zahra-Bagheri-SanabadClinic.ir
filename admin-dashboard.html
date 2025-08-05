@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="publisher" content="Zahra Bagheri Hassankiade" />
     <meta name="title" content="sanabad toos hospital" />
     <meta http-equiv="content-language" content="fa" />
@@ -53,7 +54,7 @@
         </div>
     </div>
     <!--توست موفقیت امیز بودن ارسال درخواست عودت وجه برای کاربر-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="refundToast" class="toast align-items-center text-white bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="d-flex">
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
@@ -104,7 +105,7 @@
         </div>
     </div>
     <!-- توست موفقیت امیز بودن رد درخواست کاربر -->
-    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="rejectToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">
@@ -115,7 +116,7 @@
         </div>
     </div>
     <!-- توست موفقیت امیز بودن ارسال تیکت -->
-    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1100">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">
@@ -126,7 +127,7 @@
         </div>
     </div>
     <!-- توست علامت گذاری به عنوان خوانده نشده -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="unreadToast" class="toast align-items-center text-black bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">

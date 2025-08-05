@@ -66,6 +66,10 @@ window.onscroll = function () {
     });
 function showRefundToast() 
 {
+    const toastWrapper_refund = document.getElementById('refundToast').parentElement;
+    toastWrapper_refund.classList.remove('d-none');
+    toastWrapper_refund.classList.add('d-block');
+    toastWrapper_refund.classList.add('showToast'); 
     const send_recModal = document.getElementById('refundModal');
     const send_rec = bootstrap.Modal.getInstance(send_recModal);
     send_rec.hide();

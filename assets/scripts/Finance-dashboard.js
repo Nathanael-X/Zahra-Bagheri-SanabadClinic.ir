@@ -1,3 +1,16 @@
+window.addEventListener("load", () => {
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    preloader.style.opacity = "0";
+    preloader.style.transition = "opacity 0.6s ease";
+
+    setTimeout(() => {
+      preloader.style.display = "none";
+      document.documentElement.classList.remove("loading");
+      document.body.classList.remove("loading");
+    }, 600);
+  }
+});
 //ساید بار
 const sidebarToggle = document.getElementById("sidebarToggle");
 const sidebar = document.getElementById('sidebar');
@@ -32,13 +45,19 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // توست‌ها و مودال‌ها
     const toastTriggersuccess = document.getElementById('showToastBtn');
+    const toastWrapper_successticket = document.getElementById('successToast_ticket').parentElement;
     const toastElementsuccess = document.getElementById('successToast_ticket');
+    const toastWrapper_reject = document.getElementById('rejectToast').parentElement;
     const toastElementreject = document.getElementById('rejectToast');
+    const toastWrapper_onread = document.getElementById('unreadToast').parentElement;
     const toastElementonread = document.getElementById('unreadToast');
     const userTicketModalId = 'appDetail_SoheilMolody';
   
     if (toastTriggersuccess && toastElementsuccess) {
       toastTriggersuccess.addEventListener('click', () => {
+        toastWrapper_successticket.classList.remove('d-none');
+        toastWrapper_successticket.classList.add('d-block');
+        toastWrapper_successticket.classList.add('showToast'); 
         new bootstrap.Toast(toastElementsuccess).show();
         const modal = bootstrap.Modal.getInstance(document.getElementById(userTicketModalId));
         modal?.hide();
@@ -46,12 +65,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   
     window.reject_userTicket = function () {
+      toastWrapper_reject.classList.remove('d-none');
+      toastWrapper_reject.classList.add('d-block');
+      toastWrapper_reject.classList.add('showToast'); 
       new bootstrap.Toast(toastElementreject).show();
       const modal = bootstrap.Modal.getInstance(document.getElementById('rejectModal'));
       modal?.hide();
     };
   
     window.open_unread_toast = function () {
+      toastWrapper_onread.classList.remove('d-none');
+      toastWrapper_onread.classList.add('d-block');
+      toastWrapper_onread.classList.add('showToast'); 
       new bootstrap.Toast(toastElementonread).show();
       const modal = bootstrap.Modal.getInstance(document.getElementById(userTicketModalId));
       modal?.hide();
@@ -125,6 +150,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const sendNoteBtn = document.getElementById("btn-send-not");
     if (sendNoteBtn) {
       sendNoteBtn.addEventListener("click", () => {
+        const toastWrapper_success = document.getElementById('successToast').parentElement;
+        toastWrapper_success.classList.remove('d-none');
+        toastWrapper_success.classList.add('d-block');
+        toastWrapper_success.classList.add('showToast'); 
         new bootstrap.Toast(document.getElementById("successToast")).show();
         sendNotes_Modal.hide();
       });

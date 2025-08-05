@@ -21,7 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (viewCommentModalEl) {
                 bootstrap.Modal.getInstance(viewCommentModalEl)?.hide();
             }
-
+            const toastWrapper_success = document.getElementById('sendSuccessToast').parentElement;
+            toastWrapper_success.classList.remove('d-none');
+            toastWrapper_success.classList.add('d-block');
+            toastWrapper_success.classList.add('showToast'); 
             const successToast = new bootstrap.Toast(document.getElementById('sendSuccessToast'));
             successToast.show();
         });

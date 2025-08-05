@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="publisher" content="Zahra Bagheri Hassankiade" />
     <meta name="title" content="sanabad toos hospital" />
     <meta http-equiv="content-language" content="fa" />
@@ -42,136 +43,39 @@
     </style>
 </head>
 <body>
-    <!--مودال خروج حساب کاربری از حالت آرشیو-->
-    <div class="modal fade" id="DearchiveConfirmModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content text-end">
-            <div class="modal-header bg-success">
-              <h5 class="modal-title fw-bold text-white">هشدار مدیریتی</h5>
-              <button type="button" class="btn-close btn-close-white ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
-            </div>
-            <div class="modal-body lh-lg pb-0">
-              <p>آیا مطمئن هستید که می‌خواهید این حساب کاربری  را از حالت آرشیو خارج کنید؟</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
-              <button type="button" class="btn btn-success" id="confirm-dearchive-btn">بله، بازگردانی کن</button>
-            </div>
-          </div>
+    <!-- Preloader Wrapper -->
+    <div id="preloader">
+        <div class="heartbeat-loader">
+          <img src="assets/Images/preloader.svg" alt="در حال بارگذاری">
         </div>
-    </div>   
-    <!--مودال ارشیو حساب کاربری-->
-    <div class="modal fade" id="archiveConfirmModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content text-end">
-            <div class="modal-header bg-warning">
-              <h5 class="modal-title fw-bold">هشدار مدیریتی</h5>
-              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+    </div>
+    <!-- Success Toast -->
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
+        <div id="deleteSuccessToast" class="toast align-items-center bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="toast-body text-white fw-bold">
+            حذف سوابق رزرو کاربر موفقیت آمیز بود.
             </div>
-            <div class="modal-body lh-lg pb-0">
-              <p>آیا مطمئن هستید که می‌خواهید حساب کاربری <span id="archive-user-name" class="fw-bold text-primary"></span> را آرشیو کنید؟</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
-              <button type="button" class="btn btn-warning confirm-archive-btn">بله، آرشیو کن</button>
-            </div>
-          </div>
-        </div>
-    </div>      
-    <!--  مودال فایل های پرسنلی-->
-    <div class="modal fade" id="documentsModal" tabindex="-1" aria-labelledby="documentsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header fw-bold bg-dark justify-content-between text-white">
-            <h5 class="modal-title" id="documentsModalLabel">مستندات پرسنلی - رضا مرتضوی</h5>
             <div class="d-flex justify-content-start">
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
-            </div>
-            </div>
-            <div class="modal-body">
-    
-                <div class="row g-3 mb-3">
-                    <div class="col-md-4 text-center ">
-                    <img src="assets/Images/JahanGiri/picture.png" style="max-height: 50px;" class="mb-1">
-                    <p class="small mb-2">کارت ملی</p>
-                    <a href="assets/Images/JahanGiri/picture.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                    </div>
-                    <div class="col-md-4 text-center">
-                    <img src="assets/Images/JahanGiri/pdf.png" style="max-height: 50px;" class="mb-1">
-                    <p class="small mb-2">گواهی عدم سوء پیشینه</p>
-                    <a href="assets/Images/JahanGiri/گواهی سو پیشینه.pdf" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <img src="assets/Images/JahanGiri/doc.png" style="max-height: 50px;" class="mb-1">
-                        <p class="small mb-2">مستندات بیمه</p>
-                        <a href="assets/Images/JahanGiri/doc.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <img src="assets/Images/JahanGiri/xls.png" style="max-height: 50px;" class="mb-1">
-                        <p class="small mb-2">مدارک تحصیلی</p>
-                        <a href="assets/Images/JahanGiri/xls.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
-                    </div>
-                </div>
-    
+                <button type="button" class="btn-close btn-close-white ms-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
             </div>
         </div>
         </div>
     </div>
-    <!--حذف عکس پروفایل-->
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-danger fw-bold text-white">
-            <h5 class="modal-title" id="confirmDeleteLabel">تأیید حذف عکس پروفایل</h5>
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
+        <div id="deleteAccountSuccessToast" class="toast align-items-center bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="toast-body text-white fw-bold">
+            حذف حساب کاربری با موفقیت انجام شد.
             </div>
-            <div class="modal-body fw-bold" style="text-align: justify !important;">
-            <p>آیا از حذف عکس پروفایل اطمینان دارید؟</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
-            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">بله، حذف شود</button>
+            <div class="d-flex justify-content-start">
+                <button type="button" class="btn-close btn-close-white ms-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
             </div>
         </div>
-        </div>
-    </div>
-     <!--حذف عکس پروفایل پرسنل-->
-     <div class="modal fade" id="personelDelete_profile" tabindex="-1" aria-labelledby="personelDelete_profileLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-danger fw-bold text-white">
-            <h5 class="modal-title" id="personelDelete_profileLabel">تأیید حذف عکس پروفایل</h5>
-            </div>
-            <div class="modal-body fw-bold" style="text-align: justify !important;">
-            <p>آیا از حذف عکس پروفایل پرسنل اطمینان دارید؟</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
-            <button type="button" class="btn btn-danger" id="confirmpersonelDelete_profileBtn">بله، حذف شود</button>
-            </div>
-        </div>
-        </div>
-    </div>
-    <!--مودال حذف حساب کاربری-->
-    <div class="modal fade" id="delete_user_account" tabindex="-1" aria-labelledby="delete_user_accountLabel" aria-hidden="true" >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
-              <h5 class="modal-title w-100" id="delete_user_accountLabel">
-                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
-                حذف حساب کاربری</h5>
-            </div>
-            <div class="modal-body lh-lg" style="text-align: justify !important;">
-                آیا از حذف حساب کاربری علیرضا محمدی اطمینان دارید؟ این عملیات برگشت ناپذیر خواهد بود.
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
-              <a href="" class="btn btn-danger w-25" id="confirmDeleteUserAccount" onclick="return false">بله، حذف شود</a>
-            </div>
-          </div>
         </div>
     </div>
     <!--مودال حذف سوابق بیمار-->
-    <div class="modal fade" id="delete_all_avtivities" tabindex="-1" aria-labelledby="delete_all_avtivitiesLabel" aria-hidden="true">
+    <div class="modal fade" id="delete_all_avtivities" tabindex="-1" aria-labelledby="delete_all_avtivitiesLabel" aria-hidden="true" style="z-index: 9999;">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
@@ -185,44 +89,6 @@
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
               <a href="" class="btn btn-danger w-25" id="confirmDeleteAllBtn" onclick="return false">بله، حذف شود</a>
-            </div>
-          </div>
-        </div>
-    </div>
-    <!--مودال بلاک بیمار-->
-    <div class="modal fade" id="BlockUserModal" tabindex="-1" aria-labelledby="BlockUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
-              <h5 class="modal-title w-100" id="BlockUserModalLabel">
-                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
-                مسدود سازی حساب کاربری</h5>
-            </div>
-            <div class="modal-body lh-lg" style="text-align: justify !important;">
-              آیا از مسدود سازی حساب کاربری علیرضا محمدی اطمینان دارید؟
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
-              <a href="" class="btn btn-danger w-25" id="confirmBlockUser" onclick="return false">مسدود سازی</a>
-            </div>
-          </div>
-        </div>
-    </div>
-    <!--مودال رفع مسدودیت کاربر-->
-    <div class="modal fade" id="UnBlockUserModal" tabindex="-1" aria-labelledby="UnBlockUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header bg-success" style=" color:white; font-weight:bold;">
-              <h5 class="modal-title w-100" id="UnBlockUserModalLabel">
-                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
-                رفع مسدودیت حساب کاربری</h5>
-            </div>
-            <div class="modal-body lh-lg" style="text-align: justify !important;">
-                آیا از رفع محدودیت حساب کاربری علیرضا محمدی اطمینان دارید؟
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
-              <a href="" class="btn btn-success w-25" onclick="confirmUnBlockUser()">آزاد سازی</a>
             </div>
           </div>
         </div>
@@ -444,6 +310,172 @@
                 </div>
                 
             </div>
+        </div>
+    </div>
+    <!--مودال حذف حساب کاربری-->
+    <div class="modal fade" id="delete_user_account" tabindex="-1" aria-labelledby="delete_user_accountLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="delete_user_accountLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                حذف حساب کاربری</h5>
+            </div>
+            <div class="modal-body lh-lg" style="text-align: justify !important;">
+                آیا از حذف حساب کاربری علیرضا محمدی اطمینان دارید؟ این عملیات برگشت ناپذیر خواهد بود.
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="" class="btn btn-danger w-25" id="confirmDeleteUserAccount" onclick="return false">بله، حذف شود</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--مودال خروج حساب کاربری از حالت آرشیو-->
+    <div class="modal fade" id="DearchiveConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-end">
+            <div class="modal-header bg-success">
+              <h5 class="modal-title fw-bold text-white">هشدار مدیریتی</h5>
+              <button type="button" class="btn-close btn-close-white ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body lh-lg pb-0">
+              <p>آیا مطمئن هستید که می‌خواهید این حساب کاربری  را از حالت آرشیو خارج کنید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+              <button type="button" class="btn btn-success" id="confirm-dearchive-btn">بله، بازگردانی کن</button>
+            </div>
+          </div>
+        </div>
+    </div>   
+    <!--مودال ارشیو حساب کاربری-->
+    <div class="modal fade" id="archiveConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content text-end">
+            <div class="modal-header bg-warning">
+              <h5 class="modal-title fw-bold">هشدار مدیریتی</h5>
+              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            <div class="modal-body lh-lg pb-0">
+              <p>آیا مطمئن هستید که می‌خواهید حساب کاربری <span id="archive-user-name" class="fw-bold text-primary"></span> را آرشیو کنید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+              <button type="button" class="btn btn-warning confirm-archive-btn">بله، آرشیو کن</button>
+            </div>
+          </div>
+        </div>
+    </div>      
+    <!--  مودال فایل های پرسنلی-->
+    <div class="modal fade" id="documentsModal" tabindex="-1" aria-labelledby="documentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header fw-bold bg-dark justify-content-between text-white">
+            <h5 class="modal-title" id="documentsModalLabel">مستندات پرسنلی - رضا مرتضوی</h5>
+            <div class="d-flex justify-content-start">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="بستن"></button>
+            </div>
+            </div>
+            <div class="modal-body">
+    
+                <div class="row g-3 mb-3">
+                    <div class="col-md-4 text-center ">
+                    <img src="assets/Images/JahanGiri/picture.png" style="max-height: 50px;" class="mb-1">
+                    <p class="small mb-2">کارت ملی</p>
+                    <a href="assets/Images/JahanGiri/picture.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                    <img src="assets/Images/JahanGiri/pdf.png" style="max-height: 50px;" class="mb-1">
+                    <p class="small mb-2">گواهی عدم سوء پیشینه</p>
+                    <a href="assets/Images/JahanGiri/گواهی سو پیشینه.pdf" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="assets/Images/JahanGiri/doc.png" style="max-height: 50px;" class="mb-1">
+                        <p class="small mb-2">مستندات بیمه</p>
+                        <a href="assets/Images/JahanGiri/doc.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="assets/Images/JahanGiri/xls.png" style="max-height: 50px;" class="mb-1">
+                        <p class="small mb-2">مدارک تحصیلی</p>
+                        <a href="assets/Images/JahanGiri/xls.png" class="btn btn-sm btn-sanabad" target="_blank">دانلود</a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--حذف عکس پروفایل-->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger fw-bold text-white">
+            <h5 class="modal-title" id="confirmDeleteLabel">تأیید حذف عکس پروفایل</h5>
+            </div>
+            <div class="modal-body fw-bold" style="text-align: justify !important;">
+            <p>آیا از حذف عکس پروفایل اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">بله، حذف شود</button>
+            </div>
+        </div>
+        </div>
+    </div>
+     <!--حذف عکس پروفایل پرسنل-->
+     <div class="modal fade" id="personelDelete_profile" tabindex="-1" aria-labelledby="personelDelete_profileLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-danger fw-bold text-white">
+            <h5 class="modal-title" id="personelDelete_profileLabel">تأیید حذف عکس پروفایل</h5>
+            </div>
+            <div class="modal-body fw-bold" style="text-align: justify !important;">
+            <p>آیا از حذف عکس پروفایل پرسنل اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">خیر</button>
+            <button type="button" class="btn btn-danger" id="confirmpersonelDelete_profileBtn">بله، حذف شود</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!--مودال بلاک بیمار-->
+    <div class="modal fade" id="BlockUserModal" tabindex="-1" aria-labelledby="BlockUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-danger" style=" color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="BlockUserModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                مسدود سازی حساب کاربری</h5>
+            </div>
+            <div class="modal-body lh-lg" style="text-align: justify !important;">
+              آیا از مسدود سازی حساب کاربری علیرضا محمدی اطمینان دارید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="" class="btn btn-danger w-25" id="confirmBlockUser" onclick="return false">مسدود سازی</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--مودال رفع مسدودیت کاربر-->
+    <div class="modal fade" id="UnBlockUserModal" tabindex="-1" aria-labelledby="UnBlockUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-success" style=" color:white; font-weight:bold;">
+              <h5 class="modal-title w-100" id="UnBlockUserModalLabel">
+                <i class="fas fa-sign-out-alt pt-2 ps-2"></i>
+                رفع مسدودیت حساب کاربری</h5>
+            </div>
+            <div class="modal-body lh-lg" style="text-align: justify !important;">
+                آیا از رفع محدودیت حساب کاربری علیرضا محمدی اطمینان دارید؟
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">انصراف</button>
+              <a href="" class="btn btn-success w-25" onclick="confirmUnBlockUser()">آزاد سازی</a>
+            </div>
+          </div>
         </div>
     </div>  
     <!-- مودال بازنشانی رمز عبور -->
@@ -3168,30 +3200,5 @@
     <script src="assets/scripts/admin-dashboard.js"></script>
     <script src="assets/scripts/Master_user_control.js"></script>
     <script src="assets/scripts/Master_archive_control.js"></script>
-    <!-- Success Toast -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1080">
-        <div id="deleteSuccessToast" class="toast align-items-center bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="toast-body text-white fw-bold">
-            حذف سوابق رزرو کاربر موفقیت آمیز بود.
-            </div>
-            <div class="d-flex justify-content-start">
-                <button type="button" class="btn-close btn-close-white ms-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1079">
-        <div id="deleteAccountSuccessToast" class="toast align-items-center bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="toast-body text-white fw-bold">
-            حذف حساب کاربری با موفقیت انجام شد.
-            </div>
-            <div class="d-flex justify-content-start">
-                <button type="button" class="btn-close btn-close-white ms-2 m-auto" data-bs-dismiss="toast" aria-label="بستن"></button>
-            </div>
-        </div>
-        </div>
-    </div>
 </body>
 </html>

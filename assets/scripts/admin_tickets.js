@@ -63,6 +63,10 @@ function openReplyModal(name, modalId, actionTd, isModir = false) {
 }
 
 function submitReply(isModir = false) {
+  const toastWrapper = document.getElementById('successToast').parentElement;
+  toastWrapper.classList.remove('d-none');
+  toastWrapper.classList.add('d-block');
+  toastWrapper.classList.add('showToast');  
   const toast = new bootstrap.Toast(document.getElementById("successToast"));
   toast.show();
 

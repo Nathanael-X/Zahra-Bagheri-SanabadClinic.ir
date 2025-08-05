@@ -188,9 +188,15 @@ overlay.addEventListener('click', () => {
   }
   const toastTriggersuccess = document.getElementById('showToastBtn');
   const toastElementsuccess = document.getElementById('successToast');
+  // والد toast که کلاس d-none داره
+  const toastWrapper_success = document.getElementById('successToast').parentElement;
 
   if (toastTriggersuccess) {
     toastTriggersuccess.addEventListener('click', () => {
+    // نمایش wrapper
+      toastWrapper_success.classList.remove('d-none');
+      toastWrapper_success.classList.add('d-block');
+      toastWrapper_success.classList.add('showToast');
       const toastsuccess = new bootstrap.Toast(toastElementsuccess);
       toastsuccess.show();
       const user_ticket_modal = bootstrap.Modal.getInstance(document.getElementById('appDetail_alireza'));
@@ -198,16 +204,25 @@ overlay.addEventListener('click', () => {
     });
   }
   const toastElementreject = document.getElementById('rejectToast');
+  const toastWrapper_reject = document.getElementById('rejectToast').parentElement;
   function reject_userTicket()
   {
+    toastWrapper_reject.classList.remove('d-none');
+    toastWrapper_reject.classList.add('d-block');
+    toastWrapper_reject.classList.add('showToast');
     const rejectToast = new bootstrap.Toast(toastElementreject);
     rejectToast.show();
     const reject_modal = bootstrap.Modal.getInstance(document.getElementById('rejectModal'));
     reject_modal.hide();
   }
   const toastElementonread = document.getElementById('unreadToast');
+  const toastWrapper_unread = document.getElementById('unreadToast').parentElement;
+
   function open_unread_toast()
   {
+    toastWrapper_unread.classList.remove('d-none');
+    toastWrapper_unread.classList.add('d-block');
+    toastWrapper_unread.classList.add('showToast');
     const onread_toast = new bootstrap.Toast(toastElementonread);
     onread_toast.show();
     const user_ticket_modal = bootstrap.Modal.getInstance(document.getElementById('appDetail_alireza'));
@@ -251,6 +266,11 @@ document.getElementById('confirmCancelBtn').addEventListener('click', function (
   modalInstance.hide();
 });
   function showRefundToast() {
+    const toastWrapper_refund = document.getElementById('refundToast').parentElement;
+     // نمایش wrapper
+     toastWrapper_refund.classList.remove('d-none');
+     toastWrapper_refund.classList.add('d-block');
+     toastWrapper_refund.classList.add('showToast');  
     const send_recModal = document.getElementById('refundModal');
     const send_rec = bootstrap.Modal.getInstance(send_recModal);
     send_rec.hide();

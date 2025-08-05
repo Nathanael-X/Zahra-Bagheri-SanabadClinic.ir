@@ -69,6 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
      if (confirmPublish_Btn) {
          confirmPublish_Btn.addEventListener('click', () => {
              const toastEl = document.getElementById('sendToMaster');
+             const toastWrapper = document.getElementById('sendToMaster').parentElement;
+             toastWrapper.classList.remove('d-none');
+             toastWrapper.classList.add('d-block');
+             toastWrapper.classList.add('showToast');  
              if (toastEl) {
                  const toast = new bootstrap.Toast(toastEl);
                  toast.show();

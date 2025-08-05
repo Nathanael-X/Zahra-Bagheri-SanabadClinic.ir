@@ -181,6 +181,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // ارسال پاسخ
   function submitReply() {
+    const toastWrapper = document.getElementById('successToast_Ticket').parentElement;
+    toastWrapper.classList.remove('d-none');
+    toastWrapper.classList.add('d-block');
+    toastWrapper.classList.add('showToast'); 
     const toast = new bootstrap.Toast(document.getElementById("successToast_Ticket"));
     toast.show();
   

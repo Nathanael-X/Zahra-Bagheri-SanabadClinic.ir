@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="publisher" content="Zahra Bagheri Hassankiade" />
     <meta name="title" content="sanabad toos hospital" />
     <meta http-equiv="content-language" content="fa" />
@@ -22,18 +23,17 @@
         {
             background-color: #c2ecff !important;
         }
-        @media (max-width:991px)
-        {
-            #unreadToast, #successToast_ticket,#successToast,#rejectToast
-            {
-                display: none !important;
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- Preloader Wrapper -->
+    <div id="preloader">
+        <div class="heartbeat-loader">
+          <img src="assets/Images/preloader.svg" alt="در حال بارگذاری">
+        </div>
+    </div>
      <!-- توست ارسال موفقیت امیز پیغام -->
-     <div class="position-fixed bottom-0 start-0 p-3">
+     <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">
@@ -44,7 +44,7 @@
         </div>
     </div>
     <!-- توست موفقیت امیز بودن رد درخواست کاربر -->
-    <div class="position-fixed bottom-0 start-0 p-3">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="rejectToast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">
@@ -73,7 +73,7 @@
         </div>
     </div>
     <!-- توست موفقیت امیز بودن ارسال تیکت -->
-    <div class="position-fixed bottom-0 start-0 p-3">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="successToast_ticket" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">
@@ -84,7 +84,7 @@
         </div>
     </div>
     <!-- توست علامت گذاری به عنوان خوانده نشده -->
-    <div class="position-fixed bottom-0 start-0 p-3">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="unreadToast" class="toast align-items-center text-black bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">

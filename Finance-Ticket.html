@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <meta name="publisher" content="Zahra Bagheri Hassankiade" />
     <meta name="title" content="sanabad toos hospital" />
     <meta http-equiv="content-language" content="fa" />
@@ -27,16 +28,15 @@
             padding-top:1.2rem !important;
             padding-bottom:1.2rem !important;
         }
-        @media (max-width:991px)
-        {
-            #successToast_Ticket
-            {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- Preloader Wrapper -->
+    <div id="preloader">
+        <div class="heartbeat-loader">
+          <img src="assets/Images/preloader.svg" alt="در حال بارگذاری">
+        </div>
+    </div>
     <!--مودال حذف تیکت-->
     <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -128,7 +128,7 @@
         </div>
     </div>
     <!-- توست موفقیت در ارسال تیکت -->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div class="position-fixed bottom-0 end-0 p-3 d-none">
         <div id="successToast_Ticket" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex justify-content-between align-items-center">
             <div class="toast-body fw-bold">
