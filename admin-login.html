@@ -1,0 +1,180 @@
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود ادمین | درمانگاه شبانه روزی سناباد طوس</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="publisher" content="Zahra Bagheri Hassankiade" />
+    <meta name="title" content="sanabad toos hospital" />
+    <meta http-equiv="content-language" content="fa" />
+    <link rel="icon" type="image/x-icon" href="assets/Images/sanabad-xicon.ico" />
+    <link rel="stylesheet" type="text/css" href="assets/style/admin-login.css">
+    <!--bootstrap css cdn-->
+    <link rel="stylesheet" type="text/css" href="assets/vendor/css/bootstrap.min.css">
+    <link href="assets/vendor/bootstrap icons/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!--font awesome-->
+    <link rel="stylesheet" href="assets/vendor/Font-Awesome-6.7.2/css/all.min.css">
+</head>
+<body>
+      <!-- Preloader Wrapper -->
+      <div id="preloader">
+        <div class="heartbeat-loader">
+          <img src="assets/Images/nervous-system.gif" alt="در حال بارگذاری">
+        </div>
+      </div>
+      <!-- مودال موفقیت -->
+      <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+            <div class="modal-header border-0 bg-info text-white align-items-center">
+            <h5 class="modal-title fw-bold" id="successModalLabel">
+              <i class="bi bi-check-circle-fill text-white fs-5 ms-1"></i>
+              تاییدیه</h5>
+            </div>
+            <div class="modal-body pb-0 mb-0">
+                <p class="pt-3 lh-lg" style="text-align: justify !important;">
+                  اطلاعات شما برای بررسی به مدیر سیستم (ادمین مستر) ارسال گردید. در صورت تأیید، یک رمز عبور موقت برای شما صادر و از طریق راه ارتباطی سازمانی ارسال خواهد شد.
+                </p>
+            </div>
+            <div class="modal-footer justify-content-end border-0">
+            <button type="button" class="btn btn-sanabad" data-bs-dismiss="modal">فهمیدم</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Modal: Forgot Password -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true" dir="rtl">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+          <div class="modal-header bg-dark text-white border-bottom-0">
+            <h5 class="modal-title fw-bold" id="forgotPasswordModalLabel">
+              بازیابی رمز عبور
+            </h5>
+            <button type="button" class="btn-close btn-close-white ms-0" data-bs-dismiss="modal" aria-label="بستن"></button>
+          </div>
+          <div class="modal-body px-4">
+            <form id="forgotPasswordForm">
+              <div class="mb-3">
+                <label for="adminIdentifier" class="form-label">ایمیل سازمانی یا نام کاربری</label>
+                <input type="text" class="form-control rounded-3" id="adminIdentifier" placeholder="مثال: sanabad-admin" required>
+              </div>
+              <div class="mb-3 text-muted small">
+                پس از ارسال درخواست، اطلاعات شما برای بررسی به مدیر سیستم ارسال می‌گردد. در صورت تأیید، رمز عبور موقت از طریق شماره تلفن به شما ارسال خواهد شد.
+              </div>
+              <div class="d-flex justify-content-end">
+                <button type="reset" class="btn btn-secondary ms-2" data-bs-dismiss="modal">
+                  لغو
+                </button>
+                <button type="button" class="btn btn-sanabad" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#successModal">
+                  <i class="bi bi-shield-lock-fill ms-1"></i>
+                  ارسال درخواست
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="main-body px-3 px-md-5 px-lg-0">
+        <!-- ناحیه ذرات -->
+        <div id="particles-js" class="position-absolute top-0 start-0 w-100 h-100 z-n1"></div>
+        <div class="login-container d-flex flex-column flex-md-row">
+            <!-- Right Login Form -->
+            <div class="col-md-6 form-section">
+              <div class="text-center mb-4">
+                <img src="assets/Images/home/admin-login/logo-white.png" alt="snabad logo" class="w-50">
+              </div>
+              <h4 class="mb-3">فرم ورود</h4>
+              <p class="text-muted">لطفا اطلاعات کاربری خود را وارد نمایید.</p>
+              <form>
+                <div class="mb-3">
+                  <label for="admin-username" class="form-label">نام کاربری</label>
+                  <input type="text" class="form-control" id="admin-username" placeholder="admin-sanabad">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label d-flex justify-content-between">
+                    <span>رمز عبور</span>
+                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">فراموشی رمزعبور؟</a>
+                  </label>
+                  <input type="password" class="form-control" id="password" placeholder="* * * * * * * *">
+                </div>
+                <div class="d-grid">
+                  <button type="button" class="btn btn-sanabad">ورود به پنل ادمین</button>
+                </div>
+              </form>
+              <p class="text-center mt-3 mb-0">
+                برای بازگشت به صفحه اصلی <a href="index.html" class="text-decoration-none">کلیک کنید</a>.
+              </p>
+            </div>
+            <!-- Left Image and Welcome -->
+            <div class="col-md-6 d-none d-md-block">
+              <div class="login-image d-flex flex-column justify-content-end">
+                <div class="blue-box">
+                  <h1 class="pb-3">ورود به پنل ادمین</h1>
+                  <small class="lh-lg" style="text-align: justify !important;"> درمانگاه سناباد با همت والا و همان اندیشه های ارزشی و انسانی توسط مدیران متخصص و متعهد در حرفه ی پزشکی با هدف تامین نیازهای بهداشتی و درمانی جامعه آغاز به کار نموده است.</small>
+                </div>
+              </div>
+            </div>
+        </div>
+    </main>
+    <!--bootstrap javascript cdn-->
+    <script src="assets/vendor/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendor/js/particles.min.js"></script>
+
+    <script>
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          preloader.style.opacity = "0";
+          preloader.style.transition = "opacity 0.6s ease";
+      
+          setTimeout(() => {
+            preloader.style.display = "none";
+            document.documentElement.classList.remove("loading");
+            document.body.classList.remove("loading");
+          }, 600);
+        }
+      });
+      //انیمیشن فوتر
+      particlesJS("particles-js", {
+        "particles": {
+          "number": {
+            "value": 100,
+            "density": {
+              "enable": true,
+              "value_area": 1000
+            }
+          },
+          "color": {
+            "value": "#28b6f6"
+          },
+          "shape": {
+            "type": "star"
+          },
+          "opacity": {
+            "value": 1
+          },
+          "size": {
+            "value": 3
+          },
+          "move": {
+            "enable": true,
+            "speed": 1
+          }
+        },
+        "interactivity": {
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "repulse"
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    </script>
+</body>
+</html>

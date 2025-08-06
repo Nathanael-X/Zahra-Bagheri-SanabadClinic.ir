@@ -57,8 +57,8 @@ body.loading {
   transition: opacity 0.6s ease;
 }
 .heartbeat-loader img {
-  width: 70vw;
-  height: 70vh;
+  width: 50vw;
+  height: 50vh;
   object-fit: contain;
   display: block;
 }

@@ -444,8 +444,8 @@ footer
   }
 
   .heartbeat-loader img {
-    width: 70vw;
-    height: 70vh;
+    width: 50vw;
+    height: 50vh;
     object-fit:contain;
     display: block;
   }
